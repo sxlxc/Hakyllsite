@@ -67,7 +67,12 @@ src: local("Segoe UI Light"),
     font-style: normal;
     src: url('/fonts/texgyrepagella-math.ttf') format('truetype');
 }
-
+@font-face {
+    font-family: 'notoserifSC';
+    font-weight: normal;
+    font-style: normal;
+    src: url('/fonts/NotoSerifSC-VariableFont_wght.ttf') format('truetype');
+}
 html {
     border-top: 5px solid #333
 }
@@ -75,7 +80,7 @@ html {
 body {
     /* margin: 0px auto 0px auto;
     width: 800px; */
-    font-family: 'Tex Gyre Pagella', "Kagami Songti SC", serif;
+    font-family: 'Tex Gyre Pagella', "Kagami Songti SC" , "notoserifSC", serif;
     font-size: 1.1em;
     color: black;
     background-color: rgb(255, 250, 245);
