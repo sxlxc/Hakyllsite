@@ -11,7 +11,7 @@ src: local("Songti SC Regular"), local(STSongti-SC-Regular),
         local("Adobe Song Std"); 
 }
 
-@font-face {
+/* @font-face {
 font-family: "Kagami Songti TC";
 src: local("Songti TC Regular"), local(STSongti-TC-Regular),
         local("LiSong Pro"), local(LiSongPro);
@@ -42,7 +42,7 @@ src: local("Segoe UI Light"),
         local("Helvetica Light"),
         local("Helvetica"),
         local("Arial");
-}
+} */
 @font-face {
     font-family: 'Tex Gyre Pagella';
     font-weight: normal;
@@ -68,10 +68,10 @@ src: local("Segoe UI Light"),
     src: url('/fonts/texgyrepagella-math.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'notoserifSC';
+    font-family: 'serifsc';
     font-weight: normal;
     font-style: normal;
-    src: url('/fonts/NotoSerifSC-VariableFont_wght.ttf') format('truetype');
+    src: url('/fonts/Songti-SC-Regular.ttf') format('truetype');
 }
 html {
     border-top: 5px solid #333
@@ -80,7 +80,7 @@ html {
 body {
     /* margin: 0px auto 0px auto;
     width: 800px; */
-    font-family: 'Tex Gyre Pagella', "Kagami Songti SC" , "notoserifSC", serif;
+    font-family: 'Tex Gyre Pagella', "Kagami Songti SC" , "serifsc", serif;
     font-size: 1.1em;
     color: black;
     background-color: rgb(255, 250, 245);
