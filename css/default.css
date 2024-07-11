@@ -73,6 +73,7 @@ src: local("Segoe UI Light"),
     font-style: normal;
     src: url('/fonts/Songti-SC-Regular.ttf') format('truetype');
 }
+/* bold font is also needed... */
 html {
     border-top: 5px solid #333
 }
@@ -165,6 +166,10 @@ article .header {
 }
 
 blockquote {
+    background-color: antiquewhite;
+}
+
+table {
     background-color: antiquewhite;
 }
 
