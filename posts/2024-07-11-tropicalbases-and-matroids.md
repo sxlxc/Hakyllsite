@@ -1,5 +1,5 @@
 ---
-title: tropical stuff
+title: tropical bases and matroid circuits
 tags: matroid
 author: Yu Cong
 ---
@@ -9,7 +9,7 @@ author: Yu Cong
 
 In the post the author describes an interesting problem,
 
-> Given a matroid $M=(E,\mathcal{I})$, find a minimal set of circuits that defines the matroid
+> **Problem** Given a matroid $M=(E,\mathcal{I})$, find a minimal set of circuits that defines the matroid
 
 The way he consider this problem is not by looking at the circuits but the flats. Any circuit excludes some sets from being flats. If we are given a circuit $c$, any set $A$ that contains $|c|-1$ elements of $c$ can not be a flat of $M$. So the idea is to find a minimal set of circuits that excludes all non-flat sets of $M$.
 
@@ -49,7 +49,7 @@ Combinatorial definition. $\mathcal C'\subseteq \mathcal C$ is a tropical basis 
 Algebraic definition. $\mathcal C'\subseteq \mathcal C$ is a tropical basis if $T(\mathcal C')=T(\mathcal C)$.
 
 
-> **lemma** For any $\mathcal C'\subseteq \mathcal C$, $T(\mathcal C')= T(\mathcal C)$ if and only if $T(\mathcal C')\cap \{0,1\}^n= T(\mathcal C)\cap \{0,1\}^n$
+> **Lemma** For any $\mathcal C'\subseteq \mathcal C$, $T(\mathcal C')= T(\mathcal C)$ if and only if $T(\mathcal C')\cap \{0,1\}^n= T(\mathcal C)\cap \{0,1\}^n$
 
 
 This lemma shows that we can only consider the indicator vectors when dealing with the algebraic definition.
