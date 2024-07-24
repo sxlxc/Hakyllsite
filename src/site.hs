@@ -1,10 +1,22 @@
 --------------------------------------------------------------------------------
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings   #-}
+{-# LANGUAGE LambdaCase          #-}
+{-# LANGUAGE BangPatterns        #-}
+{-# LANGUAGE BlockArguments      #-}
+{-# LANGUAGE ImportQualifiedPost #-}
+{-# LANGUAGE NamedFieldPuns      #-}
+{-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE TypeApplications    #-}
+{-# LANGUAGE ViewPatterns        #-}
 
 import Data.Monoid (mappend)
 import Hakyll
 import Text.Pandoc
-import qualified Data.Set as S
+import Data.Maybe (fromMaybe, listToMaybe)
+import qualified Data.Text as T
+-- import System.Process (readProcess)
+import Text.Pandoc.Definition (Block (CodeBlock, RawBlock), Pandoc)
+import Text.Pandoc.Walk (walk, walkM)
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
@@ -115,7 +127,22 @@ pandocCompiler_ =
         { writerExtensions = newExtensions
         , writerHTMLMathMethod = KaTeX ""
         }
-    in pandocCompilerWith defaultHakyllReaderOptions writerOptions
+    in pandocCompilerWithTransformM defaultHakyllReaderOptions writerOptions pygmentsHighlight
+    where 
+      pygmentsHighlight :: Pandoc -> Compiler Pandoc
+      pygmentsHighlight = walkM \case
+        CodeBlock (_, listToMaybe -> mbLang, _) (T.unpack -> body) -> do
+          let lang = T.unpack (fromMaybe "text" mbLang)
+          RawBlock "html" . T.pack <$> callPygs lang body
+        block -> pure block
+        where
+          callPygs :: String -> String -> Compiler String
+          callPygs lang = unixFilter "pygmentize" [ "-l", lang
+                                                  , "-f", "html"
+                                                  , "-P", "cssclass=pygmentize-block"
+                                                  , "-P", "cssstyles=padding-left: 1em;"
+                                                  ]
+
 
 katexFilter :: Item String -> Compiler (Item String)
 katexFilter = withItemBody (unixFilter "./katex_cli" [])

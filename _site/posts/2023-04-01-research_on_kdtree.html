@@ -4,9 +4,10 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>⚂ - c++ kd-tree implementations</title>
+        <title>talldoor - c++ kd-tree implementations</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
         <link rel="stylesheet" href="../css/default.css" />
+        <link rel="stylesheet" href="../css/pygentize.css" />
     
     </head>
     <body>
@@ -58,7 +59,9 @@
 <h3 id="nanoflann">nanoflann</h3>
 <p>我没仔细看, 根据 examples 他是支持任意维度的点插入删除的…看起来满足所有的要求.</p>
 <p>在ikd-Tree的issue当中看到建树的时候直接用了</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    DistanceType split_val <span class="op">=</span> <span class="op">(</span>bbox<span class="op">[</span>cutfeat<span class="op">].</span>low <span class="op">+</span> bbox<span class="op">[</span>cutfeat<span class="op">].</span>high<span class="op">)</span> <span class="op">/</span> <span class="dv">2</span><span class="op">;</span></span></code></pre></div>
+<div class="pygmentize-block" style="padding-left: 1em;"><pre><span></span><span class="w">    </span><span class="n">DistanceType</span><span class="w"> </span><span class="n">split_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">bbox</span><span class="p">[</span><span class="n">cutfeat</span><span class="p">].</span><span class="n">low</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">bbox</span><span class="p">[</span><span class="n">cutfeat</span><span class="p">].</span><span class="n">high</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+</pre></div>
+
 <p>貌似不能保证树是平衡的?</p>
 <p>在看和改这些kd-tree上花费的时间感觉足够从头开始写一个了, 最终也没有用前面两个实现改出一个我能用上的kd-tree…</p>
     </section>

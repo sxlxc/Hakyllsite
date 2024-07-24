@@ -2,7 +2,7 @@
 layout: post
 title:  "Stoer-Wagner算法cut-of-the-phase部分证明"
 date:   2022-2-15 8:30:08 +0800
-categories: alg
+tags: alg
 ---
 
 Stoer-Wagner 算法求无向图上的全局最小割。
