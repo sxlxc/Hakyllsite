@@ -197,9 +197,9 @@ text-align: center;
     margin: 0 auto 0 auto;
     display: block;
 }
-.katex .mathnormal, .katex .mathrm, .katex .custom-Regular, .katex .amsrm {
+/* .katex .mathnormal, .katex .mathrm, .katex .custom-Regular, .katex .amsrm {
 	font-family: 'Tex Gyre Pagella Math';
-}
+} */
 
 
 /* div.highlight,
