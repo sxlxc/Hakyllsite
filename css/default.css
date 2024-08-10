@@ -202,7 +202,7 @@ text-align: center;
 } */
 
 
-/* div.highlight,
+div.highlight,
 pre code {
     margin: 0 auto;
     padding: 10px;
@@ -216,6 +216,7 @@ code {
     background: #eee;
     display: inline-block;
     padding: 2px;
+    border-radius: 2px;
 }
 
 .code-output {
@@ -225,7 +226,7 @@ code {
 
 .code-output code {
     background-color: inherit;
-} */
+}
 
 .highlight pre {
     margin: 0
