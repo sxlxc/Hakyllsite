@@ -16,7 +16,7 @@ The way he consider this problem is not by looking at the circuits but the flats
 
 ### combinatorial definition
 
-A circuit $c$ \emph{excludes} a set $A$ if exactly one element of $c$ is not in $A$. 
+A circuit $c$ ***excludes*** a set $A$ if exactly one element of $c$ is not in $A$. 
 A collection of circuits $\mathcal{C}'\subseteq \mathcal{C}(M)$ is a **tropical basis** of $M$ if for every non-flat set $A$ there is a circuit $c\in \mathcal{C}'$ that excludes $A$.
 The problem is then to find a minimal tropical basis of $M$.
 
@@ -40,7 +40,7 @@ For any set $A\subseteq E$ there is a natural representation of $A$ as a vector 
 Then we can define a linear tropical polynomial associated with a circuit $c$ just like the dot product of two vectors in $\R^n$. For example consider a circuit $c=\{1,2,3\}$ in $U_{2,4}$, $f_{c}(x_1,x_2,x_3,x_4)=(0 \otimes x_1)\oplus(0 \otimes x_2)\oplus(0 \otimes x_3)\oplus(+\infty\otimes x_4)$.
 
 Denote the tropical hyperplane of a circuit $c$ by $T(c)$. $T(c)$ is the space of all vectors $v$ where $f_c(v)$ achieves its minimum at least twice. $T(\mathcal C)=\bigcap_{c\in \mathcal C}T(c)$ is the set of $v$ excluded by all circuits in $\mathcal C$.
-A set $\mathcal{C}'\subseteq \mathcal C(M)$ is a \emph{tropical basis} for matroid $M$ if $T(\mathcal C')=T(\mathcal C)$.
+A set $\mathcal{C}'\subseteq \mathcal C(M)$ is a **tropical basis** for matroid $M$ if $T(\mathcal C')=T(\mathcal C)$.
 
 ### connections between the two definitions
 
