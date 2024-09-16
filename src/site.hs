@@ -40,7 +40,7 @@ main = hakyll $ do
     route idRoute
     compile compressCssCompiler
 
-  match (fromList ["about.rst", "contact.markdown"]) $ do
+  match (fromList ["about.md", "contact.md"]) $ do
     route $ setExtension "html"
     compile $
       pandocCompiler_
