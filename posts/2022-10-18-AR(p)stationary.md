@@ -3,12 +3,12 @@ title: Autoregressive Process & Weakly Stationarity
 tags: econometrics
 ---
 
-> 2022 计量2 课程内容
+> 2022 计量2 课程内容 后面发现问题出在没有学过随机过程
 
 我首先评论一下时间序列，AR Process 是与我之前学过的东西关系最紧密的内容（在计量2中），它是Inhomogeneous Linear Difference Equation
 常数项换成了一个白噪声，而这个非齐次线性差分方程在计算递归算法复杂度的时候也经常遇到；而且他基本上就是微分方程的离散形式。
 
-首先关于线性差分方程，[link](https://www.cl.cam.ac.uk/teaching/2003/Probability/prob07.pdf) 一般的解法是直接猜测形式是$u_n=Aw^n$，也可以
+首先关于线性差分方程，[一般的解法](https://www.cl.cam.ac.uk/teaching/2003/Probability/prob07.pdf) 是直接猜测形式是$u_n=Aw^n$，也可以
 证明线性差分方程的解的形式一定是$u_n=A_1w_1^n+A_2w_2^n+\ldots$ 这种形式。 特征方程的所有解(假设无重根)的n次方都是一个特解，
 根据给定的k个初值可以确定一个特解，而且对于任意一个初始解，带入特征方程得到的k个解中正好形成一个k行的线性方程组，
 左侧系数是一个Vandermonde行列式，一定有解。
@@ -18,14 +18,15 @@ tags: econometrics
 [特征方程有重根的线性齐次递推式的通项形式“证明”](https://www.zhihu.com/question/516043073)
 
 [充分和必要条件](https://www.zhihu.com/question/22385598/answer/297245327)
-> 充分条件的证明:(宋翔羽写的) 考虑$|\alpha|>1$ 的多项式，证明前后两项的模长不相同->前后两项不相等->$|\alpha|>1$ 没有根\\
+> 充分条件的证明:(宋翔羽写的) 考虑 $|\alpha|>1$ 的多项式，证明前后两项的模长不相同 → 前后两项不相等 → $|\alpha|>1$ 没有根
 > 必要条件:(卿鸿杰写的) 构造多项式$\Pi (1-x_i)$, 韦达定理可以凑出结果
 
 ## Weakly Stationarity
-
-The process $\\{X_t, t \in T\\}$ is said to be weakly stationary (or covariance
+::: {.Definition title="weakly stationary process"}
+The process $\{X_t, t \in T\}$ is said to be weakly stationary (or covariance
 stationary or second-order stationary) if $E(X_t^2 ) < \infty$ and both $EX_t$ and $Cov(X_t, X_{t+h})$, 
 for any integer $h$, do not depend on $t$.
+:::
 
 ## Differencial & Difference?
 
@@ -49,7 +50,7 @@ $$
     [1-(\phi_1+\phi_2L+\ldots+\phi_pL^{p-1})L]y_t=\phi_0+\epsilon_t\\
 $$
 
-*$L$是lag-operator*
+where $L$ is the lag-operator.
 
 对于1，如果$(1-Lx_1), (1-Lx_2)\ldots$ 都可逆(也就是都能写成$(1+x_1L+x_1^2L^2+\ldots)(1+x_2L+x_2^2L^2+\ldots)\ldots(1+x_pL+x_p^2L^2+\ldots) \epsilon_t$
 )，

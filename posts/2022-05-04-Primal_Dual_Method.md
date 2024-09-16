@@ -7,7 +7,7 @@ author: Yu Cong
 看了这本书
 [The primal-dual method for approximation algorithms and its application to network design problems](https://math.mit.edu/~goemans/PAPERS/book-ch4.pdf)
 
-### 1
+### intro
 
 考虑一个线性规划问题
 
@@ -113,7 +113,7 @@ $$
 
 得到$y'' $之后重复上面的步骤，每次都能得到一个更接近最优解的对偶问题可行解.
 
-### 2
+### an example
 
 
 assignment problem (minimum-weight perfect matching problem in bipartite graphs)
@@ -162,7 +162,7 @@ primal-dual方法是对偶问题的可行解出发，看是否有能同时满足
 我觉得他的思路大概是这样的。
 
 
-### 3 design rules
+### design rules
 
 (不是记录design rules，是想搞清楚design rules是怎么来的)
 
@@ -298,7 +298,7 @@ $c$是$\mathcal{V}(A)$中$f(S)=1$的cut的数量。
 
 design rules 并不是一定最优，只是对于某些问题这样做挺好，对于这些design rules 现在都有办法通过分析设计出的近似算法的过程来确定近似比了。
 
-### 4
+### notes
 
 后来在读 the design of approximation algorithms 中的 chap 7. 
 
@@ -386,7 +386,7 @@ $Ax-b$被扔到了目标函数里面去，而$x$的取值范围并没有保证$A
 
 ***
 
-### 5
+### random thoughts
 
 从寒假开始也算是看了两本书关于 primal-dual 方法的章节。
 
@@ -411,7 +411,4 @@ primal-dual近似比最好也只能做到logn级别了，但是最短路的hitti
 明显后者更加简单易懂，使用了很多例子，但是我觉得前者要系统很多，而且更加符合逻辑和直觉。首先介绍什么是classic primal-dual method，从这个方法出发有了设计近似算法的基本框架，如何从整数规划的线性松弛和LP的对偶
 找到原问题（IP）的可行解，以及后面对用hitting set建模抽象出来的函数$f(S)$的讨论，而后者通过众多例子介绍了primal-dual，比较易懂，但是关键部分的近似比证明受例子的影响，没有一般化，感觉很难想到。
 
-根据之前看的两本书，做了ppt.
-
-
-[primal-dual-2](/pdfs/primal-dual_method.pdf)
+根据之前看的两本书，做了[slides](/pdfs/primal-dual_method.pdf).

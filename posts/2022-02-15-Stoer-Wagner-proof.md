@@ -36,11 +36,11 @@ cut-of-the-phase指的是最后加入$A$的点$t$与倒数第二个加入$A$的�
 
 要证明$s$与$t$之间的最小割是这样的：
 
-![](/images/swproof/cut-of-the-phase-1.svg)
+![fig1](/images/swproof/cut-of-the-phase-1.svg)
 
 而不是这样的：
 
-![](/images/swproof/cut-of-the-phase-2.svg)
+![fig2](/images/swproof/cut-of-the-phase-2.svg)
 
 $A_t$表示$t$之前加入$A$的所有点的集合,$X,Y$为上图中的第二种情况（任意一个不是第一种情况的割,t在Y中）。下面用归纳法证明$w(t,A_t)\leq w(X,Y)$
 

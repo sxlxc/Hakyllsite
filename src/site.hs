@@ -9,14 +9,33 @@
 {-# LANGUAGE TypeApplications    #-}
 {-# LANGUAGE ViewPatterns        #-}
 
-import Data.Monoid (mappend)
-import Hakyll
-import Text.Pandoc
-import Data.Maybe (fromMaybe, listToMaybe)
+-- import Data.Monoid (mappend)
+-- import Hakyll
+-- import Text.Pandoc
+-- import Data.Maybe (fromMaybe, listToMaybe)
 import qualified Data.Text as T
 -- import System.Process (readProcess)
 import Text.Pandoc.Definition (Block (CodeBlock, RawBlock), Pandoc)
 import Text.Pandoc.Walk (walk, walkM)
+import ChaoDoc
+import           Data.Monoid (mappend, Monoid (..))
+import           Hakyll
+import           Hakyll.Core.Compiler
+import           Hakyll.Web.Html
+import           System.FilePath.Posix
+import           Text.Pandoc
+import           Control.Monad
+import           Control.Applicative        ((<$>), Alternative (..), (<$>))
+import           Data.Maybe
+import           Data.Monoid
+import           Data.Text (Text, unpack, pack)
+import qualified Data.Map as M
+import           Hakyll.Web.Pandoc.Biblio 
+-- import qualified Text.CSL as CSL
+import           Text.Pandoc.Options
+import           Text.Pandoc.Citeproc
+import           System.IO.Unsafe
+import           Data.Either
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
@@ -40,10 +59,10 @@ main = hakyll $ do
     route idRoute
     compile compressCssCompiler
 
-  match (fromList ["about.md", "contact.md"]) $ do
+  match "about.md" $ do
     route $ setExtension "html"
     compile $
-      pandocCompiler_
+      chaoDocCompiler
         >>= loadAndApplyTemplate "templates/default.html" defaultContext
         >>= relativizeUrls
 
@@ -66,7 +85,7 @@ main = hakyll $ do
   match "posts/*" $ do
     route $ setExtension "html"
     compile $
-      pandocCompiler_
+      chaoDocCompiler
         >>= loadAndApplyTemplate "templates/post.html" (postCtxWithTags tags)
         >>= loadAndApplyTemplate "templates/default.html" (postCtxWithTags tags)
         >>= relativizeUrls
@@ -89,7 +108,7 @@ main = hakyll $ do
   match "index.html" $ do
     route idRoute
     compile $ do
-      posts <- recentFirst =<< loadAll "posts/*"
+      posts <- fmap (take 20) . recentFirst =<< loadAll "posts/*"
       let indexCtx =
             listField "posts" postCtx (return posts)
               `mappend` defaultContext
@@ -146,3 +165,41 @@ pandocCompiler_ =
 
 katexFilter :: Item String -> Compiler (Item String)
 katexFilter = withItemBody (unixFilter "./katex_cli" [])
+
+-- copied from chao's site.hs for biblography
+cslFile = "bib_style.csl" 
+bibFile = "reference.bib" 
+
+chaoDocCompiler :: Compiler (Item String)
+chaoDocCompiler = do
+    getResourceBody >>=
+        myReadPandocBiblio chaoDocRead (pack cslFile) (pack bibFile) theoremFilter >>=
+        return . writePandocWith chaoDocWrite
+addMeta name value (Pandoc meta a) =
+  let prevMap = unMeta meta
+      newMap = M.insert name value prevMap
+      newMeta = Meta newMap
+  in  Pandoc newMeta a
+
+myReadPandocBiblio :: ReaderOptions
+                   -> T.Text  -- csl file name
+                   -> T.Text
+                   -> (Pandoc -> Pandoc)           -- apply a filter before citeproc
+                   -> Item String
+                   -> Compiler (Item Pandoc)
+myReadPandocBiblio ropt csl biblio filter item  = do
+    -- Parse CSL file, if given
+    -- style <- unsafeCompiler $ CSL.readCSLFile Nothing . toFilePath . itemIdentifier $ csl
+
+    -- We need to know the citation keys, add then *before* actually parsing the
+    -- actual page. If we don't do this, pandoc won't even consider them
+    -- citations!
+    -- let Biblio refs = itemBody biblio
+    pandoc <- itemBody <$> readPandocWith ropt item
+    let pandoc' = fromRight pandoc $ unsafePerformIO $ runIO $ processCitations $ addMeta "bibliography" (MetaList [MetaString biblio]) $ 
+                  addMeta "csl" (MetaString csl) $ 
+                  addMeta "link-citations" (MetaBool True) $ 
+                  addMeta "reference-section-title" (MetaInlines [Str "References"]) $
+                  filter pandoc -- here's the change
+    --let a x = itemSetBody (pandoc' x) 
+    return $ fmap (const pandoc') item

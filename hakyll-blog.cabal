@@ -1,4 +1,4 @@
-name:               hakylltest
+name:               hakyll-blog
 version:            0.1.0.0
 build-type:         Simple
 cabal-version:      >= 1.10
@@ -7,6 +7,7 @@ cabal-version:      >= 1.10
 executable site
   hs-source-dirs:   src
   main-is:          site.hs
+  other-modules:    ChaoDoc
   build-depends:    base   == 4.*
                   , hakyll >= 4.15
                   , mtl >= 2.2.2
@@ -17,6 +18,9 @@ executable site
                   , text
                   , containers
                   , process
+                  , regex-compat
+                  , array
+                  , filepath
   ghc-options:    -Weverything
                   -Wno-implicit-prelude
                   -Wno-missing-import-lists

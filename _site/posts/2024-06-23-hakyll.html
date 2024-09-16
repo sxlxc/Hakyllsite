@@ -8,19 +8,19 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="../css/default.css" />
-        <link rel="stylesheet" href="../css/pygentize.css" />
+        <!-- <link rel="stylesheet" href="/css/pygentize.css" /> -->
+        <link rel="stylesheet" href="../css/chao-theorems.css">
     
     </head>
     <body>
         <header>
-            <div class="logo">
-                <a href="../">/</a>
-            </div>
-            <nav>
+            <nav class="navbar">
                 <a href="../">Home</a>
-                <a href="../about.html">About</a>
-                <a href="../contact.html">Contact</a>
-                <a href="../archive.html">Archive</a>
+                <div class="navright">
+                    <a href="../about.html">About</a>
+                    <!-- <a href="/contact.html">Contact</a> -->
+                    <a href="../archive.html">Archive</a>
+                </div>
             </nav>
         </header>
 
@@ -42,62 +42,76 @@
         
     </div>    
     <section>
-        <h2 id="hakyll-jekyll">Hakyll &gt; Jekyll</h2>
-<p>My old Jekyll blog use pandoc and a <a href="https://github.com/lierdakil/mathjax-pandoc-filter">mathjax filter</a>. It takes about 25s to render 20 posts. Now Hakyll compiles in parallel which takes less than 2 seconds.(switching to <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8988em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">K</span><span class="mspace" style="margin-right:-0.17em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-2.905em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4678em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span> also contributes to the speed up)</p>
-<p>I’m familiar with neither Haskell or Ruby, so I don’t have a strong feeling that Hakyll is significantly more customizable than Jekyll. I think it is even easier to use command line pandoc filters in Jekyll than in Hakyll.</p>
-<h2 id="css-and-templates">css and templates</h2>
+        <h2 data-number="1" id="hakyll-jekyll"><span class="header-section-number">1</span> Hakyll &gt; Jekyll</h2>
+<p>My old Jekyll blog use pandoc and a <a href="https://github.com/lierdakil/mathjax-pandoc-filter">mathjax
+filter</a>. It takes about 25s to render 20 posts. Now Hakyll compiles
+in parallel which takes less than 2 seconds.(switching to <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8988em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">K</span><span class="mspace" style="margin-right:-0.17em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-2.905em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4678em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span> also contributes to the speed up)</p>
+<p>I’m familiar with neither Haskell or Ruby, so I don’t have a strong
+feeling that Hakyll is significantly more customizable than Jekyll. I
+think it is even easier to use command line pandoc filters in Jekyll
+than in Hakyll.</p>
+<h2 data-number="2" id="css-and-templates"><span class="header-section-number">2</span> css and templates</h2>
 <p>The theme of this site is modified from <a href="https://mattwetmore.me/" class="uri">https://mattwetmore.me/</a>.</p>
-<p>I like <a href="https://ctan.org/pkg/tex-gyre-pagella?lang=en">Tex Gyre Pagella font</a>.</p>
-<h2 id="math-font-hack">math font hack</h2>
-<p>In order to use <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8988em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">K</span><span class="mspace" style="margin-right:-0.17em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-2.905em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4678em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span>, one needs to enable the pandoc extension <code>--katex</code>. In <code>site.hs</code></p>
-<div class="pygmentize-block" style="padding-left: 1em;"><pre><span></span><span class="nf">pandocCompiler_</span><span class="w"> </span><span class="ow">::</span><span class="w"> </span><span class="kt">Compiler</span><span class="w"> </span><span class="p">(</span><span class="kt">Item</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span>
-<span class="nf">pandocCompiler_</span><span class="w"> </span><span class="ow">=</span>
-<span class="w">    </span><span class="kr">let</span>
-<span class="w">    </span><span class="n">mathExtensions</span><span class="w"> </span><span class="ow">=</span>
-<span class="w">        </span><span class="p">[</span><span class="w"> </span><span class="kt">Ext_tex_math_dollars</span>
-<span class="w">        </span><span class="p">,</span><span class="w"> </span><span class="kt">Ext_tex_math_double_backslash</span>
-<span class="w">        </span><span class="p">,</span><span class="w"> </span><span class="kt">Ext_latex_macros</span>
-<span class="w">        </span><span class="p">,</span><span class="w"> </span><span class="kt">Ext_raw_tex</span>
-<span class="w">        </span><span class="p">,</span><span class="w"> </span><span class="kt">Ext_raw_html</span>
-<span class="w">        </span><span class="p">]</span>
-<span class="w">    </span><span class="n">newExtensions</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="n">foldr</span><span class="w"> </span><span class="n">enableExtension</span><span class="w"> </span><span class="n">defaultExtensions</span><span class="w"> </span><span class="n">mathExtensions</span>
-<span class="w">    </span><span class="n">defaultExtensions</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="n">writerExtensions</span><span class="w"> </span><span class="n">defaultHakyllWriterOptions</span>
-<span class="w">    </span><span class="n">writerOptions</span><span class="w"> </span><span class="ow">=</span>
-<span class="w">        </span><span class="n">defaultHakyllWriterOptions</span>
-<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="n">writerExtensions</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="n">newExtensions</span>
-<span class="w">        </span><span class="p">,</span><span class="w"> </span><span class="n">writerHTMLMathMethod</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="kt">KaTeX</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="kr">in</span><span class="w"> </span><span class="n">pandocCompilerWith</span><span class="w"> </span><span class="n">defaultHakyllReaderOptions</span><span class="w"> </span><span class="n">writerOptions</span>
-</pre></div>
-
-<p>Then pandoc outputs strings for html file with all math contained in <code>&lt;span class="math inline/display"&gt;</code>. Then I use <a href="https://github.com/chaoxu/katex_cli" class="uri">https://github.com/chaoxu/katex_cli</a> to render these formulae.</p>
-<p>To change the fonts for <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8988em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">K</span><span class="mspace" style="margin-right:-0.17em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-2.905em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4678em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span>, I mostly followed <a href="https://yingtongli.me/blog/2022/09/24/katex-custom-fonts.html" class="uri">https://yingtongli.me/blog/2022/09/24/katex-custom-fonts.html</a>.
-<a href="https://github.com/chaoxu/katex_cli">katex_cli</a> is a rust project and uses a katex package for rust. <code>cargo</code> will install the katex package in <code>$HOME/.cargo/registry/src/index.crates.io-xxxxxxxx/katex-0.4.6</code>. Then modify <code>entry.js</code> according to <a href="https://yingtongli.me/blog/2022/09/24/katex-custom-fonts.html" class="uri">https://yingtongli.me/blog/2022/09/24/katex-custom-fonts.html</a> and modify css to change fonts.</p>
-<div class="pygmentize-block" style="padding-left: 1em;"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nb">global</span><span class="p">;</span>
-<span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nb">global</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Function</span><span class="p">(</span><span class="s1">'return this'</span><span class="p">)();</span>
-<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nb">global</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">window</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">customMetrics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{...};</span>
-<span class="nx">katex</span><span class="p">.</span><span class="nx">__setFontMetrics</span><span class="p">(</span><span class="s2">&quot;custom-Regular&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">customMetrics</span><span class="p">);</span>
-<span class="nx">katex</span><span class="p">.</span><span class="nx">__setFontMetrics</span><span class="p">(</span><span class="s2">&quot;Math-Italic&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">customMetrics</span><span class="p">);</span>
-<span class="nx">katex</span><span class="p">.</span><span class="nx">__setFontMetrics</span><span class="p">(</span><span class="s2">&quot;AMS-Regular&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">customMetrics</span><span class="p">);</span>
-<span class="nb">global</span><span class="p">.</span><span class="nx">katexRenderToString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">katex</span><span class="p">.</span><span class="nx">renderToString</span><span class="p">;</span>
-</pre></div>
-
+<p>I like <a href="https://ctan.org/pkg/tex-gyre-pagella?lang=en">Tex
+Gyre Pagella font</a>.</p>
+<h2 data-number="3" id="math-font-hack"><span class="header-section-number">3</span> math font hack</h2>
+<p>In order to use <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8988em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">K</span><span class="mspace" style="margin-right:-0.17em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-2.905em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4678em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span>, one needs to
+enable the pandoc extension <code>--katex</code>. In
+<code>site.hs</code></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ot">pandocCompiler_ ::</span> <span class="dt">Compiler</span> (<span class="dt">Item</span> <span class="dt">String</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pandocCompiler_ <span class="ot">=</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    mathExtensions <span class="ot">=</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        [ <span class="dt">Ext_tex_math_dollars</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        , <span class="dt">Ext_tex_math_double_backslash</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        , <span class="dt">Ext_latex_macros</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        , <span class="dt">Ext_raw_tex</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        , <span class="dt">Ext_raw_html</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    newExtensions <span class="ot">=</span> <span class="fu">foldr</span> enableExtension defaultExtensions mathExtensions</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    defaultExtensions <span class="ot">=</span> writerExtensions defaultHakyllWriterOptions</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    writerOptions <span class="ot">=</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        defaultHakyllWriterOptions</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        { writerExtensions <span class="ot">=</span> newExtensions</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        , writerHTMLMathMethod <span class="ot">=</span> <span class="dt">KaTeX</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">in</span> pandocCompilerWith defaultHakyllReaderOptions writerOptions</span></code></pre></div>
+<p>Then pandoc outputs strings for html file with all math contained in
+<code>&lt;span class="math inline/display"&gt;</code>. Then I use <a href="https://github.com/chaoxu/katex_cli" class="uri">https://github.com/chaoxu/katex_cli</a> to render these
+formulae.</p>
+<p>To change the fonts for <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8988em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">K</span><span class="mspace" style="margin-right:-0.17em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-2.905em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4678em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span>, I
+mostly followed <a href="https://yingtongli.me/blog/2022/09/24/katex-custom-fonts.html" class="uri">https://yingtongli.me/blog/2022/09/24/katex-custom-fonts.html</a>.
+<a href="https://github.com/chaoxu/katex_cli">katex_cli</a> is a rust
+project and uses a katex package for rust. <code>cargo</code> will
+install the katex package in
+<code>$HOME/.cargo/registry/src/index.crates.io-xxxxxxxx/katex-0.4.6</code>.
+Then modify <code>entry.js</code> according to <a href="https://yingtongli.me/blog/2022/09/24/katex-custom-fonts.html" class="uri">https://yingtongli.me/blog/2022/09/24/katex-custom-fonts.html</a>
+and modify css to change fonts.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> <span class="bu">global</span><span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> {</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">global</span> <span class="op">=</span> <span class="bu">Function</span>(<span class="st">'return this'</span>)()<span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">catch</span> (e) {</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">global</span> <span class="op">=</span> <span class="bu">window</span><span class="op">;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> customMetrics <span class="op">=</span> {<span class="op">...</span>}<span class="op">;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>katex<span class="op">.</span><span class="fu">__setFontMetrics</span>(<span class="st">&quot;custom-Regular&quot;</span><span class="op">,</span> customMetrics)<span class="op">;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>katex<span class="op">.</span><span class="fu">__setFontMetrics</span>(<span class="st">&quot;Math-Italic&quot;</span><span class="op">,</span> customMetrics)<span class="op">;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>katex<span class="op">.</span><span class="fu">__setFontMetrics</span>(<span class="st">&quot;AMS-Regular&quot;</span><span class="op">,</span> customMetrics)<span class="op">;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="bu">global</span><span class="op">.</span><span class="at">katexRenderToString</span> <span class="op">=</span> katex<span class="op">.</span><span class="at">renderToString</span><span class="op">;</span></span></code></pre></div>
 <p><br></p>
-<div class="pygmentize-block" style="padding-left: 1em;"><pre><span></span><span class="p">.</span><span class="nc">katex</span><span class="w"> </span><span class="p">.</span><span class="nc">mathnormal</span><span class="o">,</span><span class="w"> </span><span class="p">.</span><span class="nc">katex</span><span class="w"> </span><span class="p">.</span><span class="nc">mathrm</span><span class="o">,</span><span class="w"> </span><span class="p">.</span><span class="nc">katex</span><span class="w"> </span><span class="p">.</span><span class="nc">custom-Regular</span><span class="o">,</span><span class="w"> </span><span class="p">.</span><span class="nc">katex</span><span class="w"> </span><span class="p">.</span><span class="nc">amsrm</span><span class="w"> </span><span class="p">{</span>
-<span class="w">	</span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Tex Gyre Pagella Math&quot;</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-<h2 id="known-issues">known issues</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.katex</span> <span class="fu">.mathnormal</span><span class="op">,</span> <span class="fu">.katex</span> <span class="fu">.mathrm</span><span class="op">,</span> <span class="fu">.katex</span> <span class="fu">.custom-Regular</span><span class="op">,</span> <span class="fu">.katex</span> <span class="fu">.amsrm</span> {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>	<span class="kw">font-family</span><span class="ch">:</span> <span class="st">&quot;Tex Gyre Pagella Math&quot;</span><span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h2 data-number="4" id="known-issues"><span class="header-section-number">4</span> known issues</h2>
 <ul>
-<li>non-italic math characters are not in the correct font, e.g. <strong>min</strong> and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6679em;"></span><span class="mop">min</span></span></span></span></li>
-<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8988em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">K</span><span class="mspace" style="margin-right:-0.17em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-2.905em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4678em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span> font hack is not perfect, e.g. <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7519em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span>(<code>$G'$</code>)</li>
-<li>currently doesn’t support math in titles, (since I’m using <code>withItemBody (unixFilter ...)</code>)</li>
-<li>code highlighting &amp; sidenotes. <a href="https://tony-zorman.com/posts.html" class="uri">https://tony-zorman.com/posts.html</a> has a good tutorial.</li>
+<li>non-italic math characters are not in the correct font,
+e.g. <strong>min</strong> and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6679em;"></span><span class="mop">min</span></span></span></span></li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8988em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">K</span><span class="mspace" style="margin-right:-0.17em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-2.905em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4678em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span> font hack is not perfect,
+e.g. <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7519em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span>(<code>$G'$</code>)</li>
+<li>currently doesn’t support math in titles, (since I’m using
+<code>withItemBody (unixFilter ...)</code>)</li>
+<li>code highlighting &amp; sidenotes. <a href="https://tony-zorman.com/posts.html" class="uri">https://tony-zorman.com/posts.html</a> has a good
+tutorial.</li>
 </ul>
     </section>
 </article>
@@ -107,7 +121,7 @@
         <footer>
             Site proudly generated by
             <a href="http://jaspervdj.be/hakyll">Hakyll</a>. 
-            <a href="https://github.com/congyu711/Hakyllsite">src</a>
+            <a href="https://github.com/congyu711/Hakyllsite">src on Github</a>
         </footer>
     </body>
 </html>
