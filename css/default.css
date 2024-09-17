@@ -303,68 +303,6 @@ ul.posts {
     margin-top: 0
 }
 
-/* 
-@media only screen and (min-width:850px) and (max-width:1200px) {
-    .main-text {
-        margin-left: -107px;
-        width: 600px
-    }
-
-    .sidenote {
-        margin-left: 580px
-    }
-
-    body {
-        width: 600px
-    }
-}
-
-@media only screen and (min-width:0px) and (max-width:1200px) {
-    header {
-        padding: 40px 0 60px 0
-    }
-
-
-    body {
-        font-size: 0.9em
-    }
-}
-
-@media only screen and (min-width:0px) and (max-width:850px) {
-    #content {
-        padding: 20px
-    }
-
-    .sidenote {
-        display: none
-    }
-
-    .footnotes {
-        display: block
-    }
-
-    body {
-        width: 100%
-    }
-
-    #footer {
-        padding-right: 15px
-    }
-
-    #footer .left {
-        float: left;
-        padding-left: 15px
-    }
-
-    .main-text {
-        margin-left: 0;
-        width: 100%
-    }
-
-    .comments {
-        padding: 20px
-    }
-} */
 
 
 @media (max-width: 319px) {

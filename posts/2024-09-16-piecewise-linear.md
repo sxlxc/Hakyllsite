@@ -1,5 +1,5 @@
 ---
-title: Epigraphs of Piecewise Linear Convex Function, Infimal Convolution & Minkowski Sum
+title: Piecewise Linear Convex Functions
 tags: alg, optimization
 author: Yu Cong
 ---
@@ -41,3 +41,6 @@ For *convexity*, we further require that
 
 :::
 
+# $\square$
+
+...
