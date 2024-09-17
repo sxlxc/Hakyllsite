@@ -41,6 +41,16 @@ For *convexity*, we further require that
 
 :::
 
-# $\square$
+# properties
 
-...
+pwl = piecewise linear.
+
+## convex conjugate
+
+::: Observation
+Let $f^*$ be the convex conjugate of a pwl convex function $f$. $f^*$ is also pwl convex.
+:::
+
+::: Proof
+Consider the convex conjugate from a geometry view. Let
+:::
