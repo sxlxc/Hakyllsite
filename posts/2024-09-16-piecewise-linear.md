@@ -16,10 +16,11 @@ Notions:
 
 <https://math.stackexchange.com/questions/1597809/inf-convolution-two-basic-questions>
 
-### piecewise linear function $f:\R^d\to \R$
+# piecewise linear function $f:\R^d\to \R$
 
-<https://juan-pablo-vielma.github.io/publications/Fitting-Piecewise-Linear.pdf>
+The following definition comes from [@Toriello_Vielma_2012].
 
+::: {.Definition title="piecewise linear function in $\R^d$"}
 Let $\mathcal P$ be a set of bounded convex polytopes in $\R^d$. A piecewise linear function $f$ can be defined as 
 
 $$
@@ -36,19 +37,7 @@ $$
 For *convexity*, we further require that 
 
 1. for any subset $\mathcal{P'}\subset \mathcal P$, $\cup_{P\in \mathcal P'}$ is convex;(for polytopes)
-2. the restriction of $f$ to any two polytopes from P that share a facet is convex.(for $f$, however, requirement 1 is included here)
+2. the restriction of $f$ to any two polytopes from P that share a facet is convex.[@Tarela_Alonso_Martínez_1990] (for $f$. In fact, 1 is already included in 2.)
 
-(this is from  <https://www.sciencedirect.com/science/article/pii/089571779090090A>)
-
-...
-
-<!-- ::: Problem
-Find the square root of a integer n, without using the built in sqrt function. (The range of the result was not specified, I assume it's double)
 :::
 
-::: Proof
-aaa
-:::
-
-
-aa `sdf` -->

@@ -1,47 +1,13 @@
-/* @font-face {
-    font-family: "Kagami Serif";
-    src: local("Liberation Serif"),
-         local("Times New Roman"),
-         local("Times");
-} */
-
 @font-face {
 font-family: "STSongti SC";
 src: local(STSongti-SC-Regular);
 }
-
-/* @font-face {
-font-family: "Kagami Songti TC";
-src: local("Songti TC Regular"), local(STSongti-TC-Regular),
-        local("LiSong Pro"), local(LiSongPro);
-}
-
 @font-face {
-font-family: "Kagami Mincho";
-src: local("YuMincho Medium"), local(YuMin-Medium),
-        local("Yu Mincho Regular"), local(YuMincho-Regular)
-        local("Hiragino Mincho ProN W3"), local(HiraMinProN-W3)
-        local("IPAMincho Regular"), local(IPAMincho);
+    font-family: 'LibertinusMath';
+    font-weight: normal;
+    font-style: normal;
+    src: url('/fonts/LibertinusMath-Regular.woff2') format('woff2');
 }
-
-@font-face {
-font-family: "Kagami Emoji";
-src: local("Apple Color Emoji"),
-        local("Segoe UI Emoji"),
-        local("Segoe UI Symbol"),
-        local("Android Emoji");
-}
-
-@font-face {
-font-family: "Kagami Sans";
-src: local("Segoe UI Light"),
-        local("Segoe UI"),
-        local("HelveticaNeue Light"),
-        local("HelveticaNeue"),
-        local("Helvetica Light"),
-        local("Helvetica"),
-        local("Arial");
-} */
 @font-face {
     font-family: 'Tex Gyre Pagella';
     font-weight: normal;
@@ -242,9 +208,9 @@ text-align: center;
     margin: 0 auto 0 auto;
     display: block;
 }
-/* .katex .mathnormal, .katex .mathrm, .katex .custom-Regular, .katex .amsrm {
-	font-family: 'Tex Gyre Pagella Math';
-} */
+.katex .mathnormal, .katex .mathrm, .katex .custom-Regular, .katex .amsrm {
+	font-family: 'LibertinusMath';
+}
 
 
 div.highlight,

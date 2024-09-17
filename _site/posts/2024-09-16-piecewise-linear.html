@@ -53,8 +53,11 @@ between these operations and counterexamples for wrong guesses.</p>
 </ul>
 <p><a href="https://angms.science/doc/CVX/Epigraph.pdf" class="uri">https://angms.science/doc/CVX/Epigraph.pdf</a></p>
 <p><a href="https://math.stackexchange.com/questions/1597809/inf-convolution-two-basic-questions" class="uri">https://math.stackexchange.com/questions/1597809/inf-convolution-two-basic-questions</a></p>
-<h3 data-number="1" id="piecewise-linear-function-frdto-r"><span class="header-section-number">1</span> piecewise linear function <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8491em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6889em;"></span><span class="mord mathbb">R</span></span></span></span></h3>
-<p><a href="https://juan-pablo-vielma.github.io/publications/Fitting-Piecewise-Linear.pdf" class="uri">https://juan-pablo-vielma.github.io/publications/Fitting-Piecewise-Linear.pdf</a></p>
+<h1 data-number="1" id="piecewise-linear-function-frdto-r"><span class="header-section-number">1</span> piecewise linear function <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8491em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6889em;"></span><span class="mord mathbb">R</span></span></span></span></h1>
+<p>The following definition comes from <span class="citation" data-cites="Toriello_Vielma_2012">[<a href="#ref-Toriello_Vielma_2012" role="doc-biblioref">1</a>]</span>.</p>
+<div class="theorem-environment Definition" data-index="1" type="Definition" title="piecewise linear function in $\R^d$">
+<span class="theorem-header"><span class="type">Definition</span><span class="index">1</span><span class="name">piecewise linear function in
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8491em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span></span></span></span></span></span></span></span></span></span>
 <p>Let <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.08222em;">P</span></span></span></span> be a set of bounded
 convex polytopes in <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8491em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span></span></span></span></span></span></span></span>. A piecewise
 linear function <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span> can be defined as</p>
@@ -66,21 +69,24 @@ a vector associated with polytope <span class="katex"><span class="katex-html" a
 <ol type="1">
 <li>for any subset <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.791em;vertical-align:-0.0391em;"></span><span class="mord"><span class="mord mathcal" style="margin-right:0.08222em;">P</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⊂</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.08222em;">P</span></span></span></span>, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7329em;vertical-align:-0.1774em;"></span><span class="mord"><span class="mbin">∪</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span><span class="mrel mtight">∈</span><span class="mord mtight"><span class="mord mathcal mtight" style="margin-right:0.08222em;">P</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6828em;"><span style="top:-2.786em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1774em;"><span></span></span></span></span></span></span></span></span></span> is convex;(for polytopes)</li>
 <li>the restriction of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span> to any two
-polytopes from P that share a facet is convex.(for <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span>, however, requirement 1 is included
-here)</li>
+polytopes from P that share a facet is convex.<span class="citation" data-cites="Tarela_Alonso_Martínez_1990">[<a href="#ref-Tarela_Alonso_Martínez_1990" role="doc-biblioref">2</a>]</span> (for <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span>. In fact, 1 is already included in 2.)</li>
 </ol>
-<p>(this is from <a href="https://www.sciencedirect.com/science/article/pii/089571779090090A" class="uri">https://www.sciencedirect.com/science/article/pii/089571779090090A</a>)</p>
-<p>…</p>
-<!-- ::: Problem
-Find the square root of a integer n, without using the built in sqrt function. (The range of the result was not specified, I assume it's double)
-:::
-
-::: Proof
-aaa
-:::
-
-
-aa `sdf` -->
+</div>
+<h1 class="unnumbered" id="bibliography">References</h1>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-Toriello_Vielma_2012" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">A.
+Toriello, J.P. Vielma, <strong>Fitting piecewise linear continuous
+functions</strong>, European Journal of Operational Research. 219 (2012)
+86–95 <a href="https://doi.org/10.1016/j.ejor.2011.12.030">10.1016/j.ejor.2011.12.030</a>.</div>
+</div>
+<div id="ref-Tarela_Alonso_Martínez_1990" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">J.M. Tarela, E. Alonso, M.V. Martínez,
+<strong>A representation method for PWL functions oriented to parallel
+processing</strong>, Mathematical and Computer Modelling. 13 (1990)
+75–83 <a href="https://doi.org/10.1016/0895-7177(90)90090-a">10.1016/0895-7177(90)90090-a</a>.</div>
+</div>
+</div>
     </section>
 </article>
 
