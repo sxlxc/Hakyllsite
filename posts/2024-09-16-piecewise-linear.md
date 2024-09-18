@@ -4,6 +4,8 @@ tags: alg, optimization
 author: Yu Cong
 ---
 
+\DeclareMathOperator{\epi}{epi}
+
 This post is a note on epigraphs, infimal convolution, Minkowski sum & convex conjugate of piecewise linear convex functions in $\R^d$. I want to provide proofs for relations between these operations and counterexamples for wrong guesses.
 
 Notions:
@@ -11,10 +13,12 @@ Notions:
 - infimal convolution: $\square$,
 - Minkowski sum: $\oplus$,
 - convex conjugate: $f^*$
+- epigraph: $\epi f$
 
-<https://angms.science/doc/CVX/Epigraph.pdf>
+some notes:
 
-<https://math.stackexchange.com/questions/1597809/inf-convolution-two-basic-questions>
+- <https://angms.science/doc/CVX/Epigraph.pdf>
+- <https://math.stackexchange.com/questions/1597809/inf-convolution-two-basic-questions>
 
 # piecewise linear function $f:\R^d\to \R$
 
@@ -52,5 +56,11 @@ Let $f^*$ be the convex conjugate of a pwl convex function $f$. $f^*$ is also pw
 :::
 
 ::: Proof
-Consider the convex conjugate from a geometry view. Let
+Consider the convex conjugate from a geometric view. The epigraph of our pwl convex function $f$ is some convex polytope in $\overline{\R}^{d+1}$. The convex conjugate is $f^*(z)=\sup_x\{z^Tx-f(x)\}$. $z^Tx$ is a hyperplane with normal vector $z$ and passing through the origin. Now $\sup_x\{z^Tx-f(x)\}$ is the amount of space hyperplane $z^Tx$ has to shift along the $d+1$ dimension to make itself a supporting hyperplane of $\epi f$. By definition of pwl convex function in high dimension, we can see that ... No... I think this is dual polyhedron. but it is quite complex
+:::
+
+## pwl convex function in $\R$ + a linear mapping
+
+::: Question
+Let $g:\R \to \R$ be a pwl convex and $a^Tx+b$ be a linear mapping from $\R^d$ to $\R$.
 :::
