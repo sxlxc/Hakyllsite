@@ -80,12 +80,16 @@ Consider the convex conjugate from a geometric view. The epigraph of our pwl con
 It is safe to write $f^*(z)=\max_x\{z^Tx-f(x)\}$ since we only consider the extended domain. Thus we have $f^*(z)=\max_x\{z^Tx-\max_i\{a_i^Tx+b_i\}\}=\max_x\{\max_i\{z^Tx-a_i^Tx+b_i\}\}$. Let $n$ be the number of vertices on $\conv (\epi f)$. One can see that $f^*(z)$ is the maximum of $O(nL)$ affine functions.
 :::
 
+I believe there will be only $O(n)$ hyperplanes on $f^*$ instead of $O(nL)$...
+
 ## pwl convex function in $\R$ $\circ$ a linear mapping
 
 ::: Problem
 Let $f:\R^d\to\R$ be a pwl convex function.
 Does there always exist a pwl convex $g:\R\to \R$ and a linear mapping $a^Tx-b:\R^d\to \R$ such that $f(x)=g(a^Tx-b)$. 
 :::
+
+As you expected, the answer is no. Let $f:\R^2\to \R$ be the maximum of a set of 2D planes. Consider a series of points $\set{p_1,p_2,...,p_k}$ on the 2D plane. After applying the linear mapping to $P=\set{p_1,p_2,...,p_k}$, we will get a sequence of numbers(points in 1D) $P'=\set{p_1',p_2',...,p_k'}$. We assume that $P'$ is non-decreasing. Note that the value of $g$ on $P'$ is always unimodal since $g$ is convex. However, the value of $f$ on $P$ may not be unimodal. Thus the composition of a linear mapping and a pwl convex function in 1D is not equivalent to pwl convex functions in high dimensions.
 
 # sum of pwl functions
 

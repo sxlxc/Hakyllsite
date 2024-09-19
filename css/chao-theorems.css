@@ -48,7 +48,7 @@
   table.postindex{
     width: 100%;
   }
-  .info {
+  /* .info {
     margin-top: 20px;
     color: #999;
   }
@@ -56,7 +56,7 @@
       text-decoration: none;
       border-bottom: 1px #999 dotted;
       color: #999;
-  }
+  } */
   table.postindex cite {
     font-style: normal;
   }
