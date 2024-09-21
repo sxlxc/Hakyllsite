@@ -99,3 +99,6 @@
   .csl-right-inline {
     display: inline;
   }
+.references.csl-bib-body{
+    line-height: 1.2;
+}
