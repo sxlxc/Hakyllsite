@@ -147,6 +147,13 @@ article .header {
     font-style: normal;
     text-align: left;
 }
+.ascii-art {
+    border: 2px solid black; /* Adds a solid border */
+    padding: 10px;           /* Adds space between the border and the content */
+    background-color: #f0f0f0; /* Optional: background color to make it stand out */
+    display: inline-block;   /* Keeps the border close to the content */
+    font-family: monospace;  /* Ensures consistent ASCII art font */
+}
 
 /* blockquote {
     background-color: rgb(222, 222, 222);

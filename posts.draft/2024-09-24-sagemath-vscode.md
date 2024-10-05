@@ -18,3 +18,5 @@ It turns out that you can just type `sage --python`... and everything works
 ![`sage --python`](/images/sagepylance/sage--python.png)
 
 ![\w](/images/sagepylance/ex.png)
+
+There are still cython issues...
