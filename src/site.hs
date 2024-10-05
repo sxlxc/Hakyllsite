@@ -63,7 +63,7 @@ main = hakyll $ do
     route $ setExtension "html"
     compile $
       chaoDocCompiler
-        >>= loadAndApplyTemplate "templates/default.html" defaultContext
+        >>= loadAndApplyTemplate "templates/about.html" defaultContext
         >>= relativizeUrls
 
   -- build up tags
