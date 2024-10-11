@@ -4,7 +4,7 @@ tags: alg
 author: Yu Cong
 ---
 
-There is nothing new in this post. I found this problem while searching for methods for reducing the dimension of LPs. I read this [wikipedia page](https://en.wikipedia.org/wiki/Colour_refinement_algorithm) and was surprised that this can be done in $O((n+m)\log n)$ time.
+There is nothing new in this post. I found this problem while searching for methods for reducing the dimension of LPs. I read this [wikipedia page](https://en.wikipedia.org/wiki/Colour_refinement_algorithm) and was surprised that this can be done in $O(m\log n)$ time.
 
 The algorithm is described in [@cardon_partitioning_1982].
 
