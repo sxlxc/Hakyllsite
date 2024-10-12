@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+  xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+>
+  <url>
+    <loc>https://talldoor.uk</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://talldoor.uk/posts/2024-09-16-piecewise-linear.html</loc>
+    <lastmod>September 16, 2024</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talldoor.uk/posts/2024-07-11-tropicalbases-and-matroids.html</loc>
+    <lastmod>July 11, 2024</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talldoor.uk/posts/2024-06-23-hakyll.html</loc>
+    <lastmod>June 23, 2024</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talldoor.uk/posts/2024-05-23-buildskim.html</loc>
+    <lastmod>May 23, 2024</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talldoor.uk/posts/2024-03-11-pebblegame.html</loc>
+    <lastmod>March 11, 2024</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talldoor.uk/posts/2024-03-01-MOLS.html</loc>
+    <lastmod>March  1, 2024</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talldoor.uk/posts/2023-07-23-LargestSlope.html</loc>
+    <lastmod>July 23, 2023</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talldoor.uk/posts/2023-06-04-medianofmediansimpl.html</loc>
+    <lastmod>June  4, 2023</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talldoor.uk/posts/2023-04-01-research_on_kdtree.html</loc>
+    <lastmod>April  1, 2023</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talldoor.uk/posts/2023-01-26-minDAG.html</loc>
+    <lastmod>January 26, 2023</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talldoor.uk/posts/2022-10-18-AR%28p%29stationary.html</loc>
+    <lastmod>October 18, 2022</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talldoor.uk/posts/2022-09-25-k-level.html</loc>
+    <lastmod>September 25, 2022</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talldoor.uk/posts/2022-09-08-nonparametrically-estimate-PDF.html</loc>
+    <lastmod>September  8, 2022</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talldoor.uk/posts/2022-06-22-method_of_moments.html</loc>
+    <lastmod>June 22, 2022</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talldoor.uk/posts/2022-05-04-Primal_Dual_Method.html</loc>
+    <lastmod>May  4, 2022</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talldoor.uk/posts/2022-02-15-Stoer-Wagner-proof.html</loc>
+    <lastmod>February 15, 2022</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talldoor.uk/posts/2021-12-06-%E5%8D%95%E4%BE%A7%E7%9A%84%E5%8F%82%E6%95%B0%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C%E7%9A%84%E6%8B%92%E7%BB%9D%E5%9F%9F.html</loc>
+    <lastmod>December  6, 2021</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talldoor.uk/about.html</loc>
+    <lastmod></lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>

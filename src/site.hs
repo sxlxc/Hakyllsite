@@ -1,8 +1,8 @@
 {-# LANGUAGE BlockArguments #-}
-{-# LANGUAGE LambdaCase #-}
+-- {-# LANGUAGE LambdaCase #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE ScopedTypeVariables #-}
-{-# LANGUAGE ViewPatterns #-}
+-- {-# LANGUAGE ViewPatterns #-}
 
 import ChaoDoc
 import Data.Either
@@ -16,6 +16,8 @@ import Text.Pandoc
 import Text.Pandoc.Citeproc
 -- import Text.Pandoc.Walk (walkM)
 
+root :: String
+root = "https://talldoor.uk"
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
@@ -99,12 +101,26 @@ main = hakyll $ do
         >>= relativizeUrls
 
   match "templates/*" $ compile templateBodyCompiler
+  -- https://robertwpearce.com/hakyll-pt-2-generating-a-sitemap-xml-file.html
+  create ["sitemap.xml"] $ do
+      route idRoute
+      compile $ do
+          posts <- recentFirst =<< loadAll "posts/*"
+          singlePages <- loadAll (fromList ["about.md"])
+          let pages = posts <> singlePages
+              sitemapCtx =
+                  constField "root" root <> -- here
+                  listField "pages" postCtx (return pages)
+          makeItem ""
+              >>= loadAndApplyTemplate "templates/sitemap.xml" sitemapCtx
 
 --------------------------------------------------------------------------------
 postCtx :: Context String
 postCtx =
   dateField "date" "%B %e, %Y"
-    `mappend` defaultContext
+  <> constField "root" root
+  <> dateField "date" "%Y-%m-%d"
+  <> defaultContext
 
 postCtxWithTags :: Tags -> Context String
 postCtxWithTags tags = tagsField "tags" tags `mappend` postCtx
