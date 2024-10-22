@@ -355,11 +355,11 @@ ul.posts {
     }
 
     header {
-        margin: 4.2rem 0;
+        margin: 1rem 0;
     }
 
     nav {
-        margin: 0 auto 3rem;
+        margin: 0 auto 1rem;
         text-align: center;
     }
 
@@ -369,7 +369,7 @@ ul.posts {
 
     .logo {
         text-align: center;
-        margin: 1rem auto 3rem;
+        margin: 1rem auto 1rem;
     }
 
     .logo a {
