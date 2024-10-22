@@ -1,11 +1,11 @@
 ---
-title: Notes on Fixed Dimension LPs
+title: Notes on Minimizing Sum of Piecewise Linear Convex Functions
 tags: alg, optimization
 author: Yu Cong
 ---
 
 
-This is my note on low-dimension linear programming. 
+This is my note on low-dimension linear programming & color refinement algorithms. 
 
 # the problem & failed attempts
 
@@ -29,7 +29,7 @@ Another possible way is using some dimension reduction techniques [@grohe_dimens
 
 Given a initial coloring of vertices in a directed graph $G=(V,A)$, we want to compute the *coarsest regular congruent* coloring.
 
-Colorings can be considered as equivalence relations on the vertices. An equivalence relation $R$ on $V$ is *congruent* if for all $u,v,w\in V$, [$(u,v)\in R$ and $(v,w)\in A$] implies that [$\exists v'\in V$ such that $(v,v')\in A$ and $(v',w)\in R$]. Note that this coincides with the general [definition of congruence relation](https://en.wikipedia.org/wiki/Congruence_relation) in algebraic structures.(We can remove all vertices without outgoing arcs and consider $A$ as an unary operation.) 
+Colorings can be considered as equivalence relations on the vertices. An equivalence relation $R$ on $V$ is *congruent* if for all $u,v,w\in V$, [$(u,v)\in R$ and $(v,w)\in A$] implies that [$\exists v'\in V$ such that $(v,v')\in A$ and $(v',w)\in R$]. Note that this coincides with the general [definition of congruence relation](https://en.wikipedia.org/wiki/Congruence_relation) in algebraic structures.(We can copy each vertex #outdegree times to make $A$ an unary operation.) 
 
 A coloring is *regular* if for any two vertices $u,v$, the number of successors in each color are the same. Consider two colorings $C_1,C_2$. $C_1$ is a refinement of $C_2$(or $C_2$ is coarser than $C_1$) if for any two vertices having the same color in $C_1$, they have the same color in $C_2$.
 
@@ -37,9 +37,10 @@ A coloring is *regular* if for any two vertices $u,v$, the number of successors 
 
 The first quasilinear time algorithm for the color refinement problem on graphs is given in [@cardon_partitioning_1982], and later in [@paige_three_1987]. It is shown in [@berkholz_tightbound_2017] that $O((m+n)\log n)$ is the best possible running time. Also see [this](https://www.lics.rwth-aachen.de/global/show_document.asp?id=aaaaaaaaabbtcqu) for a nice survey on applications.
 
+## connections
 
-
-
+Now we add edge weights on the directed graph. Suppose all arcs have weight 1.
+One can see that a congruent and regular coloring requires that two vertices have the same color iff for each color the total weight of arcs going to vertices in that color are the same. Slightly generalize this configuraton, we can consider arbitary arc weights.
 
 ------------
 
