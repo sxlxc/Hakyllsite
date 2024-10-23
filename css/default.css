@@ -155,6 +155,7 @@ article .header {
     background-color: #f0f0f0; /* Optional: background color to make it stand out */
     display: inline-block;   /* Keeps the border close to the content */
     font-family: monospace;  /* Ensures consistent ASCII art font */
+    line-height: normal;
 }
 
 /* blockquote {
