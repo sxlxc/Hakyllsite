@@ -56,6 +56,15 @@ This connection is based on an important theorem, stating that the color refinem
 
 The reduction looks clever and has a wide application. However, as far as I know, it does nothing on my problem. I don't think the matrix in my problem is special enough to allow color refinement algorithms run in linear time on it. Also color refinement does not necessarily partition all $f_i$ columns in one part. `¯\_(⊙︿⊙)_/¯`
 
+## reflection
+Multidimensional search is harder than LP-type problems, this question is no exception. Now there are three kinds of problems I am insterested in.
+
+1. Minimax parametric optimiziation
+2. Multidimensional search problems
+3. LP-type problems
+
+What's the connections among them?...
+
 ------------
 
 Here are some materials for Low dimension LP:
