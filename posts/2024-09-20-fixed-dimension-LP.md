@@ -59,11 +59,46 @@ The reduction looks clever and has a wide application. However, as far as I know
 ## reflection
 Multidimensional search is harder than LP-type problems, this question is no exception. Now there are three kinds of problems I am interested in.
 
-1. Minimax parametric optimiziation
+1. Minimax parametric optimization
 2. Multidimensional search problems
 3. LP-type problems
 
 What's the connections among them?...
+
+:::{.Definition title="Minimax parametric optimization problem" #minmax}
+Given a combinatorial maximization problem with a parameter. Find the parameter value minimizing the weight of a solution to the combinatorial maximization problem.
+:::
+
+:::{.Definition title="Multidimensional search problem" #multisearch}
+Given a set of hyperplanes $\mathcal H$ in $\R^d$, and an oracle which answers the relative position of one hyperplane and a unknown fixed point $x^*\in \R^d$. Compute the relative position of every hyperplane in $\mathcal H$ and $x^*$ with as small number of oracle calls as possible.
+:::
+
+:::{.Definition title="LP-type problem" #lptype}
+Given a set $S$ and a function $f$ from $S$ to a totally ordered set. $f$ has to satisfy two properties,
+
+1. monotonicity: $\forall A\subseteq B\subseteq S, f(A)\leq f(B)\leq f(S)$,
+2. locality: $\forall A\subset B\subset S$, consider any element $x\in S$, if $f(A)=f(B)=f(A+x)$, then $f(A)=f(B+x)$.
+:::
+
+Now there are some important concrete problem in the intersections.
+
+### Euclidean one-centre problem
+
+:::{.Problem title="Euclidean one-centre problem"}
+Given $n$ points $V=\{v_1,\dots, v_n\}$ in $\R^d$, with weights $w_1,\dots,w_n$, find a point in $\R^d$ which has the minimal of the maximum weighted distance to all points in $V$, that is, compute $\min_x \max_{i} w_i^2(v_i-x)^2$.
+:::
+
+Dyer showed that this problem can be considered as a multidimensional search problem (in $\R^{d+1}$) in [@dyer_multidimensional_1986]. The conversion is not easy and not intuitive. Das et al. claimed that this problem is a LP-type problem with some additional constraints in [@das_linear_2020](I didn't read this carefully, it seems that they made the claim in the introduction but have never proven it). It is still unknown whether it is possible to formulate the weighted Euclidean one-centre problem in $\R^d$ as a LP-type problem with combinatorial dimension $O(d)$ (which is quite surprising...)
+
+### Minimizing the sum of some pwl convex functions(my problem)
+
+see [above](#probpwl) for the definition.
+
+Clearly this is a minimax parametric optimization problem. Zemel also showed this is a multidimensional search problem with dimension $d$. We want to know that if this is a LP-type problem with combinatorial dimension $O(d)$...
+
+
+It seems that recognizing LP-type is hard. A [lecture](https://ics.uci.edu/~eppstein/164/lecture10.pdf) on LP-type problems by David Eppstein.
+
 
 ------------
 
