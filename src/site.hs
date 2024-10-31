@@ -29,6 +29,10 @@ main = hakyll $ do
     route idRoute
     compile copyFileCompiler
 
+  match "includes/**" $ do  -- host some useful headers. wget xxx!
+    route idRoute
+    compile copyFileCompiler
+
   match "fonts/*" $ do
     route idRoute
     compile copyFileCompiler
