@@ -38,6 +38,12 @@ src: local(STSongti-SC-Regular);
     font-style: normal;
     src: url('/fonts/Songti-SC-Regular.woff2') format('woff2');
 }
+@font-face {
+    font-family: 'neozhisong';
+    font-weight: normal;
+    font-style: normal;
+    src: url('/fonts/LXGWNeoZhiSongScreen.woff2') format('woff2');
+}
 /* bold font is also needed... */
 html {
     border-top: 5px solid #333
@@ -46,7 +52,8 @@ html {
 body {
     /* margin: 0px auto 0px auto;
     width: 800px; */
-    font-family: 'Tex Gyre Pagella', "STSongti SC" , "serifsc", serif;
+    /* font-family: 'Tex Gyre Pagella', "STSongti SC" , "serifsc", serif; */
+    font-family: 'Tex Gyre Pagella', "neozhisong";
     font-size: 1.1em;
     line-height: 125%;
     color: black;
