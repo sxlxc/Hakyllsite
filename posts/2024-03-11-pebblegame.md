@@ -1,6 +1,6 @@
 ---
 author: Yu Cong
-title:  collecting pebbles and sparsity
+title:  collecting pebbles and (hyper)graph sparsity
 tags: alg, sage, combinatorics
 ---
 
@@ -56,8 +56,8 @@ In the paper they use directed graph. When considering an undirected edge $(u,v)
 One can see that for any subgraph $G'=(V',E')$ this pebble collection and edge adding operation preserve the sum of
 
 1. total number of pebbles on $V'$
-2. |E'|
-3. the out edges starting at $V'$ and ending elsewhere.
+2. $|E'|$
+3. $\delta_{\text{out}}(V')$.
 
 see the paper for detailed proof.
 
@@ -65,7 +65,129 @@ see the paper for detailed proof.
 
 The last question is can we do every operations in polynomial time? or in other words why collecting pebbles can be done in polynomial time? In the paper there is a lemma saying that if adding an edge $(u,v)$ does not break sparsity and there are not enough pebbles on $u$ and $v$(we need to do pebble collection), then we can always find a pebble collecting path without changing the pebble count of other vertices. Thus we can collect pebbles by simple dfs.
 
+python code for hypergraph sparsity.
+```py
+from networkx import Graph
+from itertools import chain, combinations
 
+
+'''
+pebble game algorithm for checking hypergraph sparsity.
+`hyperedges` is a list of frozensets of non-number objects.
+for example, `[frozenset({'1', '0'})]`
+'''
+def pebblegame(k,l,hyperedges:list):
+    vertices=frozenset().union(*hyperedges)
+    n=len(vertices)
+    pebs={v:k for v in vertices}
+    H_tail=Graph()
+    H_tail.add_nodes_from(range(len(hyperedges)),bipartite=0)
+    H_tail.add_nodes_from(vertices,bipartite=1)
+
+    def add_edge(i):
+        H=hyperedges[i]
+        v=next(filter(lambda v:pebs[v]>0,H))
+        pebs[v]=pebs[v]-1
+        H_tail.add_edge(i,v)
+        return None
+    
+    def collect_pebble(v,forbiddenset): # collect 1 peb to v.
+        visited=set()
+        path=[]
+        # use dfs to collect pebs
+        def dfs(node,node_H):
+            if node in visited: return False
+            # don't use nodes in H
+            if node_H != -1 and node in forbiddenset: 
+                return False
+            visited.add(node)
+            path.append((node,node_H))
+            if node not in forbiddenset and pebs[node]>0:
+                # pebs[node]=pebs[node]-1
+                # pebs[v]=pebs[v]+1
+                return True
+            for H in H_tail.neighbors(node):
+                for nxt in hyperedges[H]:
+                    if nxt!=node and dfs(nxt,H): return True
+            path.pop()
+            return False
+        if dfs(v,-1):  # find a pebble
+            # collect the pebble
+            t,_=path[-1]
+            pebs[t]=pebs[t]-1
+            pebs[v]=pebs[v]+1
+            # reverse hyperedges
+            last_u,last_H=path.pop()
+            while len(path):
+                top_u,top_H=path.pop()
+                H_tail.remove_edge(last_H,top_u)
+                H_tail.add_edge(last_H,last_u)
+                last_u,last_H=top_u,top_H
+            return True
+        else:   return False
+
+    # try to add every hyperedge
+    for i in range(len(hyperedges)):
+        H=hyperedges[i]
+        demand=l+1-sum([pebs[v] for v in H])
+        if demand<=0: add_edge(i)
+        else:   # collect pebs
+            while True:
+                collected=False
+                for u in H:
+                    if H_tail.degree(u)>0:
+                        if collect_pebble(u,forbiddenset=H):
+                            demand=demand-1
+                            collected=True
+                        if demand==0: 
+                            break
+                if not collected:   # can not add this edge
+                    return "dependent"
+                if demand==0: break
+            add_edge(i)
+    if sum([pebs[v] for v in vertices])==l: return "tight"
+    else: return "sparse"
+
+
+# # tests
+# import random
+
+# def bruteforce(k,l,hyperedges):
+#     def non_empty_subsets(s):
+#         return list(chain.from_iterable(combinations(s, r) 
+#                                         for r in range(1, len(s) + 1)))
+#     for U in non_empty_subsets(hyperedges):
+#         vertices=frozenset().union(*U)
+#         if len(vertices)*k-l<len(U):
+#             return "dependent"
+#     return "sparse"
+# def generate_random_subsets(n, k):
+#     # Define the set [n]
+#     full_set = list(range(1, n + 1))
+    
+#     # Generate k random subsets
+#     subsets = []
+#     for _ in range(k):
+#         # Randomly choose a subset size
+#         subset_size = random.randint(1, n)
+#         # Randomly select subset_size elements from the set
+#         subset = random.sample(full_set, subset_size)
+#         subsets.append(frozenset(map(str,subset)))
+#     return subsets
+
+# while True:
+#     n_v=100
+#     n_H=10
+#     k=2
+#     l=2
+#     hyperedges=generate_random_subsets(n_v,n_H)
+#     pebble_res=pebblegame(k,l,hyperedges)
+#     bf_res=bruteforce(k,l,hyperedges)
+#     print(pebble_res,bf_res)
+#     if pebble_res!=bf_res:
+#         print(hyperedges)
+#         input()
+```
 
 sage code for an straightforward $O(n^3)$ implementation 
 
