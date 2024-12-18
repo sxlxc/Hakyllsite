@@ -110,6 +110,12 @@ header {
 .navbar a {
     text-decoration: none; /* Removes underline from links */
 }
+.navbar a:hover {
+    background: #fbf3f3;
+    transition-property: background;
+    transition-duration: 0.2s;
+    border-radius: 8px;
+}
 
 nav {
     text-align: right;
