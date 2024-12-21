@@ -1,6 +1,6 @@
 ---
 author: Yu Cong
-title:  collecting pebbles and (hyper)graph sparsity
+title:  Collecting pebbles and (hyper)graph sparsity
 tags: alg, sage, combinatorics
 ---
 

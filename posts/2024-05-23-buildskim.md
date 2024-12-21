@@ -1,6 +1,6 @@
 ---
 author: Yu Cong
-title:  customize skim pdf reader
+title:  给 skim 加点键盘快捷键!
 tags: macos
 ---
 

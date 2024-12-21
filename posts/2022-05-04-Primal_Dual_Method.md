@@ -1,5 +1,5 @@
 ---
-title: Primal Dual Method
+title: Primal Dual Method[中文]
 tags: alg
 author: Yu Cong
 ---

@@ -1,5 +1,5 @@
 ---
-title:  finding the largest slope of segments connecting two sets of points on 2D plane
+title:  Finding the largest slope of segments connecting two sets of points on 2D plane[中文]
 tags: alg, CG
 author: Yu Cong
 ---

@@ -1,5 +1,5 @@
 ---
-title: c++ kd-tree implementations
+title: C++ kd-tree implementations
 tags: alg, C++
 author: Yu Cong
 ---

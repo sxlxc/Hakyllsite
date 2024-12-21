@@ -1,5 +1,5 @@
 ---
-title:  median of medians & std::nth_element
+title:  Median of medians & `std::nth_element`
 tags: alg, C++
 author: Yu Cong
 ---

@@ -1,5 +1,5 @@
 ---
-title:  why certain kernel function is usable?
+title: 什么样的核函数可以用于非参数估计?
 tags: statistics
 ---
 

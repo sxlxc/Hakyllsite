@@ -1,5 +1,5 @@
 ---
-title: tropical bases and matroid circuits
+title: Tropical bases and matroid circuits
 tags: matroid
 author: Yu Cong
 ---
