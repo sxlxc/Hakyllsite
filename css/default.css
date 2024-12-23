@@ -84,6 +84,18 @@ body {
     color: black;
     background-color: white;
 }
+body a {
+    color: #337ab7;
+    text-decoration: none;
+}
+body a:hover {
+    text-decoration: underline;
+    text-decoration-style: solid;
+}
+body a:visited {
+    color: #7e50a9; /* Color for visited links */
+}
+
 
 header {
     /* margin-bottom: 0.2rem;
@@ -115,6 +127,9 @@ header {
     transition-property: background;
     transition-duration: 0.2s;
     border-radius: 8px;
+}
+.navbar a:visited { 
+    color: #555555;
 }
 
 nav {
