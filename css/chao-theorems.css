@@ -8,7 +8,7 @@
     background-color: rgba(84, 107, 46, 0.08);
   }
   .theorem-environment.Proof{
-    background-color: rgb(251, 251, 251);
+    background-color:white;
   }
   .theorem-header {
     font-weight: bold;
