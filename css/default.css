@@ -95,6 +95,9 @@ body a:hover {
 body a:visited {
     color: #7e50a9; /* Color for visited links */
 }
+body .langtag {
+    color: gray;
+}
 
 
 header {

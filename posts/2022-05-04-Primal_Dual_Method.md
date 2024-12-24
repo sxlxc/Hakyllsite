@@ -1,7 +1,8 @@
 ---
-title: Primal Dual Method[中文]
+title: Primal Dual Method
 tags: alg
 author: Yu Cong
+lang: zh
 ---
 
 看了这本书

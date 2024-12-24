@@ -2,6 +2,7 @@
 author: Yu Cong
 title:  给 skim 加点键盘快捷键!
 tags: macos
+lang: zh
 ---
 
 skim 长这个样子(不是那个[fuzzy finder in rust](https://github.com/lotabout/skim))

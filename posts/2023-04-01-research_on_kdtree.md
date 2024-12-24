@@ -2,6 +2,7 @@
 title: C++ kd-tree implementations
 tags: alg, C++
 author: Yu Cong
+lang: zh
 ---
 
 操作系统作业要写一下死锁检测 https://en.wikipedia.org/wiki/Banker's_algorithm 里面有一步大概是在所有进程的 required_resources 对应的向量里面找小于系统 available_resources 对应的向量, 更新 available_resources 再找, 重复这样的过程. 实际上就是在一些$m$维的点里面不断询问给定的一个 axis parallel box 当中的点是哪些. 想用kd-tree让这个过程跑的更快一些, 于是开始找c++的kd-tree实现.

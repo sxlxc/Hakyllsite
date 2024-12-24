@@ -1,6 +1,7 @@
 ---
 title:  矩估计
 tags: statistics
+lang: zh
 ---
 
 > 复习计量经济学，看到矩估计

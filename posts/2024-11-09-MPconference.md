@@ -2,6 +2,7 @@
 title: 参加运筹学会数学规划分会第十届研究生论坛
 tags: "math programming"
 author: Yu Cong
+lang: zh
 ---
 > 11月9日 四川 南充 东湖宾馆
 
