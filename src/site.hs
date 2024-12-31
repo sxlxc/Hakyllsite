@@ -51,6 +51,12 @@ main = hakyll $ do
       chaoDocCompiler
         >>= loadAndApplyTemplate "templates/about.html" defaultContext
         >>= relativizeUrls
+  match "404.md" $ do
+    route $ setExtension "html"
+    compile $
+      chaoDocCompiler
+        >>= loadAndApplyTemplate "templates/default.html" defaultContext
+        >>= relativizeUrls
 
   -- build up tags
   tags <- buildTags "posts/*" (fromCapture "tags/*.html")

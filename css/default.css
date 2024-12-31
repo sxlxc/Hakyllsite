@@ -418,9 +418,6 @@ ul.posts {
 }
 
 @media (min-width: 320px) {
-    html {
-        font-size: 80%; /* Scale down the base font size */
-    }
     body {
         width: 90%;
         margin: 0;
@@ -458,7 +455,7 @@ ul.posts {
 @media (min-width: 640px) {
     body {
         width: auto;
-        margin: 0 30% 0 20%;
+        margin: 0 25% 0 25%;
         padding: 0;
     }
 
