@@ -2,6 +2,7 @@
 title: Add SageMath to pylance
 tags: sage
 author: Yu Cong
+lang: en
 ---
 
 I have been wondering how to write `.sage` files in vscode with proper lint and highlighting since half a year ago.
