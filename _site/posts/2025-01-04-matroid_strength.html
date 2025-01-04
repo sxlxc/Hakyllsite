@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>talldoor - On matroid base packing and covering</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="../css/default.css" />
+        <link rel="stylesheet" href="../css/pygentize.css" />
+        <link rel="stylesheet" href="../css/chao-theorems.css">
+    
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <a href="../">Home</a>
+                <div class="navright">
+                    <a href="../about.html">About</a>
+                    <!-- <a href="/contact.html">Contact</a> -->
+                    <a href="../archive.html">Archive</a>
+                </div>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1 class="pagetitle">On matroid base packing and covering</h1>
+            <article>
+    <section class="subtitle">
+        
+    </section>
+    <section class="header">
+        Posted on January  4, 2025
+        
+            by Yu Cong
+        
+    </section>
+    <div class="info">
+        
+            Tags: <a title="All pages tagged 'matroid'." href="../tags/matroid.html" rel="tag">matroid</a>, <a title="All pages tagged 'optimization'." href="../tags/optimization.html" rel="tag">optimization</a>, <a title="All pages tagged 'combinatorics'." href="../tags/combinatorics.html" rel="tag">combinatorics</a>
+        
+    </div>    
+    <section>
+        <p>Recently(actually, not that recent), I have been interested in the
+fractional version of matroid base packing and covering problems.</p>
+<p>As far as I know, there are few text books in combinatorial
+optimization cover topics in matroid base packing, while matroid base
+covering(<a href="https://en.wikipedia.org/wiki/Matroid_partitioning">matroid
+partition problem</a>) is everywhere. Packing and covering of trees in
+graphs is discussed in chapter 51 of <em>Combinatorial optimization
+Polyhedra and Efficiency</em> by Alexander Schrijver.</p>
+<h1 data-number="1" id="base-packing-base-covering"><span class="header-section-number">1</span> Base packing &amp; base
+covering</h1>
+<div class="theorem-environment Problem" data-index="1" type="Problem">
+<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
+<p>Given a matroid <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop mathcal" style="margin-right:0.07382em;position:relative;top:0.0917em;">I</span><span class="mclose">)</span></span></span></span> and its
+bases <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mop mathcal" style="margin-right:0.03041em;position:relative;top:0.0917em;">B</span></span></span></span>,
+find</p>
+<ol type="1">
+<li>the minimum number of bases whose union is <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span></span></span></span>(base covering); or</li>
+<li>the maximum number of pairwise disjoint bases(base packing).</li>
+</ol>
+</div>
+<p>These problems can be formulated with the following integer programs,
+base packing: <span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:6.8434em;vertical-align:-3.1717em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.6717em;"><span style="top:-5.6717em;"><span class="pstrut" style="height:3.05em;"></span><span class="mord"><span class="mop">max</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3.05em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="mord">.</span><span class="mord mathnormal">t</span><span class="mord">.</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.05em;"><span style="top:-1.8557em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span><span class="mrel mtight">:</span><span class="mord mathnormal mtight">e</span><span class="mrel mtight">∈</span><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.3217em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-0.5383em;"><span class="pstrut" style="height:3.05em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:3.1717em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.6717em;"><span style="top:-5.6717em;"><span class="pstrut" style="height:3.05em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.05em;"><span style="top:-1.8557em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span><span class="mrel mtight">∈</span><span class="mop mathcal mtight" style="margin-right:0.03041em;position:relative;top:0.0917em;">B</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.3217em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3.05em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:1em;"></span><span class="mord">∀</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span></span></span><span style="top:-0.5383em;"><span class="pstrut" style="height:3.05em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">{</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose delimcenter" style="top:0em;">}</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:3.1717em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>base covering: <span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:6.8434em;vertical-align:-3.1717em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.6717em;"><span style="top:-5.6717em;"><span class="pstrut" style="height:3.05em;"></span><span class="mord"><span class="mop">min</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3.05em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="mord">.</span><span class="mord mathnormal">t</span><span class="mord">.</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.05em;"><span style="top:-1.8557em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span><span class="mrel mtight">:</span><span class="mord mathnormal mtight">e</span><span class="mrel mtight">∈</span><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.3217em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-0.5383em;"><span class="pstrut" style="height:3.05em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:3.1717em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.6717em;"><span style="top:-5.6717em;"><span class="pstrut" style="height:3.05em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.05em;"><span style="top:-1.8557em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span><span class="mrel mtight">∈</span><span class="mop mathcal mtight" style="margin-right:0.03041em;position:relative;top:0.0917em;">B</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.3217em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3.05em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:1em;"></span><span class="mord">∀</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span></span></span><span style="top:-0.5383em;"><span class="pstrut" style="height:3.05em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">{</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose delimcenter" style="top:0em;">}</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:3.1717em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>In general integer programming are hard. Here the base packing and
+covering problems have exponential number of variables. If nothing is
+known for these two problems, people natually study their linear
+relaxation.</p>
+<blockquote>
+<p>Just a note. It is widely known that any linear program with a
+rank-<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> constraint matrix has a support
+with size no larger than <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span>. For similar
+problem on integer programming, one might think that there is also a
+small support based on the knowledge that the optimal solution for the
+integer program is simply a integer point inside the feasible region.
+However, the size of support for integer programs is not that small.
+Currently the best known upperbound is roughly <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4445em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span class="mord"><span class="mord mathrm" style="margin-right:0.01389em;">polylog</span></span></span><span class="mopen">(</span><span class="mord">∥</span><span class="mord"><span class="mord mathnormal">A</span></span><span class="mord"><span class="mord">∥</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>,
+see <a href="https://drops.dagstuhl.de/storage/00lipics/lipics-vol283-isaac2023/LIPIcs.ISAAC.2023.13/LIPIcs.ISAAC.2023.13.pdf">this
+paper</a>.</p>
+</blockquote>
+<p>Actually these two problems are not hard on general matroids. They
+can both be solved in polynomial number of independence oracle calls. is
+it?…How to do packing?</p>
+<h2 data-number="1.1" id="connections"><span class="header-section-number">1.1</span> Connections</h2>
+<h1 data-number="2" id="matroid-strength-and-density"><span class="header-section-number">2</span> Matroid strength and density</h1>
+<div class="theorem-environment Theorem" data-index="2" type="Theorem">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">2</span></span>
+<p>A matroid is uniformly dense if and only if <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span></p>
+</div>
+<div class="theorem-environment Proof" type="Proof">
+<span class="theorem-header"><span class="type">Proof</span></span>
+<p>hmm…</p>
+</div>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>. 
+            <a href="https://github.com/congyu711/Hakyllsite">src on Github</a>.
+            license <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0 </a>  <img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" alt="Creative Commons License" style="width:40px;height:auto;">
+
+        </footer>
+    </body>
+</html>
