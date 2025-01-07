@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>talldoor - kmp与数电中的模式串识别</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="../css/default.css" />
+        <link rel="stylesheet" href="../css/pygentize.css" />
+        <link rel="stylesheet" href="../css/chao-theorems.css">
+    
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <a href="../">Home</a>
+                <div class="navright">
+                    <a href="../about.html">About</a>
+                    <!-- <a href="/contact.html">Contact</a> -->
+                    <a href="../archive.html">Archive</a>
+                </div>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1 class="pagetitle">kmp与数电中的模式串识别</h1>
+            <article>
+    <section class="subtitle">
+        
+    </section>
+    <section class="header">
+        Posted on November 22, 2021
+        
+    </section>
+    <div class="info">
+        
+            Tags: 
+        
+    </div>    
+    <section>
+        <p>random thoughts,随便写写</p>
+<p>前段时间学习了数电。讲用Flip-Flop做sequence
+detector的时候感觉和kmp很像。</p>
+<h2 data-number="1" id="kmp"><span class="header-section-number">1</span> KMP</h2>
+<p><a href="https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm">enwiki
+KMP</a></p>
+<p>这个不细说了。把暑假集训的题解抄过来了。</p>
+<p>暴力的字符串匹配，txt字符串现在从第i为开始和pat串比较，发生失配，i变成i+1。在失配的时候从txt的i+1和pat重新比较。</p>
+<p>发现如果pat串在某个位置失配了，前面的一定都匹配上了，考虑pat已经匹配的这一部分，如果他后面一部分和开头是一样的，那么这一部分就不需要在比较了。</p>
+<p>比如<code>pat: abxxxxxabxxxx</code>这里如果到第二个b后面失配了，至少这个ab是可以重复利用的。于是发现就是要找出pat串每个位置的前缀函数是多少。如果前缀函数是<code>p[i]</code>，那么如果第i位发生失配了(此时txt比较到了第k位)，直接比较<code>pat[p[i-1]]</code>和
+<code>txt[k]</code>就行了。如果前缀函数是0或者第i位匹配上了，才把k+1；</p>
+<p>简单看看匹配的时候的复杂度。下面txt长度是<code>n</code>,pat长度是<code>m</code>。匹配的时候要比较<code>n+失配次数</code>次。可以想到一个最坏情况</p>
+<pre><code>pat:aaaaa
+txt:aaaabaaaabaaaab</code></pre>
+<p>这样一来失配次数就是<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0404em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6954em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">m</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span>次，也是<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>的，因此匹配过程就是<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>的。 然后问题在于如何求前缀函数。
+这可以递推计算。 1.
+如果<code>s[i]==s[p[i-1]]</code>那么<code>p[i]=p[i-1]+1</code> 2.
+如果<code>s[i]!=s[p[i-1]]</code>，这时实际上相当于这个字符串的一个后缀和一个前缀进行字符串匹配，然后最后一位失配了。用和上面类似的思想，就要找这个前缀的最后一位的前缀函数对应的字符来和第i位的字符比较。
+很容易写出求前缀函数的过程。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i<span class="op">=</span><span class="dv">1</span><span class="op">;</span>i<span class="op">&lt;</span>pat<span class="op">.</span>length<span class="op">();</span>i<span class="op">++)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> k<span class="op">=</span>pi<span class="op">[</span>i<span class="op">-</span><span class="dv">1</span><span class="op">];</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span><span class="op">(</span>k<span class="op">&gt;</span><span class="dv">0</span><span class="op">&amp;&amp;</span>pat<span class="op">[</span>i<span class="op">]!=</span>pat<span class="op">[</span>k<span class="op">])</span>  k<span class="op">=</span>pi<span class="op">[</span>k<span class="op">-</span><span class="dv">1</span><span class="op">];</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>pat<span class="op">[</span>k<span class="op">]==</span>pat<span class="op">[</span>i<span class="op">])</span>  k<span class="op">++;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    pi<span class="op">[</span>i<span class="op">]=</span>k<span class="op">;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>pi<span class="op">[</span>i<span class="op">]==</span>n<span class="op">)</span>    ans<span class="op">++;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>前缀函数其实是和模式串每个位置对应有限状态自动机。用前缀函数描述的kmp看起来不是很直接。
+在Robert
+Sedgewick的算法第四版中描述的KMP的<code>dfa[][]</code>数组就很好的描述了这一点。
+实际上跳到前缀函数再比较一次就是使用dfa数组的KMP了。</p>
+<h2 data-number="2" id="sequence-detector"><span class="header-section-number">2</span> sequence detector</h2>
+<p>用触发器设计序列检测器，检测输入的01串中的模式串。</p>
+<p>大概方法也是根据模式串确定状态，然后构建自动机，化简状态；</p>
+<p>思考如果检测的不只是01串，而是普通字符串。画出的状态图就会和KMP中的有限状态自动机一致。</p>
+<p>构建和化简状态的过程实际上就是在计算前缀函数（或者说<code>dfa[][]</code>数组）</p>
+<p>像KMP一样，这样的序列检测器检测模式串也只需要<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>的时间（无论是否要求匹配overlap）</p>
+<p>最后，感觉数电里很多东西与各种算法很接近。比如找compatible
+state的时候要找最大团之类的。</p>
+<figure>
+<img src="%7B%7Burl%7D%7D/assets/image/maxclique_compatiblestate.jpg" alt="maxclique_compatiblestate" />
+<figcaption aria-hidden="true">maxclique_compatiblestate</figcaption>
+</figure>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>. 
+            <a href="https://github.com/congyu711/Hakyllsite">src on Github</a>.
+            license <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0 </a>  <img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" alt="Creative Commons License" style="width:40px;height:auto;">
+
+        </footer>
+    </body>
+</html>

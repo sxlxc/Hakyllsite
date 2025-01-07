@@ -1,7 +1,15 @@
 <ul>
     $for(posts)$
+        $if(draft)$
+
+        $else$
+            $if(old)$
+            
+            $else$
         <li>
             <a href="$url$">$title$</a> <span class="langtag">[$lang$]</span> - $date$
         </li>
+            $endif$
+        $endif$
     $endfor$
 </ul>

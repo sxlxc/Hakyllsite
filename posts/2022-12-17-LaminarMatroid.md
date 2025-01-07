@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Notes on Laminar Matroid"
-date:   2022-12-17 0:00:00 +0800
-categories: alg matroid
+tags: alg matroid
+old: true
 ---
 
 > references: 

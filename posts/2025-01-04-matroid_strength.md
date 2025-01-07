@@ -3,6 +3,7 @@ title: On matroid base packing and covering
 tags:  matroid, optimization, combinatorics
 author: Yu Cong
 lang: en
+draft: true
 ---
 
 \DeclareMathOperator{\B}{\mathcal B}
@@ -50,7 +51,7 @@ natually study their linear relaxation.
 > upperbound is roughly $m\cdot \polylog(\|{A}\|_1)$, see [this paper](https://drops.dagstuhl.de/storage/00lipics/lipics-vol283-isaac2023/LIPIcs.ISAAC.2023.13/LIPIcs.ISAAC.2023.13.pdf).
 
 Actually these two problems are not hard on general matroids. They can both be solved in polynomial number of 
-independence oracle calls. is it?...How to do packing?
+independence oracle calls. <span style="color:red">is it?...How to do packing?</span>
 
 ## Connections
 

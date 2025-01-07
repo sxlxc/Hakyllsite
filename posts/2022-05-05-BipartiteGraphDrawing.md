@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Bipartite Graph Drawing Problem"
-date:   2022-9-11 12:30:08 +0800
-categories: alg combinatorics
+tags: alg combinatorics
+old: true
 ---
 
 最近遇到一个问题：给出二分图$G(V_1,V_2,E)$，$E\subset V_1 \times V_2$求两侧顶点排序使得边的交叉数量最少。

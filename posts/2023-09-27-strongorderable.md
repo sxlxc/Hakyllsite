@@ -2,7 +2,8 @@
 layout: post
 title:  "determine storng orderable matroid"
 date:   2023-09-27 0:00:00 +0800
-categories: matroid
+tags: matroid
+old: true
 ---
 
 

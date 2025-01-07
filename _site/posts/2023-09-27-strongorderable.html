@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>talldoor - determine storng orderable matroid</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="../css/default.css" />
+        <link rel="stylesheet" href="../css/pygentize.css" />
+        <link rel="stylesheet" href="../css/chao-theorems.css">
+    
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <a href="../">Home</a>
+                <div class="navright">
+                    <a href="../about.html">About</a>
+                    <!-- <a href="/contact.html">Contact</a> -->
+                    <a href="../archive.html">Archive</a>
+                </div>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1 class="pagetitle">determine storng orderable matroid</h1>
+            <article>
+    <section class="subtitle">
+        
+    </section>
+    <section class="header">
+        Posted on September 27, 2023
+        
+    </section>
+    <div class="info">
+        
+            Tags: <a title="All pages tagged 'matroid'." href="../tags/matroid.html" rel="tag">matroid</a>
+        
+    </div>    
+    <section>
+        <p><a href="https://en.wikipedia.org/wiki/Base-orderable_matroid"><img src="%7B%7Burl%7D%7D/assets/image/../../../../assets/image/SBO/definition.jpg" alt="img" /></a></p>
+<!-- $\mathcal M=(E,\mathcal F),n=|E|$, rank $r$
+
+### number of optimal bases
+
+unifrom: $\binom{n}{r}$
+
+graphic: $n^{n-2}$ (Cayley's theorem, # spanning trees in complete graphs)
+
+### number of cut(or circuit?)
+
+unifrom: $\binom{n}{r+1}$
+
+graphic: $n(n-1)/2$ (Karger's random global min cut algorithm) -->
+<h1 data-number="1" id="determining-strong-base-orderability-of-a-matroid"><span class="header-section-number">1</span> Determining strong
+base-orderability of a matroid</h1>
+<p><a href="https://mathoverflow.net/questions/194006/determining-strong-base-orderability-of-a-matroid" class="uri">https://mathoverflow.net/questions/194006/determining-strong-base-orderability-of-a-matroid</a></p>
+<p>determining base-orderability of a matroid can be done through
+finding perfect matching in a bipartite graph with <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">∥</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord"><span class="mord">∥</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span> edges. call oracle <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">∥</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord"><span class="mord">∥</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span> times to build the graph and run a
+matching algorithm.</p>
+<p>Is the union of strongly base-orderable matroids strongly
+base-orderable? yes. <a href="https://mathoverflow.net/questions/201101/is-the-union-of-strongly-base-orderable-matroids-strongly-base-orderable" class="uri">https://mathoverflow.net/questions/201101/is-the-union-of-strongly-base-orderable-matroids-strongly-base-orderable</a>
+also see <a href="https://en.wikipedia.org/wiki/Base-orderable_matroid#:~:text=feasible%20exchange%20bijection.-,Completeness,-%5Bedit%5D">wikipedia</a></p>
+<h3 data-number="1.0.1" id="difference-between-base-orderable-and-strong-base-orderable"><span class="header-section-number">1.0.1</span> difference between
+base-orderable and strong base orderable?</h3>
+<p><a href="https://arxiv.org/abs/1507.05521" class="uri">https://arxiv.org/abs/1507.05521</a></p>
+<p>an induction on the size of the set <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span></p>
+<ul>
+<li>1-BO</li>
+<li>2-BO</li>
+<li>…</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌈</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord">/2</span><span class="mclose">⌉</span></span></span></span>-BO = SBO</li>
+</ul>
+<p>given 2 bases of a matroid and a k-BO bijection f, find subsets with
+k+1 elements which do satisfy <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>-BO?</p>
+<p>1-BO -&gt; 2-BO is already hard…</p>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>. 
+            <a href="https://github.com/congyu711/Hakyllsite">src on Github</a>.
+            license <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0 </a>  <img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" alt="Creative Commons License" style="width:40px;height:auto;">
+
+        </footer>
+    </body>
+</html>

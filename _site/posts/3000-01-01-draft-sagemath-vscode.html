@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>talldoor - Posts tagged "matroid"</title>
+        <title>talldoor - Add SageMath to pylance</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="../css/default.css" />
@@ -25,36 +25,44 @@
         </header>
 
         <main role="main">
-            <h1 class="pagetitle">Posts tagged "matroid"</h1>
-            <ul>
-    
+            <h1 class="pagetitle">Add SageMath to pylance</h1>
+            <article>
+    <section class="subtitle">
         
-
+    </section>
+    <section class="header">
+        Posted on January  1, 3000
         
-    
+            by Yu Cong
         
-
+    </section>
+    <div class="info">
         
-    
+            Tags: <a title="All pages tagged 'sage'." href="../tags/sage.html" rel="tag">sage</a>
         
-
-        
-    
-        
-            
-        <li>
-            <a href="../posts/2024-07-11-tropicalbases-and-matroids.html">Tropical bases and matroid circuits</a> <span class="langtag">[en]</span> - July 11, 2024
-        </li>
-            
-        
-    
-        
-            
-            
-            
-        
-    
-</ul>
+    </div>    
+    <section>
+        <p>I have been wondering how to write <code>.sage</code> files in vscode
+with proper lint and highlighting since half a year ago.</p>
+<p>There is a question asked in 2023 on stackoverflow. <a href="https://stackoverflow.com/questions/76201511/add-sagemath-to-pylance" class="uri">https://stackoverflow.com/questions/76201511/add-sagemath-to-pylance</a></p>
+<figure>
+<img src="../images/sagepylance/select.png" alt="select interpreter" />
+<figcaption aria-hidden="true">select interpreter</figcaption>
+</figure>
+<p>But what is the interpreter path for python used by sage?</p>
+<p>It turns out that you can just type <code>sage --python</code>… and
+everything works</p>
+<figure>
+<img src="../images/sagepylance/sage--python.png" alt="sage --python" />
+<figcaption aria-hidden="true"><code>sage --python</code></figcaption>
+</figure>
+<figure>
+<img src="../images/sagepylance/ex.png" alt />
+<figcaption aria-hidden="true"></figcaption>
+</figure>
+<p>There are still cython issues…</p>
+    </section>
+</article>
 
         </main>
 

@@ -3,6 +3,7 @@ title: On vertex connectivity interdiction
 tags: alg, combinatorics, matroid, optmization, 
 lang: zh
 author: Yu Cong
+draft: true
 ---
 
 
