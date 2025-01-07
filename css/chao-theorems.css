@@ -10,6 +10,9 @@
   .theorem-environment.Proof{
     background-color:white;
   }
+  .theorem-environment.Problem{
+    background-color:rgba(0, 139, 139, 0.08);
+  }
   .theorem-header {
     font-weight: bold;
     font-style: normal;

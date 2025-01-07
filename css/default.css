@@ -212,6 +212,9 @@ article .header {
     font-style: normal;
     text-align: left;
 }
+.info a:visited{
+    color: darkolivegreen;
+}
 .ascii-art {
     border: 2px solid black; /* Adds a solid border */
     padding: 10px;           /* Adds space between the border and the content */
