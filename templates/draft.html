@@ -1,0 +1,11 @@
+<ul>
+    $for(posts)$
+        $if(draft)$
+        <li>
+            <a href="$url$">$title$</a> <span class="langtag">[$lang$]</span>
+        </li>
+        $else$
+
+        $endif$
+    $endfor$
+</ul>
