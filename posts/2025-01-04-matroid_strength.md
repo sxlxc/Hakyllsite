@@ -124,3 +124,27 @@ For fixed $\lambda$, $\mathbf 1 \in \lambda B(M)$ if and only if there exists $\
 ::: Theorem
 Minimum fractional base covering is $\alpha(M)$.
 :::
+
+The proof is similar to and easier than the previous one. The corresponding polyhedron in $LP3$ becomes $\{x|\chi^{F}\cdot x\leq r(F)\; \forall F\subset E\}$ which is exactly the independence polytope.
+
+## Integral gap
+
+It is known that the integral base packing number is $\floor{\sigma(M)}$ and the $\ceil{\alpha(M)}$. Thus the (additive) integral gap for both base packing and covering are quite small.
+
+In [@fan_extensions_2019] there are stronger theorems describing the relations between integral packing/covering number and $\sigma$ or $\alpha$. 
+
+::: Theorem
+Let $\varepsilon\in [0,1)$ be the fractional part of $\sigma(M)$ or $\alpha(M)$, then there exists a packing(covering) of size $\floor{\sigma(M)}$($\ceil{\alpha(M)}$), one of the independnet sets in the packing(covering) is of size at most $\varepsilon\cdot r(M)$.
+:::
+
+## Duality
+
+Applying the rank function of matroid dual derives the following(theorem 1 in [@catlin_fractional_1992]),
+
+::: Theorem
+For matroid $M$ without any loop or coloop,
+\[\sigma(M^*)=\frac{\alpha(M)}{\alpha(M)-1}\]
+:::
+
+# Computing the strength and density
+
