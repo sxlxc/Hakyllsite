@@ -9,6 +9,7 @@ draft: true
 \DeclareMathOperator{\B}{\mathcal B}
 \DeclareMathOperator{\I}{\mathcal I}
 \DeclareMathOperator{\polylog}{polylog}
+\DeclareMathOperator{\OPT}{OPT}
 
 Recently(actually, not that recent), I have been interested in the fractional version of matroid base packing and covering problems.
 
@@ -58,6 +59,8 @@ They can both be solved in polynomial number of independence oracle calls.
 
 Thus the integral version of these two problem is polynomial solvable (in terms of the number of oracle calls) since matroid union is tractable. We will discuss computing the fractional version later.
 
+> Another note. The base covering number may be much larger than the base packing number, since $E-B_k$ may not be independent for $M$. ($B_k$ is the union of bases in the optimal packing)
+
 # Matroid strength and density
 
 We will talk about matroid strength and density and their relation with base packing and covering in this section. 
@@ -73,11 +76,51 @@ The fractional spanning tree packing number of a connected graph $G=(V,E)$ equal
 
 The fraction in above theorem can be rewrite as $\frac{|E-F|}{r(E)-r(F)}$, which only uses elements in the groundset and the rank function and thus can be generalized to non-graphic matroids. The maximum of this fraction, $\sigma(M)=\max_{F\subset E}\frac{|E-F|}{r(E)-r(F)}$ is called matroid strength.(The name also comes from [@catlin_fractional_1992].)
 
+For the connections between density and strength, we have the following inequality,
+
+\[
+\alpha(M)=\max \frac{|X|}{r(X)} \geq \frac{|E|}{r(E)} \geq \min \frac{|E-F|}{r(E)-r(F)} =\sigma(M).
+\]
 
 :::{.Theorem}
-
+Maximum fractional base packing number is $\sigma(M)$.
 :::
 
 :::{.Proof}
-hmm...
+The proof is similar to the graph strength proof for tree packing in [@Schrijver2004].
+  Let $B(M)$ be the base polytope of $M$ and $\Pi$ be the powerset of $E$.
+  Consider the following linear programs,
+  \begin{align*}
+    LP1=\min& \quad lx\\
+    s.t.& \quad x\in B(M)
+  \end{align*}
+
+  \begin{align*}
+    LP2=\max \quad \sum_{F\subsetneq E} y_{E\setminus F}&(r(E)-r(F))\\
+    s.t. \quad \sum_{F\subsetneq E} y_{E\setminus F} \chi^{E\setminus F} & \leq l\\
+    y & \in \R^\Pi_+
+  \end{align*}
+
+  and the dual of $LP2$,
+  \begin{align*}
+    LP3=\min& \quad lx\\
+    s.t. \quad x^T\chi^{E\setminus F} &\geq r(E)-r(F) \quad \forall F\subsetneq E\\
+    x&\in \R^E_+
+  \end{align*}  
+  
+  We first prove that the polyhedron in $LP3$, $Q=\{ x | x\geq 0,x^T\chi^{E\setminus F} \geq r(E)-r(F) \quad \forall F\subsetneq E\}$ is the base polytope of $M$. One can see that $B(M)\subseteq Q$. Now suppose $Q$ is larger than $B(M)$, there must exists $x\in Q$ such that $x(U)>r(U)$ for some $U\subseteq E$. Thus $\OPT(LP3)>\OPT(LP1)$. However, for the optimal solution $x$ to $LP1$ and any feasible solution $y$ to $LP2$ we have
+  \[
+    \OPT(LP1)\geq \sum_{F\subsetneq E} y_{E\setminus F}\chi^{E\setminus F}\cdot x = \sum_{F\subsetneq E} y_{E\setminus F} \left(\sum_{e\in E}x_e-\sum_{e\in F}x_e\right)\geq \sum_{F\subsetneq E} y_{E\setminus F} \left(r(E)-r(F)\right)=\OPT(LP3)
+  \]
+  Hence $Q=B(M)$.
+
+Recall that $\sigma(M)=\min_{F\subsetneq E}\frac{|E\setminus F|}{r(E)-r(F)}$. 
+Note that $\sigma(M)\geq 1$. 
+$\sigma(M)$ can be interpreted as the largest $\lambda>1$ such that $|E\setminus F| \geq \lambda(r(E)-r(F))$ holds for all $F\subsetneq E$.
+Hence $\sigma(M)=\max \{\lambda | \mathbf 1\in \lambda B(M)\}$ since $Q=B(M)$. 
+For fixed $\lambda$, $\mathbf 1 \in \lambda B(M)$ if and only if there exists $\lambda_b\geq 0$ for all bases of $M$ such that $\sum_b \lambda_b=\lambda$ and $\sum_b \lambda_b \chi^b\leq 1$. Hence this shows $\sigma(M)$ is exactly the base packing LP $\max\{\sum_b{\lambda_b}| \sum_{b}\lambda_b\chi^b\leq 1,\lambda_b\geq 0\;\forall b\in B\}$.
+:::
+
+::: Theorem
+Minimum fractional base covering is $\alpha(M)$.
 :::
