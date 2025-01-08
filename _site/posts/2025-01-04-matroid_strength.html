@@ -205,9 +205,7 @@ oracle for testing whether a dual solution <span class="katex"><span class="kate
 used for a polynomial time algorithm.</p>
 <p>For spanning tree packing the dual is graph min-cut problem, which is
 easy for graphic matroids but NP-Hard for general matroids (to find the
-cogirth). Thus this method does not generalize to matroid base packing.
-I believe computing matroid strength is NP-Hard but I can’t find a
-reference now.</p>
+cogirth). The separation oracle = find minimum weight base.</p>
 <p>For spanning tree covering the dual is finding a maximum edge set
 whose intersection with each spanning tree is at most 1. This problem
 can be thought as a set cover, in which the sets are <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">{</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord">∣</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mclose delimcenter" style="top:0em;">}</span></span></span></span></span> for each edge <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">e</span></span></span></span>. The separation oracle solves the following
