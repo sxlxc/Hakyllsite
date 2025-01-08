@@ -11,7 +11,8 @@
     background-color:white;
   }
   .theorem-environment.Problem{
-    background-color:rgba(0, 139, 139, 0.08);
+    /* background-color:rgba(200, 208, 115, 0.195); */
+    background-color: rgba(0, 128, 0, 0.08);
   }
   .theorem-header {
     font-weight: bold;

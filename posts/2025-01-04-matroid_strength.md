@@ -20,7 +20,7 @@ Packing and covering of trees in graphs is discussed in chapter 51 of [@Schrijve
 ::: Problem
 Given a matroid $M=(E,\I)$ and its bases $\B$, find
 
-1. the minimum number of bases whose union is $E$(base covering); or 
+1. the minimum number of bases whose union is $E$(base covering), and
 2. the maximum number of pairwise disjoint bases(base packing).
 :::
 
@@ -56,14 +56,14 @@ They can both be solved in polynomial number of independence oracle calls.
 - matroid base covering = matroid partitioning ≈ matroid union. Let $M=(E,\I)$ be the matroid. The minimum number of bases that cover the groundset is $\arg\min\limits_k r_{k}(E)=|E|$, where $r_{k}(\cdot)$ is the rank function of $M^k$.
 - matroid base packing ≈ matroid union. Maximum integral base packing number is $\arg\max\limits_k r_{k}(E)=kr(M)$.
 
-Thus the integral version of these two problem is polynomial solvable (in terms of the number of oracle calls) since matroid union can be computed in polynomial number of oracle calls. We will discuss computing the fractional version later.
+Thus the integral version of these two problem is polynomial solvable (in terms of the number of oracle calls) since matroid union is tractable. We will discuss computing the fractional version later.
 
-## Connections
+# Matroid strength and density
 
 We will talk about matroid strength and density and their relation with base packing and covering in this section. 
 I think none of the results is new. You can find some of them in [@catlin_fractional_1992] and [@fan_extensions_2019].
 
-The fractional base covering number for graphic matroids are called fractional arboricity. It is known that the fractional arboricity $\alpha(G)$ equals to $\max\limits_{\emptyset \subsetneq X\subset E}\frac{|X|}{r(X)}$. Define the density for a matroid $M$ as $\alpha(M)=\max\limits_{\emptyset \subsetneq X\subset E}\frac{|X|}{r(X)}$. The name "density" comes from [@catlin_fractional_1992].
+The fractional base covering number for graphic matroids are called fractional arboricity. It is known that the fractional arboricity $\alpha(G)$ equals to $\max\limits_{\emptyset \subsetneq X\subset E}\frac{|X|}{r(X)}$. Define the density for a matroid $M$ as $\alpha(M)=\max\limits_{\emptyset \subsetneq X\subset E}\frac{|X|}{r(X)}$. The name "density" comes from [@catlin_fractional_1992]. I use symbol $\alpha$ since density is a generalization of arboricity.
 
 For the packing part consider the fractional version of Nash-Williams theorem,
 
@@ -71,12 +71,11 @@ For the packing part consider the fractional version of Nash-Williams theorem,
 The fractional spanning tree packing number of a connected graph $G=(V,E)$ equals to $\max \frac{|E[\mathcal P]|}{|\mathcal P|-1}$, where the maximum is taken among all partitions $\mathcal P$ of $V$.
 :::
 
-The fraction in above theorem can be rewrite as $\frac{|E-F|}{r(E)-r(F)}$, which only uses elements in the groundset and the rank function and thus can be generalized to non-graphic matroids. The maximum of this fraction, $\max_{F\subset E}\frac{|E-F|}{r(E)-r(F)}$ is called matroid strength.(The name also comes from [@catlin_fractional_1992].)
+The fraction in above theorem can be rewrite as $\frac{|E-F|}{r(E)-r(F)}$, which only uses elements in the groundset and the rank function and thus can be generalized to non-graphic matroids. The maximum of this fraction, $\sigma(M)=\max_{F\subset E}\frac{|E-F|}{r(E)-r(F)}$ is called matroid strength.(The name also comes from [@catlin_fractional_1992].)
 
-# Matroid strength and density
 
 :::{.Theorem}
-A matroid is uniformly dense if and only if $\sigma(M)=\alpha(M)$ NOT TRUE...
+
 :::
 
 :::{.Proof}

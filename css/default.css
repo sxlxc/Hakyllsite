@@ -232,28 +232,17 @@ article .header {
 blockquote {
     margin: 1.5em 10px; /* Adjusts spacing around the blockquote */
     padding: 0.5em 10px; /* Adjusts padding inside the blockquote */
-    border-left: 5px solid #ccc; /* Creates a left border */
-    background-color:  rgb(233, 233, 233); /* Light background for the blockquote */
+    border-left: 5px solid rgb(150, 165, 124); /* Creates a left border */
+    background-color:  rgb(233, 236, 228); /* Light background for the blockquote */
     color: rgb(55, 55, 55); /* Text color inside the blockquote */
     /* font-style: italic; Makes the text italic */
-    font-size: 0.9em;
+    font-size: 1em;
 }
 
 blockquote p {
     margin: 0; /* Removes default paragraph margin inside blockquote */
 }
 
-blockquote cite {
-    display: block;
-    margin-top: 0.5em; /* Adds space above the citation */
-    font-size: 0.875em; /* Slightly smaller font for the citation */
-    color: #888; /* Lighter color for the citation */
-    text-align: right; /* Aligns the citation to the right */
-}
-
-blockquote cite:before {
-    content: "— "; /* Adds a dash before the citation */
-}
 
 table {
     background-color: rgb(245, 245, 245);
