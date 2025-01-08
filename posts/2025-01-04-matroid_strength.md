@@ -127,9 +127,11 @@ Minimum fractional base covering is $\alpha(M)$.
 
 The proof is similar to and easier than the previous one. The corresponding polyhedron in $LP3$ becomes $\{x|\chi^{F}\cdot x\leq r(F)\; \forall F\subset E\}$ which is exactly the independence polytope.
 
+Note that these two theorems can be generalized to weighted packing and covering of matroid bases.
+
 ## Integral gap
 
-It is known that the integral base packing number is $\floor{\sigma(M)}$ and the $\ceil{\alpha(M)}$. Thus the (additive) integral gap for both base packing and covering are quite small.
+It is known that the integral base packing number is $\floor{\sigma(M)}$ and the integral base covering number is $\ceil{\alpha(M)}$. Thus the integral gap for both base packing and covering are quite small.
 
 In [@fan_extensions_2019] there are stronger theorems describing the relations between integral packing/covering number and $\sigma$ or $\alpha$. 
 
@@ -146,5 +148,14 @@ For matroid $M$ without any loop or coloop,
 \[\sigma(M^*)=\frac{\alpha(M)}{\alpha(M)-1}\]
 :::
 
+Another relation worth noting is hitting set and set covering. The hitting set problem for matroid bases is known as computing the cogirth of the matroid. However, base covering is not a dual problem for cogirth. Sets in the corresponding hitting set problem of set covering is $S_e=\set{B|e\in B}$ for all $e\in E$.
+
 # Computing the strength and density
 
+For graphic matroids, the strength and fractional arboricity are known to be computable in strongly polynomial time. See chapter 51.4 in [@Schrijver2004] and [this notes](https://courses.grainger.illinois.edu/cs598csc/fa2024/Notes/lec-tree-packing.pdf).
+
+The idea is to consider the dual problem which has only $|E|$ variables. If there is a separation oracle for testing whether a dual solution $x$ is feasible, then ellipsoid method can be used for a polynomial time algorithm.
+
+For spanning tree packing the dual is graph min-cut problem, which is easy for graphic matroids but NP-Hard for general matroids (to find the cogirth). Thus this method does not generalize to matroid base packing.
+
+For spanning tree covering the dual is finding a maximum edge set whose intersection with each spanning tree is at most 1. This problem can be thought as a set cover, in which the sets are $\set{T|e\in T}$ for each edge $e$.
