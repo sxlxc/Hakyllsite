@@ -1,10 +1,9 @@
 ---
-title: 参加运筹学会数学规划分会第十届研究生论坛
+title: 运筹学会数学规划分会第十届研究生论坛
 tags: "math programming"
 author: Yu Cong
 lang: zh
 ---
-> 11月9日 四川 南充 东湖宾馆
 
 <!-- ### <https://arxiv.org/abs/2209.10336> 边伟
 
@@ -64,7 +63,7 @@ achieve competitive equilibrium.
 ![车站](/images/MPconf24/station.jpeg)
 
 
-![从车站到北湖公园, 坐公交车不到10分钟](/images/MPconf24/bus.jpeg)
+<!-- ![从车站到北湖公园, 坐公交车不到10分钟](/images/MPconf24/bus.jpeg) -->
 
 开会的地方在北湖宾馆, 旁边就是北湖公园.
 
