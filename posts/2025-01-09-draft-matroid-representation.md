@@ -51,3 +51,5 @@ Cut space contains all cuts of the graph(why is this a subspace?). One possible 
 One important fact we are assuming is that cycle space and cut space are subspaces. This is trivial for graphic matroids since the symmetric difference of two cuts is still a cut and the symmetric difference of two cycle is still a cycle of union of disjoint cycles. Is this still true for non-graphic matroids?
 
 A similar problem is discussed on [mathoverflow](https://mathoverflow.net/questions/241766/base-decomposition-of-matroids).
+
+test
