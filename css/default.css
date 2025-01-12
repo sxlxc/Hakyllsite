@@ -471,3 +471,15 @@ ul.posts {
         font-size: 1.8rem;
     }
 }
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+    body{
+        font-size: 90%;
+        margin: auto;
+        width: 90%;
+    }
+}
