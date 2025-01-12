@@ -50,6 +50,6 @@ Cut space contains all cuts of the graph(why is this a subspace?). One possible 
 
 One important fact we are assuming is that cycle space and cut space are subspaces. This is trivial for graphic matroids since the symmetric difference of two cuts is still a cut and the symmetric difference of two cycle is still a cycle of union of disjoint cycles. Is this still true for non-graphic matroids?
 
-A similar problem is discussed on [mathoverflow](https://mathoverflow.net/questions/241766/base-decomposition-of-matroids).
+Unfortuantely, for general matroids the set of circuit (or cocircuits) is not closed under taking symmetric difference. This can be seen from circuit axioms. We only have $C\subset C_1 \cup C_2\setminus e$ for any circuit $C_1, C_2$ and $e\in C_1\cap C_2$. For example, consider two circuits $\set{1,2,3}$ and $\set{2,3,4}$ in $U_{4,2}$, the symmetric difference, $\set{1,4}$, is independent.
 
-test hook test hook
+A similar problem is discussed on [mathoverflow](https://mathoverflow.net/questions/241766/base-decomposition-of-matroids) concerning a special basis (like $\text{star}(v)$) in the "cocircuit space".

@@ -68,10 +68,6 @@ src: local(STSongti-SC-Regular);
     font-style: normal;
     src: url('/fonts/LXGWNeoZhiSongScreen.woff2') format('woff2');
 }
-/* bold font is also needed... */
-html {
-    border-top: 5px solid #333
-}
 
 body {
     /* margin: 0px auto 0px auto;
@@ -480,6 +476,6 @@ ul.posts {
     body{
         font-size: 90%;
         margin: auto;
-        width: 90%;
+        /* width: 90%; */
     }
 }
