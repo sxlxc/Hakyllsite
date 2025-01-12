@@ -3,7 +3,7 @@ title: Notes on matroid representation
 tags: matroid
 author: Yu Cong
 lang: en
-draft: true
+# draft: true
 ---
 
 > While reading <https://arxiv.org/pdf/2407.09477> (for a reading group), I realized that I lack knowledge about matroid representation.
