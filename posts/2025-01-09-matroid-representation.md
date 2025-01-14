@@ -51,8 +51,18 @@ Cut space contains all cuts of the graph(why is this a subspace?). One possible 
 
 One important fact we are assuming is that cycle space and cut space are subspaces. This is trivial for graphic matroids since the symmetric difference of two cuts is still a cut and the symmetric difference of two cycle is still a cycle of union of disjoint cycles. Is this still true for non-graphic matroids?
 
-Unfortuantely, for general matroids the set of circuit (or cocircuits) is not closed under taking symmetric difference. This can be seen from circuit axioms. We only have $C\subset C_1 \cup C_2\setminus e$ for any circuit $C_1, C_2$ and $e\in C_1\cap C_2$. For example, consider two circuits $\set{1,2,3}$ and $\set{2,3,4}$ in $U_{4,2}$, the symmetric difference, $\set{1,4}$, is independent.
+Unfortuantely, for general matroids the set of circuit (or cocircuits) is not closed under taking symmetric difference. This can be seen from circuit axioms. We only have $C\subset C_1 \cup C_2\setminus e$ for any circuit $C_1, C_2$ and $e\in C_1\cap C_2$. For example, consider two circuits $\set{1,2,3}$ and $\set{2,3,4}$ in $U_{2,4}$, the symmetric difference, $\set{1,4}$, is independent.
 
-Note that the example $U_{4,2}$ is the excluded minor of binary matroids. So what about binary matroids? It is known that binary matroid is a self dual family of matroids, we need to show that the symmetric difference of two intersecting circuits is another circuit. This is theorem 9.1.2 in [@oxley_matroid_2011].
+Note that the example $U_{2,4}$ is the excluded minor of binary matroids. So what about binary matroids? It is known that binary matroid is a self dual family of matroids, we need to show that the symmetric difference of two intersecting circuits is another circuit. This is theorem 9.1.2 in [@oxley_matroid_2011].
 
 A similar problem is discussed on [mathoverflow](https://mathoverflow.net/questions/241766/base-decomposition-of-matroids) concerning a special basis (like $\text{star}(v)$) in the "cocircuit space".
+
+In the comment the OP mentioned a interesting fact, which is corollary 1 in [@brualdi_fundamental_1974]
+
+::: Corollary
+Given a base $B$ of some rank $r$ matroid $M$. Let $\mathcal C=\set{C_1,...,C_r}$ be the set of fundamental cocircuits associated to $B$. Every base of $M$ is a transversal of $\mathcal C$.
+:::
+
+::: Proof
+
+:::
