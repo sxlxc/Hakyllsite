@@ -3,7 +3,7 @@ title: Notes on matroid representation
 tags: matroid
 author: Yu Cong
 lang: en
-# draft: true
+draft: true
 ---
 
 > While reading <https://arxiv.org/pdf/2407.09477> (for a reading group), I realized that I lack knowledge about matroid representation.
@@ -63,6 +63,17 @@ In the comment the OP mentioned a interesting fact, which is corollary 1 in [@br
 Given a base $B$ of some rank $r$ matroid $M$. Let $\mathcal C=\set{C_1,...,C_r}$ be the set of fundamental cocircuits associated to $B$. Every base of $M$ is a transversal of $\mathcal C$.
 :::
 
-::: Proof
+This corollary seems wrong. consider $U_{2,4}$, 134 and 234 are fundamental coircuits associated to base 12. base 34 is not a transversal... need to read the paper carefully.
 
-:::
+<!-- ::: Proof
+
+By contradiction. Suppose that there is a base $B'$ which is not a transversal of $\mathcal C$. 
+We only need to deal with the case that $B'$ contains at least 2 elements of some $C_i$, since $C_i$ has non-empty intersection with any base. 
+We claim that such $C_i$ does not exist since otherwise it won't be a fundamental cocircuit.
+Assume that we can find $B'$ and $C_1$ such that $|B'\cup C_1|\geq 2$ and $C_1\supset e \in B$. Note that $C_i\cup B=E$. There are two cases,
+
+1. $e\notin B'$. It is known that 
+2. $e\in B'$.
+::: -->
+
+# Transversal matroids
