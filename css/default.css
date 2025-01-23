@@ -119,13 +119,7 @@ header {
 
 /* Links inside the navbar */
 .navbar a {
-    text-decoration: none; /* Removes underline from links */
-}
-.navbar a:hover {
-    background: #fbf3f3;
-    transition-property: background;
-    transition-duration: 0.2s;
-    border-radius: 8px;
+    text-decoration: none;
 }
 .navbar a:visited { 
     color: #555555;
@@ -141,6 +135,12 @@ nav a {
     margin-left: 12px;
     text-decoration: none
 }
+.uri {
+    word-wrap: break-word; /* Legacy support */
+    overflow-wrap: break-word; /* Modern property */
+    word-break: break-all; /* Break long words if necessary */
+    white-space: normal; /* Allow wrapping */
+  }
 
 
 
@@ -154,15 +154,15 @@ footer {
 }
 .pagetitle{
     /* margin-top: 2em; */
-    font-size: 2.2em;
+    font-size: 1.728em;
     font-weight: normal;
     font-style: normal;
     text-align: left;
     line-height: 100%;
 }
 h1 {
-    margin-top: 1.7em;
-    font-size: 1.7em;
+    margin-top: 1em;
+    font-size: 1.44em;
     font-weight: medium;
     font-style: normal;
     text-align: left;
@@ -170,15 +170,15 @@ h1 {
 }
 
 h2 {
-    margin-top: 1.5em;
-    font-size: 1.5em;
+    margin-top: 1em;
+    font-size: 1.2em;
     font-weight: medium;
     font-style: normal
 }
 
 h3 {
     margin-top: 1em;
-    font-size: 1.35em;
+    font-size: 1em;
     font-weight: medium;
     font-style: normal
 }
@@ -201,6 +201,7 @@ article .header {
     font-size: 1.1rem;
     font-style: normal;
     text-align: left;
+    padding-bottom: 1em;
 }
 .info a{
     color: darkolivegreen;
