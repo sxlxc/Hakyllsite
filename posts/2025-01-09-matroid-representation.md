@@ -1,5 +1,5 @@
 ---
-title: Notes on matroid representation
+title: Notes on graphic matroid representation and cocircuit transversal
 tags: matroid
 author: Yu Cong
 lang: en
@@ -16,6 +16,8 @@ List of materials I briefly read:
 2. <https://iuuk.mff.cuni.cz/~pangrac/vyuka/matroids/matroid-ch2.pdf>
 3. <https://fardila.com/Clase/Matroids/LectureNotes/lectures1-25.pdf>
 4. <https://sv2-mat.ist.osaka-u.ac.jp/~higashitani/sano_slide.pdf>
+
+**Update** The latter half of this post is way off-topic. So I changed the title.
 
 # Graphic matroids are regular
 
@@ -55,25 +57,23 @@ Unfortuantely, for general matroids the set of circuit (or cocircuits) is not cl
 
 Note that the example $U_{2,4}$ is the excluded minor of binary matroids. So what about binary matroids? It is known that binary matroid is a self dual family of matroids, we need to show that the symmetric difference of two intersecting circuits is another circuit. This is theorem 9.1.2 in [@oxley_matroid_2011].
 
-A similar problem is discussed on [mathoverflow](https://mathoverflow.net/questions/241766/base-decomposition-of-matroids) concerning a special basis (like $\text{star}(v)$) in the "cocircuit space".
+A similar problem is discussed on [mathoverflow](https://mathoverflow.net/questions/241766/base-decomposition-of-matroids) concerning a special basis (like $\text{star}(v)$) in the "cocircuit space". I will further elaborate in the next section.
+
+# Cocircuit transversal
 
 In the comment the OP mentioned a interesting fact, which is corollary 1 in [@brualdi_fundamental_1974]
 
 ::: Corollary
-Given a base $B$ of some rank $r$ matroid $M$. Let $\mathcal C=\set{C_1,...,C_r}$ be the set of fundamental cocircuits associated to $B$. Every base of $M$ is a transversal of $\mathcal C$.
+Given a base $B$ of some rank $r$ matroid $M$. Let $\mathcal C^*=\set{C_e^* | e\in B}$ be the set of fundamental cocircuits associated to $B$. Every base of $M$ is a transversal of $\mathcal C^*$.
 :::
 
-This corollary seems wrong. consider $U_{2,4}$, 134 and 234 are fundamental coircuits associated to base 12. base 34 is not a transversal... need to read the paper carefully.
+An alternative way to understand this is that, take a base $B$ of some matroid $M$ and consider the transversal matroid on $\set{C_e^* | e\in B}$, every base of $M$ is independent in this transversal matroid. Take graphic matroids for an example. Any edge $e$ in a spanning tree $T$ defines a unique cut. Any spanning tree is a transversal of these cuts.
 
-<!-- ::: Proof
+> I cannot understand the proof in [@brualdi_fundamental_1974]... In the paper $C_e^*$ is used to denote the cocircuit in $e\cup E\setminus B$. However $B$ is never given and is hard to guess form the context. I try to prove it myself...
 
-By contradiction. Suppose that there is a base $B'$ which is not a transversal of $\mathcal C$. 
-We only need to deal with the case that $B'$ contains at least 2 elements of some $C_i$, since $C_i$ has non-empty intersection with any base. 
-We claim that such $C_i$ does not exist since otherwise it won't be a fundamental cocircuit.
-Assume that we can find $B'$ and $C_1$ such that $|B'\cup C_1|\geq 2$ and $C_1\supset e \in B$. Note that $C_i\cup B=E$. There are two cases,
+::: Proof
+We prove by contradiction. 
+Suppose that there is a base $B'$ which is not a transversal of $\mathcal C^*$. 
+Then by Hall's theorem there exists a independent set $I\subset B$ such that $|I|>|\bigcup_{e\in I} C_e^*\cap B'|$.
 
-1. $e\notin B'$. It is known that 
-2. $e\in B'$.
-::: -->
-
-# Transversal matroids
+:::
