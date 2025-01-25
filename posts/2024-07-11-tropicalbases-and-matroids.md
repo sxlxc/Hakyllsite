@@ -10,7 +10,9 @@ lang: en
 
 In the post the author describes an interesting problem,
 
-> **Problem** Given a matroid $M=(E,\mathcal{I})$, find a minimal set of circuits that defines the matroid
+::: Problem
+Given a matroid $M=(E,\mathcal{I})$, find a minimal set of circuits that defines the matroid
+:::
 
 The way he consider this problem is not by looking at the circuits but the flats. Any circuit excludes some sets from being flats. If we are given a circuit $c$, any set $A$ that contains $|c|-1$ elements of $c$ can not be a flat of $M$. So the idea is to find a minimal set of circuits that excludes all non-flat sets of $M$.
 

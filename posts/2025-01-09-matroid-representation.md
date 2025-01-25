@@ -3,7 +3,7 @@ title: Notes on graphic matroid representation and cocircuit transversal
 tags: matroid
 author: Yu Cong
 lang: en
-draft: true
+# draft: true
 ---
 
 > While reading <https://arxiv.org/pdf/2407.09477> (for a reading group), I realized that I lack knowledge about matroid representation.
@@ -67,13 +67,28 @@ In the comment the OP mentioned a interesting fact, which is corollary 1 in [@br
 Given a base $B$ of some rank $r$ matroid $M$. Let $\mathcal C^*=\set{C_e^* | e\in B}$ be the set of fundamental cocircuits associated to $B$. Every base of $M$ is a transversal of $\mathcal C^*$.
 :::
 
-An alternative way to understand this is that, take a base $B$ of some matroid $M$ and consider the transversal matroid on $\set{C_e^* | e\in B}$, every base of $M$ is independent in this transversal matroid. Take graphic matroids for an example. Any edge $e$ in a spanning tree $T$ defines a unique cut. Any spanning tree is a transversal of these cuts.
+An alternative way to understand this is that, take a base $B$ of some matroid $M$ and consider the transversal matroid on $\set{C_e^* | e\in B}$, every base of $M$ is independent in this transversal matroid. Take graphic matroids for an example. Any edge $e$ in a spanning tree $T$ defines a unique cut. Any spanning tree is a transversal of these cuts. 
 
-> I cannot understand the proof in [@brualdi_fundamental_1974]... In the paper $C_e^*$ is used to denote the cocircuit in $e\cup E\setminus B$. However $B$ is never given and is hard to guess form the context. I try to prove it myself...
+> I tried to prove this corollary myself but failed. The following proof is from the paper. 
+> I think there should be a nice way to prove it directly (without the theorem below) through some "common transversal proof" techniques I am not familiar with.
+
+To simplify the notations, some definitions in [@brualdi_fundamental_1974] are needed. For a base $B$, let $C_e^*$ be the unique cocircuit in $e\cup E\setminus B$ if $e$ is in $B$. For $e\notin B$, let $C_e^*$ be $\{e\}$. Dually, for a fixed base $B$ and $e\notin B$, we can define $C_e$ to be the unique circuit in $E$ and $C_e=\{e\}$ for $e\in B$. There is an interesting theorem in [@brualdi_fundamental_1974].
+
+::: Theorem
+Given any matroid $M$ with groundset $E$ and rank $r$, consider any base $B$ and any size $r$ subset $F\subset E$, $F$ is a transversal of $\{C_e^* | e\in B\}$ if and only if $B$ is a transversal of $\{C_e | e\in F\}$.
+:::
+
+> $C_e^*$ and $C_e$ are both considered under the base $B$.
 
 ::: Proof
-We prove by contradiction. 
-Suppose that there is a base $B'$ which is not a transversal of $\mathcal C^*$. 
-Then by Hall's theorem there exists a independent set $I\subset B$ such that $|I|>|\bigcup_{e\in I} C_e^*\cap B'|$.
+1. $B$ is a transversal of $\{C_e | e\in F\}$. We can write $B$ as $\{b_e | b_e \in C_e ,\forall e\in F\}$ since $B$ is a system of distinct representatives. For $e\in B\cap F$, $b_e=e$ since $C_e$'s are singletons for these $e$. Thus if we can show that $e\in C_{b_e}^*$ for all $b_e\in B\setminus F$ then we finish this half. $e$ must be in $C_{b_e}^*$ since otherwise the intersection of $C_{b_e}^*$ and $C_e$ is $\{b_e\}$ and it is known that the intersection of any circuit and cocircuit in a matroid is never going to be a singleton.
+2. $F$ is a transversal of $\{C_e^* | e\in B\}$. $F$ is $\{f_e | f_e \in C_e^* ,\forall e\in B\}$. And again we can ignore the intersection and prove $e\in C_{f_e}$ for $f_e\in F\setminus E$. The proof is identical.
+:::
 
+So what if $F$ is another base? We can get the corollary if we show that the base $B$ is a transversal of $\{C_e | e\in F\}$ for any other base $F\not = B$. Finally, here is the proof of the corollary.
+
+::: Proof
+By contradiction. 
+Suppose that there is a base $B$ which is not a transversal of $\{C_e | e\in F\}$. 
+Then by Hall's theorem there exists a independent set $I\subset F$ such that $|I|>|\bigcup_{e\in I} C_e\cap B|$. Note that $C_e$'s are fundamental circuits of $B$. Thus $\bigcup_{e\in I} C_e\cap B$ is the largest independent set in the cycle $\cup_{e\in I} C_e$. A contradiction.
 :::
