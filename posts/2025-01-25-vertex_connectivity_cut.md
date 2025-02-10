@@ -19,7 +19,12 @@ By [Menger's theorem](https://en.wikipedia.org/wiki/Menger%27s_theorem) we need 
 
 > Instead of computing the flow for every pair, if we want one flow that gets the demand for every vertex pair $(i<j)$, the problem becomes much harder. This is [Multi-commodity flow problem](https://en.wikipedia.org/wiki/Multi-commodity_flow_problem).
 
+Currently the fastest algorithm for computing vertex connectivity is [@HENZINGER2000222].
+There is a nice table for a summary of connectivity related algorithms.
 
+![image courtesy of Abdol–Hossein Esfahanian. [link](http://www.cse.msu.edu/~esfahani/book_chapter/Graph_connectivity_chapter.pdf)](/images/vertex_connectivity_cut/table.png)
+
+[@HENZINGER2000222] appears in the last line. The conference version was published on FOCS96.
 
 # Connectivity interdiction
 
