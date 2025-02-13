@@ -1,7 +1,7 @@
 ---
 title: Breaking vertex connectivity
-tags: alg, combinatorics, matroid, optmization, 
-lang: zh
+tags: alg, combinatorics, optmization, 
+lang: en
 author: Yu Cong
 draft: true
 ---
@@ -26,9 +26,12 @@ There is a nice table for a summary of connectivity related algorithms.
 
 [@HENZINGER2000222] appears in the last line. The conference version was published on FOCS96.
 
+# Minimum cut for edge connectivity
+
+
 # Connectivity interdiction
 
-Connectivity interdiction is first considered by Zenklusen [@zenklusen_connectivity_2014]. 
+Connectivity interdiction is first studied by Zenklusen [@zenklusen_connectivity_2014]. 
 
 ::: Problem
 Given a graph $G=(V,E)$ and costs $c:E\to \Z_+$ and weights $w:E\to \Z_+$ and a budget $B\in \Z_+$, find the edge set $R$ such that $c(R)\leq B$ and that minimizes the $w$-weighted min cut in $(V,E\setminus R)$.
