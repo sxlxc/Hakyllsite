@@ -15,7 +15,10 @@ Given a graph $G=(V,E)$ which is $k$-connected. What is the minimum set of edges
 # Checking $k$-vertex connectivity
 
 Checking if a given graph is $k$-vertex connected [can be done in polynomial time](https://en.wikipedia.org/wiki/K-vertex-connected_graph#Computational_complexity).
-By [Menger's theorem](https://en.wikipedia.org/wiki/Menger%27s_theorem) we need to check if for every vertex pair $(s,t)$ there are at least $k$ vertex disjoint paths (excluding $s$ and $t$) connecting $s$ and $t$. The number of vertex disjoint paths between $s$ and $t$ can be easily computed through max flow. Duplicate every vertex except $s$ and $t$ and connect an edge with capacity 1 between every pair of new vertices. The capacity is 1 for all edges. Since the constraint matrix of flow problems is TU, maximizing the flow gives the number of internally disjoint paths between $s$ and $t$.
+By [Menger's theorem](https://en.wikipedia.org/wiki/Menger%27s_theorem) we need to check if for every vertex pair $(s,t)$ there are at least $k$ vertex disjoint paths (excluding $s$ and $t$) connecting $s$ and $t$. The number of vertex disjoint paths between $s$ and $t$ can be easily computed through max flow. 
+<!-- Duplicate every vertex except $s$ and $t$ and connect an directed edge with capacity 1 between every pair of new vertices. The capacity is 1 for all edges.  -->
+We replace every internal vertex $v$ with two copies $v_{in}$ and $v_{out}$ and add directed edges from $N(v)$ to $v_{in}$ and from $v_{out}$ to $N(v)$ with capacity 1. The integral max flow is the number of internally disjoint paths between $s$ and $t$. 
+Since the constraint matrix of flow problems is TU, maximizing the flow gives us the vertex connectivity.
 
 > Instead of computing the flow for every pair, if we want one flow that gets the demand for every vertex pair $(i<j)$, the problem becomes much harder. This is [Multi-commodity flow problem](https://en.wikipedia.org/wiki/Multi-commodity_flow_problem).
 
