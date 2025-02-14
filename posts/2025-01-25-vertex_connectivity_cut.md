@@ -29,8 +29,13 @@ There is a nice table for a summary of connectivity related algorithms.
 
 [@HENZINGER2000222] appears in the last line. The conference version was published on FOCS96.
 
-# Minimum cut for edge connectivity
+## Minimum cut for edge connectivity
 
+Finding the minimum edge set whose removal breaks the $k$-edge connectivity is easy. It is known that the global min-cut is the edge connectivity number. Thus we can simply compute the min-cut and remove any number of the edges as needed.
+
+## Minimum cut for vertex connectivity
+
+With the knowledge of how to compute vertex connectivity, we try to compute the minimum cut for $k$-vertex connectivity in a similar way. First we can find the vertex pair $(s,t)$ with the smallest number of internally disjoint paths. Note that we are dealing with the modified graph when computing the vertex connectivity number with flow. Hence the min-cut may contain edges that are not in the original graph, i.e., the edges connecting $v_{in}$ and $v_{out}$. For example, consider a graph where every edge has multiplicities 2. The min-cut reported by the flow algorithm should only contain edges between $v_{in}$ and $v_{out}$.
 
 # Connectivity interdiction
 
