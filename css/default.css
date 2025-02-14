@@ -360,15 +360,22 @@ ul.posts {
     margin-top: 0
 }
 
-@media (min-width: 320px) {
+@media (max-width: 640px) {
     body {
         width: 90%;
         margin: 0;
         padding: 0 5%;
+        font-size: 1em;
+    }
+    nav a {
+        font-size: 1.2em;
     }
 
     header {
         margin: 1rem 0;
+    }
+    footer {
+        font-size: 10px;
     }
 
 }
