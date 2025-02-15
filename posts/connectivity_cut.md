@@ -1,15 +1,16 @@
 ---
-title: Breaking vertex connectivity
+title: Min-cut for certain level of connectivity
 tags: alg, combinatorics, optmization, 
 lang: en
 author: Yu Cong
 draft: true
+date: 2025-02-13
 ---
 
 As a natural generalization of min-cut, the following problem seems interesting to me,
 
 :::{.Problem #prob1}
-Given a graph $G=(V,E)$ which is $k$-connected. What is the minimum set of edges whose removal breaks $k$-vertex connectivity?
+Given a graph $G=(V,E)$ and an integer $k$. What is the minimum edge set whose removal breaks $k$-vertex connectivity?
 :::
 
 # Checking $k$-vertex connectivity
@@ -39,8 +40,16 @@ With the knowledge of how to compute vertex connectivity, we try to compute the 
 
 # Connectivity interdiction
 
-Connectivity interdiction is first studied by Zenklusen [@zenklusen_connectivity_2014]. 
+Connectivity interdiction is first studied by Zenklusen [@zenklusen_connectivity_2014].
 
 ::: Problem
 Given a graph $G=(V,E)$ and costs $c:E\to \Z_+$ and weights $w:E\to \Z_+$ and a budget $B\in \Z_+$, find the edge set $R$ such that $c(R)\leq B$ and that minimizes the $w$-weighted min cut in $(V,E\setminus R)$.
 :::
+
+
+A recent paper [@vygen_fptas_2024] gives an FPTAS for the problem. Here I try to develop the intuition since I have never seen an algorithm based on re-weighting edges this complicated and ingenious.
+
+First one can see that the optimal solution can always be a subset of edges in a cut of $G$. This is because if the optimal solution $R^*$ contains any edge not in the cut, we can safely delete it from $R^*$. Thus the optimal solution is indeed a pair $(C^*,R^*\subset C^*)$. The authors call this problem the *$b$-free min-cut problem* ($b$ is the budget and we are allowed to pick edges for free in the "mincut" with total weight at most $b$).
+
+So the goal is to find a FPTAS for the $b$-free mincut problem. The problem is hard since it contains knapsack as a special case. (Consider a graph with many parallel edges and only 2 vertices.) However, it is known that there is a FPTAS for knapsack. If we know part of the optimal solution, i.e., $C^*$, we can use the FPTAS for knapsack to find the optimal $R^*$.
+
