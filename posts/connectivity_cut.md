@@ -53,3 +53,6 @@ First one can see that the optimal solution can always be a subset of edges in a
 
 So the goal is to find a FPTAS for the $b$-free mincut problem. The problem is hard since it contains knapsack as a special case. (Consider a graph with many parallel edges and only 2 vertices.) However, it is known that there is a FPTAS for knapsack. If we know part of the optimal solution, i.e., $C^*$, we can use the FPTAS for knapsack to find the optimal $R^*$.
 
+
+At this stage, if there is a hint suggesting re-weighting the edges, I would guess that $C^*$ is exactly the min-cut of the re-weighted graph. Based on this idea I would also guess that, although the connectivity interdiction problem ($b$-free min-cut) is NP-hard, $C^*$ can be computed in polynomial time. In other words, the intractable part is solving the knapsack in $C^*$. My guess seems reasonable, since this problem is know to be in P for unit costs and in that case the kanpsack is trivial. Let's assume that my guess is correct and work on the re-weighting part.
+
