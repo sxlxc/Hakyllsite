@@ -51,8 +51,15 @@ A recent paper [@vygen_fptas_2024] gives an FPTAS for the problem. Here I try to
 
 First one can see that the optimal solution can always be a subset of edges in a cut of $G$. This is because if the optimal solution $R^*$ contains any edge not in the cut, we can safely delete it from $R^*$. Thus the optimal solution is indeed a pair $(C^*,R^*\subset C^*)$. The authors call this problem the *$b$-free min-cut problem* ($b$ is the budget and we are allowed to pick edges for free in the "mincut" with total weight at most $b$).
 
-So the goal is to find a FPTAS for the $b$-free mincut problem. The problem is hard since it contains knapsack as a special case. (Consider a graph with many parallel edges and only 2 vertices.) However, it is known that there is a FPTAS for knapsack. If we know part of the optimal solution, i.e., $C^*$, we can use the FPTAS for knapsack to find the optimal $R^*$.
+So the goal is to find a FPTAS for the $b$-free mincut problem. The problem is hard since it contains knapsack as a special case. (Consider a graph with many parallel edges and only 2 vertices.) However, it is known that there is a [FPTAS for knapsack](https://www.cs.cmu.edu/afs/cs/academic/class/15854-f05/www/scribe/lec10.pdf). If we know part of the optimal solution, i.e., $C^*$, we can use the FPTAS for knapsack to find the optimal $R^*$.
 
+At this stage, if there is a hint suggesting re-weighting the edges, I would guess that $C^*$ is exactly (or close to) the min-cut of the re-weighted graph. Based on this idea I would also guess that, although the connectivity interdiction problem ($b$-free min-cut) is NP-hard, $C^*$ can be computed in polynomial time. In other words, the intractable part is solving the knapsack in $C^*$. This statement seems reasonable, since this problem is know to be in P for unit costs and in that case the kanpsack is trivial. Let's assume that my guess is correct and work on the re-weighting part.
 
-At this stage, if there is a hint suggesting re-weighting the edges, I would guess that $C^*$ is exactly the min-cut of the re-weighted graph. Based on this idea I would also guess that, although the connectivity interdiction problem ($b$-free min-cut) is NP-hard, $C^*$ can be computed in polynomial time. In other words, the intractable part is solving the knapsack in $C^*$. My guess seems reasonable, since this problem is know to be in P for unit costs and in that case the kanpsack is trivial. Let's assume that my guess is correct and work on the re-weighting part.
+## Re-weighting
 
+One possible weight function is setting $w(e)=0$ for all $e\in R^*$... However, this is cheating since we assume that $R^*$ is the hard part. So now we need to find a weight function such that the following holds,
+
+1. The min-cut of the re-weighted graph is close to $C^*$.
+2. Computing the weight function takes polynomial time.
+
+From the "cheating" example we can see that knowing $R^*$ does help but computing $R^*$ is hard. So maybe we can find a slightly worse weight function which is a lot easier to compute. We cannot change weights of edges in $R^*$ only. We probably don't want to simply change some weights to 0...
