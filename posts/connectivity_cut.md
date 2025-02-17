@@ -62,4 +62,5 @@ One possible weight function is setting $w(e)=0$ for all $e\in R^*$... However, 
 1. The min-cut of the re-weighted graph is close to $C^*$.
 2. Computing the weight function takes polynomial time.
 
-From the "cheating" example we can see that knowing $R^*$ does help but computing $R^*$ is hard. So maybe we can find a slightly worse weight function which is a lot easier to compute. We cannot change weights of edges in $R^*$ only. We probably don't want to simply change some weights to 0...
+From the "cheating" example we can see that knowing $R^*$ does help but computing $R^*$ is hard. So maybe we can find a slightly worse weight function which is a lot easier to compute. So it seems like we are making a trade-off between how close the global min-cut of the re-weighted graph is to $C^*$, and how much time is needed to compute this weight function. This paper indeed does a great job in finding such a balance.
+I sent an email to one of the authors to ask for the intuition behind the re-weighting but did not get a real answer.
