@@ -47,15 +47,17 @@ Given a graph $G=(V,E)$ and costs $c:E\to \Z_+$ and weights $w:E\to \Z_+$ and a 
 :::
 
 
-A recent paper [@vygen_fptas_2024] gives an FPTAS for the problem. Here I try to develop the intuition since I have never seen an algorithm based on re-weighting edges this complicated and ingenious.
+A recent paper [@vygen_fptas_2024] gives an FPTAS for the problem. Here I try to develop the intuition since I have never seen an algorithm based on reweighting edges this complicated and ingenious.
 
 First one can see that the optimal solution can always be a subset of edges in a cut of $G$. This is because if the optimal solution $R^*$ contains any edge not in the cut, we can safely delete it from $R^*$. Thus the optimal solution is indeed a pair $(C^*,R^*\subset C^*)$. The authors call this problem the *$b$-free min-cut problem* ($b$ is the budget and we are allowed to pick edges for free in the "mincut" with total weight at most $b$).
 
 So the goal is to find a FPTAS for the $b$-free mincut problem. The problem is hard since it contains knapsack as a special case. (Consider a graph with many parallel edges and only 2 vertices.) However, it is known that there is a [FPTAS for knapsack](https://www.cs.cmu.edu/afs/cs/academic/class/15854-f05/www/scribe/lec10.pdf). If we know part of the optimal solution, i.e., $C^*$, we can use the FPTAS for knapsack to find the optimal $R^*$.
 
-At this stage, if there is a hint suggesting re-weighting the edges, I would guess that $C^*$ is exactly (or close to) the min-cut of the re-weighted graph. Based on this idea I would also guess that, although the connectivity interdiction problem ($b$-free min-cut) is NP-hard, $C^*$ can be computed in polynomial time. In other words, the intractable part is solving the knapsack in $C^*$. This statement seems reasonable, since this problem is know to be in P for unit costs and in that case the kanpsack is trivial. Let's assume that my guess is correct and work on the re-weighting part.
+At this stage, if there is a hint suggesting reweighting the edges, I would guess that $C^*$ is exactly (or close to) the min-cut of the re-weighted graph. Based on this idea I would also guess that, although the connectivity interdiction problem ($b$-free min-cut) is NP-hard, $C^*$ can be computed in polynomial time. In other words, the intractable part is solving the knapsack in $C^*$. This statement seems reasonable, since this problem is know to be in P for unit costs and in that case the kanpsack is trivial. Let's assume that my guess is correct and work on the reweighting part.
 
-## Re-weighting
+## Reweighting
+
+There is a [chapter on reweighting](https://sarielhp.org/teach/notes/aprx/lec/18_reweight.pdf) in Sariel Har-Peled's gemetric approximation book. Is reweighting a common technique for designing approximation algorithms?
 
 One possible weight function is setting $w(e)=0$ for all $e\in R^*$... However, this is cheating since we assume that $R^*$ is the hard part. So now we need to find a weight function such that the following holds,
 
@@ -63,4 +65,9 @@ One possible weight function is setting $w(e)=0$ for all $e\in R^*$... However, 
 2. Computing the weight function takes polynomial time.
 
 From the "cheating" example we can see that knowing $R^*$ does help but computing $R^*$ is hard. So maybe we can find a slightly worse weight function which is a lot easier to compute. So it seems like we are making a trade-off between how close the global min-cut of the re-weighted graph is to $C^*$, and how much time is needed to compute this weight function. This paper indeed does a great job in finding such a balance.
-I sent an email to one of the authors to ask for the intuition behind the re-weighting but did not get a real answer.
+I sent an email to one of the authors to ask for the intuition behind the reweighting but did not get a real answer. They suggested reading [@zenklusen_connectivity_2014].
+
+Before looking into the reweighting part in [@vygen_fptas_2024], I want to try to find a better reweighting for the unit cost case first. There are $\tilde O(m^2n^4)$ determinstic algorithms for the unit cost case in both papers.
+
+### Unit cost
+
