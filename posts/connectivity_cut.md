@@ -10,7 +10,7 @@ date: 2025-02-13
 As a natural generalization of min-cut, the following problem seems interesting to me,
 
 :::{.Problem #prob1}
-Given a graph $G=(V,E)$ and an integer $k$. What is the minimum edge set whose removal breaks $k$-vertex connectivity?
+Given a graph $G=(V,E)$ and an integer $k$, find the minimum edge set whose removal breaks $k$-vertex connectivity?
 :::
 
 # Checking $k$-vertex connectivity
@@ -57,7 +57,7 @@ At this stage, if there is a hint suggesting reweighting the edges, I would gues
 
 ## Reweighting
 
-There is a [chapter on reweighting](https://sarielhp.org/teach/notes/aprx/lec/18_reweight.pdf) in Sariel Har-Peled's gemetric approximation book. Is reweighting a common technique for designing approximation algorithms?
+There is a [chapter on reweighting](https://sarielhp.org/teach/notes/aprx/lec/18_reweight.pdf) in Sariel Har-Peled's gemetric approximation book(not quite the same as the reweighting technique in [@vygen_fptas_2024]). Is reweighting a common technique for designing approximation algorithms?
 
 One possible weight function is setting $w(e)=0$ for all $e\in R^*$... However, this is cheating since we assume that $R^*$ is the hard part. So now we need to find a weight function such that the following holds,
 
@@ -71,3 +71,10 @@ Zenklusen did almost the same thought experiment as above. Instead of using rewe
 
 The plan is to figure out how did the authors come up with the weight function in [@vygen_fptas_2024] and if it is possible to find a better weight function.
 
+The key part is the following new problem called normilized min-cut,
+
+::: {.Problem title="Normalized min-cut"#normmincut} 
+Given a problem instance of connectivity interdiction, find a cut $C$ and its subset $F\subset C$ s.t. $0\leq c(F)\leq b$ and $\frac{w(C\setminus F)}{b+1-c(F)}$ is minimized.
+:::
+
+I have been thinking for a while how this problem is involved but have no clue. However, it indeed works... The weight function is defined based on an estimation of [Problem 3](#normmincut). The authors claim that the optimal solution to b-free min-cut problem is a 2-approximate min-cut of the reweighted graph. Then they enumerate all 2-approximate min-cut of the reweighted graph and run the FPTAS for knapsack on each cut.
