@@ -66,8 +66,8 @@ One possible weight function is setting $w(e)=0$ for all $e\in R^*$... However, 
 
 From the "cheating" example we can see that knowing $R^*$ does help but computing $R^*$ is hard. So maybe we can find a slightly worse weight function which is a lot easier to compute. So it seems like we are making a trade-off between how close the global min-cut of the re-weighted graph is to $C^*$, and how much time is needed to compute this weight function. This paper indeed does a great job in finding such a balance.
 I sent an email to one of the authors to ask for the intuition behind the reweighting but did not get a real answer. They suggested reading [@zenklusen_connectivity_2014].
+Zenklusen did almost the same thought experiment as above. Instead of using reweighting, he indirectly enumerated $R^*$. Consider the unit cost case for example. If the optimal cut $C^*$ is given, the interdicted edges $R^*$ will be those $b$ edges in $C^*$ with heaviest weights. We cannot directly enumerate $R^*$ since it still takes exponential time. What we can enumerate is a lowerbound of the weight of edges in $R^*$. Set all edges with weights exceeding this lowerbound to be in $R^*$ and find global min-cut with additional budget constraint on these edges. Then we have only $m$ lowerbound to enumerate and the budgeted min-cut can be computed fast. For general costs, he enumerated the set of ${1}/{\varepsilon}$ edges with heaviest weights in $C^*$.
 
-Before looking into the reweighting part in [@vygen_fptas_2024], I want to try to find a better reweighting for the unit cost case first. There are $\tilde O(m^2n^4)$ determinstic algorithms for the unit cost case in both papers.
 
-### Unit cost
+The plan is to figure out how did the authors come up with the weight function in [@vygen_fptas_2024] and if it is possible to find a better weight function.
 
