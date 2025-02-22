@@ -4,6 +4,7 @@ tags: sage
 author: Yu Cong
 lang: en
 draft: true
+date: 2025-01-24
 ---
 
 I have been wondering how to write `.sage` files in vscode with proper lint and highlighting since half a year ago.
@@ -21,4 +22,5 @@ It turns out that you can just type `sage --python`... and everything works
 
 ![\w](/images/sagepylance/ex.png)
 
-There are still cython issues...
+A large part of sage is written in cython, so pylance still works bad on this.
+It would be nice if someone can write a language server for sage.

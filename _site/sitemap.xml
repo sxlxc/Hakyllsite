@@ -14,6 +14,13 @@
   </url>
 
   <url>
+    <loc>https://talldoor.uk/posts/libmatroid.html</loc>
+    <!-- <lastmod>February 22, 2025</lastmod> -->
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://talldoor.uk/posts/small%20circuit%20matroid%20representation.html</loc>
     <!-- <lastmod>February 14, 2025</lastmod> -->
     <changefreq>weekly</changefreq>
@@ -28,7 +35,7 @@
   </url>
 
   <url>
-    <loc>https://talldoor.uk/posts/2025-01-24-sagemath-vscode.html</loc>
+    <loc>https://talldoor.uk/posts/sagemath_vscode.html</loc>
     <!-- <lastmod>January 24, 2025</lastmod> -->
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
