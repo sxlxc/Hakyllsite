@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>talldoor - Quicknote: Art gallery guardian</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="../css/default.css" />
+        <link rel="stylesheet" href="../css/pygentize.css" />
+        <link rel="stylesheet" href="../css/chao-theorems.css">
+    
+    </head>
+    <body>
+        <header class="no-print">
+            <nav class="navbar">
+                <a href="../">Home</a>
+                <div class="navright">
+                    <a href="../about.html">About</a>
+                    <!-- <a href="/contact.html">Contact</a> -->
+                    <a href="../archive.html">Archive</a>
+                </div>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1 class="pagetitle">Quicknote: Art gallery guardian</h1>
+            <article>
+    <section class="subtitle">
+        
+        
+    </section>
+    <section class="header">
+        Posted on February 24, 2025
+        
+            by Yu Cong
+        
+    </section>
+    <div class="info">
+        
+            Tags: <a title="All pages tagged 'CG'." href="../tags/CG.html" rel="tag">CG</a>
+        
+    </div>    
+    <section>
+        <p>I read this problem in <a href="https://link.springer.com/book/10.1007/978-3-540-77974-2"><em>Computational
+Geometry:Algorithms and Applications</em></a>.</p>
+<p>Consider a art gallery whose shape is a 2D simple polygon without any
+hole. One is asked to put minimum number of 360° surveillance cameras
+such that every wall (every edge of the polygon) can be seen from at
+least one of the cameras.</p>
+<p>The book provides a upperbound of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">⌊</span><span class="mord mathnormal">n</span><span class="mord">/3</span><span class="mclose delimcenter" style="top:0em;">⌋</span></span></span></span></span> on the minimum number of cameras
+as well as an <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.023em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.773em;"><span style="top:-3.1473em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> algorithm to
+compute the solution. The method, which is based on triangulation, is
+the following. Decomposing the polygon into triangles gives us an <a href="https://en.wikipedia.org/wiki/Outerplanar_graph">outerplanar
+graph</a> which guarantees a 3-coloring. Observe that 3 vertices in one
+triangle must have 3 different colors. Thus installing cameras on
+vertices with one of the three colors is sufficient. The complexity
+follows from the fact that triangulation for simple polygon can be done
+in <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.023em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.773em;"><span style="top:-3.1473em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> and finding a 3-coloring
+in outerplanar graph takes linear time.</p>
+<p>Note that section 3.4 of <em>Computational Geometry:Algorithms and
+Applications</em> contains useful comments. There is even a <a href="https://www.science.smith.edu/~jorourke/books/ArtGalleryTheorems/Art_Gallery_Full_Book.pdf">book</a>
+on the art gallery guardian problem. In section 1.4 the author discussed
+convex partition which is partly what i’m thinking about while reading
+that CG book.</p>
+<p>Note that only one camera is needed for any convex polygon. So the
+minimum number of convex decomposition is also an upperbound for the art
+gallery guardian problem. However, I can only find bounds for optimal
+convex decomposition with respect to the number of reflex
+vertices(degree &gt; π)…</p>
+    </section>
+</article>
+
+        </main>
+
+        <footer class="no-print">
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>. 
+            <a href="https://github.com/congyu711/Hakyllsite">src on Github</a>.
+            license <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0 </a>  <img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" alt="Creative Commons License" style="width:40px;height:auto;">
+
+        </footer>
+    </body>
+</html>
