@@ -125,7 +125,7 @@ header {
 
 nav {
     text-align: right;
-    border-bottom: solid 2px rgba(85, 107, 47, 0.5);
+    border-bottom: solid 1px black;
 }
 
 nav a {
@@ -145,7 +145,7 @@ nav a {
 
 
 footer {
-    border-top: solid 2px rgba(85, 107, 47, 0.5);
+    border-top: solid 1px black;
     color: #555;
     font-size: 12px;
     margin-top: 30px;
