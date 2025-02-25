@@ -3,7 +3,7 @@ title: Min-cut for certain level of connectivity
 tags: alg, combinatorics, optmization, 
 lang: en
 author: Yu Cong
-draft: true
+# draft: true
 date: 2025-02-13
 ---
 
@@ -37,6 +37,8 @@ Finding the minimum edge set whose removal breaks the $k$-edge connectivity is e
 ## Minimum cut for vertex connectivity
 
 With the knowledge of how to compute vertex connectivity, we try to compute the minimum cut for $k$-vertex connectivity in a similar way. First we can find the vertex pair $(s,t)$ with the smallest number of internally disjoint paths. Note that we are dealing with the modified graph when computing the vertex connectivity number with flow. Hence the min-cut may contain edges that are not in the original graph, i.e., the edges connecting $v_{in}$ and $v_{out}$. For example, consider a graph where every edge has multiplicities 2. The min-cut reported by the flow algorithm should only contain edges between $v_{in}$ and $v_{out}$.
+
+There is a [list](https://lemon.cs.elte.hu/egres/open/Node-connectivity) of open problems on vertex(node) connectivity. I guess [@prob1] is NP-hard but cannot prove it.
 
 # Connectivity interdiction
 

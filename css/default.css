@@ -94,6 +94,9 @@ body a:visited {
 body .langtag {
     color: gray;
 }
+body a[title] {
+    color: darkolivegreen;
+}
 
 
 header {
