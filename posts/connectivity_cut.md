@@ -79,4 +79,8 @@ The key part is the following new problem called normilized min-cut,
 Given a problem instance of connectivity interdiction, find a cut $C$ and its subset $F\subset C$ s.t. $0\leq c(F)\leq b$ and $\frac{w(C\setminus F)}{b+1-c(F)}$ is minimized.
 :::
 
-I have been thinking for a while how this problem is involved but have no clue. However, it indeed works... The weight function is defined based on an estimation of [Problem 3](#normmincut). The authors claim that the optimal solution to b-free min-cut problem is a 2-approximate min-cut of the reweighted graph. Then they enumerate all 2-approximate min-cut of the reweighted graph and run the FPTAS for knapsack on each cut.
+I have been thinking for a while how this problem is involved but have no clue. However, it indeed works... The weight function is defined based on an estimation of [@normmincut]. The authors claim that the optimal solution to b-free min-cut problem is a 2-approximate min-cut of the reweighted graph. Then they enumerate all 2-approximate min-cut of the reweighted graph and run the FPTAS for knapsack on each cut.
+
+## More on normalized min-cut
+
+If one slightly modifies lemmas in section 2 in [@vygen_fptas_2024], there are some interesting properties. Let $\tau$ be the value of the optimal normalized min-cut (in [@vygen_fptas_2024] $\tau$ is an estimation of the optimum) and define $\tilde{w}_\tau$ accordingly. Then one can prove that the global min cut in $(G,\tilde{w}_\tau)$ is exactly the optimal cut in the normalized min-cut of $(G,w)$ (slightly modify lemma3 to see this). Also the value of min-cut in $(G,\tilde{w}_\tau)$ is $\tau(b+1)$.
