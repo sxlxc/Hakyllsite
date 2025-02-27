@@ -84,3 +84,5 @@ I have been thinking for a while how this problem is involved but have no clue. 
 ## More on normalized min-cut
 
 If one slightly modifies lemmas in section 2 in [@vygen_fptas_2024], there are some interesting properties. Let $\tau$ be the value of the optimal normalized min-cut (in [@vygen_fptas_2024] $\tau$ is an estimation of the optimum) and define $\tilde{w}_\tau$ accordingly. Then one can prove that the global min cut in $(G,\tilde{w}_\tau)$ is exactly the optimal cut in the normalized min-cut of $(G,w)$ (slightly modify lemma3 to see this). Also the value of min-cut in $(G,\tilde{w}_\tau)$ is $\tau(b+1)$.
+
+For unit cost, the optimum of connectivity interdiction = normalized min-cut [@chalermsook_approximating_2022]. I guess the idea of using [@normmincut] for reweighting is from here?

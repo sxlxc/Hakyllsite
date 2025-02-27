@@ -188,6 +188,9 @@ define <span class="katex"><span class="katex-html" aria-hidden="true"><span cla
 one can prove that the global min cut in <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">G</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6679em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span><span style="top:-3.35em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">~</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1132em;">τ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> is exactly the optimal cut
 in the normalized min-cut of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">G</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mclose">)</span></span></span></span>
 (slightly modify lemma3 to see this). Also the value of min-cut in <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">G</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6679em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span><span style="top:-3.35em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">~</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1132em;">τ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> is <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.1132em;">τ</span><span class="mopen">(</span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>.</p>
+<p>For unit cost, the optimum of connectivity interdiction = normalized
+min-cut <span class="citation" data-cites="chalermsook_approximating_2022">[<a href="#ref-chalermsook_approximating_2022" role="doc-biblioref">4</a>]</span>. I guess the idea of using <a href="#normmincut" title="Problem 3">Problem 3</a> for reweighting is
+from here?</p>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
 <div id="ref-HENZINGER2000222" class="csl-entry" role="listitem">
@@ -207,6 +210,19 @@ Yingchareonthawornchai, An <span>FPTAS</span> for
 Byrka (Eds.), Integer <span>Programming</span> and
 <span>Combinatorial</span> <span>Optimization</span>, Springer Nature
 Switzerland, Cham, 2024: pp. 210–223 <a href="https://doi.org/10.1007/978-3-031-59835-7_16">10.1007/978-3-031-59835-7_16</a>.</div>
+</div>
+<div id="ref-chalermsook_approximating_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">P.
+Chalermsook, C.-C. Huang, D. Nanongkai, T. Saranurak, P. Sukprasert, S.
+Yingchareonthawornchai, Approximating
+k-<span>Edge</span>-<span>Connected</span> <span>Spanning</span>
+<span>Subgraphs</span> via a <span>Near</span>-<span>Linear</span>
+<span>Time</span> <span>LP</span> <span>Solver</span>, in: M. Bojańczyk,
+E. Merelli, D.P. Woodruff (Eds.), 49th <span>International</span>
+<span>Colloquium</span> on <span>Automata</span>,
+<span>Languages</span>, and <span>Programming</span> (<span>ICALP</span>
+2022), Schloss Dagstuhl – Leibniz-Zentrum für Informatik, Dagstuhl,
+Germany, 2022: pp. 37:1–37:20 <a href="https://doi.org/10.4230/LIPIcs.ICALP.2022.37">10.4230/LIPIcs.ICALP.2022.37</a>.</div>
 </div>
 </div>
     </section>
