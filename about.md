@@ -1,9 +1,8 @@
 ---
 title:  Yu Cong 
-    <small><small>&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;
     <ruby>丛<rt>cóng</rt></ruby>
     <ruby>宇<rt>yǔ</rt></ruby>
-    </small></small>
 ---
 
 
