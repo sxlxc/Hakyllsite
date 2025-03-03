@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Notes on Laminar Matroid"
-tags: alg matroid
+tags: alg, matroid
 old: true
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Hall's Theorem"
-tags: alg combinatorics
+tags: alg, combinatorics
 old: true
 ---
 

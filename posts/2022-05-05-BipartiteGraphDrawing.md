@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Bipartite Graph Drawing Problem"
-tags: alg combinatorics
+tags: alg, combinatorics
 old: true
 ---
 
