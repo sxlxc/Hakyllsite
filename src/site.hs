@@ -2,7 +2,7 @@
 -- {-# LANGUAGE LambdaCase #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE ScopedTypeVariables #-}
--- {-# LANGUAGE ViewPatterns #-}
+{-# LANGUAGE ViewPatterns #-}
 
 import ChaoDoc
 import Data.Either
@@ -73,6 +73,14 @@ main = hakyll $ do
         >>= loadAndApplyTemplate "templates/tag.html" ctx
         >>= loadAndApplyTemplate "templates/default.html" ctx
         >>= relativizeUrls
+
+  create ["tags.html"] $ do
+    route idRoute
+    compile $ do
+      makeItem ""
+        >>= loadAndApplyTemplate "templates/tags.html" (defaultCtxWithTags tags)
+        >>= loadAndApplyTemplate "templates/default.html" (defaultCtxWithTags tags)
+
 
   match "posts/*" $ do
     route $ setExtension "html"
@@ -147,6 +155,21 @@ postCtx =
 postCtxWithTags :: Tags -> Context String
 postCtxWithTags tags = tagsField "tags" tags `mappend` postCtx
 
+defaultCtxWithTags :: Tags -> Context String
+defaultCtxWithTags tags = listField "tags" tagsCtx getAllTags <> defaultContext
+   where  getAllTags :: Compiler [Item (String, [Identifier])]
+          getAllTags = pure . map mkItem $ tagsMap tags
+            where mkItem :: (String, [Identifier]) -> Item (String, [Identifier])
+                  mkItem x@(t, _) = Item (tagsMakeId tags t) x
+          tagsCtx = listFieldWith "posts" (postCtxWithTags tags) getPosts   <>
+            metadataField                                     <>
+            urlField "url"                                    <>
+            pathField "path"                                  <>
+            titleField "title"                                <>
+            missingField
+              where getPosts :: Item (String, [Identifier])
+                         -> Compiler [Item String]
+                    getPosts (itemBody -> (_, is)) = mapM load is
 -- pandocCompiler_ :: Compiler (Item String)
 -- pandocCompiler_ =
 --     let
