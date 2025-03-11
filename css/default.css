@@ -395,8 +395,8 @@ ul.posts {
     body {
         width: auto;
         /* margin: 0 25% 0 25%; */
-        margin-left: calc(10% + (500 * ((100vw - 640px) / (3840 - 640))));
-        margin-right: calc(10% + (500 * ((100vw - 640px) / (3840 - 640))));
+        margin-left: calc(15% + (500 * ((100vw - 640px) / (3840 - 640))));
+        margin-right: calc(15% + (500 * ((100vw - 640px) / (3840 - 640))));
         padding: 0;
     }
 
