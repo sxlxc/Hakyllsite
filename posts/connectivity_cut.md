@@ -32,7 +32,7 @@ There is a nice table for a summary of connectivity related algorithms.
 
 ## Minimum cut for edge connectivity
 
-Finding the minimum edge set whose removal breaks the $k$-edge connectivity is easy. It is known that the global min-cut is the edge connectivity number. Thus we can simply compute the min-cut and remove any number of the edges as needed.
+Finding the minimum edge set whose removal breaks the $k$-edge connectivity is "easy". It is known that the global min-cut is the edge connectivity number. ~~Thus we can simply compute the min-cut and remove any number of the edges as needed.~~ --- which is not true! For unit edge weights this problem is indeed that easy. However, for general weights edge-connectivity cut is not as easy as min-cut. This problem is actually the unit cost version of connectivity interdiction. See next section for more details.
 
 ## Minimum cut for vertex connectivity
 

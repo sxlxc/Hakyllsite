@@ -84,9 +84,13 @@ Esfahanian. <a href="http://www.cse.msu.edu/~esfahani/book_chapter/Graph_connect
 in the last line. The conference version was published on FOCS96.</p>
 <h2 data-number="1.1" id="minimum-cut-for-edge-connectivity"><span class="header-section-number">1.1</span> Minimum cut for edge
 connectivity</h2>
-<p>Finding the minimum edge set whose removal breaks the <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>-edge connectivity is easy. It is known that
-the global min-cut is the edge connectivity number. Thus we can simply
-compute the min-cut and remove any number of the edges as needed.</p>
+<p>Finding the minimum edge set whose removal breaks the <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>-edge connectivity is “easy”. It is known
+that the global min-cut is the edge connectivity number. <del>Thus we
+can simply compute the min-cut and remove any number of the edges as
+needed.</del> — which is not true! For unit edge weights this problem is
+indeed that easy. However, for general weights edge-connectivity cut is
+not as easy as min-cut. This problem is actually the unit cost version
+of connectivity interdiction. See next section for more details.</p>
 <h2 data-number="1.2" id="minimum-cut-for-vertex-connectivity"><span class="header-section-number">1.2</span> Minimum cut for vertex
 connectivity</h2>
 <p>With the knowledge of how to compute vertex connectivity, we try to
