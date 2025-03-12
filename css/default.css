@@ -57,6 +57,30 @@ src: local(STSongti-SC-Regular);
     src: url('/fonts/Domitian-BoldItalic.woff2') format('woff2');
 }
 @font-face {
+    font-family: 'LibertinusSerif';
+    font-weight: normal;
+    font-style: normal;
+    src: url('/fonts/LibertinusSerif-Regular.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'LibertinusSerif';
+    font-weight: bold;
+    font-style: normal;
+    src: url('/fonts/LibertinusSerif-Bold.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'LibertinusSerif';
+    font-weight: normal;
+    font-style: italic;
+    src: url('/fonts/LibertinusSerif-Italic.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'LibertinusSerif';
+    font-weight: bold;
+    font-style: italic;
+    src: url('/fonts/LibertinusSerif-BoldItalic.woff2') format('woff2');
+}
+@font-face {
     font-family: 'serifsc';
     font-weight: normal;
     font-style: normal;
@@ -74,7 +98,7 @@ body {
     width: 800px; */
     /* font-family: 'Tex Gyre Pagella', "STSongti SC" , "serifsc", serif; */
     /* font-family: 'Tex Gyre Pagella', "neozhisong",serif; */
-    font-family: 'Domitian', "neozhisong",serif;
+    font-family: 'LibertinusSerif', "neozhisong",serif;
     font-size: 1.2em;
     line-height: 125%;
     color: black;
