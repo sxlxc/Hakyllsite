@@ -200,6 +200,34 @@ factors) <span class="citation" data-cites="chalermsook_approximating_2022">[<a 
 algorithm should be sufficient. (Note that <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span> is at most <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> since costs are unit.) However, one can
 easily see that this sequence is not unimodal. Thus I don’t quite
 believe this claim.</p>
+<h2 data-number="2.3" id="comments-on-vygen_fptas_2024"><span class="header-section-number">2.3</span> Comments on <span class="citation" data-cites="vygen_fptas_2024">[<a href="#ref-vygen_fptas_2024" role="doc-biblioref">3</a>]</span></h2>
+<p>After reading <span class="citation" data-cites="chalermsook_approximating_2022">[<a href="#ref-chalermsook_approximating_2022" role="doc-biblioref">4</a>]</span>, I finally know why the authors use
+<a href="#normmincut" title="Problem 3">Problem 3</a> to solve
+connectivity interdiction. Almost all techniques they used are directly
+from <span class="citation" data-cites="chalermsook_approximating_2022">[<a href="#ref-chalermsook_approximating_2022" role="doc-biblioref">4</a>]</span>. Read section 2 of <span class="citation" data-cites="chalermsook_approximating_2022">[<a href="#ref-chalermsook_approximating_2022" role="doc-biblioref">4</a>]</span> until 2.2, you know almost everything
+needed for a FPTAS solving connectivity interdiction. In fact, the
+authors cite <span class="citation" data-cites="chalermsook_approximating_2022">[<a href="#ref-chalermsook_approximating_2022" role="doc-biblioref">4</a>]</span> in their paper,</p>
+<blockquote>
+<p>In a recent paper of Chalermsook et el. [CHN+22] on survivable
+network design, the same problem was first introduced (under a diﬀerent
+name “minimum normalized free cut”) to deal with a certain boxing
+constraint in the LPs. There, a special case of unit-edge costs is
+actually solved as a technical necessity. To obtain an FPTAS in this
+paper, we emphasize that we do not need to solve the normalized min-cut
+problem per se, but rather we use its optimal solution as a certificate
+in the analysis of the weight function <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6679em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span><span style="top:-3.35em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">~</span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mclose">)</span></span></span></span> in Theorem 3.</p>
+</blockquote>
+<p>This paragraph is extremely misleading. There is no clearly
+indication that very similar (in fact, almost identical) results are
+proven [CHN+22]. Not to mention that the authors were somewhat avoiding
+my question (in my opinion) about Normalized min-cut(see <a href="#reweighting">reweighting part</a>).</p>
+<p>It was mentioned in a footnote of <span class="citation" data-cites="chalermsook_approximating_2022">[<a href="#ref-chalermsook_approximating_2022" role="doc-biblioref">4</a>]</span> that a general version of normalized
+min-cut is used in <a href="https://drops.dagstuhl.de/storage/00lipics/lipics-vol064-isaac2016/LIPIcs.ISAAC.2016.33/LIPIcs.ISAAC.2016.33.pdf">this
+paper</a>, which in turn mentioned that normalized min-cut is an
+ordinary subroutine in MWU frameworks. It is not the readers’ fault to
+not know MWU. It’s you authors’ fault not explicitly to mention the
+intuition. This writing style is toxic and causes huge waste of reader’s
+time. This is far off the standard of IPCO.</p>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
 <div id="ref-HENZINGER2000222" class="csl-entry" role="listitem">
