@@ -1,6 +1,6 @@
 ---
 title: Min-cut for certain level of connectivity
-tags: alg, combinatorics, optmization, 
+tags: alg, combinatorics, optimization, 
 lang: en
 author: Yu Cong
 # draft: true
