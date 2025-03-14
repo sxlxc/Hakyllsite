@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Bipartite Graph Drawing Problem"
-tags: alg, combinatorics
-old: true
+tags: zzz
+hide: true
 ---
 
 最近遇到一个问题：给出二分图$G(V_1,V_2,E)$，$E\subset V_1 \times V_2$求两侧顶点排序使得边的交叉数量最少。
@@ -16,7 +16,7 @@ old: true
 这种情况下下我们可以被固定的$V_2$编号，然后对于可动的$V_1$的某个排列，按顺序写出$V_1$中每个点连接到的$V_2$中的点的编号，
 形成了一个序列，交叉点的数量相当于序列当中的逆序对数
 
-![ex1]({{url}}/assets/image/../../../../assets/image/bipartitedrawingprob.png)
+![ex1](/images/bipartite-drawing/bipartitedrawingprob.png)
 
 写出的序列为V_1: ```[1 2] [1 4] [1 3]```
 
@@ -47,7 +47,7 @@ old: true
 ### 3 one side local search
 
 固定一侧找另一侧最优解的local search不能找到最优解
-![ex2]({{url}}/assets/image/../../../../assets/image/bipartitedrawing_counterexample.png)
+![ex2](/images/bipartite-drawing/bipartitedrawing_counterexample.png)
 
 上图中固定任意一侧，另外一侧都已经达到最优解，但是下图说明更改中间两个点的位置可以让交叉只有两个。
 

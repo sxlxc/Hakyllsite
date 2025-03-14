@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Hall's Theorem"
-tags: alg, combinatorics
-old: true
+tags: zzz
+hide: true
 ---
 
 [bipartite perfect matching](https://cs.stackexchange.com/questions/50410/perfect-matching-in-a-graph-and-complete-matching-in-bipartite-graph)
@@ -23,7 +23,7 @@ Consider finite set $X$ and a collection $A_1,A_2,...,A_n$ of subsets of $X$. A 
 ### proof
 这是 proofs from the book 给出的一个证明
 
-![proof]({{url}}/assets/image/Hall'sTheorem.jpg)
+![proof](/images/Hall/Hall'sTheorem.jpg)
 
 [这是在图上的证明](https://homes.cs.washington.edu/~anuprao/pubs/CSE599sExtremal/lecture6.pdf)
 
@@ -33,7 +33,7 @@ Consider finite set $X$ and a collection $A_1,A_2,...,A_n$ of subsets of $X$. A 
 
 proofs from the book 上这章竟然有一道课后题
 
-![exercise]({{url}}/assets/image/Hall'sTheorem_exercise.jpg)
+![exercise](/images/Hall/Hall'sTheorem_exercise.jpg)
 
 从二分图来考虑我觉得总是比集合要直观一点. 我们证明对于任意的k，这样的图都满足 Hall's theorem 的条件。然后总存在一个匹配，把所有匹配边删掉，图左侧的点度数都是 k-1， 右侧的点度数都小于等于k-1，又满足 Hall's theorem.
 

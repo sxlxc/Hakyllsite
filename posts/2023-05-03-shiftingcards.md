@@ -2,7 +2,8 @@
 layout: post
 title:  "Shifting Cards"
 date:   2023-05-03 0:00:00 +0800
-old: true
+hide: true
+tags: zzz
 ---
 
 [hackmd.io](https://hackmd.io/@r1NLzG2QQuKF14FgHKxugg/r1kQ4V67n)搬过来的
