@@ -81,6 +81,24 @@ src: local(STSongti-SC-Regular);
     src: url('/fonts/LibertinusSerif-BoldItalic.woff2') format('woff2');
 }
 @font-face {
+    font-family: 'LinBiolinum'; /* normal */
+    src: url('/fonts/LinBiolinum_R.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'LinBiolinum'; /* italic */
+    src: url('/fonts/LinBiolinum_RI.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'LinBiolinum'; /* bold */
+    src: url('/fonts/LinBiolinum_RB.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
     font-family: 'serifsc';
     font-weight: normal;
     font-style: normal;
@@ -156,6 +174,7 @@ nav {
 }
 
 nav a {
+    font-family: "LinBiolinum";
     font-size: 1.4rem;
     color: #555;
     margin-left: 12px;
@@ -420,10 +439,10 @@ ul.posts {
         padding: 0;
     }
 
-    header {
+    /* header {
         margin: 0 0 3rem;
         padding: 0.5em 0 0 0;
-    }
+    } */
 
     nav {
         margin: 0;
