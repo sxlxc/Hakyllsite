@@ -14,6 +14,13 @@
   </url>
 
   <url>
+    <loc>https://talldoor.uk/posts/detectingSBO.html</loc>
+    <!-- <lastmod>March 22, 2025</lastmod> -->
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://talldoor.uk/posts/lp_with_box_constraints.html</loc>
     <!-- <lastmod>March 13, 2025</lastmod> -->
     <changefreq>weekly</changefreq>

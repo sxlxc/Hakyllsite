@@ -5,9 +5,13 @@
     </li>
     <ul> 
       $for(posts)$
+        $if(hide)$
+              
+        $else$
       <li>
         <a href="$url$">$title$</a> - $date$
       </li>
+        $endif$
       $endfor$
     </ul>
     $endfor$
