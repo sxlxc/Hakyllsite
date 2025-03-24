@@ -1,9 +1,10 @@
 ---
-title: On matroid base packing and covering
+title: On matroid base packing and covering I
 tags:  matroid, optimization, combinatorics
 author: Yu Cong
 lang: en
 # draft: true
+date: 2025-01-04
 ---
 
 \DeclareMathOperator{\B}{\mathcal B}
