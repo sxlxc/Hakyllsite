@@ -26,3 +26,6 @@ I’m a first year PhD student in combinatorial optimization at the University o
      \\   \\ 
 </pre>
 
+### A typical character in DARK SOULS™ III
+
+<img src="/images/404.png" alt="Description" style="width: 250px;">
