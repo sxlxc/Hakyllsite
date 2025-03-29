@@ -1,5 +1,10 @@
 _cache/
 dist-newstyle/
 .DS_Store
-katex_cli
 .vscode/
+cache/
+packagedb/
+build/
+# binaries
+katex_cli
+site
