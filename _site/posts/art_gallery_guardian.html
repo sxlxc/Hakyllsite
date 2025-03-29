@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>talldoor - Quicknote: Art gallery guardian</title>
+        <title>talldoor - Art gallery guardian</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="../css/default.css" />
@@ -27,7 +27,7 @@
         </header>
 
         <main role="main">
-            <h1 class="pagetitle">Quicknote: Art gallery guardian</h1>
+            <h1 class="pagetitle">Art gallery guardian</h1>
             <article>
     <section class="subtitle">
         
@@ -61,8 +61,8 @@ vertices with one of the three colors is sufficient. The complexity
 follows from the fact that triangulation for simple polygon can be done
 in <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.023em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.773em;"><span style="top:-3.1473em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> and finding a
 3-coloring in outerplanar graph takes linear time.</p>
-<p>Note that section 3.4 of <em>Computational Geometry:Algorithms and
-Applications</em> contains useful comments. There is even a <a href="https://www.science.smith.edu/~jorourke/books/ArtGalleryTheorems/Art_Gallery_Full_Book.pdf">book</a>
+<p>Note that section 3.4 of <a href="https://link.springer.com/book/10.1007/978-3-540-77974-2">the
+book</a> contains useful comments. There is even a <a href="https://www.science.smith.edu/~jorourke/books/ArtGalleryTheorems/Art_Gallery_Full_Book.pdf">book</a>
 on the art gallery guardian problem. In section 1.4 the author discussed
 convex partition which is partly what i’m thinking about while reading
 that CG book.</p>
@@ -71,6 +71,14 @@ minimum number of convex decomposition is also an upperbound for the art
 gallery guardian problem. However, I can only find bounds for optimal
 convex decomposition with respect to the number of reflex
 vertices(degree &gt; π)…</p>
+<p>Cameras can do even better than convex partitioning.</p>
+<figure>
+<img src="../images/art_gallery_guardian/ex.jpeg" alt="1 camera is sufficient" style="width: 250px;" />
+1 camera is sufficient
+</figure>
+<p>This kind of convex decomposition (maybe convex polytope covering? I
+will check <a href="https://summit.sfu.ca/libraries/pdf.js/web/viewer.html?file=%2F%2Fsummit.sfu.ca%2F_flysystem%2Ffedora%2Fsfu_migrate%2F6812%2Fb17620697.pdf">this
+thesis</a> when i find time.) is not described <a href="https://en.wikipedia.org/wiki/Polygon_partition#Partition_a_polygon_into_convex_polygons">here</a>.</p>
     </section>
 </article>
 
