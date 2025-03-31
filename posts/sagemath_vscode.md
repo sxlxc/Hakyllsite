@@ -1,9 +1,9 @@
 ---
-title: Add SageMath to pylance
+title: Add SageMath to pylance?
 tags: sage
 author: Yu Cong
 lang: en
-draft: true
+# draft: true
 date: 2025-01-24
 ---
 
@@ -24,3 +24,11 @@ It turns out that you can just type `sage --python`... and everything works
 
 A large part of sage is written in cython, so pylance still works bad on this.
 It would be nice if someone can write a language server for sage.
+
+------------
+
+**update on March 31st**
+
+The best way to install sage: <https://doc.sagemath.org/html/en/installation/conda.html#sec-installation-conda>
+
+Works well with vscode.
