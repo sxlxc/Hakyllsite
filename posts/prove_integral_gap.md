@@ -7,10 +7,78 @@ draft: true
 date: 2025-04-01
 ---
 
+\DeclareMathOperator*{\opt}{OPT}
+
+Proving integral gap of linear programs are generally hard. It would be great if one can classify LPs with a constant gap. It is known that deciding whether a polyhedron is integral is co-NP-complete [@ding_complexity_2008]. 
+I am interested in techniques for proving constant integral gap.
+
+Here are some methods I read somewhere.
+
 # Counting
 
+Just do the counting.
+
+An example would be the celebrated tree packing theorem.
+
+Consider the following IP on graph $G=(V,E)$,
+\begin{align*}
+\lambda=\min& \quad \sum_{e\in E} x_e\\
+s.t.& \quad \sum_{e\in T} x_e \ge 1 \quad \forall T\in \mathcal T \\
+ & \phantom{\quad \sum_{e\in T}} x_e\in\Z_{\ge 0} \quad \forall e\in E
+\end{align*}
+
+where $\mathcal T$ is the set of spanning tree in $G$.
+Let $\tau$ be the optimum of the linear relaxation.
+
+::: Theorem
+$\lambda \le 2 \tau$.
+:::
+
+Note that the optimum solution to $\lambda$ is the minimum cut in $G$.
+It is known that $\tau$ is the maximum tree packing in $G$ and $\tau=\min\limits_{F\subset E}\frac{|E-F|}{r(E)-r(F)}$, where $r$ is the rank of the graphic matroid on $G$ [@Schrijver2004].
+Then the proof is a simple counting argument.
+
+::: Proof
+If $G$ is not connected, Let $G_1,...,G_k$ be the set of components in $G$. One can easily see that the gap of $G$ is at most the largest gap of the components. Thus considering connected graphs is sufficient.
+
+We fix $F^*\in \arg\min \frac{|E-F^*|}{r(E)-r(F^*)}$. $r(E)-r(F^*)$ must be positive and $E-F^*$ is a cut in $G$. Suppose $E-F^*$ is any cut in $G$. Let $S_1,...,S_h$ be components in $G\setminus (E\setminus F^*)$. For any $S_i$, the set of edges with exactly one endpoint in $S_i$ (denoted by $e[S_i]$) must contain a cut of $G$ since the $G$ is connected. One can see that $2|E-F^*|=\sum_i |e[S_i]|\ge \lambda (r(E)-r(F))$ since the number of component is $r(E)-r(F^*)$.
+:::
 
 # Approximation algorithm
 
+...
 
 # Intermediate problem
+
+I read this in [@chalermsook_approximating_2022]. Suppose that we want to prove constant gap for $LP1$. The idea is to find another LP (say $LP2$) which is integral or has constant gap and to prove that $\frac{\opt(IP1)}{\opt(IP2)}\le c_1$ and $\frac{\opt(LP2)}{\opt(LP1)}\le c_2$. Finally we will have something like this,
+
+\begin{equation}
+\opt(IP1)\le c_1\opt(IP2)= c_1 \opt(LP2)\le c_1 c_2 \opt(LP1)
+\end{equation}
+
+The example in [@chalermsook_approximating_2022] is finding the minimum $k$-edge-connected spanning subgraph.
+
+
+We want to prove that the integral gap for the following LP is 2.
+
+\begin{align*}
+LP1=\min \quad&\sum_{e\in E} w(e)x_e\\
+s.t. \quad&\sum_{e\in C} x_e\ge k \quad \forall \text{cut $C$}\\
+\phantom{s.t. \quad} & 0\le x_e\le 1 \quad \forall e\in E
+\end{align*}
+
+(Finding the minimum $k$-edge-connected spanning subgraph of $G=(V,E)$)
+
+Now we construct LP2. Consider the bidirection version of $G$, denoted by $D=(V,A)$ where $A=\{(u,v),(v,u) \quad \forall (u,v)\in E\}$. Pick a special vertex $r$.
+
+\begin{align*}
+LP2=\min \quad&\sum_{e\in A} w(e)y_e\\
+s.t. \quad&\sum_{e\in \delta^+(S)} y_e\ge k \quad \forall S\subset V \land r\in S\\
+\phantom{s.t. \quad} & 0\le y_e\le 1 \quad \forall e\in E
+\end{align*}
+
+(Finding min k-arborescence)
+
+It is known that the polytope in LP2 is integral [@Schrijver2004]. Given any feasible solution of LP, for any edge $e=(u,v)\in E$ we set $y_{(u,v)}=y_{(v,u)}=x_e$. Thus the optimum of LP2 is no larger than $2\opt(LP)$ since $y$ is always feasible.
+
+On the other hand, given a feasible integral solution $y$ of LP2, we set $x_e=1$ if any orientation of $e$ is in $y$. It is clear from the definition of LP2 that $x_e$ is a feasible integral solution of LP. Hence, applying eq(1) proves that the integral gap of LP is 2. (Note that in this example $c_1=1$ and $c_2=2$)
