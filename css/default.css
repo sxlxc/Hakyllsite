@@ -1,60 +1,8 @@
 @font-face {
-font-family: "STSongti SC";
-src: local(STSongti-SC-Regular);
-}
-@font-face {
     font-family: 'LibertinusMath';
     font-weight: normal;
     font-style: normal;
     src: url('/fonts/LibertinusMath-Regular.woff2') format('woff2');
-}
-@font-face {
-    font-family: 'Tex Gyre Pagella';
-    font-weight: normal;
-    font-style: normal;
-    src: url('/fonts/texgyrepagella-regular.woff2') format('woff2');
-}
-@font-face {
-    font-family: 'Tex Gyre Pagella';
-    font-weight: normal;
-    font-style: italic;
-    src: url('/fonts/texgyrepagella-italic.woff2') format('woff2');
-}
-@font-face {
-    font-family: 'Tex Gyre Pagella';
-    font-weight: bold;
-    font-style: normal;
-    src: url('/fonts/texgyrepagella-bold.woff2') format('woff2');
-}
-@font-face {
-    font-family: 'Tex Gyre Pagella Math';
-    font-weight: normal;
-    font-style: normal;
-    src: url('/fonts/texgyrepagella-math.woff2') format('woff2');
-}
-@font-face {
-    font-family: 'Domitian';
-    font-weight: normal;
-    font-style: normal;
-    src: url('/fonts/Domitian-Roman.woff2') format('woff2');
-}
-@font-face {
-    font-family: 'Domitian';
-    font-weight: bold;
-    font-style: normal;
-    src: url('/fonts/Domitian-Bold.woff2') format('woff2');
-}
-@font-face {
-    font-family: 'Domitian';
-    font-weight: normal;
-    font-style: italic;
-    src: url('/fonts/Domitian-Italic.woff2') format('woff2');
-}
-@font-face {
-    font-family: 'Domitian';
-    font-weight: bold;
-    font-style: italic;
-    src: url('/fonts/Domitian-BoldItalic.woff2') format('woff2');
 }
 @font-face {
     font-family: 'LibertinusSerif';
@@ -82,27 +30,21 @@ src: local(STSongti-SC-Regular);
 }
 @font-face {
     font-family: 'LinBiolinum'; /* normal */
-    src: url('/fonts/LinBiolinum_R.woff') format('woff');
+    src: url('/fonts/LinBiolinum_R.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'LinBiolinum'; /* italic */
-    src: url('/fonts/LinBiolinum_RI.woff') format('woff');
+    src: url('/fonts/LinBiolinum_RI.woff2') format('woff2');
     font-weight: normal;
     font-style: italic;
 }
 @font-face {
     font-family: 'LinBiolinum'; /* bold */
-    src: url('/fonts/LinBiolinum_RB.woff') format('woff');
+    src: url('/fonts/LinBiolinum_RB.woff2') format('woff2');
     font-weight: bold;
     font-style: normal;
-}
-@font-face {
-    font-family: 'serifsc';
-    font-weight: normal;
-    font-style: normal;
-    src: url('/fonts/Songti-SC-Regular.woff2') format('woff2');
 }
 @font-face {
     font-family: 'neozhisong';
@@ -112,11 +54,7 @@ src: local(STSongti-SC-Regular);
 }
 
 body {
-    /* margin: 0px auto 0px auto;
-    width: 800px; */
-    /* font-family: 'Tex Gyre Pagella', "STSongti SC" , "serifsc", serif; */
-    /* font-family: 'Tex Gyre Pagella', "neozhisong",serif; */
-    font-family: 'LibertinusSerif', "neozhisong",serif;
+    font-family: 'LibertinusSerif', serif;
     font-size: 1.2em;
     line-height: 125%;
     color: black;
@@ -142,10 +80,6 @@ body a[title] {
 
 
 header {
-    /* margin-bottom: 0.2rem;
-    padding: 20px 0 20px 0; */
-    /* border-bottom: 1px solid black; */
-    /* text-align: left; */
     font-weight: bold;
 }
 
@@ -174,7 +108,7 @@ nav {
 }
 
 nav a {
-    font-family: "LinBiolinum";
+    font-family: "LinBiolinum", sans-serif;
     font-size: 1.4rem;
     color: #555555;
     margin-left: 12px;
@@ -191,7 +125,6 @@ nav a {
 
 
 footer {
-    border-top: solid 1px black;
     color: #555;
     font-size: 12px;
     margin-top: 30px;
@@ -434,8 +367,7 @@ ul.posts {
     body {
         width: auto;
         /* margin: 0 25% 0 25%; */
-        margin-left: calc(15% + (500 * ((100vw - 640px) / (3840 - 640))));
-        margin-right: calc(15% + (500 * ((100vw - 640px) / (3840 - 640))));
+        margin: 0 20% 0 20%;
         padding: 0;
     }
 
@@ -456,6 +388,7 @@ ul.posts {
 
     footer {
         text-align: right;
+        padding: 3pt 10pt 0 0;
     }
 
     .logo {
