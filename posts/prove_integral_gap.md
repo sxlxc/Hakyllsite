@@ -1,5 +1,5 @@
 ---
-title: Proving integral gap
+title: Proving constant integral gap for linear programs
 tags:  optimization
 author: Yu Cong
 lang: en
@@ -18,13 +18,13 @@ Here are some methods I read somewhere.
 
 Just do the counting.
 
-An example would be the celebrated tree packing theorem.
+**Example 1**   An example would be the celebrated tree packing theorem.
 
 Consider the following IP on graph $G=(V,E)$,
 \begin{align*}
-\lambda=\min& \quad \sum_{e\in E} x_e\\
-s.t.& \quad \sum_{e\in T} x_e \ge 1 \quad \forall T\in \mathcal T \\
- & \phantom{\quad \sum_{e\in T}} x_e\in\Z_{\ge 0} \quad \forall e\in E
+\lambda=\min&   &  \sum_{e\in E} x_e&       &   & \\
+s.t.&           &  \sum_{e\in T} x_e&\ge 1  &   &\forall T\in \mathcal T \\
+ &              &  x_e&\in\Z_{\ge 0}        &   &\forall e\in E
 \end{align*}
 
 where $\mathcal T$ is the set of spanning tree in $G$.
@@ -44,6 +44,16 @@ If $G$ is not connected, Let $G_1,...,G_k$ be the set of components in $G$. One 
 We fix $F^*\in \arg\min \frac{|E-F^*|}{r(E)-r(F^*)}$. $r(E)-r(F^*)$ must be positive and $E-F^*$ is a cut in $G$. Suppose $E-F^*$ is any cut in $G$. Let $S_1,...,S_h$ be components in $G\setminus (E\setminus F^*)$. For any $S_i$, the set of edges with exactly one endpoint in $S_i$ (denoted by $e[S_i]$) must contain a cut of $G$ since the $G$ is connected. One can see that $2|E-F^*|=\sum_i |e[S_i]|\ge \lambda (r(E)-r(F))$ since the number of component is $r(E)-r(F^*)$.
 :::
 
+**Example 2**   A stronger example is the $k$-cut LP.
+
+\begin{align*}
+\lambda_k=\min&   &  \sum_{e\in E} x_e&       &   & \\
+s.t.&             &  \sum_{e\in T} x_e&\ge k  &   &\forall T\in \mathcal T \\
+ &                &  0\le x_e&\le 1        &   &\forall e\in E
+\end{align*}
+
+The proof is in section 5 of [@chekuri_lp_2020]. Here is a sketch.
+
 # Approximation algorithm
 
 ...
@@ -62,9 +72,9 @@ The example in [@chalermsook_approximating_2022] is finding the minimum $k$-edge
 We want to prove that the integral gap for the following LP is 2.
 
 \begin{align*}
-LP1=\min \quad&\sum_{e\in E} w(e)x_e\\
-s.t. \quad&\sum_{e\in C} x_e\ge k \quad \forall \text{cut $C$}\\
-\phantom{s.t. \quad} & 0\le x_e\le 1 \quad \forall e\in E
+LP1=\min&   & \sum_{e\in E} w(e&)x_e    & &\\
+s.t.&       & \sum_{e\in C} x_e&\ge k    & &\forall \text{cut $C$}\\
+&           &  0\le x_e &\le 1    & &\forall e\in E
 \end{align*}
 
 (Finding the minimum $k$-edge-connected spanning subgraph of $G=(V,E)$)
@@ -72,9 +82,9 @@ s.t. \quad&\sum_{e\in C} x_e\ge k \quad \forall \text{cut $C$}\\
 Now we construct LP2. Consider the bidirection version of $G$, denoted by $D=(V,A)$ where $A=\{(u,v),(v,u) \quad \forall (u,v)\in E\}$. Pick a special vertex $r$.
 
 \begin{align*}
-LP2=\min \quad&\sum_{e\in A} w(e)y_e\\
-s.t. \quad&\sum_{e\in \delta^+(S)} y_e\ge k \quad \forall S\subset V \land r\in S\\
-\phantom{s.t. \quad} & 0\le y_e\le 1 \quad \forall e\in E
+LP2=\min&   & \sum_{e\in A} w(e)&y_e            & & \\
+s.t.&       & \sum_{e\in \delta^+(S)} y_e&\ge k & &\forall S\subset V \land r\in S\\
+ &          & 0\le y_e &\le 1                   &  &\forall e\in E
 \end{align*}
 
 (Finding min k-arborescence)
