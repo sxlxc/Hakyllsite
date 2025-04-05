@@ -3,7 +3,7 @@ title: Proving constant integral gap for linear programs
 tags:  optimization
 author: Yu Cong
 lang: en
-draft: true
+# draft: true
 date: 2025-04-01
 ---
 
@@ -70,7 +70,13 @@ For $k$-cut we cannot use the simple counting argument since the dual LP is not 
 
 # Approximation algorithm
 
-...
+A constant factor approximation algorithm based on LP may imply a constant upperbound of the corresponding LP.
+
+Examples:
+
+1. vertex cover and set cover: <https://courses.grainger.illinois.edu/cs598csc/sp2011/Lectures/lecture_4.pdf>
+2. facility location: <https://www.cs.dartmouth.edu/~deepc/LecNotes/Appx/5.%20Deterministic%20Rounding%20for%20Facility%20Location.pdf>
+
 
 # Intermediate problem
 
@@ -105,4 +111,4 @@ s.t.&       & \sum_{e\in \delta^+(S)} y_e&\ge k & &\forall S\subset V \land r\in
 
 It is known that the polytope in LP2 is integral [@Schrijver2004]. Given any feasible solution of LP, for any edge $e=(u,v)\in E$ we set $y_{(u,v)}=y_{(v,u)}=x_e$. Thus the optimum of LP2 is no larger than $2\opt(LP)$ since $y$ is always feasible.
 
-On the other hand, given a feasible integral solution $y$ of LP2, we set $x_e=1$ if any orientation of $e$ is in $y$. It is clear from the definition of LP2 that $x_e$ is a feasible integral solution of LP. Hence, applying eq(1) proves that the integral gap of LP is 2. (Note that in this example $c_1=1$ and $c_2=2$)
+On the other hand, given a feasible integral solution $y$ of LP2, we set $x_e=1$ if any orientation of $e$ is in $y$. It is clear from the definition of LP2 that $x_e$ is a feasible integral solution of LP. Hence, applying eq(1) proves that the integral gap of LP is 2. (Note that in this example $c_1=1$ and $c_2=2$.)
