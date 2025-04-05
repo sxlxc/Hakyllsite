@@ -8,19 +8,21 @@ date: 2025-04-01
 ---
 
 \DeclareMathOperator*{\opt}{OPT}
+\DeclareMathOperator*{\deg}{deg}
 
 Proving integral gap of linear programs are generally hard. It would be great if one can classify LPs with a constant gap. It is known that deciding whether a polyhedron is integral is co-NP-complete [@ding_complexity_2008]. 
-I am interested in techniques for proving constant integral gap.
+I am interested in techniques for proving constant upperbound for integral gaps of linear programs.
 
-Here are some methods I read somewhere.
+Here are some methods with examples that I read in books and papers.
 
 # Counting
 
 Just do the counting.
 
-**Example 1**   An example would be the celebrated tree packing theorem.
+An example would be the celebrated tree packing theorem.
 
-Consider the following IP on graph $G=(V,E)$,
+::: Example
+Consider the following integer program on graph $G=(V,E)$,
 \begin{align*}
 \lambda=\min&   &  \sum_{e\in E} x_e&       &   & \\
 s.t.&           &  \sum_{e\in T} x_e&\ge 1  &   &\forall T\in \mathcal T \\
@@ -29,6 +31,7 @@ s.t.&           &  \sum_{e\in T} x_e&\ge 1  &   &\forall T\in \mathcal T \\
 
 where $\mathcal T$ is the set of spanning tree in $G$.
 Let $\tau$ be the optimum of the linear relaxation.
+:::
 
 ::: Theorem
 $\lambda \le 2 \tau$.
@@ -44,15 +47,26 @@ If $G$ is not connected, Let $G_1,...,G_k$ be the set of components in $G$. One 
 We fix $F^*\in \arg\min \frac{|E-F^*|}{r(E)-r(F^*)}$. $r(E)-r(F^*)$ must be positive and $E-F^*$ is a cut in $G$. Suppose $E-F^*$ is any cut in $G$. Let $S_1,...,S_h$ be components in $G\setminus (E\setminus F^*)$. For any $S_i$, the set of edges with exactly one endpoint in $S_i$ (denoted by $e[S_i]$) must contain a cut of $G$ since the $G$ is connected. One can see that $2|E-F^*|=\sum_i |e[S_i]|\ge \lambda (r(E)-r(F))$ since the number of component is $r(E)-r(F^*)$.
 :::
 
-**Example 2**   A stronger example is the $k$-cut LP.
+A stronger example is the $k$-cut LP.
 
+::: Example
 \begin{align*}
-\lambda_k=\min&   &  \sum_{e\in E} x_e&       &   & \\
+\lambda_k=\min&   &  \sum_{e\in E} c(&e)x_e       &   & \\
 s.t.&             &  \sum_{e\in T} x_e&\ge k  &   &\forall T\in \mathcal T \\
  &                &  0\le x_e&\le 1        &   &\forall e\in E
 \end{align*}
+:::
+
+::: Theorem
+The integral gap of $\lambda_k$ is at most $2(1-1/n)$.
+:::
 
 The proof is in section 5 of [@chekuri_lp_2020]. Here is a sketch.
+
+For $k$-cut we cannot use the simple counting argument since the dual LP is not a tree packing. (the LP dual needs extra variables $z_e$ for constraints $x_e\le 1$.) However, it is still easy to find an upperbound for the integral optimum. If we sort vertices in increasing order of their degree, that is, $\deg(v_1)\le \dots \le \deg(v_n)$, then $\sum_{i=1}^{k-1} \deg(v_i)$ is an upperbound for integral $k$-cut. Then it is easy to prove that if the optimal solution $x^*$ to $\lambda_k$ is fully fractional ($x_e^*\in (0,1)$ for all $e\in E$), then the gap is $2(1-1/n)$. The proof is to use complemantary slackness conditions, i.e., $z_e=0,\sum_{e\in T}y_T=c(e)\;\forall e\in E$. The following observations reduce general $x^*$ to fully fractional case:
+
+1. Given an optimal solution $x^*$, let $X$ be the set of edges $e$ such that $x_e^*=0$. The optimum to $\lambda_k$ on $G/X$ is the same as on $G$.
+2. For an optimal solution $x^*$, let $F$ be the set of edges $e$ such that $x_e^*=1$. Let $x^*|_{E-F}$ be the restriction of $x^*$ to $E-F$. $x^*|_{E-F}$ is a fully fractional optimum solution to $\lambda_k$. (Some discussions are needed for the number of components in $G\setminus F$. The reduction can be done using the fact that if $1\leq \frac{\lambda}{\sigma}\le c$ then $1\le \frac{\lambda+k}{\sigma+k}\le c$.)
 
 # Approximation algorithm
 
