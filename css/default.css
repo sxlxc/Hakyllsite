@@ -51,12 +51,14 @@
     font-weight: normal;
     font-style: normal;
     src: url('/fonts/LXGWNeoZhiSongScreen.woff2') format('woff2');
+    size-adjust: 90%;
 }
 @font-face {
     font-family: 'SourceHanSerifSC';
     font-weight: normal;
     font-style: normal;
     src: url('/fonts/SourceHanSerifSC-VF-subset.woff2') format('woff2');
+    size-adjust: 90%;
 }
 
 body {
