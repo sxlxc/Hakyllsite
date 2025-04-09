@@ -70,6 +70,8 @@ body {
     line-height: 125%;
     color: black;
     background-color: white;
+    text-rendering: optimizeLegibility;
+    text-align: justify;
 }
 body a {
     color: #337ab7;
