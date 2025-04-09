@@ -20,7 +20,7 @@ Note that only one camera is needed for any convex polygon. So the minimum numbe
 Cameras can do even better than convex partitioning. 
 
 <figure>
-<img src="../images/art_gallery_guardian/ex.jpeg" alt="1 camera is sufficient" style="width: 250px;" />
+<img src="../images/art_gallery_guardian/ex.png" alt="1 camera is sufficient" style="width: 250px;" />
 1 camera is sufficient
 </figure>
 

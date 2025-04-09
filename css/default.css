@@ -184,11 +184,6 @@ article .header {
     text-align: left;
 }
 
-.logo a {
-    font-weight: bold;
-    color: #233;
-    text-decoration: none;
-}
 
 .info {
     color: darkgreen;
@@ -381,16 +376,10 @@ ul.posts {
 
 @media (min-width: 640px) {
     body {
-        width: auto;
-        /* margin: 0 25% 0 25%; */
-        margin: 0 20% 0 20%;
+        width: min(90vw, 876px);;
+        margin: auto;
         padding: 0;
     }
-
-    /* header {
-        margin: 0 0 3rem;
-        padding: 0.5em 0 0 0;
-    } */
 
     nav {
         margin: 0;
@@ -405,16 +394,6 @@ ul.posts {
     footer {
         text-align: right;
         padding: 3pt 10pt 0 0;
-    }
-
-    .logo {
-        margin: 0;
-        text-align: left;
-    }
-
-    .logo a {
-        float: left;
-        font-size: 1.8rem;
     }
 }
 @media print
