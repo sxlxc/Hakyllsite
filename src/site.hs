@@ -1,5 +1,5 @@
 {-# LANGUAGE BlockArguments #-}
--- {-# LANGUAGE LambdaCase #-}
+{-# LANGUAGE LambdaCase #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE ViewPatterns #-}
@@ -15,6 +15,14 @@ import System.IO.Unsafe
 import Text.Pandoc
 import Text.Pandoc.Citeproc
 -- import Text.Pandoc.Walk (walkM)
+-- inports copied form https://vaibhavsagar.com/blog/2023/01/29/ghc-syntax-hakyll/
+import           GHC.SyntaxHighlighter (Token(..), tokenizeHaskell)
+import           Text.Blaze.Html.Renderer.Text (renderHtml)
+import           Text.Pandoc.Definition (Block (CodeBlock, RawBlock), Pandoc)
+import           Text.Pandoc.Walk (walk)
+import qualified Text.Blaze.Html5 as H
+import qualified Text.Blaze.Html5.Attributes as A
+import qualified Data.Text.Lazy as L
 
 root :: String
 root = "https://talldoor.uk"
@@ -217,7 +225,7 @@ bibFile = "reference.bib"
 chaoDocCompiler :: Compiler (Item String)
 chaoDocCompiler = do
   ( getResourceBody
-      >>= myReadPandocBiblio chaoDocRead (T.pack cslFile) (T.pack bibFile) theoremFilter
+      >>= myReadPandocBiblio chaoDocRead (T.pack cslFile) (T.pack bibFile) codeAndTheoremFilter
     )
     <&> writePandocWith chaoDocWrite
 
@@ -256,3 +264,43 @@ myReadPandocBiblio ropt csl biblio filter item = do
                         filter pandoc -- here's the change
                         -- let a x = itemSetBody (pandoc' x)
   return $ fmap (const pandoc') item
+
+
+-- code highlighting filter from https://vaibhavsagar.com/blog/2023/01/29/ghc-syntax-hakyll/
+-- Use this one and theoremFilter to make my own filter.
+ghcSyntaxHighlight :: Pandoc -> Pandoc
+ghcSyntaxHighlight = walk $ \case
+    CodeBlock (_, (isHaskell -> True):_, _) (tokenizeHaskell -> Just tokens) ->
+        RawBlock "html" . L.toStrict . renderHtml $ formatHaskellTokens tokens
+    block -> block
+    where isHaskell = (== "haskell")
+
+formatHaskellTokens :: [(Token, T.Text)] -> H.Html
+formatHaskellTokens tokens =
+    H.div H.! A.class_ "sourceCode" $
+        H.pre H.! A.class_ "sourceCode haskell" $
+            H.code H.! A.class_ "sourceCode haskell" $
+                mapM_ tokenToHtml tokens
+
+tokenToHtml :: (Token, T.Text) -> H.Html
+tokenToHtml (tokenClass -> className, text) =
+    H.span H.!? (not $ T.null className, A.class_ (H.toValue className)) $
+        H.toHtml text
+tokenClass :: Token -> T.Text
+tokenClass = \case
+    KeywordTok -> "kw"
+    PragmaTok -> "pp" -- Preprocessor
+    SymbolTok -> "ot" -- Other
+    VariableTok -> "va"
+    ConstructorTok -> "dt" -- DataType
+    OperatorTok -> "op"
+    CharTok -> "ch"
+    StringTok -> "st"
+    IntegerTok -> "dv" -- DecVal
+    RationalTok -> "dv" -- DecVal
+    CommentTok -> "co"
+    SpaceTok -> ""
+    OtherTok -> "ot"
+
+codeAndTheoremFilter :: Pandoc -> Pandoc
+codeAndTheoremFilter = ghcSyntaxHighlight . theoremFilter

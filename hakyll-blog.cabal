@@ -21,6 +21,8 @@ executable site
                   , regex-compat
                   , array
                   , filepath
+                  , ghc-syntax-highlighter
+                  , blaze-html >= 0.9
   ghc-options:    -Weverything
                   -Wno-implicit-prelude
                   -Wno-missing-import-lists
