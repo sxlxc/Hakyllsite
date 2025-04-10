@@ -1,0 +1,3 @@
+[submodule "katex_rust"]
+	path = katex_rust
+	url = git@github.com:chaoxu/katex_cli.git
