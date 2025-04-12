@@ -1,5 +1,5 @@
 ---
-title: Proving constant integral gap for linear programs
+title: Proving constant integrality gap for linear programs
 tags:  optimization
 author: Yu Cong
 lang: en
@@ -112,3 +112,13 @@ s.t.&       & \sum_{e\in \delta^+(S)} y_e&\ge k & &\forall S\subset V \land r\in
 It is known that the polytope in LP2 is integral [@Schrijver2004]. Given any feasible solution of LP, for any edge $e=(u,v)\in E$ we set $y_{(u,v)}=y_{(v,u)}=x_e$. Thus the optimum of LP2 is no larger than $2\opt(LP)$ since $y$ is always feasible.
 
 On the other hand, given a feasible integral solution $y$ of LP2, we set $x_e=1$ if any orientation of $e$ is in $y$. It is clear from the definition of LP2 that $x_e$ is a feasible integral solution of LP. Hence, applying eq(1) proves that the integral gap of LP is 2. (Note that in this example $c_1=1$ and $c_2=2$.)
+
+> Notes
+>
+> There are many discussions about the integrality gap on cstheory.
+>
+> 1. <https://cstheory.stackexchange.com/questions/30984/exactly-solvable-but-non-trivial-integrality-gap>
+> 2. <https://cstheory.stackexchange.com/questions/4915/integrality-gap-and-approximation-ratio>
+> 3. <https://cstheory.stackexchange.com/questions/392/the-importance-of-integrality-gap>
+> 4. <https://cstheory.stackexchange.com/questions/55188/randomized-rounding-schemes-that-depend-on-the-weights-in-the-lp-objective>
+> 5. <https://cstheory.stackexchange.com/questions/21060/optimization-problems-with-minimax-characterization-but-no-polynomial-time-algo>
