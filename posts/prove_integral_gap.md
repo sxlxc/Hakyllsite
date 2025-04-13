@@ -113,7 +113,7 @@ It is known that the polytope in LP2 is integral [@Schrijver2004]. Given any fea
 
 On the other hand, given a feasible integral solution $y$ of LP2, we set $x_e=1$ if any orientation of $e$ is in $y$. It is clear from the definition of LP2 that $x_e$ is a feasible integral solution of LP. Hence, applying eq(1) proves that the integral gap of LP is 2. (Note that in this example $c_1=1$ and $c_2=2$.)
 
-> Notes
+> *Notes*
 >
 > There are many discussions about the integrality gap on cstheory.
 >
@@ -122,3 +122,6 @@ On the other hand, given a feasible integral solution $y$ of LP2, we set $x_e=1$
 > 3. <https://cstheory.stackexchange.com/questions/392/the-importance-of-integrality-gap>
 > 4. <https://cstheory.stackexchange.com/questions/55188/randomized-rounding-schemes-that-depend-on-the-weights-in-the-lp-objective>
 > 5. <https://cstheory.stackexchange.com/questions/21060/optimization-problems-with-minimax-characterization-but-no-polynomial-time-algo>
+> 6. <https://cstheory.stackexchange.com/questions/3871/minimum-maximal-solutions-of-lps>
+> 
+> It seems that the integrality gap has a deep connection with hardness of approximation. I believe this kind of connections is more than empirical observations.
