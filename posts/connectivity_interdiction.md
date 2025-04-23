@@ -1,6 +1,6 @@
 ---
-title: Min-cut for certain level of connectivity
-tags: alg, combinatorics, optimization, 
+title: (Vertex) Connectivity Interdiction
+tags: alg, combinatorics, optimization
 lang: en
 author: Yu Cong
 # draft: true
@@ -12,6 +12,14 @@ As a natural generalization of min-cut, the following problem seems interesting 
 :::{.Problem #prob1}
 Given a graph $G=(V,E)$ and an integer $k$, find the minimum edge set whose removal breaks $k$-vertex connectivity?
 :::
+
+Alternatively, one can consider a closely related version of [@prob1],
+
+::: Problem
+Given a graph $G=(V,E)$ and an integer $k$, find an edge set $F\subset E$ with size at most $k$ whose removal minimizes the vertex connectivity of $G-F$.
+:::
+
+This problem can be called the "vertex connectivity interdiction". One can also consider the "algebraic connectivity interdiction" (the second smallest eigen value of the Laplacian matrix).
 
 # Checking $k$-vertex connectivity
 
@@ -40,7 +48,7 @@ With the knowledge of how to compute vertex connectivity, we try to compute the 
 
 There is a [list](https://lemon.cs.elte.hu/egres/open/Node-connectivity) of open problems on vertex(node) connectivity. I guess [@prob1] is NP-hard but cannot prove it.
 
-# Connectivity interdiction
+# (Edge) Connectivity interdiction
 
 Connectivity interdiction is first studied by Zenklusen [@zenklusen_connectivity_2014].
 
@@ -88,7 +96,9 @@ If one slightly modifies lemmas in section 2 in [@vygen_fptas_2024], there are s
 For unit cost, the optimum of normalized min-cut can be computed using the same complexity as connectivity interdiction (ignoring polylog factors) [@chalermsook_approximating_2022]. Consider the sequence $\set{\lambda_i=\frac{\min_{|F|\le i} w(C\setminus F)}{b+1-i}}$. If this is unimodal, $O(\log b)$ calls of connectivity interdiction algorithm should be sufficient. (Note that $b$ is at most $m$ since costs are unit.) However, one can easily see that this sequence is not unimodal. Thus I don't quite believe this claim.
 
 ## Comments on [@vygen_fptas_2024]
-
+<details>
+<summary>
+</summary>
 After reading [@chalermsook_approximating_2022], I finally know why the authors use [@normmincut] to solve connectivity interdiction. Almost all techniques they used are directly from [@chalermsook_approximating_2022]. Read section 2 of [@chalermsook_approximating_2022] until 2.2, you know almost everything needed for a FPTAS solving connectivity interdiction. In fact, the authors cite [@chalermsook_approximating_2022] in their paper,
 
 > In a recent paper of Chalermsook et el. [CHN+22] on survivable network design, the same problem was first introduced (under a diﬀerent name “minimum normalized free cut”) to deal with a certain boxing constraint in the LPs. There, a special case of unit-edge costs is actually solved as a technical necessity. To obtain an FPTAS in this paper, we emphasize that we do not need to solve the normalized min-cut problem per se, but rather we use its optimal solution as a certificate in the analysis of the weight function $\tilde{w}(i)$ in Theorem 3.
@@ -97,3 +107,5 @@ This paragraph is extremely misleading.
 There is no clearly indication that very similar (in fact, almost identical) results are proven [CHN+22]. Not to mention that the authors were somewhat avoiding my question (in my opinion) about Normalized min-cut(see [reweighting part](#reweighting)).
 
 It was mentioned in a footnote of [@chalermsook_approximating_2022] that a general version of normalized min-cut is used in [this paper](https://drops.dagstuhl.de/storage/00lipics/lipics-vol064-isaac2016/LIPIcs.ISAAC.2016.33/LIPIcs.ISAAC.2016.33.pdf), which in turn mentioned that normalized min-cut is an ordinary subroutine in MWU frameworks. This IPCO paper's writing style is toxic and causes huge waste of readers' time. I do not think this paper still can be accepted by IPCO if reviewers and PCs notice its relation with [CHN+22].
+
+</details>
