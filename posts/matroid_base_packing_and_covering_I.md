@@ -29,16 +29,16 @@ Given a matroid $M=(E,\I)$ and its bases $\B$, find
 These problems can be formulated with the following integer programs,
 base packing:
 \begin{align*}
-\max \; &\sum_{B\in\B} x_B\\
-s.t. \quad \sum_{B:e\in B} x_B &\leq 1 \quad \forall e\in E\\
-x_B&\in \set{0,1}
+\max&   &   \sum_{B\in\B} x_B&            &   &\\
+s.t.&   &   \sum_{B:e\in B} x_B &\leq 1   &   &\forall e\in E\\
+    &   &              x_B&\in \set{0,1}  &   &\forall \text{ base $B$}
 \end{align*}
 
 base covering:
 \begin{align*}
-\min \; &\sum_{B\in\B} x_B\\
-s.t. \quad \sum_{B:e\in B} x_B &\geq 1 \quad \forall e\in E\\
-x_B&\in \set{0,1}
+\min&   & \sum_{B\in\B} x_B&            &   &\\
+s.t.&   & \sum_{B:e\in B} x_B &\geq 1   &   &\forall e\in E\\
+    &   &            x_B&\in \set{0,1}  &   &\forall \text{ base $B$}
 \end{align*}
 
 In general integer programs are hard. Here the base packing and covering problems have
@@ -89,31 +89,31 @@ Maximum fractional base packing number is $\sigma(M)$.
 
 :::{.Proof}
 The proof is similar to the graph strength proof for tree packing in [@Schrijver2004].
-  Let $B(M)$ be the base polytope of $M$ and $\Pi$ be the powerset of $E$.
-  Consider the following linear programs,
-  \begin{align*}
-    LP1=\min& \quad lx\\
-    s.t.& \quad x\in B(M)
-  \end{align*}
+Let $B(M)$ be the base polytope of $M$ and $\Pi$ be the powerset of $E$.
+Consider the following linear programs,
+\begin{align*}
+LP1=\min&   &    lx&  \\
+    s.t.&   &    x&\in B(M)
+\end{align*}
 
-  \begin{align*}
-    LP2=\max \quad \sum_{F\subsetneq E} y_{E\setminus F}&(r(E)-r(F))\\
-    s.t. \quad \sum_{F\subsetneq E} y_{E\setminus F} \chi^{E\setminus F} & \leq l\\
-    y & \in \R^\Pi_+
-  \end{align*}
+\begin{align*}
+LP2=\max&   & \sum_{F\subsetneq E} y_{E\setminus F}(r(E)-r(F))&  \\
+    s.t.&   & \sum_{F\subsetneq E} y_{E\setminus F} \chi^{E\setminus F} & \leq l\\
+        &   &    y & \in \R^\Pi_+
+\end{align*}
 
-  and the dual of $LP2$,
-  \begin{align*}
-    LP3=\min& \quad lx\\
-    s.t. \quad x^T\chi^{E\setminus F} &\geq r(E)-r(F) \quad \forall F\subsetneq E\\
-    x&\in \R^E_+
-  \end{align*}  
-  
-  We first prove that the polyhedron in $LP3$, $Q=\{ x | x\geq 0,x^T\chi^{E\setminus F} \geq r(E)-r(F) \quad \forall F\subsetneq E\}$ is the base polytope of $M$. One can see that $B(M)\subseteq Q$. Now suppose $Q$ is larger than $B(M)$, there must exists $x\in Q$ such that $x(U)>r(U)$ for some $U\subseteq E$. Thus $\OPT(LP3)>\OPT(LP1)$. However, for the optimal solution $x$ to $LP1$ and any feasible solution $y$ to $LP2$ we have
-  \[
-    \OPT(LP1)\geq \sum_{F\subsetneq E} y_{E\setminus F}\chi^{E\setminus F}\cdot x = \sum_{F\subsetneq E} y_{E\setminus F} \left(\sum_{e\in E}x_e-\sum_{e\in F}x_e\right)\geq \sum_{F\subsetneq E} y_{E\setminus F} \left(r(E)-r(F)\right)=\OPT(LP3)
-  \]
-  Hence $Q=B(M)$.
+and the dual of $LP2$,
+\begin{align*}
+    LP3=\min&   &    lx&                                    &   &\\
+        s.t.&   &    x^T\chi^{E\setminus F} &\geq r(E)-r(F) &   &\forall F\subsetneq E\\
+            &   &           x&\in \R^E_+                    &   &
+\end{align*}  
+
+We first prove that the polyhedron in $LP3$, $Q=\{ x | x\geq 0,x^T\chi^{E\setminus F} \geq r(E)-r(F) \quad \forall F\subsetneq E\}$ is the base polytope of $M$. One can see that $B(M)\subseteq Q$. Now suppose $Q$ is larger than $B(M)$, there must exists $x\in Q$ such that $x(U)>r(U)$ for some $U\subseteq E$. Thus $\OPT(LP3)>\OPT(LP1)$. However, for the optimal solution $x$ to $LP1$ and any feasible solution $y$ to $LP2$ we have
+\[
+  \OPT(LP1)\geq \sum_{F\subsetneq E} y_{E\setminus F}\chi^{E\setminus F}\cdot x = \sum_{F\subsetneq E} y_{E\setminus F} \left(\sum_{e\in E}x_e-\sum_{e\in F}x_e\right)\geq \sum_{F\subsetneq E} y_{E\setminus F} \left(r(E)-r(F)\right)=\OPT(LP3)
+\]
+Hence $Q=B(M)$.
 
 Recall that $\sigma(M)=\min_{F\subsetneq E}\frac{|E\setminus F|}{r(E)-r(F)}$. 
 Note that $\sigma(M)\geq 1$. 
