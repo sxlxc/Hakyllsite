@@ -15,7 +15,7 @@ Given a graph $G=(V,E)$ and an integer $k$, find the minimum edge set whose remo
 
 Alternatively, one can consider a closely related version of [@prob1],
 
-::: Problem
+:::{.Problem #prob2}
 Given a graph $G=(V,E)$ and an integer $k$, find an edge set $F\subset E$ with size at most $k$ whose removal minimizes the vertex connectivity of $G-F$.
 :::
 
@@ -46,7 +46,7 @@ Finding the minimum edge set whose removal breaks the $k$-edge connectivity is "
 
 With the knowledge of how to compute vertex connectivity, we try to compute the minimum cut for $k$-vertex connectivity in a similar way. First we can find the vertex pair $(s,t)$ with the smallest number of internally disjoint paths. Note that we are dealing with the modified graph when computing the vertex connectivity number with flow. Hence the min-cut may contain edges that are not in the original graph, i.e., the edges connecting $v_{in}$ and $v_{out}$. For example, consider a graph where every edge has multiplicities 2. The min-cut reported by the flow algorithm should only contain edges between $v_{in}$ and $v_{out}$.
 
-There is a [list](https://lemon.cs.elte.hu/egres/open/Node-connectivity) of open problems on vertex(node) connectivity. I guess [@prob1] is NP-hard but cannot prove it.
+There is a [list](https://lemon.cs.elte.hu/egres/open/Node-connectivity) of open problems on vertex(node) connectivity. I guess [@prob1] is NP-hard but cannot prove it. However, the capacitated version of [@prob2] and [@prob1] is hard. Given a graph $G=(V,E)$ and edge weights $w:E\to \Z_{\geq 0}$ and costs $c:E\to \Z_{\geq 0}$ and a budget $b\geq 0$, find edge set $F\subset E$ such that $c(F)\leq b$ and such that removing $F$ minimizes the vertex connectivity of $G-F$. Similar to the edge connectivity case (which will be shown in the next section), if the cost $c$ is nontrivial then kanpsack is a special case of this problem. (Consider $G=K_n$ for some large $k$. Pick a $K_{n-1}$ in $G$ and set the cost of edges in $K_{n-1}$ to infinity.) How hard is [@prob2] if costs are trivial?
 
 # (Edge) Connectivity interdiction
 
