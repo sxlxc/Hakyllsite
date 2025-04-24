@@ -122,6 +122,8 @@ Hence $\sigma(M)=\max \{\lambda | \mathbf 1\in \lambda B(M)\}$ since $Q=B(M)$.
 For fixed $\lambda$, $\mathbf 1 \in \lambda B(M)$ if and only if there exists $\lambda_b\geq 0$ for all bases of $M$ such that $\sum_b \lambda_b=\lambda$ and $\sum_b \lambda_b \chi^b\leq 1$. Hence this shows $\sigma(M)$ is exactly the base packing LP $\max\{\sum_b{\lambda_b}| \sum_{b}\lambda_b\chi^b\leq 1,\lambda_b\geq 0\;\forall b\in B\}$.
 :::
 
+> Note that this proof is a straightforward generalization of the tree packing theorem in [@Schrijver2004], which is similar to the blocking polyhedra method described in [@schrijver_polyhedral_1986].
+
 ::: Theorem
 Minimum fractional base covering is $\alpha(M)$.
 :::
