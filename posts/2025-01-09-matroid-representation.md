@@ -1,5 +1,5 @@
 ---
-title: Notes on graphic matroid representation and cocircuit transversal
+title: Graphic matroid representation and cocircuit transversal
 tags: matroid
 author: Yu Cong
 lang: en

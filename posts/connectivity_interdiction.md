@@ -1,5 +1,5 @@
 ---
-title: (Vertex) Connectivity Interdiction
+title: Vertex and Edge Connectivity Interdiction
 tags: alg, combinatorics, optimization
 lang: en
 author: Yu Cong
@@ -20,6 +20,8 @@ Given a graph $G=(V,E)$ and an integer $k$, find an edge set $F\subset E$ with s
 :::
 
 This problem can be called the "vertex connectivity interdiction". One can also consider the "algebraic connectivity interdiction" (the second smallest eigen value of the Laplacian matrix).
+
+> In fact, I think [@prob2] is not well motivated. I am interested in it since there may be connections between breaking vertex connectivity and breaking combinatorial rigidity. However, it seems strange to consider interdiction problems on **edge** set for **vertex** connectivity. For vertex removal, this problem is easy (by splitting vertex and finding mincut).
 
 # Checking $k$-vertex connectivity
 

@@ -5,6 +5,10 @@ tags: macos
 lang: zh
 ---
 
+> 2024年八月之后, 就没有再使用自己编译的skim了, 键盘快捷键用的不多
+> 
+> 这个方法并不是十分完美, 修改 `scrollPoint` 之后不知道该如何更新边栏(目录和预览). 如果能做到更新边栏且平滑滚动就十分不错.
+
 skim 长这个样子(不是那个[fuzzy finder in rust](https://github.com/lotabout/skim))
 
 ![skim](/images/skim/skim.png)
@@ -60,5 +64,3 @@ skim 长这个样子(不是那个[fuzzy finder in rust](https://github.com/lotab
 编译, 找到skim.app, 扔到application里面, 结束!
 
 完全不会写objective c也能加点功能 :)
-
-八月之后, 就没有再使用自己编译的skim了, 键盘快捷键用的不多

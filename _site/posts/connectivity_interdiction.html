@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>talldoor - (Vertex) Connectivity Interdiction</title>
+        <title>talldoor - Vertex and Edge Connectivity Interdiction</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="../css/default.css" />
@@ -27,7 +27,7 @@
         </header>
 
         <main role="main">
-            <h1 class="pagetitle">(Vertex) Connectivity Interdiction</h1>
+            <h1 class="pagetitle">Vertex and Edge Connectivity Interdiction</h1>
             <article>
     <section class="subtitle">
         
@@ -64,6 +64,15 @@ connectivity of <span class="katex"><span class="katex-html" aria-hidden="true">
 <p>This problem can be called the “vertex connectivity interdiction”.
 One can also consider the “algebraic connectivity interdiction” (the
 second smallest eigen value of the Laplacian matrix).</p>
+<blockquote>
+<p>In fact, I think <a href="#prob2" title="Problem 2">Problem 2</a> is
+not well motivated. I am interested in it since there may be connections
+between breaking vertex connectivity and breaking combinatorial
+rigidity. However, it seems strange to consider interdiction problems on
+<strong>edge</strong> set for <strong>vertex</strong> connectivity. For
+vertex removal, this problem is easy (by splitting vertex and finding
+mincut).</p>
+</blockquote>
 <h1 data-number="1" id="checking-k-vertex-connectivity"><span class="header-section-number">1</span> Checking <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>-vertex connectivity</h1>
 <p>Checking if a given graph is <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>-vertex connected <a href="https://en.wikipedia.org/wiki/K-vertex-connected_graph#Computational_complexity">can
 be done in polynomial time</a>. By <a href="https://en.wikipedia.org/wiki/Menger%27s_theorem">Menger’s
