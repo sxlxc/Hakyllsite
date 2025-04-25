@@ -5,9 +5,11 @@ author: Yu Cong
 lang: zh
 ---
 
-操作系统作业要写一下死锁检测 https://en.wikipedia.org/wiki/Banker's_algorithm 里面有一步大概是在所有进程的 required_resources 对应的向量里面找小于系统 available_resources 对应的向量, 更新 available_resources 再找, 重复这样的过程. 实际上就是在一些$m$维的点里面不断询问给定的一个 axis parallel box 当中的点是哪些. 想用kd-tree让这个过程跑的更快一些, 于是开始找c++的kd-tree实现.
+> 2025年4月25日更新. 最近有UCR做并行的同学来访问, [讲$k$d-tree](https://tcsuestc.com/2025/04/22/parallel-kd-tree-with-batch-updates/), 写的十分好.
 
-理想的 implementation 应该是这样的: 点的类型是一个模板参数, kd-tree只要求这个点的类型重载了<=和[], 分别用来定义点的严格大小关系和取出第k维的值, 另外每个维度的值也应该重载<=, 应该真的支持k维的点, 期望复杂度能做到和理论一致 https://en.wikipedia.org/wiki/K-d_tree, 支持删除插入...
+操作系统作业要写一下死锁检测 <https://en.wikipedia.org/wiki/Banker's_algorithm> 里面有一步大概是在所有进程的 required_resources 对应的向量里面找小于系统 available_resources 对应的向量, 更新 available_resources 再找, 重复这样的过程. 实际上就是在一些$m$维的点里面不断询问给定的一个 axis parallel box 当中的点是哪些. 想用kd-tree让这个过程跑的更快一些, 于是开始找c++的kd-tree实现.
+
+理想的 implementation 应该是这样的: 点的类型是一个模板参数, kd-tree只要求这个点的类型重载了<=和[], 分别用来定义点的严格大小关系和取出第k维的值, 另外每个维度的值也应该重载<=, 应该真的支持k维的点, 期望复杂度能做到和理论一致 <https://en.wikipedia.org/wiki/K-d_tree>, 支持删除插入...
 
 大概找了三个实现:
 

@@ -45,8 +45,10 @@
         
     </div>    
     <section>
-        <p>操作系统作业要写一下死锁检测
-https://en.wikipedia.org/wiki/Banker’s_algorithm
+        <blockquote>
+<p>2025年4月25日更新. 最近有UCR做并行的同学来访问, <a href="https://tcsuestc.com/2025/04/22/parallel-kd-tree-with-batch-updates/">讲<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>d-tree</a>, 写的十分好.</p>
+</blockquote>
+<p>操作系统作业要写一下死锁检测 <a href="https://en.wikipedia.org/wiki/Banker's_algorithm" class="uri">https://en.wikipedia.org/wiki/Banker's_algorithm</a>
 里面有一步大概是在所有进程的 required_resources 对应的向量里面找小于系统
 available_resources 对应的向量, 更新 available_resources 再找,
 重复这样的过程. 实际上就是在一些<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span>维的点里面不断询问给定的一个 axis parallel
@@ -56,7 +58,7 @@ box 当中的点是哪些. 想用kd-tree让这个过程跑的更快一些,
 kd-tree只要求这个点的类型重载了&lt;=和[],
 分别用来定义点的严格大小关系和取出第k维的值,
 另外每个维度的值也应该重载&lt;=, 应该真的支持k维的点,
-期望复杂度能做到和理论一致 https://en.wikipedia.org/wiki/K-d_tree,
+期望复杂度能做到和理论一致 <a href="https://en.wikipedia.org/wiki/K-d_tree" class="uri">https://en.wikipedia.org/wiki/K-d_tree</a>,
 支持删除插入…</p>
 <p>大概找了三个实现:</p>
 <ul>
