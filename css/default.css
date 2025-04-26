@@ -47,13 +47,6 @@
     font-style: normal;
 }
 @font-face {
-    font-family: 'neozhisong';
-    font-weight: normal;
-    font-style: normal;
-    src: url('/fonts/LXGWNeoZhiSongScreen.woff2') format('woff2');
-    size-adjust: 90%;
-}
-@font-face {
     font-family: 'SourceHanSerifSC';
     font-weight: normal;
     font-style: normal;
@@ -91,6 +84,9 @@ body a[title] {
     color: darkolivegreen;
 }
 
+
+p { hyphens: auto; }
+a.url { word-break: break-all; }
 
 header {
     font-weight: bold;
@@ -147,8 +143,11 @@ footer {
     color: #555;
     font-size: 12px;
     margin-top: 30px;
-    padding: 6px 0px 6px 0px;
-    text-align: right
+    text-align: right;
+    padding: 3pt 10pt 0 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    text-align: left;
 }
 .pagetitle{
     /* margin-top: 2em; */
@@ -358,24 +357,21 @@ ul.posts {
         width: 90%;
         margin: 0;
         padding: 0 5%;
-        font-size: 1em;
-    }
-    nav a {
-        font-size: 1.4em;
     }
     .navright{
         overflow-x: auto;
         overflow-y: hidden;
         white-space: nowrap;
     }
-
-    header {
-        margin: 1rem 0;
+    .katex-display {
+        overflow-x:auto;
+        overflow-y:hidden;
     }
-    footer {
-        font-size: 10px;
+    .katex-display > .katex > .katex-html > .tag {
+        display: inline-block;
+        position: relative;
+        padding-left: 10pt;
     }
-
 }
 
 @media (min-width: 640px) {
@@ -395,10 +391,6 @@ ul.posts {
         display: inline;
     }
 
-    footer {
-        text-align: right;
-        padding: 3pt 10pt 0 0;
-    }
 }
 @media print
 {    
@@ -407,8 +399,6 @@ ul.posts {
         display: none !important;
     }
     body{
-        font-size: 90%;
         margin: auto;
-        /* width: 90%; */
     }
 }
