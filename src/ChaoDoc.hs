@@ -1,20 +1,11 @@
 {-# LANGUAGE OverloadedStrings #-}
 module ChaoDoc ( chaoDocRead, chaoDocWrite, theoremFilter, chaoDocInline) where
 import Text.Pandoc
-import Text.Regex (mkRegex, matchRegex)
 import Data.Maybe
-import Text.Pandoc.Writers.HTML
 import Data.Text (Text, unpack, pack)
-import Data.Set (insert)
-import System.Environment (getArgs)
-import System.IO.Unsafe
-import Data.Array((!))
-import Data.Bits((.|.))
 import Data.Either
-import Text.Pandoc.Builder
 import Text.Pandoc.Walk (walk,walkM,query)
-import Text.Pandoc.Definition
-import Data.List
+import Data.List ( intersect )
 import qualified Data.Map as M
 import Control.Monad.State
 

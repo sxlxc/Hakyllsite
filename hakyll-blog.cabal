@@ -8,7 +8,7 @@ executable site
   hs-source-dirs:   src
   main-is:          site.hs
   other-modules:    ChaoDoc
-  build-depends:    base   == 4.*
+  build-depends:    base   >= 4.18
                   , hakyll >= 4.15
                   , mtl >= 2.2.2
                   , pandoc
@@ -17,12 +17,12 @@ executable site
                   , tagsoup
                   , text
                   , containers
-                  , process
-                  , regex-compat
+                  -- , process
+                  -- , regex-compat
                   , array
                   , filepath
-                  , ghc-syntax-highlighter
-                  , blaze-html >= 0.9
+                  -- , ghc-syntax-highlighter
+                  -- , blaze-html >= 0.9
   ghc-options:    -Weverything
                   -Wno-implicit-prelude
                   -Wno-missing-import-lists
