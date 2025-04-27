@@ -14,15 +14,14 @@ import Hakyll
 import System.IO.Unsafe
 import Text.Pandoc
 import Text.Pandoc.Citeproc
--- import Text.Pandoc.Walk (walkM)
--- inports copied form https://vaibhavsagar.com/blog/2023/01/29/ghc-syntax-hakyll/
-import           GHC.SyntaxHighlighter (Token(..), tokenizeHaskell)
-import           Text.Blaze.Html.Renderer.Text (renderHtml)
-import           Text.Pandoc.Definition (Block (CodeBlock, RawBlock), Pandoc)
-import           Text.Pandoc.Walk (walk)
-import qualified Text.Blaze.Html5 as H
-import qualified Text.Blaze.Html5.Attributes as A
-import qualified Data.Text.Lazy as L
+-- -- inports copied form https://vaibhavsagar.com/blog/2023/01/29/ghc-syntax-hakyll/
+-- import           GHC.SyntaxHighlighter (Token(..), tokenizeHaskell)
+-- import           Text.Blaze.Html.Renderer.Text (renderHtml)
+-- import           Text.Pandoc.Definition (Block (CodeBlock, RawBlock), Pandoc)
+-- import           Text.Pandoc.Walk (walk)
+-- import qualified Text.Blaze.Html5 as H
+-- import qualified Text.Blaze.Html5.Attributes as A
+-- import qualified Data.Text.Lazy as L
 
 root :: String
 root = "https://talldoor.uk"
