@@ -45,8 +45,7 @@ In general integer programs are hard. Here the base packing and covering problem
 exponential number of variables. If nothing is known for these two problems, people 
 natually study their linear relaxation.
 
-> Just a note. It is widely known that any linear program with a rank-$m$ constraint 
-> matrix has a support with size no larger than $m$. For similar problem on integer programming,
+> Just a note. ~~It is widely known that any linear program with a rank-$m$ constraint matrix has a support with size no larger than $m$???~~ For similar problem on integer programming,
 > one might think that there is also a small support based on the knowledge that the optimal 
 > solution for the integer program is simply a integer point inside the feasible region.
 > However, the size of support for integer programs is not that small. Currently the best known 
