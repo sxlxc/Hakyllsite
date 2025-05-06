@@ -27,4 +27,15 @@ However, LP(1) is **not** [the dual of Max-flow](https://en.wikipedia.org/wiki/M
 
 Given a linear program with a rank $r$ constraint matrix, what is the size of support of its optimal solution?
 
-This is mentioned in [a previous post](/posts/matroid_base_packing_and_covering_I.html). The description there is not precise. Consider
+This is mentioned in [a previous post](/posts/matroid_base_packing_and_covering_I.html). The description there is not precise. 
+Consider the following linear program,
+
+\begin{equation*}
+\begin{aligned}
+\min&   &   c^Tx&   \\
+s.t.&   &   Ax&\leq b\\
+    &   &   x&\geq 0
+\end{aligned}
+\end{equation*}
+
+Let $r$ be the rank of $A$. We may assume $b\geq0$. For any $c$ that this LP has a bounded solution, there must exist an optimal solution $x^*$ with support at most $r$.
