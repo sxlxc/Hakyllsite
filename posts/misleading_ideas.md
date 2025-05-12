@@ -1,7 +1,7 @@
 ---
 title: "\"Gotchas\" in Combinatorial Optimization"
 tags: optimization, alg
-author: 赵亚杰, 丛宇
+author: Yu Cong, Yajie Zhao and many others
 lang: en
 draft: true
 date: 2025-04-30
@@ -38,4 +38,4 @@ s.t.&   &   Ax&\leq b\\
 \end{aligned}
 \end{equation*}
 
-Let $r$ be the rank of $A$. We may assume $b\geq0$. For any $c$ that this LP has a bounded solution, there must exist an optimal solution $x^*$ with support at most $r$.
+Let $r$ be the rank of $A$. We may assume $b\geq0$. For any $c$ that this LP has a bounded solution, there must exist an optimal solution $x^*$ with support at most $r$. The argument is easy. There are at most $r$ tight constraints in $Ax\leq b$ and hence the optimal solution $x^*$ lies in the intersection of $\R^n_+$ and a rank $\geq n-r$ affine subspace.
