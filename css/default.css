@@ -1,61 +1,39 @@
-@font-face {
-    font-family: 'LibertinusMath';
-    font-weight: normal;
-    font-style: normal;
-    src: url('/fonts/LibertinusMath-Regular.woff2') format('woff2');
+
+/* fonts */
+.noto-sans-sc-regular {
+  font-family: "Noto Sans SC", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  size-adjust: 90%;
 }
-@font-face {
-    font-family: 'LibertinusSerif';
-    font-weight: normal;
-    font-style: normal;
-    src: url('/fonts/LibertinusSerif-Regular.woff2') format('woff2');
+
+.fira-sans-regular {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
-@font-face {
-    font-family: 'LibertinusSerif';
-    font-weight: bold;
-    font-style: normal;
-    src: url('/fonts/LibertinusSerif-Bold.woff2') format('woff2');
+
+.fira-sans-bold {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }
-@font-face {
-    font-family: 'LibertinusSerif';
-    font-weight: normal;
-    font-style: italic;
-    src: url('/fonts/LibertinusSerif-Italic.woff2') format('woff2');
+
+.fira-sans-regular-italic {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 400;
+  font-style: italic;
 }
-@font-face {
-    font-family: 'LibertinusSerif';
-    font-weight: bold;
-    font-style: italic;
-    src: url('/fonts/LibertinusSerif-BoldItalic.woff2') format('woff2');
-}
-@font-face {
-    font-family: 'LinBiolinum'; /* normal */
-    src: url('/fonts/LinBiolinum_R.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'LinBiolinum'; /* italic */
-    src: url('/fonts/LinBiolinum_RI.woff2') format('woff2');
-    font-weight: normal;
-    font-style: italic;
-}
-@font-face {
-    font-family: 'LinBiolinum'; /* bold */
-    src: url('/fonts/LinBiolinum_RB.woff2') format('woff2');
-    font-weight: bold;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'SourceHanSerifSC';
-    font-weight: normal;
-    font-style: normal;
-    src: url('/fonts/SourceHanSerifSC-VF-subset.woff2') format('woff2');
-    size-adjust: 90%;
+
+.fira-sans-bold-italic {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 700;
+  font-style: italic;
 }
 
 body {
-    font-family: 'LibertinusSerif', 'SourceHanSerifSC', serif;
+    font-family: 'Fira Sans', 'Noto Sans SC', serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
@@ -64,7 +42,6 @@ body {
     color: black;
     background-color: white;
     text-rendering: optimizeLegibility;
-    text-align: justify;
 }
 body a {
     color: #337ab7;
@@ -118,7 +95,7 @@ nav {
 }
 
 nav a {
-    font-family: "LinBiolinum", sans-serif;
+    font-family: "Fira Sans", sans-serif;
     font-size: 1.4rem;
     color: #555555;
     margin-left: 12px;
@@ -253,9 +230,9 @@ text-align: center;
     margin: 0 auto 0 auto;
     display: block;
 }
-.katex .mathnormal, .katex .mathrm, .katex .custom-Regular, .katex .amsrm {
+/* .katex .mathnormal, .katex .mathrm, .katex .custom-Regular, .katex .amsrm {
 	font-family: 'LibertinusMath';
-}
+} */
 
 .katex, .katex * {
     line-height: normal !important;
@@ -264,10 +241,10 @@ text-align: center;
 
 div.highlight,
 pre code {
-    margin: 0 auto;
+    margin: auto;
     padding: 10px;
     background: #eee;
-    overflow: scroll;
+    overflow: auto;
     display: block;
 }
 
@@ -279,49 +256,6 @@ code {
     border-radius: 2px;
 }
 
-.code-output {
-    margin: 0 auto;
-    padding: 10px;
-}
-
-.code-output code {
-    background-color: inherit;
-}
-
-.highlight pre {
-    margin: 0
-}
-
-.main-text {
-    margin-top: 2em
-}
-
-.sidenote {
-    position: absolute;
-    margin-left: 830px;
-    font-size: 1em;
-    color: #333
-}
-
-.sidenote ol {
-    margin: 0
-}
-
-.sidenote p {
-    margin: 5px 0 5px 0;
-    padding-right: 20px
-}
-
-.footnotes {
-    font-size: 1em;
-    color: #333;
-    display: none
-}
-
-ul.posts {
-    list-style: none;
-    padding-left: 0
-}
 
 .draft-notice {
     color: #fb4f4f;
@@ -329,22 +263,6 @@ ul.posts {
     text-align: center
 }
 
-.left {
-    float: left
-}
-
-.collection-seek h5 {
-    text-align: center;
-    height: 0;
-    margin: 0;
-    font-size: 0.9em
-}
-
-.collection-seek {
-    text-align: right;
-    height: 1em;
-    font-size: 0.9em
-}
 
 .subtitle {
     text-align: left;
