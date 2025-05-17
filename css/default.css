@@ -5,7 +5,6 @@
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  size-adjust: 90%;
 }
 
 .fira-sans-regular {
@@ -33,7 +32,7 @@
 }
 
 body {
-    font-family: 'Fira Sans', 'Noto Sans SC', serif;
+    font-family: 'Fira Sans', 'Noto Sans SC', sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
