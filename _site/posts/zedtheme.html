@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>talldoor - Zed theme for VSCode</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+SC&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/default.css" />
+        <link rel="stylesheet" href="../css/pygentize.css" />
+        <link rel="stylesheet" href="../css/chao-theorems.css">
+    
+    </head>
+    <body>
+        <header class="no-print">
+            <nav class="navbar">
+                <a href="../">Home</a>
+                <div class="navright">
+                    <a href="../draft.html">Drafts</a>
+                    <a href="../about.html">About</a>
+                    <!-- <a href="/contact.html">Contact</a> -->
+                    <a href="../archive.html">Archive</a>
+                    <a href="../tags.html">Tags</a>
+                </div>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1 class="pagetitle">Zed theme for VSCode</h1>
+            <article>
+    <section class="subtitle">
+        
+        
+    </section>
+    <section class="header">
+        Posted on May 19, 2025
+        
+            by Yu Cong
+        
+    </section>
+    <div class="info">
+        
+            Tags: <a title="All pages tagged 'zzz'." href="../tags/zzz.html" rel="tag">zzz</a>
+        
+    </div>    
+    <section>
+        <p><a href="https://zed.dev/">Zed</a> is a great editor. I especially
+like the One Light theme in Zed. But for some reasons I cannot fully
+switch to it.</p>
+<p>Throw the following into <code>settings.json</code> to make the Light
+Modern theme looks like Zed’s One Light.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="at">// colors from zed's one light theme</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">&quot;editor.lineHeight&quot;</span><span class="kw">:</span><span class="at"> 1.6,</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">&quot;workbench.colorTheme&quot;</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Default Light Modern&quot;</span><span class="er">,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">&quot;workbench.colorCustomizations&quot;</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">&quot;titleBar.activeBackground&quot;</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;#dcdcdd&quot;</span><span class="kw">,</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">&quot;titleBar.inactiveBackground&quot;</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;#dcdcdd&quot;</span><span class="kw">,</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">&quot;editor.lineHighlightBackground&quot;</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;#efeff0&quot;</span><span class="kw">,</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">&quot;editor.lineHighlightBorder&quot;</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;#efeff0&quot;</span><span class="kw">,</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">&quot;tab.activeBackground&quot;</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;#fafafb&quot;</span><span class="kw">,</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">&quot;tab.inactiveBackground&quot;</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;#ebebec&quot;</span><span class="kw">,</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">&quot;tab.border&quot;</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;#c9c9ca&quot;</span><span class="kw">,</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">&quot;tab.activeBorder&quot;</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;#fafafb&quot;</span><span class="kw">,</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">&quot;tab.activeBorderTop&quot;</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;#fafafb&quot;</span><span class="kw">,</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">&quot;tab.selectedBorderTop&quot;</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;#fafafb&quot;</span><span class="kw">,</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">&quot;editorGroupHeader.tabsBackground&quot;</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;#ebebec&quot;</span><span class="kw">,</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">&quot;editorGroupHeader.border&quot;</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;#ebebec&quot;</span><span class="kw">,</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">&quot;statusBar.background&quot;</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;#dcdcdd&quot;</span><span class="kw">,</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">&quot;activityBar.background&quot;</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;#ebebec&quot;</span><span class="kw">,</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span><span class="at">,</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">&quot;editor.tokenColorCustomizations&quot;</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">&quot;textMateRules&quot;</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="kw">{</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="at">            </span><span class="fu">&quot;scope&quot;</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="at">                // in light_plus</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;constant.character&quot;</span><span class="kw">,</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;constant.other.option&quot;</span><span class="kw">,</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="at">                // in light_vs</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;meta.embedded&quot;</span><span class="kw">,</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;source.groovy.embedded&quot;</span><span class="kw">,</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;string meta.image.inline.markdown&quot;</span><span class="kw">,</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;variable.legacy.builtin.python&quot;</span><span class="kw">,</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;constant.language&quot;</span><span class="kw">,</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;meta.preprocessor&quot;</span><span class="kw">,</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;entity.name.function.preprocessor&quot;</span><span class="kw">,</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;storage&quot;</span><span class="kw">,</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;storage.type&quot;</span><span class="kw">,</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;storage.modifier&quot;</span><span class="kw">,</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;keyword.operator.noexcept&quot;</span><span class="kw">,</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;string.comment.buffered.block.pug&quot;</span><span class="kw">,</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;string.quoted.pug&quot;</span><span class="kw">,</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;string.interpolated.pug&quot;</span><span class="kw">,</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;string.unquoted.plain.in.yaml&quot;</span><span class="kw">,</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;string.unquoted.plain.out.yaml&quot;</span><span class="kw">,</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;string.unquoted.block.yaml&quot;</span><span class="kw">,</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;string.quoted.single.yaml&quot;</span><span class="kw">,</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;string.quoted.double.xml&quot;</span><span class="kw">,</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;string.quoted.single.xml&quot;</span><span class="kw">,</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;string.unquoted.cdata.xml&quot;</span><span class="kw">,</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;string.quoted.double.html&quot;</span><span class="kw">,</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;string.quoted.single.html&quot;</span><span class="kw">,</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;string.unquoted.html&quot;</span><span class="kw">,</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;string.quoted.single.handlebars&quot;</span><span class="kw">,</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;string.quoted.double.handlebars&quot;</span><span class="kw">,</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;punctuation.definition.template-expression.begin&quot;</span><span class="kw">,</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;punctuation.definition.template-expression.end&quot;</span><span class="kw">,</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;punctuation.section.embedded&quot;</span><span class="kw">,</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;keyword&quot;</span><span class="kw">,</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;keyword.control&quot;</span><span class="kw">,</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;keyword.operator.new&quot;</span><span class="kw">,</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;keyword.operator.expression&quot;</span><span class="kw">,</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;keyword.operator.cast&quot;</span><span class="kw">,</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;keyword.operator.sizeof&quot;</span><span class="kw">,</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;keyword.operator.alignof&quot;</span><span class="kw">,</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;keyword.operator.typeid&quot;</span><span class="kw">,</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;keyword.operator.alignas&quot;</span><span class="kw">,</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;keyword.operator.instanceof&quot;</span><span class="kw">,</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;keyword.operator.logical.python&quot;</span><span class="kw">,</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;keyword.operator.wordlike&quot;</span><span class="kw">,</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="st">&quot;variable.language&quot;</span><span class="kw">,</span></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="at">            </span><span class="kw">],</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="at">            </span><span class="fu">&quot;settings&quot;</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">&quot;foreground&quot;</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;#4e77ea&quot;</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="at">            </span><span class="kw">}</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="kw">},</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">]</span></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span><span class="at">,</span></span></code></pre></div>
+<figure>
+<img src="../images/zedtheme/example.png" alt="example" />
+<figcaption aria-hidden="true">example</figcaption>
+</figure>
+    </section>
+</article>
+
+        </main>
+
+        <footer class="no-print">
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>. 
+            <a href="https://github.com/congyu711/Hakyllsite">Source on Github</a>.
+            License <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0 </a>  <img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" alt="Creative Commons License" style="height: 12px; vertical-align: baseline;">
+
+        </footer>
+    </body>
+</html>
