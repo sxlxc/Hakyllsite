@@ -32,6 +32,7 @@ Throw the following into `settings.json` to make the Light Modern theme looks li
     "editorGroupHeader.border": "#ebebec",
     "statusBar.background": "#dcdcdd",
     "activityBar.background": "#ebebec",
+    "editorCursor.foreground": "#526FFF"
 },
 "editor.tokenColorCustomizations": {
     "textMateRules": [
