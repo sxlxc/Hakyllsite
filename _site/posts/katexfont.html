@@ -42,7 +42,7 @@
     <section class="header">
         Posted on May 25, 2025
         
-            by Yu Cong
+            by Yu Cong with help from many others
         
     </section>
     <div class="info">
@@ -53,7 +53,7 @@
     <section>
         <p><a href="https://github.com/firamath/firamath">Fira
 Math</a>这字体很不错, 想要在KaTeX中使用它.</p>
-<p>没用的链接:</p>
+<p>有用的链接:</p>
 <ol type="1">
 <li><a href="https://yingtongli.me/blog/2022/09/24/katex-custom-fonts.html" class="uri">https://yingtongli.me/blog/2022/09/24/katex-custom-fonts.html</a>
 – alphanumeric text only</li>
@@ -101,6 +101,18 @@ math到unicode的映射. 做完这个输出这样的东西</p>
 Math</li>
 <li>最后改改css或者先rebuild再改css之类的.</li>
 </ol>
+<p>在与 Fira Math 的<a href="https://stone-zeng.site/">作者</a>交流之后意识到:</p>
+<ul>
+<li>在 1. 中把Fira Math 像computer
+modern一样分成小文件可能可以避免让我需要修改大量KaTeX代码.
+KaTeX这样做是因为cm在TeX中是<a href="https://en.wikipedia.org/wiki/PostScript_fonts#Type_1">Type 1
+font</a>, 单个文件只能容纳256字符.</li>
+<li>Fira Math是<a href="https://en.wikipedia.org/wiki/OpenType">Open
+Type font</a>. glyph id 到对应字符的 unicode
+码位的映射已经包含在了字体的cmap表中. KaTeX生成的html里是unicode字符,
+所以我不需要为Fira Math修改<code>src/metrics/mapping.pl</code>,
+但是仍然需要对应的<code>src/fontMetricsData.js</code>.</li>
+</ul>
     </section>
 </article>
 
