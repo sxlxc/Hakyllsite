@@ -13,6 +13,8 @@ date: 2025-05-25
 
 1. <https://yingtongli.me/blog/2022/09/24/katex-custom-fonts.html> -- alphanumeric text only
 2. <https://github.com/KaTeX/KaTeX/discussions/3716>
+3. <https://github.com/firamath/firamath.github.io/blob/master/bibliography.md>
+4. <https://learn.microsoft.com/en-us/typography/opentype/spec/math>
 
 # $\KaTeX$ 字体部分如何工作?
 
