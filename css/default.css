@@ -90,20 +90,22 @@ header {
 /* Links inside the navbar */
 .navbar a {
     text-decoration: none;
+    color: black;
 }
 .navbar a:visited { 
-    color: #555555;
+    color: black;
+}
+.navbar a:hover {
+    text-decoration: none;
 }
 
 nav {
     text-align: right;
     border-bottom: solid 1px black;
-    padding-bottom: 2pt;
 }
 
 nav a {
     font-size: 1.2rem;
-    color: #555555;
     margin-left: 12px;
     display: inline-block;
     /* line-height: 24px;
