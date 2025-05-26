@@ -124,8 +124,11 @@ area表示一些unicode中缺少的符号,
 <div class="sourceCode" id="cb3"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="bn">0x0A</span> =&gt; <span class="bn">0xE010</span>,         <span class="co"># \nleqslant</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="bn">0x0B</span> =&gt; <span class="bn">0xE00F</span>,         <span class="co"># \ngeqslant</span></span></code></pre></div>
 <p>因为这些不是常用的符号,我决定先不管它.</p>
-<p>KaTeX_Main-Regular这些字体表现比较正常, 基本上都是Fira Math的子集,
-用<a href="https://github.com/congyu711/KaTeX/blob/main/fonts/mimic.py">这里</a>的代码转换.</p>
+<p>KaTeX_Main-Regular, KaTeX_Math-Italic.ttf 这些字体表现比较正常,
+基本都是Fira Math的子集, 用<a href="https://github.com/congyu711/KaTeX/blob/main/fonts/mimic.py">这里</a>的代码转换.
+对于KaTeX_AMS-Regular和KaTeX_Size{k} 这些字体就需要单独处理. Caligraphic
+和 Fraktur 字体Fira Math中也没有覆盖, Fira Math 本来就是sans serif字体,
+所以我觉得其他字体都可直接用KaTeX版本.</p>
     </section>
 </article>
 
