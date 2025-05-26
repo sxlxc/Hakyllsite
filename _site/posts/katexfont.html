@@ -115,6 +115,17 @@ Type font</a>. glyph id 到对应字符的 unicode
 所以我不需要为Fira Math修改<code>src/metrics/mapping.pl</code>,
 但是仍然需要对应的<code>src/fontMetricsData.js</code>.</li>
 </ul>
+<h1 data-number="3" id="extract-fonts"><span class="header-section-number">3</span> Extract fonts</h1>
+<p>KaTeX把<code>\mathbb{A} \mathcal{B}</code>
+等等符号全部映射到普通拉丁字母A,B上, 这就导致需要在映射的时候做点工作.
+而且另一个问题是KaTeX_AMS-Regular等字体在使用 unicode private use
+area表示一些unicode中缺少的符号,
+比如<code>src/fonts/makeFF</code>中有这样的代码</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="bn">0x0A</span> =&gt; <span class="bn">0xE010</span>,         <span class="co"># \nleqslant</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="bn">0x0B</span> =&gt; <span class="bn">0xE00F</span>,         <span class="co"># \ngeqslant</span></span></code></pre></div>
+<p>因为这些不是常用的符号,我决定先不管它.</p>
+<p>KaTeX_Main-Regular这些字体表现比较正常, 基本上都是Fira Math的子集,
+用<a href="https://github.com/congyu711/KaTeX/blob/main/fonts/mimic.py">这里</a>的代码转换.</p>
     </section>
 </article>
 

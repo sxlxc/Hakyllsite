@@ -63,3 +63,16 @@ date: 2025-05-25
 
 - 在 1. 中把Fira Math 像computer modern一样分成小文件可能可以避免让我需要修改大量KaTeX代码. KaTeX这样做是因为cm在TeX中是[Type 1 font](https://en.wikipedia.org/wiki/PostScript_fonts#Type_1), 单个文件只能容纳256字符.
 - Fira Math是[Open Type font](https://en.wikipedia.org/wiki/OpenType). glyph id 到对应字符的 unicode 码位的映射已经包含在了字体的cmap表中. KaTeX生成的html里是unicode字符, 所以我不需要为Fira Math修改`src/metrics/mapping.pl`, 但是仍然需要对应的`src/fontMetricsData.js`.
+
+# Extract fonts
+
+KaTeX把`\mathbb{A} \mathcal{B}` 等等符号全部映射到普通拉丁字母A,B上, 这就导致需要在映射的时候做点工作. 而且另一个问题是KaTeX_AMS-Regular等字体在使用 unicode private use area表示一些unicode中缺少的符号, 比如`src/fonts/makeFF`中有这样的代码
+
+```perl
+    0x0A => 0xE010,         # \nleqslant
+    0x0B => 0xE00F,         # \ngeqslant
+```
+
+因为这些不是常用的符号,我决定先不管它.
+
+KaTeX_Main-Regular这些字体表现比较正常, 基本上都是Fira Math的子集, 用[这里](https://github.com/congyu711/KaTeX/blob/main/fonts/mimic.py)的代码转换.
