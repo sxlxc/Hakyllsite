@@ -76,4 +76,8 @@ KaTeX把`\mathbb{A} \mathcal{B}` 等等符号全部映射到普通拉丁字母A,
 因为这些不是常用的符号,我决定先不管它.
 
 KaTeX_Main-Regular, KaTeX_Math-Italic.ttf 这些字体表现比较正常, 基本都是Fira Math的子集, 用[这里](https://github.com/congyu711/KaTeX/blob/main/fonts/mimic.py)的代码转换.
-对于KaTeX_AMS-Regular和KaTeX_Size{k} 这些字体就需要单独处理. Caligraphic 和 Fraktur 字体Fira Math中也没有覆盖, Fira Math 本来就是sans serif字体, 所以我觉得其他字体都可直接用KaTeX版本.
+对于KaTeX_AMS-Regular和KaTeX_Size{k} 这些字体就需要单独处理, 我决定下载fontforge手动处理. Caligraphic 和 Fraktur 字体Fira Math中也没有覆盖, Fira Math 本来就是sans serif字体, 所以我觉得其他字体都可直接用KaTeX版本.
+
+## Italic
+
+看起来Fira Math字体并无斜体, 查了查貌似TeX是通过OpenType MATH table来实现斜体, 我需要想想如何搞到Fira Math的斜体版本...
