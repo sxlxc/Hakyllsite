@@ -84,4 +84,10 @@ KaTeX_Main-Regular, KaTeX_Math-Italic.ttf 这些字体表现比较正常, 基本
 
 ![修改字体、没有调整metric](/images/katexfont/withoutmetric.png)
 
+[commit [866527](https://github.com/congyu711/Hakyllsite/commit/86652755a18568249d02aa3d28624ccec354ea84)  to commit ____] 这个blog在使用这个版本的firamath katex.
+
+$$
+\sqrt{\frac{\int \sum \tilde{O}(\log n)\frac{adsf^k}{wer\R_n^k}}{sdf_k}}
+$$
+
 # Metric
