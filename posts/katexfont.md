@@ -80,4 +80,8 @@ KaTeX_Main-Regular, KaTeX_Math-Italic.ttf 这些字体表现比较正常, 基本
 
 ## Italic
 
-~~看起来Fira Math字体并无斜体, 查了查貌似TeX是通过OpenType MATH table来实现斜体, 我需要想想如何搞到Fira Math的斜体版本...~~ 原来Fira Math是有斜体的, 用fontforge手动搞一下比手写unicode映射要简单点(目前只有常用符号做了修改) KaTeX的很多设计让人疑惑, 为什么不做像unicode-math一样的设计, 把所有东西映射到正确的unicode上呢?
+~~看起来Fira Math字体并无斜体, 查了查貌似TeX是通过OpenType MATH table来实现斜体, 我需要想想如何搞到Fira Math的斜体版本...~~ 原来Fira Math是有斜体的, 用fontforge手动搞一下比手写unicode映射要简单点(目前只有常用符号做了修改, 很多东西不能正常工作) KaTeX的很多设计让人疑惑, 为什么不做像unicode-math一样的设计, 把所有东西映射到正确的unicode上呢?
+
+![修改字体、没有调整metric](/images/katexfont/withoutmetric.png)
+
+# Metric
