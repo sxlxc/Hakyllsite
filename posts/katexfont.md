@@ -3,9 +3,11 @@ title: 在 KaTeX 中使用 Fira Math
 tags: katex
 author: Yu Cong with help from many others
 lang: zh
-draft: true
+# draft: true
 date: 2025-05-25
 ---
+
+> 现在有一个半成品可用
 
 [Fira Math](https://github.com/firamath/firamath)这字体很不错, 想要在KaTeX中使用它.
 
@@ -80,14 +82,14 @@ KaTeX_Main-Regular, KaTeX_Math-Italic.ttf 这些字体表现比较正常, 基本
 
 ## Italic
 
-~~看起来Fira Math字体并无斜体, 查了查貌似TeX是通过OpenType MATH table来实现斜体, 我需要想想如何搞到Fira Math的斜体版本...~~ 原来Fira Math是有斜体的, 用fontforge手动搞一下比手写unicode映射要简单点(目前只有常用符号做了修改, 很多东西不能正常工作) KaTeX的很多设计让人疑惑, 为什么不做像unicode-math一样的设计, 把所有东西映射到正确的unicode上呢?
+~~看起来Fira Math字体并无斜体, 查了查貌似TeX是通过OpenType MATH table来实现斜体, 我需要想想如何搞到Fira Math的斜体版本...~~ 原来Fira Math是有斜体的, 用fontforge修改比手写unicode映射要简单点(目前只有常用符号做了修改, 很多东西不能正常工作) KaTeX的很多设计让人疑惑, 为什么不做像unicode-math一样的设计, 把所有东西映射到正确的unicode上呢?
 
 ![修改字体、没有调整metric](/images/katexfont/withoutmetric.png)
 
 [commit [866527](https://github.com/congyu711/Hakyllsite/commit/86652755a18568249d02aa3d28624ccec354ea84)  to commit ____] 这个blog在使用这个版本的firamath katex.
 
 $$
-\sqrt{\frac{\int \sum \tilde{O}(\log n)\frac{adsf^k}{wer\R_n^k}}{sdf_k}}
+\sqrt{\frac{\int \sum_{aaaa}^{bbbb} \tilde{O}(\log n)\frac{adsf^k}{wer\R_n^k}}{sdf_k}}
 $$
 
 # Metric

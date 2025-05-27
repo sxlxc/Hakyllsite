@@ -1,15 +1,15 @@
 ---
 title: "\"Gotchas\" in Combinatorial Optimization"
 tags: optimization, alg
-author: Yu Cong, Yajie Zhao and many others
+author: Yu Cong
 lang: en
-draft: true
+# draft: true
 date: 2025-04-30
 ---
 
 \DeclareMathOperator{\polylog}{polylog}
 
-It would be fun to have a list of misleading ideas and traps in CO.
+It would be fun to have a list of misleading ideas and traps in CO. I will update this post for new problems.
 
 # Polytope for s-t cut
 
