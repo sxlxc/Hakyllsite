@@ -32,9 +32,9 @@ main = hakyll $ do
     route idRoute
     compile copyFileCompiler
 
-  -- match "pdfs/**" $ do
-  --   route idRoute
-  --   compile copyFileCompiler
+  match "katex/**" $ do
+    route idRoute
+    compile copyFileCompiler
 
   -- match "fonts/*" $ do
   --   route idRoute
