@@ -29,7 +29,6 @@ Authors of [@chawla_composition_2023] provide a polytime algorithm that construc
 Weak $f(k,c)$-nested composition is somewhat stronger than $(k,c)$-outlier embedding since the former additionally requires an expansion bound on $X$.
 In fact I guess that the definition of weak $f$-nested composition is extracted from the SDP formulation of min-outlier SDP.
 
-\[
 \begin{equation}
 \begin{aligned}
 \min&   &   \sum_x \delta_x&    &   &\\
@@ -37,7 +36,6 @@ s.t.&   &   (1-\delta_x - \delta_y) d^2(x,y)\leq \|v_x-v_y\|^2 &\leq (c^2+(\delt
     &   &   \delta_x\in [0,1], v_x&\in \R^p   &   &\forall x\in X
 \end{aligned}
 \end{equation}
-\]
 
-Note that the dimension $p$ of $v_x$ can be $\poly(n)$. Lemma 3.1 shows that this SDP is a relaxation of weak $\sqrt{f(k)}$-nested composition. This SDP is also a relaxation of $(k,c)$-outlier embedding (find smallest $k$ for fixed $c$). The proof of thm 2.9 (the 2. above) is rouding the solution of SDP. Thm 2.6 (1. above) is showing that this SDP with $f(k)=125c H_k$ admits a solution with objective at most $k$.
+Note that the dimension $p$ of $v_x$ can be $\poly(n)$. Lemma 3.1 shows that this SDP is a relaxation of weak $\sqrt{f(k)}$-nested composition. However, this SDP is **not** a relaxation of $(k,c)$-outlier embedding (find smallest $k$ for fixed $c$). The proof of thm 2.9 (the 2. above) is rouding the solution of SDP. Thm 2.6 (1. above) is showing that this SDP with $f(k)=125c H_k$ admits a solution with objective at most $k$.
 
