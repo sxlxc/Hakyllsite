@@ -285,11 +285,11 @@ code {
         margin: 0;
         padding: 0 5%;
     }
-    .navright{
+    /* .navright{
         overflow-x: auto;
         overflow-y: hidden;
         white-space: nowrap;
-    }
+    } */
     .katex-display {
         overflow-x:auto;
         overflow-y:hidden;
