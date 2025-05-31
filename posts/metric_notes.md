@@ -14,6 +14,11 @@ date: 2025-05-26
 
 Bourgain's theorem states that there exists such an embedding with distortion $O(\log n)$. What if we only want to use tree metrics? It seems that the distortion becomes $O(\log n \log \log n)$. <https://chekuri.cs.illinois.edu/papers/packing.pdf>
 
+# Largest finite metric $(X\subset \R^n,\ell_2^2)$
+
+Arora, Rao and Vazirani made a famous work about approximating uniform sparsest cut to $O(\sqrt{\log n})$ via SDP [@arora_expander_2004]. Their SDP is finding a finite metric $(X,\ell_2^2)$. An interesting question is that how large can $X\subset \R^d$ be given that $(X,\ell_2^2)$ is a metric. Satisfying the triangle inequality is the same as requiring any three points in $X$ must form a non-obtuse triangle. One can see that the vertex set in the $n$ dimensional hypercube $Q_n$ is always a feasible solution. The hard part is the upperbound. I asked this problem on [math.sx](https://math.stackexchange.com/questions/5066765) and found a proof in *Proofs from THE BOOK* [chapter 17](https://link.springer.com/chapter/10.1007/978-3-662-57265-8_17).
+
+
 # Shortest path representation
 
 For any finite metric on $V$ there is a corresponding graph shortest path metric on $G=(V,E)$ with $c:E\to \R$. Given a finite metric on $V$, how to find $G$ with $|E|$ as small as possible? This looks similar to [a previous post in chinese](/posts/2023-01-26-minDAG.html). How to prove that computing the minimum number of edges is NP-hard?
