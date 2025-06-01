@@ -8,9 +8,12 @@ date: 2025-05-24
 ---
 
 \DeclareMathOperator*{\pr}{Pr}
-\DeclareMathOperator*{\pr}{\mathsf{LAS}}
+\DeclareMathOperator*{\las}{LAS}
 
-Reading <https://sites.math.washington.edu/~rothvoss/lecturenotes/lasserresurvey.pdf>
+Useful links:
+
+1. <https://sites.math.washington.edu/~rothvoss/lecturenotes/lasserresurvey.pdf>
+2. Laurent's survey [@laurent_comparison_2003]
 
 I guess there should be a probabilistic way to understand most of the lemmas and the intuition...
 
@@ -36,15 +39,14 @@ We want to solve a 0-1 integer program. Since this task is NP-hard in general, w
 
 Schrijver [@schrijver_polyhedral_1986] showed that those odd constraints can be obtained by adding cutting planes to the previous polytope. Fortunately for matching polytope we have a polynomial time separation oracle. However, for harder problems adding cutting planes may make the program NP-hard to solve. Lasserre hierarchy is a method to strengthen the polytope while providing provable good properties and keeping the program polynomial time solvable (if applied constant number of times).
 
-There is a good interpretation of the linear relaxation of 0-1 integer programs. Let $K=\set{x\in \R^n| Ax\geq b}\subset [0,1]^n$ be the feasible solution of the linear relaxation. The goal of solving the integer program is to describe $K\cap \set{0,1}^n$. For any $x\in K$, $x_i$ can be seen as the probability of $x_i=1$. The integral solutions $K\cap \set{0,1}^n$ can be understood as a discrete distribution that only takes non-zero values on feasible integral points. However, each $x\in K$ only describes some marginal probabilities and is not likely to be a marginal distribution of the desired joint distribution.
-
-Thus we consider adding more random variables. Let $y\in \R^{2^{n}}$ be a random vector such that $y_I=\pr(\land_{i\in I}(x_i=1))$. Note that we define $y_\emptyset=1$. To make $y$ a feasible probability and to make $(y_1,...,y_n)^T\in K$ we have to add more constraints.
+There is a good interpretation of the linear relaxation of 0-1 integer programs. Let $K=\set{x\in \R^n| Ax\geq b}\subset [0,1]^n$ be the feasible solution of the linear relaxation. The goal of solving the integer program is to describe $K\cap \set{0,1}^n$. For any $x\in K$, $x_i$ can be seen as the probability of $x_i=1$. The integral solutions $K\cap \set{0,1}^n$ can be understood as a discrete distribution that only takes non-zero values on feasible integral points. However, each $x\in K$ only describes some marginal probabilities.
+Thus we consider adding more random variables. Let $y\in \R^{2^{n}}$ be a random vector such that $y_I=\pr(\land_{i\in I}(x_i=1))$. Note that we define $y_\emptyset=1$. To make $y$ a feasible probability and to make $(y_{\set{1}},...,y_{\set{n}})^T\in K$ we have to add more constraints.
 
 <!-- why psd? -->
 
-::: {.Definition title="$n$-th level of Lasserre hierarchy"}
+::: {.Definition title="$k$-th level of Lasserre hierarchy"}
 The $n$-th level of Lasserre hierarchy of a convex polytope $K=\set{x\in \R^n| Ax\geq b}\subset [0,1]^n$ is the set of vectors $y\in \R^{2^n}$ that satisfy the followings.
 
-1. $M_t(y):=(y_{I\cup J})_{I,J\subseteq [n]}\succeq 0$
-2. $M_t^\ell(y):=\left( \sum_{i=1}^n A_{\ell i}y_{I\cup J\cup \set{i}}-b_\ell y_{I\cap J} \right)_{I,J\subseteq [n]}\succeq 0$
+1. $M_t(y):=(y_{I\cup J})_{I,J\subseteq [k]}\succeq 0$
+2. $M_t^\ell(y):=\left( \sum_{i=1}^n A_{\ell i}y_{I\cup J\cup \set{i}}-b_\ell y_{I\cup J} \right)_{I,J\subseteq [k]}\succeq 0$
 :::
