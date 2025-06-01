@@ -3,7 +3,7 @@ title: Metric notes
 tags: CG, optimization
 author: Yu Cong
 lang: en
-draft: true
+# draft: true
 date: 2025-05-26
 ---
 
@@ -32,7 +32,7 @@ Authors of [@chawla_composition_2023] provide a polytime algorithm that construc
 2. A weak $125 H_k c_S$-nested composition into $\ell_2$ implies an $(O(k\polylog k), O(c))$-outlier embedding into $\ell_2$ (thm 2.9, via Outlier SDP, lemma 3.1)
 
 Weak $f(k,c)$-nested composition is somewhat stronger than $(k,c)$-outlier embedding since the former additionally requires an expansion bound on $X$.
-In fact I guess that the definition of weak $f$-nested composition is extracted from the SDP formulation of min-outlier SDP.
+In fact I guess that the definition of weak $f$-nested composition is extracted from the SDP formulation of min-outlier.
 
 \begin{equation}
 \begin{aligned}
