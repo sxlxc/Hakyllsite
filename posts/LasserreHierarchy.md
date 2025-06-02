@@ -49,7 +49,7 @@ We only care about the discrete distribution on feasible integral points.
 However, each $x\in K$ only describes some marginal probabilities and this this marginal probability may not be even feasible. Consider the following 2D example. Any point in $\text{green area}\setminus \text{orange area}$ is not a marginal distribution of any possible joint distribution over $(0,0),(1,0)$ and $(1,1)$. The idea is to iteratively prune this area.
 
 <figure>
-<img src="../images/lasserre/feasiblepoints.png" alt="2D example" style="width: 360px;" />
+<img src="../images/lasserre/feasiblepoints.png" alt="2D example" style="width: 300px;" />
 </figure>
 
 Now we need to think about how to represent all possible joint distribution. One natural way is to use a vector $y\in \R^{2^n}$ for the distribution law of every possible integer point in $\set{0,1}^n$.
@@ -62,7 +62,7 @@ To make $y$ a feasible probability from some joint distribution and to make $(y_
 
 We work with the 2D example first. Let $x=(x_1,x_2)^T\in K$ be a marginal distribution. One can see that $y=(1,x_1,x_2,\pr[X_1=X_2=1])^T$ and the last number is not arbitrary. In fact, $\pr[X_1=X_2=1]$ must in range $[\max(0, x_1+x_2-1),\min(x_1,x_2)]$.
 
-To restrict $y$ the moment matrix is considered. The moment matrix $M(y)$ is of size $2^n \times 2^n$ and $M(y)[I,J]$ is defined as the expectation $E[\prod_{i\in I\cup J}x_i]=y_{I\cup J}$. The expectation is taken over the distribution defined by $y$.
+To make sure $y$ is indeed a probability the moment matrix is considered. The moment matrix $M(y)$ is of size $2^n \times 2^n$ and $M(y)[I,J]$ is defined as the expectation $E[\prod_{i\in I\cup J}x_i]=y_{I\cup J}$ (the only non-zero term is $1\cdot \pr[\land_{i\in I\cup j}x_i=1]=y_{I\cup J}$). The expectation is taken over the distribution defined by $y$.
 
 ::: Lemma
 For any probability distribution $y$, the moment matrix is psd.
@@ -79,6 +79,8 @@ z^T M(y) z    &= \sum_I \sum_J z_I y_{I\cup J} z_J\\
 \end{equation*}
 :::
 
+Note that in the proof something like sum of squares appears. Lasserre hierarchy has deep connections with [SOS optimization](https://en.wikipedia.org/wiki/Sum-of-squares_optimization) and is also known as sum-of-squares hierarchy.
+
 ::: Lemma
 If $M(y)$ is psd then $y$ is a probability distribution.
 :::
@@ -88,7 +90,18 @@ This can be seen from properties of Lasserre hierarchy. We defer the proof.
 <!-- slacks? -->
 ## Projection in $K$
 
-...
+Let the projection of $y$ be $(y_{\set{1}},\dots,y_{\set{n}})^T$. For any $y$ the projection should always lie in $K$.
+One may want to define moment matrices for constraints $Ax\geq b$. This is called the moment matrix of slacks. For simplicity we only consider one linear constraint $a^Tx-b\geq 0$. The moment matrix for this constraint is $M_t(y)=\left( \sum_{i=1}^n a_i y_{I\cup J\cup \set{i}}-b y_{I\cup J} \right)_{I,J\subseteq [n]}$. Then we can do similar arguments.
+
+\begin{equation*}
+\begin{aligned}
+z^T M(y) z    &= \sum_I \sum_J z_I z_J (\sum_{i=1}^n a_i y_{I\cup J\cup \set{i}}-b y_{I\cup J})\\
+                    &= \sum_I \sum_J z_I z_J (\sum_i a_i E[\prod_{k\in I\cup J\cup\set{i}} x_k]) - b \sum_I \sum_J z_I z_J E[\prod_{k\in I\cup J}x_k]\\
+                    &= \sum_I \sum_J z_I z_J E\left[ (\sum_i a_i x_i -b) \prod_{k\in I\cup J}x_k \right]\\
+\end{aligned}
+\end{equation*}
+
+Note that we can combine the expactations since they are taken over the same probability distribution. Now assume that we have $a^Tx-b\geq 0$...
 
 ::: {.Definition title="$k$-th level of Lasserre hierarchy"}
 The $k$-th level of Lasserre hierarchy of a convex polytope $K=\set{x\in \R^n| Ax\geq b}\subset [0,1]^n$ is the set of vectors $y\in \R^{2^n}$ that make the following matrices psd.
