@@ -58,6 +58,37 @@ Let $y\in \R^{2^{n}}$ be a random vector such that $y_I=\pr[\land_{i\in I}(x_i=1
 To make $y$ a feasible probability from some joint distribution and to make $(y_{\set{1}},...,y_{\set{n}})^T\in K$ we have to add more constraints.
 
 <!-- why psd? -->
+## Feasible Probability
+
+We work with the 2D example first. Let $x=(x_1,x_2)^T\in K$ be a marginal distribution. One can see that $y=(1,x_1,x_2,\pr[X_1=X_2=1])^T$ and the last number is not arbitrary. In fact, $\pr[X_1=X_2=1]$ must in range $[\max(0, x_1+x_2-1),\min(x_1,x_2)]$.
+
+To restrict $y$ the moment matrix is considered. The moment matrix $M(y)$ is of size $2^n \times 2^n$ and $M(y)[I,J]$ is defined as the expectation $E[\prod_{i\in I\cup J}x_i]=y_{I\cup J}$. The expectation is taken over the distribution defined by $y$.
+
+::: Lemma
+For any probability distribution $y$, the moment matrix is psd.
+:::
+
+::: Proof
+We need to verify $z^T M(y) z\geq 0$ for any $z$.
+\begin{equation*}
+\begin{aligned}
+z^T M(y) z    &= \sum_I \sum_J z_I y_{I\cup J} z_J\\
+                    &= \sum_I \sum_J z_I E[\prod_{i\in I\cup J} x_i] z_J\\
+                    &= E\left[\left( \sum_I (z_I \prod_{i\in I} x_i)\right)^2 \right]
+\end{aligned}
+\end{equation*}
+:::
+
+::: Lemma
+If $M(y)$ is psd then $y$ is a probability distribution.
+:::
+
+This can be seen from properties of Lasserre hierarchy. We defer the proof.
+
+<!-- slacks? -->
+## Projection in $K$
+
+...
 
 ::: {.Definition title="$k$-th level of Lasserre hierarchy"}
 The $k$-th level of Lasserre hierarchy of a convex polytope $K=\set{x\in \R^n| Ax\geq b}\subset [0,1]^n$ is the set of vectors $y\in \R^{2^n}$ that make the following matrices psd.
