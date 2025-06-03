@@ -96,12 +96,25 @@ One may want to define moment matrices for constraints $Ax\geq b$. This is calle
 \begin{equation*}
 \begin{aligned}
 z^T M(y) z    &= \sum_I \sum_J z_I z_J (\sum_{i=1}^n a_i y_{I\cup J\cup \set{i}}-b y_{I\cup J})\\
-                    &= \sum_I \sum_J z_I z_J (\sum_i a_i E[\prod_{k\in I\cup J\cup\set{i}} x_k]) - b \sum_I \sum_J z_I z_J E[\prod_{k\in I\cup J}x_k]\\
-                    &= \sum_I \sum_J z_I z_J E\left[ (\sum_i a_i x_i -b) \prod_{k\in I\cup J}x_k \right]\\
+                    &= \sum_I \sum_J z_I z_J (\sum_i a_i E[\prod_{k\in I\cup J\cup\set{i}} x_k] - b E[\prod_{k\in I\cup J}x_k] )\\
+                    &= E\left[ \sum_I \sum_J z_I z_J (\sum_i a_i x_i -b) \prod_{k\in I\cup J}x_k \right]\\
+                    &= E\left[ (\sum_i a_i x_i -b) \left(\sum_I z_I \prod_{i\in I} x_i \right)^2 \right]
 \end{aligned}
 \end{equation*}
 
-Note that we can combine the expactations since they are taken over the same probability distribution. Now assume that we have $a^Tx-b\geq 0$...
+Note that we can combine the expectations since they are taken over the same probability distribution. 
+Now assume that we have $a^Tx-b\geq 0$.
+
+\begin{equation*}
+\begin{aligned}
+ E&\left[ (\sum_i a_i x_i -b) \left(\sum_I z_I \prod_{i\in I} x_i \right)^2 \right]\\
+    &= \sum \pr[\cdots](a^T x-b)\left(\sum_I z_I \prod_{i\in I} x_i \right)^2 \geq 0
+\end{aligned}
+\end{equation*}
+
+If $a^Tx\geq b$ is satisfied, then the corresponding moment matrix of slack is psd. The other direction can also be seen from properties of Lasserre hierarchy.
+
+Finally, this is a more formal definiton.
 
 ::: {.Definition title="$k$-th level of Lasserre hierarchy"}
 The $k$-th level of Lasserre hierarchy of a convex polytope $K=\set{x\in \R^n| Ax\geq b}\subset [0,1]^n$ is the set of vectors $y\in \R^{2^n}$ that make the following matrices psd.
