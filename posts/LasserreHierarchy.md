@@ -1,5 +1,6 @@
 ---
 title: Understanding Lasserre Hierarchy
+subtitle: From a Probabilistic Perspective
 tags: optimization
 author: Yu Cong and Hongjie Qing
 lang: en
@@ -54,7 +55,7 @@ However, each $x\in K$ only describes some marginal probabilities and this this 
 
 Now we need to think about how to represent all possible joint distribution. One natural way is to use a vector $y\in \R^{2^n}$ for the distribution law of every possible integer point in $\set{0,1}^n$.
 However, this method does not work well with our existing marginal probabilities. 
-Let $y\in \R^{2^{n}}$ be a random vector such that $y_I=\pr[\land_{i\in I}(x_i=1)]$ and $y_\emptyset=1$. Computing all feasible $y$ is the same as finding all possible bivariate discrete distribution on the integer points.
+Let $y\in \R^{2^{n}}$ be a random vector such that $y_I=\pr[\bigwedge_{i\in I}(x_i=1)]$ and $y_\emptyset=1$. Computing all feasible $y$ is the same as finding all possible bivariate discrete distribution on the integer points.
 To make $y$ a feasible probability from some joint distribution and to make $(y_{\set{1}},...,y_{\set{n}})^T\in K$ we have to add more constraints.
 
 <!-- why psd? -->
@@ -62,7 +63,7 @@ To make $y$ a feasible probability from some joint distribution and to make $(y_
 
 We work with the 2D example first. Let $x=(x_1,x_2)^T\in K$ be a marginal distribution. One can see that $y=(1,x_1,x_2,\pr[X_1=X_2=1])^T$ and the last number is not arbitrary. In fact, $\pr[X_1=X_2=1]$ must in range $[\max(0, x_1+x_2-1),\min(x_1,x_2)]$.
 
-To make sure $y$ is indeed a probability the moment matrix is considered. The moment matrix $M(y)$ is of size $2^n \times 2^n$ and $M(y)[I,J]$ is defined as the expectation $E[\prod_{i\in I\cup J}x_i]=y_{I\cup J}$ (the only non-zero term is $1\cdot \pr[\land_{i\in I\cup j}x_i=1]=y_{I\cup J}$). The expectation is taken over the distribution defined by $y$.
+To make sure $y$ is indeed a probability the moment matrix is considered. The moment matrix $M(y)$ is of size $2^n \times 2^n$ and $M(y)[I,J]$ is defined as the expectation $E[\prod_{i\in I\cup J}x_i]=y_{I\cup J}$ (the only non-zero term is $1\cdot \pr[\bigwedge_{i\in I\cup j}x_i=1]=y_{I\cup J}$). The expectation is taken over the distribution defined by $y$.
 
 ::: Lemma
 For any probability distribution $y$, the moment matrix is psd.
@@ -91,7 +92,7 @@ This can be seen from properties of Lasserre hierarchy. We defer the proof.
 ## Projection in $K$
 
 Let the projection of $y$ be $(y_{\set{1}},\dots,y_{\set{n}})^T$. For any $y$ the projection should always lie in $K$.
-One may want to define moment matrices for constraints $Ax\geq b$. This is called the moment matrix of slacks. For simplicity we only consider one linear constraint $a^Tx-b\geq 0$. The moment matrix for this constraint is $M_t(y)=\left( \sum_{i=1}^n a_i y_{I\cup J\cup \set{i}}-b y_{I\cup J} \right)_{I,J\subseteq [n]}$. Then we can do similar arguments.
+One may want to define moment matrices for constraints $Ax\geq b$. This is called the moment matrix of slacks. For simplicity we only consider one linear constraint $a^Tx-b\geq 0$. The moment matrix for this constraint is $M(y)=\left( \sum_{i=1}^n a_i y_{I\cup J\cup \set{i}}-b y_{I\cup J} \right)_{I,J\subseteq [n]}$. Then we can do similar arguments.
 
 \begin{equation*}
 \begin{aligned}
@@ -148,9 +149,10 @@ For $t\geq 1$, let $y\in \las_t(K)$ and $S\subset [n]$ be any subset of variable
 :::
 
 For any $y\in\las_n(K)$ and $S=[n]$, the previous lemma implies the projection of $y$ is convex combination of integral vectors in $K\cap \set{0,1}^n$. Then it follows that $\las_n^{proj}(K)=K\cap \set{0,1}^n$.
+This also provides proofs for the facts that if $M_n(y)\succeq 0$ and $M_n^{\ell}(y)\succeq 0$ then $y$ is indeed a probability distribution and the projection is in $K$.
 
 ::: Proof
-The proof is constructive and by induction on the size of $S$.
+The proof is constructive and is by induction on the size of $S$.
 
 - $S=\set{i}$. Assume that $y_{\set{i}}\in (0,1)$. For simplicity I use $y_i$ for $y_{\set{i}}$. Define two vectors $z^{(1)},z^{(2)}$ as $z^{(1)}_I=\frac{y_{I\cup\set{i}}}{y_i}$ and $z^{(2)}_I=\frac{y_I-y_{I\cup\set{i}}}{1-y_i}$. One can easily verify that $y=y_i z^{(1)}+(1-y_i)z^{(2)}, z^{(1)}_i=1$ and $z^{(2)}_i=0$. It remains to verify $z^{(1)},z^{(2)}\in \las_{t-1}(K)$. Since $M_t(y)$ is psd, there must be vectors $v_I,v_J$ such that $\langle v_I,v_J \rangle=y_{I\cup J}$ for all $|I|,|J|\leq t$. Take $v_I^{(1)}=v_{I\cup\set{i}}/\sqrt{y_i}$. We have 
 \[\langle v_I^{(1)},v_J^{(1)} \rangle=\frac{y_{I\cup J\cup\set{i}}}{y_i}=M_{t-1}(z^{(1)})[I,J]\]
@@ -160,3 +162,21 @@ For each moment matrix of slacks one can use exactly the same arguments to show 
 - For the inductive steps one can see that our arguments for the base case can be applied recursively on $z^{(1)},z^{(2)}$.
 :::
 
+$y\in \las_t(K)$ is a probability distribution if we consider only $|I|\leq t$, $y_I=\pr[\bigwedge_{i\in I}X_i=1]$. The vectors $z^{(1)},z^{(2)}$ we constructed in the previous proof can be understood as conditional probabilities. 
+\begin{equation*}
+\begin{aligned}
+&z^{(1)}_I=\frac{y_{I\cup\set{i}}}{y_i}=\frac{\pr[\bigwedge_{k\in I\cup \set{i}}X_k=1]}{\pr[X_i=1]}=\pr[\bigwedge_{k\in I}X_k=1 | X_i=1]\\
+&z^{(2)}_I=\frac{y_I-y_{I\cup\set{i}}}{1-y_i}=\frac{\pr[\bigwedge_{k\in I} (X_k=1) \land X_i=0]}{\pr[X_i=0]}=\pr[\bigwedge_{k\in I}X_k=1 | X_i=0]
+\end{aligned}
+\end{equation*}
+
+The proof is basically showing that
+
+\begin{equation*}
+\begin{aligned}
+y_I &= \pr[X_i=1] \pr[\bigwedge_{k\in I}X_k=1 | X_i=1]+\pr[X_i=0] \pr[\bigwedge_{k\in I}X_k=1 | X_i=0]\\
+    &= \pr[\bigwedge_{i\in I}X_i=1]
+\end{aligned}
+\end{equation*}
+
+For any partially feasible probability distribution $y\in\las_t(K)$, $y_i \in (0,1)$ implies that both $X_i=0$ and $X_i=1$ happen with non-zero probability, which in turn impies $z^{(1)},z^{(2)}\in \las_{t-1}(K)$.
