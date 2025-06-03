@@ -144,7 +144,7 @@ Almost everything in this part can be found [here](https://sites.math.washington
 
 The goal of this section is to show that $K\cap \set{0,1}^n = \las_n^{proj}(K)$. When working on the Lasserre hierarchy, instead of considering the projection $x_i$ solely, we usually perform the analysis on $y$.
 
-::: Lemma
+::: {.Lemma #conv}
 For $t\geq 1$, let $y\in \las_t(K)$ and $S\subset [n]$ be any subset of variables of size at most $t$. then \[y\in \conv\set{z\in \las_{t-|S|}(K)| z_i\in \set{0,1} \forall i\in S}.\]
 :::
 
@@ -179,4 +179,13 @@ y_I &= \pr[X_i=1] \pr[\bigwedge_{k\in I}X_k=1 | X_i=1]+\pr[X_i=0] \pr[\bigwedge_
 \end{aligned}
 \end{equation*}
 
-For any partially feasible probability distribution $y\in\las_t(K)$, $y_i \in (0,1)$ implies that both $X_i=0$ and $X_i=1$ happen with non-zero probability, which in turn impies $z^{(1)},z^{(2)}\in \las_{t-1}(K)$.
+For any partially feasible probability distribution $y\in\las_t(K)$, $y_i \in (0,1)$ implies that both $X_i=0$ and $X_i=1$ happen with non-zero probability, which in turn impies $z^{(1)},z^{(2)}\in \las_{t-1}(K)$. One can also explicitly express $y$ as convex combination and see the relation with Möbius inversion, see p9 in [this notes](https://sites.math.washington.edu/~rothvoss/lecturenotes/lasserresurvey.pdf).
+
+In [@conv], each vector in the convex combination (those with integer value on $S$) can be understood as a partial probability distribution under condition $[\bigwedge_{i\in I} (X_i=1) \bigwedge_{j\in J}(X_j=0)]$, and the probability assigned to it is exactly the chance its condition happens. More formally, [@conv] implies the following,
+
+::: Corollary
+Let $y\in\las_t(K)$. For any subset $S\subset [n]$ of size at most $t$, there is a distribution $D(S)$ over $\set{0,1}^S$ such 
+\[
+\pr_{z\sim D(S)}\left[ \bigwedge_{i\in I} (z_i=1) \right]=y_I \quad \forall I\subset S
+\]
+:::
