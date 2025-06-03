@@ -127,13 +127,36 @@ Note that the $t$-th level of Lasserre hierarchy only involve entries $y_I$ with
 
 # Properties
 
-Almost everything in this part can be found [here](https://sites.math.washington.edu/~rothvoss/lecturenotes/lasserresurvey.pdf). Suppose that we have the $t$-th level of Lasserre hierarchy $\las_t(K)$.
+Almost everything in this part can be found [here](https://sites.math.washington.edu/~rothvoss/lecturenotes/lasserresurvey.pdf). Suppose that we have the $t$-th level of Lasserre hierarchy $\las_t(K)$. Denote by $\las_t^{proj}(K)$ the projection of the $t$-th level.
 
+0. $\las_t(K)$ is convex
 1. $y_I\in [0,1]$ for all $y\in \las_t(K)$
 2. $0\leq y_I \leq y_J \leq 1$ for all $J\subset I$ with $|I|,|J|\leq t$
 3. $y_{I\cup J}\leq \sqrt{y_I \cdot y_J}$
-4. $K\cap \set{0,1}^n \subset$ projection of $\las_t(K)$ for all $t\in [n]$
+4. $K\cap \set{0,1}^n \subset \las_t^{proj}(K)$ for all $t\in [n]$
 5. $\las_t^{proj}(K)\subset K$
 6. $\las_n(K)\subset \las_{n-1}(K)\subset \dots \subset \las_0(K)$
 
 1.2.3. show that $y$ behaves similarly to a real probability distribution.
+
+4.5.6. show that $K\cap \set{0,1}^n \subset \las_n^{proj}(K)\subset \las_{n-1}^{proj}(K)\subset \dots \subset \las_0^{proj}(K) = K$.
+
+The goal of this section is to show that $K\cap \set{0,1}^n = \las_n^{proj}(K)$. When working on the Lasserre hierarchy, instead of considering the projection $x_i$ solely, we usually perform the analysis on $y$.
+
+::: Lemma
+For $t\geq 1$, let $y\in \las_t(K)$ and $S\subset [n]$ be any subset of variables of size at most $t$. then \[y\in \conv\set{z\in \las_{t-|S|}(K)| z_i\in \set{0,1} \forall i\in S}.\]
+:::
+
+For any $y\in\las_n(K)$ and $S=[n]$, the previous lemma implies the projection of $y$ is convex combination of integral vectors in $K\cap \set{0,1}^n$. Then it follows that $\las_n^{proj}(K)=K\cap \set{0,1}^n$.
+
+::: Proof
+The proof is constructive and by induction on the size of $S$.
+
+- $S=\set{i}$. Assume that $y_{\set{i}}\in (0,1)$. For simplicity I use $y_i$ for $y_{\set{i}}$. Define two vectors $z^{(1)},z^{(2)}$ as $z^{(1)}_I=\frac{y_{I\cup\set{i}}}{y_i}$ and $z^{(2)}_I=\frac{y_I-y_{I\cup\set{i}}}{1-y_i}$. One can easily verify that $y=y_i z^{(1)}+(1-y_i)z^{(2)}, z^{(1)}_i=1$ and $z^{(2)}_i=0$. It remains to verify $z^{(1)},z^{(2)}\in \las_{t-1}(K)$. Since $M_t(y)$ is psd, there must be vectors $v_I,v_J$ such that $\langle v_I,v_J \rangle=y_{I\cup J}$ for all $|I|,|J|\leq t$. Take $v_I^{(1)}=v_{I\cup\set{i}}/\sqrt{y_i}$. We have 
+\[\langle v_I^{(1)},v_J^{(1)} \rangle=\frac{y_{I\cup J\cup\set{i}}}{y_i}=M_{t-1}(z^{(1)})[I,J]\]
+for all $|I|,|J|\leq t-1$. Thus $M_{t-1}(z^{(1)})$ is psd. Similarly, one can take $v_I^{(2)}=(v_I-v_{I\cup \set{i}})/\sqrt{(1-y_i)}$ and show $M_{t-1}(z^{(2)})$ is psd. 
+<br>
+For each moment matrix of slacks one can use exactly the same arguments to show $M_{t-1}^{\ell}(z^{(1)})\succeq 0$ and $M_{t-1}^{\ell}(z^{(2)})\succeq 0$.
+- For the inductive steps one can see that our arguments for the base case can be applied recursively on $z^{(1)},z^{(2)}$.
+:::
+
