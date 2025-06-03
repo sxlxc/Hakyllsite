@@ -8,7 +8,7 @@ date: 2025-05-24
 ---
 
 \DeclareMathOperator*{\pr}{Pr}
-\DeclareMathOperator*{\las}{LAS}
+\DeclareMathOperator*{\las}{Las}
 \DeclareMathOperator*{\conv}{conv}
 
 Useful links:
@@ -116,9 +116,24 @@ If $a^Tx\geq b$ is satisfied, then the corresponding moment matrix of slack is p
 
 Finally, this is a more formal definiton.
 
-::: {.Definition title="$k$-th level of Lasserre hierarchy"}
-The $k$-th level of Lasserre hierarchy of a convex polytope $K=\set{x\in \R^n| Ax\geq b}\subset [0,1]^n$ is the set of vectors $y\in \R^{2^n}$ that make the following matrices psd.
+::: {.Definition title="$t$-th level of Lasserre hierarchy"}
+The $t$-th level of Lasserre hierarchy $\las_t(K)$ of a convex polytope $K=\set{x\in \R^n| Ax\geq b}\subset [0,1]^n$ is the set of vectors $y\in \R^{2^n}$ that make the following matrices psd.
 
-1. moment matrix $M_t(y):=(y_{I\cup J})_{I,J\subseteq [k]}\succeq 0$
-2. moment matrix of slacks $M_t^\ell(y):=\left( \sum_{i=1}^n A_{\ell i}y_{I\cup J\cup \set{i}}-b_\ell y_{I\cup J} \right)_{I,J\subseteq [k]}\succeq 0$
+1. moment matrix $M_t(y):=(y_{I\cup J})_{I,J\subseteq [t]}\succeq 0$
+2. moment matrix of slacks $M_t^\ell(y):=\left( \sum_{i=1}^n A_{\ell i}y_{I\cup J\cup \set{i}}-b_\ell y_{I\cup J} \right)_{I,J\subseteq [t]}\succeq 0$
 :::
+
+Note that the $t$-th level of Lasserre hierarchy only involve entries $y_I$ with $|I|\leq 2t+1$. ($+1$ comes from the moment matrix of slacks) The matrices have dimension $\binom{n}{2t+1}=n^{O(t)}$ and there are only $m+1$ matrices. Thus to optimize some objective over the $t$-th level of Lasserre hierarchy takes $mn^{O(t)}$ time which is still polynomial in the input size. (separation oracle is to find eigenvalues)
+
+# Properties
+
+Almost everything in this part can be found [here](https://sites.math.washington.edu/~rothvoss/lecturenotes/lasserresurvey.pdf). Suppose that we have the $t$-th level of Lasserre hierarchy $\las_t(K)$.
+
+1. $y_I\in [0,1]$ for all $y\in \las_t(K)$
+2. $0\leq y_I \leq y_J \leq 1$ for all $J\subset I$ with $|I|,|J|\leq t$
+3. $y_{I\cup J}\leq \sqrt{y_I \cdot y_J}$
+4. $K\cap \set{0,1}^n \subset$ projection of $\las_t(K)$ for all $t\in [n]$
+5. $\las_t^{proj}(K)\subset K$
+6. $\las_n(K)\subset \las_{n-1}(K)\subset \dots \subset \las_0(K)$
+
+1.2.3. show that $y$ behaves similarly to a real probability distribution.
