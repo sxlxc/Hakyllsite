@@ -1,6 +1,6 @@
 ---
 title: Detecting base orderable matroids is NP-hard
-tags: matroids
+tags: matroid
 lang: en
 author: Yu Cong
 # draft: true
