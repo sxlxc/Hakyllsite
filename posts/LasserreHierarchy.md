@@ -125,7 +125,7 @@ The $t$-th level of Lasserre hierarchy $\las_t(K)$ of a convex polytope $K=\set{
 2. moment matrix of slacks $M_t^\ell(y):=\left( \sum_{i=1}^n A_{\ell i}y_{I\cup J\cup \set{i}}-b_\ell y_{I\cup J} \right)_{I,J\subseteq [t]}\succeq 0$
 :::
 
-Note that the $t$-th level of Lasserre hierarchy only involve entries $y_I$ with $|I|\leq 2t+1$. ($+1$ comes from the moment matrix of slacks) The matrices have dimension $\binom{n}{2t+1}=n^{O(t)}$ and there are only $m+1$ matrices. Thus to optimize some objective over the $t$-th level of Lasserre hierarchy takes $mn^{O(t)}$ time which is still polynomial in the input size. (separation oracle is to find eigenvalues)
+Note that the $t$-th level of Lasserre hierarchy only involve entries $y_I$ with $|I|\leq 2t+1$. ($+1$ comes from the moment matrix of slacks) The matrices have dimension $\binom{n}{2t+1}=n^{O(t)}$ and there are only $m+1$ matrices. Thus to optimize some objective over the $t$-th level of Lasserre hierarchy takes $mn^{O(t)}$ time which is still polynomial in the input size. (The separation oracle computes eigenvalues and eigenvectors. If there is a negative eigenvalue we find the corresponding eigenvector $v$ and the separating hyperplane is $\sum_{I,J}v_{I}v_{J} x_{I,J}=0$. See [Example 43](https://www.cs.princeton.edu/courses/archive/fall15/cos521/lecnotes/lec17.pdf).)
 
 # Properties
 
@@ -197,7 +197,7 @@ Since the constraints in $\las_t$ only concern the psdness of certain matrices, 
 
 # Decomposition Theorem
 
-We have seen that $\las_n^{proj}(K)$ is the integer hull. Can we get better upperbounds based on properties of $K$? Another easy upperbound is $\max_{x\in K}|\ones(K)|+1$, where $\ones(x)=\set{i|x_i=1}$. This is because $y\in \las_t(K)$ is a partial distribution for $|I|\leq t$ that can be realized as the marginal distribution of some distribution on $K\cap \set{0,1}^n$; if $k\cap \set{0,1}^n$ even does not contain a point with at least $t$ ones, we certainly have $\pr[\bigwedge_{i\in I}(X_i=1)]=0$ for $|I|\geq t$.
+We have seen that $\las_n^{proj}(K)$ is the integer hull. Can we get better upperbounds based on properties of $K$? Another easy upperbound is $\max_{x\in K}|\ones(K)|+1$, where $\ones(x)=\set{i|x_i=1}$. This is because $y\in \las_t(K)$ is a partial distribution for $|I|\leq t$ that can be realized as the marginal distribution of some distribution on $K\cap \set{0,1}^n$; if $k\cap \set{0,1}^n$ does not contain a point with at least $t$ ones, we certainly have $\pr[\bigwedge_{i\in I}(X_i=1)]=0$ for $|I|\geq t$.
 
 This fact implies that for most hard problems we should not expect $\las_k$ to give us a integral solution for constant $k$.
 
@@ -209,3 +209,17 @@ Let $y\in \las_t(K)$, $S\subset [n]$ and $k\in [0,t]$ such that $k\geq |\ones(x)
 y\in \conv\set{z| z\in \las_{t-k}(K); z_{\set{i}}\in \set{0,1} \forall i\in S}.
 \]
 :::
+
+# Separation Oracle for Implicitly Given $\mathbf K$
+
+Sometimes $K$ is given in a compact form. For example, consider finding matroid cogirth.
+
+\begin{equation*}
+\begin{aligned}
+\min&   &   \sum_{e\in E} x_e&  &   &\\
+s.t.&   &   \sum_{e\in B} x_e&\geq 1 &  &\forall \text{ base $B$}\\
+    &   &                 x_e&\geq 0 &  &\forall e\in E
+\end{aligned}
+\end{equation*}
+
+If $K$ is only accessable through a separation oracle, is it possible to optimize over $\las_t(K)$ in polynomial time for constant $t$?
