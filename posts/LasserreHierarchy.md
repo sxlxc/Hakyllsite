@@ -11,6 +11,7 @@ date: 2025-05-24
 \DeclareMathOperator*{\pr}{Pr}
 \DeclareMathOperator*{\las}{Las}
 \DeclareMathOperator*{\conv}{conv}
+\DeclareMathOperator*{\ones}{ones}
 
 Useful links:
 
@@ -181,11 +182,30 @@ y_I &= \pr[X_i=1] \pr[\bigwedge_{k\in I}X_k=1 | X_i=1]+\pr[X_i=0] \pr[\bigwedge_
 
 For any partially feasible probability distribution $y\in\las_t(K)$, $y_i \in (0,1)$ implies that both $X_i=0$ and $X_i=1$ happen with non-zero probability, which in turn impies $z^{(1)},z^{(2)}\in \las_{t-1}(K)$. One can also explicitly express $y$ as convex combination and see the relation with Möbius inversion, see p9 in [this notes](https://sites.math.washington.edu/~rothvoss/lecturenotes/lasserresurvey.pdf).
 
-In [@conv], each vector in the convex combination (those with integer value on $S$) can be understood as a partial probability distribution under condition $[\bigwedge_{i\in I} (X_i=1) \bigwedge_{j\in J}(X_j=0)]$, and the probability assigned to it is exactly the chance its condition happens. More formally, [@conv] implies the following,
+In [@conv], each vector in the convex combination (those with integer value on $S$, such as $z^{(1)},z^{(2)}$) can be understood as a partial probability distribution under condition $[\bigwedge_{i\in I} (X_i=1) \bigwedge_{j\in J}(X_j=0)]$ where $I\sqcup J=S$, and the probability assigned to it is exactly the chance its condition happens. More formally, [@conv] implies the following,
 
 ::: Corollary
 Let $y\in\las_t(K)$. For any subset $S\subset [n]$ of size at most $t$, there is a distribution $D(S)$ over $\set{0,1}^S$ such 
 \[
 \pr_{z\sim D(S)}\left[ \bigwedge_{i\in I} (z_i=1) \right]=y_I \quad \forall I\subset S
+\]
+:::
+
+Moreover, this distribution is "locally consistent" since the prabability assigned to each vector only depends on its condition.
+
+Since the constraints in $\las_t$ only concern the psdness of certain matrices, one may naturally think about its decomposition. This leads to a vector representation of $y_I$ for all $|I|\leq t$ and may be helpful in rounding algorithms. For $J\subset I$, $v_I$ lies on the sphere of radius $\|v_J\|/2=\sqrt{y_J}/2$ and center $v_J /2$.
+
+# Decomposition Theorem
+
+We have seen that $\las_n^{proj}(K)$ is the integer hull. Can we get better upperbounds based on properties of $K$? Another easy upperbound is $\max_{x\in K}|\ones(K)|+1$, where $\ones(x)=\set{i|x_i=1}$. This is because $y\in \las_t(K)$ is a partial distribution for $|I|\leq t$ that can be realized as the marginal distribution of some distribution on $K\cap \set{0,1}^n$; if $k\cap \set{0,1}^n$ even does not contain a point with at least $t$ ones, we certainly have $\pr[\bigwedge_{i\in I}(X_i=1)]=0$ for $|I|\geq t$.
+
+This fact implies that for most hard problems we should not expect $\las_k$ to give us a integral solution for constant $k$.
+
+Karlin, Mathieu and Nguyen [@karlin_integrality_2011] proved a more general form of [@conv] using similar arguments.
+
+::: {.Theorem title="Decomposition Theorem"}
+Let $y\in \las_t(K)$, $S\subset [n]$ and $k\in [0,t]$ such that $k\geq |\ones(x)\cap S|$ for all $x\in K$. Then 
+\[
+y\in \conv\set{z| z\in \las_{t-k}(K); z_{\set{i}}\in \set{0,1} \forall i\in S}.
 \]
 :::
