@@ -91,7 +91,6 @@
         <else-if type="chapter paper-conference" match="any">
           <text variable="title" suffix=", "/>
           <text term="in" suffix=": "/>
-          <text macro="editor" suffix=", "/>
           <text variable="container-title" form="short" text-case="title" font-style="italic" suffix=", "/>
           <text macro="edition" suffix=", "/>
           <text macro="publisher"/>

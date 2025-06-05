@@ -4,8 +4,8 @@ subtitle: From a Probabilistic Perspective
 tags: optimization
 author: Yu Cong and Hongjie Qing
 lang: en
-draft: true
-date: 2025-05-24
+# draft: true
+date: 2025-06-05
 ---
 
 \DeclareMathOperator*{\pr}{Pr}
@@ -63,9 +63,12 @@ To make $y$ a feasible probability from some joint distribution and to make $(y_
 <!-- why psd? -->
 ## Feasible Probability
 
+For now let's forget about $K$ and consider $y\in [0,1]^{2^{[n]}}$ and a discrete distribution $D$ on $\set{0,1}^n$. We want to make $y_I=\pr_{D}[\bigwedge_{i\in I}(X_i=1)]$.
+In fact, there is a one to one correspondence between $y$ and $D$. If $D$ is given, computing $y_I$ is easy for any $I\subseteq [n]$. If $y$ is given, recovering the distribution $D$ is the same as solving a system of $2^n$ linear equations with $2^n$ variables ($2^n-1$ of the the equations come form $y_I$, and the remaining one is $\sum_p D(p)=1$.) Thus, with a slight abuse of notation, we will refer to $y$ as a distribution.
+
 We work with the 2D example first. Let $x=(x_1,x_2)^T\in K$ be a marginal distribution. One can see that $y=(1,x_1,x_2,\pr[X_1=X_2=1])^T$ and the last number is not arbitrary. In fact, $\pr[X_1=X_2=1]$ must in range $[\max(0, x_1+x_2-1),\min(x_1,x_2)]$.
 
-To make sure $y$ is indeed a probability the moment matrix is considered. The moment matrix $M(y)$ is of size $2^n \times 2^n$ and $M(y)[I,J]$ is defined as the expectation $E[\prod_{i\in I\cup J}x_i]=y_{I\cup J}$ (the only non-zero term is $1\cdot \pr[\bigwedge_{i\in I\cup j}x_i=1]=y_{I\cup J}$). The expectation is taken over the distribution defined by $y$.
+To make sure $y$ is indeed a probability distribution the moment matrix is considered. The moment matrix $M(y)$ is of size $2^n \times 2^n$ and $M(y)[I,J]$ is defined as the expectation $E[\prod_{i\in I\cup J}X_i]=y_{I\cup J}$ (the only non-zero term is $1\cdot \pr[\bigwedge_{i\in I\cup j}(X_i=1)]=y_{I\cup J}$). The expectation is taken over the distribution defined by $y$.
 
 ::: Lemma
 For any probability distribution $y$, the moment matrix is psd.
@@ -76,8 +79,8 @@ We need to verify $z^T M(y) z\geq 0$ for any $z$.
 \begin{equation*}
 \begin{aligned}
 z^T M(y) z    &= \sum_I \sum_J z_I y_{I\cup J} z_J\\
-                    &= \sum_I \sum_J z_I E[\prod_{i\in I\cup J} x_i] z_J\\
-                    &= E\left[\left( \sum_I (z_I \prod_{i\in I} x_i)\right)^2 \right]
+                    &= \sum_I \sum_J z_I E[\prod_{i\in I\cup J} X_i] z_J\\
+                    &= E\left[\left( \sum_I (z_I \prod_{i\in I} X_i)\right)^2 \right]
 \end{aligned}
 \end{equation*}
 :::
@@ -88,7 +91,27 @@ Note that in the proof something like sum of squares appears. Lasserre hierarchy
 If $M(y)$ is psd then $y$ is a probability distribution.
 :::
 
-This can be seen from properties of Lasserre hierarchy. We defer the proof.
+It is easy to see that $y_I\in [0,1]$ for all $I\subseteq [n]$. Consider the following submatrix 
+\begin{bmatrix}
+\emptyset & y_I\\
+y_I & y_I
+\end{bmatrix}
+It is psd since $M(y)$ is psd. The determinant is $y_I(1-y_I)\geq 0$.
+
+Let $\pr_D[p]$ be the probability of selecting $p\in\set{0,1}^n$ in $D$. It remains to prove the following system of linear equations has a solution such that $\pr_D[p]\in [0,1]$ for all $p$.
+
+\begin{equation*}
+\begin{aligned}
+y_{[n]} &=  \pr_D[\mathbf 1]\\
+y_{[n]\setminus \set{n}} &= \sum_{p:\bigwedge\limits_{i\in [n-1]}(p_i=1)} \pr_D[p]\\
+y_{[n]\setminus \set{n-1}} &= \sum_{p:\bigwedge\limits_{i\in [n]\setminus \set{n-1}}(p_i=1)} \pr_D[p]\\
+        &\vdots             \\
+y_{\set{1}} &= \sum_{p:p_1=1} \pr_D[p]\\
+y_\emptyset &= \sum_p \pr_D[p]
+\end{aligned}
+\end{equation*}
+I believe this can be proven with the idea of Lemma 2 [here](https://sites.math.washington.edu/~rothvoss/lecturenotes/lasserresurvey.pdf).
+
 
 <!-- slacks? -->
 ## Projection in $K$
@@ -99,23 +122,23 @@ One may want to define moment matrices for constraints $Ax\geq b$. This is calle
 \begin{equation*}
 \begin{aligned}
 z^T M(y) z    &= \sum_I \sum_J z_I z_J (\sum_{i=1}^n a_i y_{I\cup J\cup \set{i}}-b y_{I\cup J})\\
-                    &= \sum_I \sum_J z_I z_J (\sum_i a_i E[\prod_{k\in I\cup J\cup\set{i}} x_k] - b E[\prod_{k\in I\cup J}x_k] )\\
-                    &= E\left[ \sum_I \sum_J z_I z_J (\sum_i a_i x_i -b) \prod_{k\in I\cup J}x_k \right]\\
-                    &= E\left[ (\sum_i a_i x_i -b) \left(\sum_I z_I \prod_{i\in I} x_i \right)^2 \right]
+                    &= \sum_I \sum_J z_I z_J (\sum_i a_i E[\prod_{k\in I\cup J\cup\set{i}} X_k] - b E[\prod_{k\in I\cup J}X_k] )\\
+                    &= E\left[ \sum_I \sum_J z_I z_J (\sum_i a_i X_i -b) \prod_{k\in I\cup J}X_k \right]\\
+                    &= E\left[ (\sum_i a_i X_i -b) \left(\sum_I z_I \prod_{i\in I} X_i \right)^2 \right]
 \end{aligned}
 \end{equation*}
 
 Note that we can combine the expectations since they are taken over the same probability distribution. 
-Now assume that we have $a^Tx-b\geq 0$.
+Now assume that we have $a^TX-b\geq 0$.
 
 \begin{equation*}
 \begin{aligned}
- E&\left[ (\sum_i a_i x_i -b) \left(\sum_I z_I \prod_{i\in I} x_i \right)^2 \right]\\
-    &= \sum \pr[\cdots](a^T x-b)\left(\sum_I z_I \prod_{i\in I} x_i \right)^2 \geq 0
+ E&\left[ (\sum_i a_i X_i -b) \left(\sum_I z_I \prod_{i\in I} X_i \right)^2 \right]\\
+    &= \sum \pr[\cdots](a^T X-b)\left(\sum_I z_I \prod_{i\in I} X_i \right)^2 \geq 0
 \end{aligned}
 \end{equation*}
 
-If $a^Tx\geq b$ is satisfied, then the corresponding moment matrix of slack is psd. The other direction can also be seen from properties of Lasserre hierarchy.
+If $a^TX\geq b$ is satisfied, then the corresponding slack moment matrix is psd.
 
 Finally, this is a more formal definiton.
 
@@ -211,7 +234,13 @@ y\in \conv\set{z| z\in \las_{t-k}(K); z_{\set{i}}\in \set{0,1} \forall i\in S}.
 \]
 :::
 
-# Separation Oracle for Implicitly Given $\mathbf K$
+# Questions
+
+## Replace $M_t^\ell(y)\succeq 0$ with $\las_t^{proj}(y)\in K$
+
+I don't see any proof relying on $M_t^\ell(y)$ to be psd...
+
+## Separation Oracle for Implicitly Given $\mathbf K$
 
 Sometimes $K$ is given in a compact form. For example, consider finding matroid cogirth.
 
