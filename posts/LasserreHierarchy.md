@@ -238,7 +238,9 @@ y\in \conv\set{z| z\in \las_{t-k}(K); z_{\set{i}}\in \set{0,1} \forall i\in S}.
 
 ## Replace $M_t^\ell(y)\succeq 0$ with $\las_t^{proj}(y)\in K$
 
-I don't see any proof relying on $M_t^\ell(y)$ to be psd...
+~~I don't see any proof relying on $M_t^\ell(y)$ to be psd...~~ 
+
+It turns out that problems occur in the proof of [@conv]. If $\las_t(K)$ is defined as $\set{y|M_t(y)\succeq 0, y^{proj}\in K}$, then we cannot guarantee $z^{(1)},z^{(2)}\in K$. Without [@conv], $\las_n^{proj}(K)$ may not be exactly $K\cap \set{0,1}^n$ and the hierarchy seems less interesting.
 
 ## Separation Oracle for Implicitly Given $\mathbf K$
 
