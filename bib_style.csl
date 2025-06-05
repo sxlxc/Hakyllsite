@@ -19,7 +19,7 @@
     <category citation-format="numeric"/>
     <category field="generic-base"/>
     <summary>A style for many of Elsevier's journals that includes article titles in the reference list</summary>
-    <updated>2014-02-26T07:59:51+00:00</updated>
+    <updated>2025-06-05T07:59:51+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <macro name="author">
@@ -83,7 +83,7 @@
       <choose>
         <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
           <group delimiter=", ">
-            <text variable="title" font-style="normal" font-weight="bold"/>
+            <text variable="title" font-style="normal" font-weight="normal"/>
             <text macro="edition"/>
             <text macro="publisher"/>
           </group>
@@ -92,7 +92,7 @@
           <text variable="title" suffix=", "/>
           <text term="in" suffix=": "/>
           <text macro="editor" suffix=", "/>
-          <text variable="container-title" form="short" text-case="title" suffix=", "/>
+          <text variable="container-title" form="short" text-case="title" font-style="italic" suffix=", "/>
           <text macro="edition" suffix=", "/>
           <text macro="publisher"/>
           <group delimiter=" ">
@@ -117,8 +117,8 @@
         </else-if>
         <else>
           <group delimiter=" ">
-            <text variable="title" font-style="normal" font-weight="bold" suffix=","/>
-            <text variable="container-title" form="short" text-case="title" suffix="."/>
+            <text variable="title" font-style="normal" font-weight="normal" suffix=","/>
+            <text variable="container-title" form="short" text-case="title"  font-style="italic" suffix="."/>
             <text variable="volume"/>
             <text macro="year-date" prefix="(" suffix=")"/>
             <text variable="page" form="short"/>

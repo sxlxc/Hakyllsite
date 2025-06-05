@@ -197,7 +197,7 @@ Since the constraints in $\las_t$ only concern the psdness of certain matrices, 
 
 # Decomposition Theorem
 
-We have seen that $\las_n^{proj}(K)$ is the integer hull. Can we get better upperbounds based on properties of $K$? Another easy upperbound is $\max_{x\in K}|\ones(K)|+1$, where $\ones(x)=\set{i|x_i=1}$. This is because $y\in \las_t(K)$ is a partial distribution for $|I|\leq t$ that can be realized as the marginal distribution of some distribution on $K\cap \set{0,1}^n$; if $k\cap \set{0,1}^n$ does not contain a point with at least $t$ ones, we certainly have $\pr[\bigwedge_{i\in I}(X_i=1)]=0$ for $|I|\geq t$.
+We have seen that $\las_n^{proj}(K)$ is the integer hull. Can we get better upperbounds based on properties of $K$? Another easy upperbound is $\max_{x\in K}|\ones(x)|+1$, where $\ones(x)=\set{i|x_i=1}$. This is because $y\in \las_t(K)$ is a partial distribution for $|I|\leq t$ that can be realized as the marginal distribution of some distribution on $K\cap \set{0,1}^n$; if $k\cap \set{0,1}^n$ does not contain a point with at least $t$ ones, we certainly have $\pr[\bigwedge_{i\in I}(X_i=1)]=0$ for $|I|\geq t$.
 
 This fact implies that for most hard problems we should not expect $\las_k$ to give us a integral solution for constant $k$.
 
