@@ -16,7 +16,8 @@ date: 2025-05-24
 Useful links:
 
 1. <https://sites.math.washington.edu/~rothvoss/lecturenotes/lasserresurvey.pdf>
-2. Laurent's survey [@laurent_comparison_2003]
+2. <https://web.stanford.edu/class/cs369h/>
+3. Laurent's survey [@laurent_comparison_2003]
 
 I guess there should be a probabilistic way to understand most of the lemmas and the intuition...
 
