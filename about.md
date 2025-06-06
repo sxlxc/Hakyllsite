@@ -5,16 +5,11 @@ title:  Yu Cong
     <ruby>宇<rt>yǔ</rt></ruby>
 ---
 
+I’m a first year PhD student at the University of Electronic Science and Technology of China(UESTC).
 
-<figure style="float: right; margin: 10px;">
-    <img src="/images/giantmxbc.jpeg" style="width: 250px; height: auto;" /> <!-- Adjust the width as needed -->
-</figure>
+<img src="/images/giantmxbc.jpeg" style="width: 275px; height: auto;" />
 
-
-I’m a first year PhD student in combinatorial optimization at the University of Electronic Science and Technology of China(UESTC).
-
-
-### [Man with basketball](https://zh.wikipedia.org/zh-cn/%E8%94%A1%E5%BE%90%E5%9D%A4%E7%AF%AE%E7%90%83%E8%A7%86%E9%A2%91%E4%BA%8B%E4%BB%B6)
+<a href="https://zh.wikipedia.org/zh-cn/%E8%94%A1%E5%BE%90%E5%9D%A4%E7%AF%AE%E7%90%83%E8%A7%86%E9%A2%91%E4%BA%8B%E4%BB%B6">
 <pre class="ascii-art">
       //v\\
       ( 👀)
@@ -25,7 +20,11 @@ I’m a first year PhD student in combinatorial optimization at the University o
      //  ||
      \\   \\ 
 </pre>
+</a>
 
-### A typical character in DARK SOULS™ III
+<pre class="ascii-art">
+<img src="/images/404.png" style="width: 250px;">
+</pre>
 
-<img src="/images/404.png" alt="A typical character in DARK SOULS™ III" style="width: 250px;">
+<img src="https://images.steamusercontent.com/ugc/2470865965971786459/673CE1F08C406E5F6F4AC9A3640F8E776975345D/?imw=2048&imh=1152&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" style="width: 275px;">
+
