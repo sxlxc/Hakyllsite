@@ -20,6 +20,7 @@ Useful links:
 3. Laurent's survey [@laurent_comparison_2003]
 4. <https://rameesh-paul.github.io/sos.pdf>
 5. <https://www.ams.jhu.edu/~abasu9/papers/main-Lasserre.pdf>
+6. Chapter 3 of [Ali Kemal Sinop's PhD thesis](https://people.eecs.berkeley.edu/~venkatg/pubs/papers/thesis-ali-kemal-sinop.pdf)
 
 I guess there should be a probabilistic way to understand most of the lemmas and the intuition...
 
