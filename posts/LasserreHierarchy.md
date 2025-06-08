@@ -22,7 +22,7 @@ Useful links:
 5. <https://www.ams.jhu.edu/~abasu9/papers/main-Lasserre.pdf>
 6. Chapter 3 of [Ali Kemal Sinop's PhD thesis](https://people.eecs.berkeley.edu/~venkatg/pubs/papers/thesis-ali-kemal-sinop.pdf)
 
-I guess there should be a probabilistic way to understand most of the lemmas and the intuition...
+When I started writing this post, I hadn’t found so many “useful links” yet. The content below and link 1.2. only focus on using the Lasserre hierarchy on LPs, while 3.4.5.6. mention more general cases.
 
 # $K\subset [0,1]^n \to K\cap \set{0,1}^n$
 
@@ -237,6 +237,48 @@ y\in \conv\set{z| z\in \las_{t-k}(K); z_{\set{i}}\in \set{0,1} \forall i\in S}.
 \]
 :::
 
+# Moment Relaxation
+
+Everything in this section can be found in Chapter 3 of [Ali Kemal Sinop's PhD thesis](https://people.eecs.berkeley.edu/~venkatg/pubs/papers/thesis-ali-kemal-sinop.pdf).
+
+Consider the following polynomial optimiation problem
+\begin{equation*}
+\begin{aligned}
+\min&   &   a(x)&    &   &\\
+s.t.&   &   b(x)&\geq 0 &   &\forall b\in B\\
+    &   &   x&\in\set{0,1}^n
+\end{aligned}
+\end{equation*}
+where $a,b,c$ are polynomials. We want to formulate this problem with SDP.
+
+We can consider polynomials $a,b$ as multilinear polynomials. Since $x_i\in \set{0,1}$, we have $x_i^2=x_i$. Now we can consider enumerating $x_S=\prod_{i\in S}x_i$ and write these polynomials as linear functions. For example, we can rewrite $a(x)=\sum_{S\subset [n]}\sum_{\alpha_S:S\to \Z} a_S \prod_{i\in S}x_i^{\alpha_S(i)}$ as $\sum_{S\subset [n]} a_S x_S$ which is linear in the moment sequence $(x_\emptyset, x_{\set{1}},\ldots,x_{[n]})$.
+
+Recall that our goal is a SDP formulation. A common technique is replace each variable with a vector. We consider the moment vectors $[v_S\in \R^\gamma]_{S\in 2^{[n]}}$. Similar to the LP case, we want $\langle v_A,v_B \rangle=x_{A\cup B}$. This is exactly the Gram decomposition of the moment matrix. There exist such moment vectors iff the moment matrix is psd. For $b(x)\geq 0$, we consider the slack moment matrix $M^b(x)=\left( \sum_S b_S x_{I\cup J\cup S} \right)_{I,J}$
+
+Then the program becomes the following SDP
+
+\begin{equation*}
+\begin{aligned}
+\min&   &   \sum_{S\subseteq [n]}a_S x_S&    &   &\\
+s.t.&   &   M^b(x)&\succeq 0 &   &\forall b\in B\\
+    &   &   M(x)&\succeq 0\\
+    &   &   x_{\emptyset}&=1
+\end{aligned}
+\end{equation*}
+
+Note that if the max degree of polynomials $a,b$ is at most $d$, then the following program is a relaxation of the original polynomial optimiation problem (cf. [Corollary 3.2.2.](https://people.eecs.berkeley.edu/~venkatg/pubs/papers/thesis-ali-kemal-sinop.pdf)).
+
+\begin{equation*}
+\begin{aligned}
+\min&   &   \sum_{S\subseteq [n]}a_S x_S&    &   &\\
+s.t.&   &   M_{F}^b(x)&\succeq 0 &   &\forall b\in B\\
+    &   &   M_{F\uplus V_{\leq d}}(x)&\succeq 0\\
+    &   &   x_{\emptyset}&=1
+\end{aligned}
+\end{equation*}
+where $F\subset 2^{[n]}$, $\uplus(A,B)=\set{a\cup b| \forall a\in A,b\in B}$ is element-wise union and $M_{F}$ is the submatrix of $M(F)$ on entries $F\times F$.
+Taking $F=\binom{[n]}{\leq t}$ gives us $\las_t$.
+
 # Questions
 
 ## Replace $M_t^\ell(y)\succeq 0$ with $\las_t^{proj}(y)\in K$
@@ -258,3 +300,17 @@ s.t.&   &   \sum_{e\in B} x_e&\geq 1 &  &\forall \text{ base $B$}\\
 \end{equation*}
 
 If $K$ is only accessable through a separation oracle, is it possible to optimize over $\las_t(K)$ in polynomial time for constant $t$?
+
+## Mixed ILP
+
+For some hard problems there are natural IPs or SDPs with binary variables and real variables. For example, the SDP for $k$-outlier embedding [@chawla_composition_2023].
+
+\begin{equation*}
+\begin{aligned}
+\min&   &   \sum_x \delta_x&    &   &\\
+s.t.&   &   (1-\delta_x - \delta_y) d^2(x,y)\leq \|v_x-v_y\|^2 &\leq (c^2+(\delta_x+\delta_y)f(k)) d^2(x,y) &   &\forall x,y\in X\\
+    &   &   \delta_x\in [0,1], v_x&\in \R^p   &   &\forall x\in X
+\end{aligned}
+\end{equation*}
+
+$\delta_x$'s are binary and $v_x$'s are vector in $\R^p$. Is it possible to use Lasserre hierarchy on $\delta_x$ to get better approximation?
