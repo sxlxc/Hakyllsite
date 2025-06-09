@@ -279,6 +279,22 @@ s.t.&   &   M_{F}^b(x)&\succeq 0 &   &\forall b\in B\\
 where $F\subset 2^{[n]}$, $\uplus(A,B)=\set{a\cup b| \forall a\in A,b\in B}$ is element-wise union and $M_{F}$ is the submatrix of $M(F)$ on entries $F\times F$.
 Taking $F=\binom{[n]}{\leq t}$ gives us $\las_t$.
 
+# Application: Sparsest Cut
+
+There are lots of applications in the useful links, but none of them discusses sparsest cut [@guruswami_approximating_2013].
+
+::: {.Problem title="sparsest cut"}
+Given a vertex set $V$ and two weight functions $c,D:\binom{V}{2} \to \R_{\geq 0}$, find $T\subset V$ that minimizes the sparsity of $T$
+\[
+\Phi(T)=\frac{\sum_{u < v}c_{u,v}|\chi^T(u)-\chi^T(v)|}{\sum_{u < v}D_{u,v}|\chi^T(u)-\chi^T(v)|},
+\]
+where $\chi^T$ is the indicator vector of $T$.
+:::
+
+In [@guruswami_approximating_2013] Guruswami and Sinop describe Lasserre hierarchy in a slightly different way. (Note that useful_link[6] is Sinop's thesis) We have seen that $y\in [0,1]^{2^{[n]}}$ is sufficient for describing the joint distribution. However, the total number of events is $3^n$, since for each variable $X_i$ in an event there are 3 possible states, $X_i=0,X_i=1$ and $X_i$ is absent.
+
+Instead of using $y\in [0,1]^{2^{[n]}}$, they enumerate each of the $3^n$ events and consider the vectors in the Gram decomposition.
+
 # Questions
 
 ## Replace $M_t^\ell(y)\succeq 0$ with $\las_t^{proj}(y)\in K$
