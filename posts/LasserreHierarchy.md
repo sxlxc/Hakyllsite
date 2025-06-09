@@ -279,7 +279,9 @@ s.t.&   &   M_{F}^b(x)&\succeq 0 &   &\forall b\in B\\
 where $F\subset 2^{[n]}$, $\uplus(A,B)=\set{a\cup b| \forall a\in A,b\in B}$ is element-wise union and $M_{F}$ is the submatrix of $M(F)$ on entries $F\times F$.
 Taking $F=\binom{[n]}{\leq t}$ gives us $\las_t$.
 
-# Application: Sparsest Cut
+# Applications
+
+## Sparsest Cut
 
 There are lots of applications in the useful links, but none of them discusses sparsest cut [@guruswami_approximating_2013].
 
@@ -294,6 +296,33 @@ where $\chi^T$ is the indicator vector of $T$.
 In [@guruswami_approximating_2013] Guruswami and Sinop describe Lasserre hierarchy in a slightly different way. (Note that useful_link[6] is Sinop's thesis) We have seen that $y\in [0,1]^{2^{[n]}}$ is sufficient for describing the joint distribution. However, the total number of events is $3^n$, since for each variable $X_i$ in an event there are 3 possible states, $X_i=0,X_i=1$ and $X_i$ is absent.
 
 Instead of using $y\in [0,1]^{2^{[n]}}$, they enumerate each of the $3^n$ events and consider the vectors in the Gram decomposition.
+For each set $S\subset V$ of size $\leq r+1$, and for each 0-1 labeling $f$ on elements of $S$, they define a vector $x_S(f)$. Note that $S(f)$ enumerates all events and one should understand $x_S(f)$ as the vector corresponding to $y_{S,f}\in [0,1]^{3^{[n]}}$ in the Gram decomposition and $\langle x_S(f), x_T(g) \rangle=y_{f(S)\land g(T)}$. Then $x_S(f)$ should have the following properties:
+
+1. if $f(S)$ and $g(T)$ are inconsistant, i.e. there is an element $e\in S\cap T$ and $f(e)\neq g(e)$, then one should have $\langle x_S(f), x_T(g) \rangle=y_{f(S)\land g(T)}=0$.
+2. if $f(S)\land g(T)$ and $f'(A)\land g'(B)$ are the same event, i.e. $A\cup B=S\cup T$ and the labels are the same, then $\langle x_S(f), x_T(g) \rangle=\langle x_A(f'), x_B(g') \rangle$
+3. $\|x_{\emptyset}\|^2=1$ here $\emptyset$ is the union of all events.
+4. for all $u\in V$, $\|x_u(0)\|^2+\|x_u(1)\|^2=\|x_{\emptyset}\|^2=1$.
+5. for $S\subset V, u\in S$ and $f\in \set{0,1}^{S\setminus \set{u}}$, $x_S(f\land (u=1))+x_S(f\land (u=0))=x_{S\setminus \set{u}}(f)$. (Note that two lhs vectors are orthogonal)
+
+Then write $x_u=x_{\set{u}}(1)$. The follwing "SDP" is a relaxation of sparsest cut.
+
+\begin{equation*}
+\begin{aligned}
+\min&   &   \frac{\sum_{u < v}c_{u,v}\|x_u-x_v\|^2}{\sum_{u < v}D_{u,v}\|x_u-x_v\|^2}\\
+s.t.&   &   \sum_{u < v}D_{u,v}\|x_u-x_v\|^2&\geq 0\\
+    &   &   x\in \las_r(V)&
+\end{aligned}
+\end{equation*}
+
+Scaling every $x_S(f)$ by a factor of the square root of the objective's denominator gives us a real SDP.
+
+\begin{equation*}
+\begin{aligned}
+\min&   &   \sum_{u < v}c_{u,v}\|x_u-x_v\|^2\\
+s.t.&   &   \sum_{u < v}D_{u,v}\|x_u-x_v\|^2&= 1\\
+    &   &   x\in \las_r(V),\|x_\emptyset\|^2&>0
+\end{aligned}
+\end{equation*}
 
 # Questions
 
