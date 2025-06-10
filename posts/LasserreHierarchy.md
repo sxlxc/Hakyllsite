@@ -304,6 +304,40 @@ For each set $S\subset V$ of size $\leq r+1$, and for each 0-1 labeling $f$ on e
 4. for all $u\in V$, $\|x_u(0)\|^2+\|x_u(1)\|^2=\|x_{\emptyset}\|^2=1$.
 5. for $S\subset V, u\in S$ and $f\in \set{0,1}^{S\setminus \set{u}}$, $x_S(f\land (u=1))+x_S(f\land (u=0))=x_{S\setminus \set{u}}(f)$. (Note that two lhs vectors are orthogonal)
 
+::: {.Lemma title="pseudo probability"}
+Let $x\in \las_t(V)$ for $t\geq 0$. Then the following holds:
+
+1. $\|x_S(f)\|^2 \in [0,1]$ for all $|S|\leq t+1$.
+2. $\|x_S(f)\|^2 \leq \|x_T(g)\|^2$ if $T\subset S$ and $f(t)=g(t)$ for all $t\in T$.
+3. $\|x_S(f)\|^2 = \sum_{h\in \set{0,1}^{T-S}} \|x_T(f\land h)\|^2$ if $S\subset T$.
+4. If $S\in \binom{V}{\leq t}$, $f\in \set{0,1}^S$ and $u\notin S$, then $x_{S+u}(f\land u=1)+x_{S+u}(f\land u=0)=x_{S}(f)$.
+:::
+
+::: Proof
+Let $N_t=\sum_{r=0}^{t+1}\binom{V}{r}2^r$ be the number of vectors in $x$.
+Consider the moment matrix $M_t\in \R^{N_t\times N_t}$, where each entry $M_t[f(S),g(T)]$ is $\langle x_S(f),x_T(g)\rangle$. The moment matrix is positive semidefinite since vectors in $x$ form a Gram decomposition of $M_t$.
+
+1. Consider the following submatrix of $M_t$. \[\begin{bmatrix}
+\langle x_\emptyset,x_\emptyset\rangle    & \langle x_\emptyset,x_S(f)\rangle\\
+\langle x_S(f),x_\emptyset\rangle         & \langle x_S(f),x_S(f)\rangle
+\end{bmatrix}\succeq 0\]
+Computing the determinant gives us $\|x_S(f)\|^2(1-\|x_S(f)\|^2)\geq 0$.
+2. Again consider certain submatrix of $M_t$. \[\begin{bmatrix}
+\langle{x_T(g)},{x_T(g)}\rangle  & \langle{x_T(g)},{x_S(f)}\rangle\\
+\langle{x_S(f)},{x_T(g)}\rangle  & \langle{x_S(f)},{x_S(f)}\rangle
+\end{bmatrix}\succeq 0\]
+The determinant is $\|x_S(f)\|^2(\|x_T(g)\|^2-\|x_S(f)\|^2)\geq 0$.
+3. We only need to show $\|x_S(f)\|^2=\|x_{S+u}(f\land u=0)\|^2 +\|x_{S+u}(f\land u=1)\|^2$ and the rest follows by induction. Note that $x_u(0)+x_u(1)=x_\emptyset$ since we have $\|x_u(0)\|^2+\|x_u(1)\|^2=\|x_{\emptyset}\|^2$ and they are orthogonal.
+\begin{equation*}
+\begin{aligned}
+\|x_{S+u}(f\land u=0)\|^2 +\|x_{S+u}(f\land u=1)\|^2 &= \langle{x_S(f)},{x_u(0)}\rangle+\langle{x_S(f)},{x_u(1)}\rangle\\
+&= \langle{x_S(f)},{x_u(0)+x_u(1)}\rangle\\
+&= \langle{x_S(f)},{x_\emptyset}\rangle=\|x_S(f)\|^2
+\end{aligned}
+\end{equation*}
+4. Notice that $x_{S+u}(f\land u=1)$ and $x_{S+u}(f\land u=0)$ are orthogonal. Denote by $x_S(f')$ the projection of $f$ on the hyperplane spanned by $x_{S+u}(f\land u=1)$ and $x_{S+u}(f\land u=0)$. One can verify that $f'=x_{S+u}(f\land u=1)+x_{S+u}(f\land u=0)$. Then it remains to show $\langle x_S(f'), x_S(f)\rangle=\|x_S(f)\|^2$, which immediately follows from 3.
+:::
+
 Then write $x_u=x_{\set{u}}(1)$. The follwing "SDP" is a relaxation of sparsest cut.
 
 \begin{equation*}
@@ -346,7 +380,7 @@ s.t.&   &   \sum_{e\in B} x_e&\geq 1 &  &\forall \text{ base $B$}\\
 
 If $K$ is only accessable through a separation oracle, is it possible to optimize over $\las_t(K)$ in polynomial time for constant $t$?
 
-## Mixed ILP
+## Mixed ILP/SDP
 
 For some hard problems there are natural IPs or SDPs with binary variables and real variables. For example, the SDP for $k$-outlier embedding [@chawla_composition_2023].
 
