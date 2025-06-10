@@ -362,9 +362,9 @@ s.t.&   &   \sum_{u < v}D_{u,v}\|x_u-x_v\|^2&= 1\\
 
 ## Replace $M_t^\ell(y)\succeq 0$ with $\las_t^{proj}(y)\in K$
 
-~~I don't see any proof relying on $M_t^\ell(y)$ to be psd...~~ 
+~~I don't see any proof relying on the psdness of slack moment matrices...~~ 
 
-It turns out that problems occur in the proof of [@conv]. If $\las_t(K)$ is defined as $\set{y|M_t(y)\succeq 0, y^{proj}\in K}$, then we cannot guarantee $z^{(1)},z^{(2)}\in K$. Without [@conv], $\las_n^{proj}(K)$ may not be exactly $K\cap \set{0,1}^n$ and the hierarchy seems less interesting.
+It turns out that problems occur in the proof of [@conv]. If $\las_t(K)$ is defined as $\set{y|M_t(y)\succeq 0, y^{proj}\in K}$, then we cannot guarantee $z^{(1)},z^{(2)}\in K$. Without [@conv], $\las_n^{proj}(K)$ may not be exactly $K\cap \set{0,1}^n$ and the hierarchy seems less interesting? But an alternative formulation (see [Sparsest cut](#sparsest-cut)) still allows good rounding even without [@conv] (enumerate $3^n$ events instead of $2^n$ subsets).
 
 ## Separation Oracle for Implicitly Given $\mathbf K$
 
@@ -379,17 +379,3 @@ s.t.&   &   \sum_{e\in B} x_e&\geq 1 &  &\forall \text{ base $B$}\\
 \end{equation*}
 
 If $K$ is only accessable through a separation oracle, is it possible to optimize over $\las_t(K)$ in polynomial time for constant $t$?
-
-## Mixed ILP/SDP
-
-For some hard problems there are natural IPs or SDPs with binary variables and real variables. For example, the SDP for $k$-outlier embedding [@chawla_composition_2023].
-
-\begin{equation*}
-\begin{aligned}
-\min&   &   \sum_x \delta_x&    &   &\\
-s.t.&   &   (1-\delta_x - \delta_y) d^2(x,y)\leq \|v_x-v_y\|^2 &\leq (c^2+(\delta_x+\delta_y)f(k)) d^2(x,y) &   &\forall x,y\in X\\
-    &   &   \delta_x\in [0,1], v_x&\in \R^p   &   &\forall x\in X
-\end{aligned}
-\end{equation*}
-
-$\delta_x$'s are binary and $v_x$'s are vector in $\R^p$. Is it possible to use Lasserre hierarchy on $\delta_x$ to get better approximation?
