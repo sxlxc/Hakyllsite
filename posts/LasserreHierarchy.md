@@ -55,7 +55,7 @@ We only care about the discrete distribution on feasible integral points.
 However, each $x\in K$ only describes some marginal probabilities and this this marginal probability may not be even feasible. Consider the following 2D example. Any point in $\text{green area}\setminus \text{orange area}$ is not a marginal distribution of any possible joint distribution over $(0,0),(1,0)$ and $(1,1)$. The idea is to iteratively prune this area.
 
 <figure>
-<img src="../images/lasserre/feasiblepoints.png" alt="2D example" style="width: 300px;" />
+<img src="../images/lasserre/feasiblepoints.png" alt="2D example" style="width: 300px;display: block; margin: auto;" />
 </figure>
 
 Now we need to think about how to represent all possible joint distribution. One natural way is to use a vector $y\in \R^{2^n}$ for the distribution law of every possible integer point in $\set{0,1}^n$.
@@ -156,7 +156,9 @@ Note that the $t$-th level of Lasserre hierarchy only involve entries $y_I$ with
 
 # Properties
 
-Almost everything in this part can be found [here](https://sites.math.washington.edu/~rothvoss/lecturenotes/lasserresurvey.pdf). Suppose that we have the $t$-th level of Lasserre hierarchy $\las_t(K)$. Denote by $\las_t^{proj}(K)$ the projection of the $t$-th level.
+Almost everything in this part can be found [here](https://sites.math.washington.edu/~rothvoss/lecturenotes/lasserresurvey.pdf). 
+
+Suppose that we have the $t$-th level of Lasserre hierarchy $\las_t(K)$. Denote by $\las_t^{proj}(K)$ the projection of the $t$-th level.
 
 0. $\las_t(K)$ is convex
 1. $y_I\in [0,1]$ for all $y\in \las_t(K)$
@@ -171,6 +173,8 @@ Almost everything in this part can be found [here](https://sites.math.washington
 4.5.6. show that $K\cap \set{0,1}^n \subset \las_n^{proj}(K)\subset \las_{n-1}^{proj}(K)\subset \dots \subset \las_0^{proj}(K) = K$.
 
 The goal of this section is to show that $K\cap \set{0,1}^n = \las_n^{proj}(K)$. When working on the Lasserre hierarchy, instead of considering the projection $x_i$ solely, we usually perform the analysis on $y$.
+
+## Convex Hull and Conditional Probability
 
 ::: {.Lemma #conv}
 For $t\geq 1$, let $y\in \las_t(K)$ and $S\subset [n]$ be any subset of variables of size at most $t$. then \[y\in \conv\set{z\in \las_{t-|S|}(K)| z_i\in \set{0,1} \forall i\in S}.\]
@@ -222,7 +226,7 @@ Moreover, this distribution is "locally consistent" since the prabability assign
 
 Since the constraints in $\las_t$ only concern the psdness of certain matrices, one may naturally think about its decomposition. This leads to a vector representation of $y_I$ for all $|I|\leq t$ and may be helpful in rounding algorithms. For $J\subset I$, $v_I$ lies on the sphere of radius $\|v_J\|/2=\sqrt{y_J}/2$ and center $v_J /2$.
 
-# Decomposition Theorem
+## Decomposition Theorem
 
 We have seen that $\las_n^{proj}(K)$ is the integer hull. Can we get better upperbounds based on properties of $K$? Another easy upperbound is $\max_{x\in K}|\ones(x)|+1$, where $\ones(x)=\set{i|x_i=1}$. This is because $y\in \las_t(K)$ is a partial distribution for $|I|\leq t$ that can be realized as the marginal distribution of some distribution on $K\cap \set{0,1}^n$; if $k\cap \set{0,1}^n$ does not contain a point with at least $t$ ones, we certainly have $\pr[\bigwedge_{i\in I}(X_i=1)]=0$ for $|I|\geq t$.
 
@@ -239,6 +243,8 @@ y\in \conv\set{z| z\in \las_{t-k}(K); z_{\set{i}}\in \set{0,1} \forall i\in S}.
 
 # Moment Relaxation
 
+In this section we briefly show the non-probabilistic view of Lasserre hierarchy and how this idea is used in polynomial optimization problems.
+
 Everything in this section can be found in Chapter 3 of [Ali Kemal Sinop's PhD thesis](https://people.eecs.berkeley.edu/~venkatg/pubs/papers/thesis-ali-kemal-sinop.pdf).
 
 Consider the following polynomial optimiation problem
@@ -253,7 +259,7 @@ where $a,b,c$ are polynomials. We want to formulate this problem with SDP.
 
 We can consider polynomials $a,b$ as multilinear polynomials. Since $x_i\in \set{0,1}$, we have $x_i^2=x_i$. Now we can consider enumerating $x_S=\prod_{i\in S}x_i$ and write these polynomials as linear functions. For example, we can rewrite $a(x)=\sum_{S\subset [n]}\sum_{\alpha_S:S\to \Z} a_S \prod_{i\in S}x_i^{\alpha_S(i)}$ as $\sum_{S\subset [n]} a_S x_S$ which is linear in the moment sequence $(x_\emptyset, x_{\set{1}},\ldots,x_{[n]})$.
 
-Recall that our goal is a SDP formulation. A common technique is replace each variable with a vector. We consider the moment vectors $[v_S\in \R^\gamma]_{S\in 2^{[n]}}$. Similar to the LP case, we want $\langle v_A,v_B \rangle=x_{A\cup B}$. This is exactly the Gram decomposition of the moment matrix. There exist such moment vectors iff the moment matrix is psd. For $b(x)\geq 0$, we consider the slack moment matrix $M^b(x)=\left( \sum_S b_S x_{I\cup J\cup S} \right)_{I,J}$
+Recall that our goal is to find a SDP formulation. A common technique is replace each variable with a vector. We consider the moment vectors $[v_S\in \R^\gamma]_{S\in 2^{[n]}}$. Similar to the LP case, we want $\langle v_A,v_B \rangle=x_{A\cup B}$. This is exactly the Gram decomposition of the moment matrix. There exist such moment vectors iff the moment matrix is psd. For $b(x)\geq 0$, we consider the slack moment matrix $M^b(x)=\left( \sum_S b_S x_{I\cup J\cup S} \right)_{I,J}$
 
 Then the program becomes the following SDP
 
@@ -304,7 +310,7 @@ For each set $S\subset V$ of size $\leq r+1$, and for each 0-1 labeling $f$ on e
 4. for all $u\in V$, $\|x_u(0)\|^2+\|x_u(1)\|^2=\|x_{\emptyset}\|^2=1$.
 5. for $S\subset V, u\in S$ and $f\in \set{0,1}^{S\setminus \set{u}}$, $x_S(f\land (u=1))+x_S(f\land (u=0))=x_{S\setminus \set{u}}(f)$. (Note that two lhs vectors are orthogonal)
 
-::: {.Lemma title="pseudo probability"}
+::: {.Lemma title="pseudo probability" #pseudoPr}
 Let $x\in \las_t(V)$ for $t\geq 0$. Then the following holds:
 
 1. $\|x_S(f)\|^2 \in [0,1]$ for all $|S|\leq t+1$.
@@ -364,9 +370,9 @@ s.t.&   &   \sum_{u < v}D_{u,v}\|x_u-x_v\|^2&= 1\\
 
 ~~I don't see any proof relying on the psdness of slack moment matrices...~~ 
 
-It turns out that problems occur in the proof of [@conv]. If $\las_t(K)$ is defined as $\set{y|M_t(y)\succeq 0, y^{proj}\in K}$, then we cannot guarantee $z^{(1)},z^{(2)}\in K$. Without [@conv], $\las_n^{proj}(K)$ may not be exactly $K\cap \set{0,1}^n$ and the hierarchy seems less interesting? But an alternative formulation (see [Sparsest cut](#sparsest-cut)) still allows good rounding even without [@conv] (enumerate $3^n$ events instead of $2^n$ subsets).
+It turns out that problems occur in the proof of [@conv]. If $\las_t(K)$ is defined as $\set{y|M_t(y)\succeq 0, y^{proj}\in K}$, then we cannot guarantee $z^{(1)},z^{(2)}\in K$. Without [@conv], $\las_n^{proj}(K)$ may not be exactly $K\cap \set{0,1}^n$ and the hierarchy seems less interesting? But an alternative formulation (see [Sparsest cut](#sparsest-cut), which entirely ignore the slack moment matrices) still allows good rounding even without [@conv]. Generally speaking, if the psdness of slack moment matrices is neglected, then we won't have [Law of total probability](https://en.wikipedia.org/wiki/Law_of_total_probability)([@conv]); However, we still have "finite additivity property of probability measures"([@pseudoPr] (3)).
 
-## Separation Oracle for Implicitly Given $\mathbf K$
+## Separation Oracle for Implicit $K$
 
 Sometimes $K$ is given in a compact form. For example, consider finding matroid cogirth.
 
