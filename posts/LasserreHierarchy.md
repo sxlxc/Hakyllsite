@@ -148,8 +148,8 @@ Finally, this is a more formal definiton.
 ::: {.Definition title="$t$-th level of Lasserre hierarchy"}
 The $t$-th level of Lasserre hierarchy $\las_t(K)$ of a convex polytope $K=\set{x\in \R^n| Ax\geq b}\subset [0,1]^n$ is the set of vectors $y\in \R^{2^n}$ that make the following matrices psd.
 
-1. moment matrix $M_t(y):=(y_{I\cup J})_{I,J\subseteq [t]}\succeq 0$
-2. moment matrix of slacks $M_t^\ell(y):=\left( \sum_{i=1}^n A_{\ell i}y_{I\cup J\cup \set{i}}-b_\ell y_{I\cup J} \right)_{I,J\subseteq [t]}\succeq 0$
+1. moment matrix $M_t(y):=(y_{I\cup J})_{|I|,|J|\leq t}\succeq 0$
+2. moment matrix of slacks $M_t^\ell(y):=\left( \sum_{i=1}^n A_{\ell i}y_{I\cup J\cup \set{i}}-b_\ell y_{I\cup J} \right)_{|I|,|J|\leq t}\succeq 0$
 :::
 
 Note that the $t$-th level of Lasserre hierarchy only involve entries $y_I$ with $|I|\leq 2t+1$. ($+1$ comes from the moment matrix of slacks) The matrices have dimension $\binom{n}{2t+1}=n^{O(t)}$ and there are only $m+1$ matrices. Thus to optimize some objective over the $t$-th level of Lasserre hierarchy takes $mn^{O(t)}$ time which is still polynomial in the input size. (The separation oracle computes eigenvalues and eigenvectors. If there is a negative eigenvalue we find the corresponding eigenvector $v$ and the separating hyperplane is $\sum_{I,J}v_{I}v_{J} x_{I,J}=0$. See [Example 43](https://www.cs.princeton.edu/courses/archive/fall15/cos521/lecnotes/lec17.pdf).)
@@ -245,7 +245,7 @@ y\in \conv\set{z| z\in \las_{t-k}(K); z_{\set{i}}\in \set{0,1} \forall i\in S}.
 
 In this section we briefly show the non-probabilistic view of Lasserre hierarchy and how this idea is used in polynomial optimization problems.
 
-Everything in this section can be found in Chapter 3 of [Ali Kemal Sinop's PhD thesis](https://people.eecs.berkeley.edu/~venkatg/pubs/papers/thesis-ali-kemal-sinop.pdf).
+Everything in this section can be found in [`useful_link[6]`](https://people.eecs.berkeley.edu/~venkatg/pubs/papers/thesis-ali-kemal-sinop.pdf).
 
 Consider the following polynomial optimiation problem
 \begin{equation*}
@@ -299,7 +299,7 @@ Given a vertex set $V$ and two weight functions $c,D:\binom{V}{2} \to \R_{\geq 0
 where $\chi^T$ is the indicator vector of $T$.
 :::
 
-In [@guruswami_approximating_2013] Guruswami and Sinop describe Lasserre hierarchy in a slightly different way. (Note that useful_link[6] is Sinop's thesis) We have seen that $y\in [0,1]^{2^{[n]}}$ is sufficient for describing the joint distribution. However, the total number of events is $3^n$, since for each variable $X_i$ in an event there are 3 possible states, $X_i=0,X_i=1$ and $X_i$ is absent.
+In [@guruswami_approximating_2013] Guruswami and Sinop describe Lasserre hierarchy in a slightly different way. (Note that [`useful_link[6]`](https://people.eecs.berkeley.edu/~venkatg/pubs/papers/thesis-ali-kemal-sinop.pdf) is Sinop's thesis) We have seen that $y\in [0,1]^{2^{[n]}}$ is sufficient for describing the joint distribution. However, the total number of events is $3^n$, since for each variable $X_i$ in an event there are 3 possible states, $X_i=0,X_i=1$ and $X_i$ is absent.
 
 Instead of using $y\in [0,1]^{2^{[n]}}$, they enumerate each of the $3^n$ events and consider the vectors in the Gram decomposition.
 For each set $S\subset V$ of size $\leq r+1$, and for each 0-1 labeling $f$ on elements of $S$, they define a vector $x_S(f)$. Note that $S(f)$ enumerates all events and one should understand $x_S(f)$ as the vector corresponding to $y_{S,f}\in [0,1]^{3^{[n]}}$ in the Gram decomposition and $\langle x_S(f), x_T(g) \rangle=y_{f(S)\land g(T)}$. Then $x_S(f)$ should have the following properties:
@@ -363,6 +363,27 @@ s.t.&   &   \sum_{u < v}D_{u,v}\|x_u-x_v\|^2&= 1\\
     &   &   x\in \las_r(V),\|x_\emptyset\|^2&>0
 \end{aligned}
 \end{equation*}
+
+The rounding method is too complicated, so it won't be covered here.
+
+## Matching
+
+This application can be found in section 3.3 of [`useful_link[1]`](https://sites.math.washington.edu/~rothvoss/lecturenotes/lasserresurvey.pdf). We consider the maximum matching IP in non-bipartite graphs. Let $K=\set{x\in \R_{\geq 0}^n |  \sum_{e\in \delta(v)}x_e\geq 1 \; \forall v\in V}$ be the polytope and consider $\las_t(K)$. In the notes Rothvoss shows the following lemma.
+
+::: {.Lemma #matchinggap1}
+$\las_t^{proj}(K)\subseteq (1+\frac{1}{2t})\cdot\conv(K\cap \set{0,1}^n)$.
+:::
+
+::: Proof
+Let $y\in \las_t(K)$. It suffices to show that $\sum_{e\in E[U]} y_e\leq (1+\frac{1}{2t})k$ for all $|U|=2k+1$, since $\set{x\in K| \text{$x$ satisfies odd constraints}}$ is the matching polytope. 
+When $k>t$, the degree constraints imply that $\sum_{e\in E[U]} y_e\leq k+\frac{1}{2} \leq (1+\frac{1}{2t})k$.
+Now consider the case $k\leq t$. Note that for fixed $U$, any $I\subset E[U]$ of size $|I|> k$ has $y_I=0$, since it is impossible to find a matching in $U$ covering more that $k$ vertices. Then by [@conv] $y$ can be represented as a convex combination of solutions $z\in \las_0(K)$ in which $z_e\in \set{0,1}$ for all $e\in E[U]$. The convex combination implies that $\sum_{e\in E[U]} y_e\leq k$ when $k\leq t$.
+:::
+
+However, one can see that [@matchinggap1] is not tight. 
+$\las_0^{proj}(K)$ should be contained in $(1+\frac{1}{2})\cdot\conv(K\cap \set{0,1}^n)$ and $\las_n^{proj}(K)$ should be exactly the integer hull. 
+Can we prove a slightly better gap that matches observations at $\las_0$ and $\las_n$? 
+The later part of the proof in fact shows that $y\in \las_t(K)$ satisfies all odd constraints with $|U|\leq 2t+1$. Consider an odd cycle with $2t+3$ vertices. $(1/2,\ldots,1/2)^T\in \R^{2t+3}$ is a feasible solution in $\las_t(K)$ and proves a tight lowerbound of $k+1/2$.
 
 # Questions
 
