@@ -1,0 +1,3 @@
+[submodule "katex_rust_fork"]
+	path = katex_rust_fork
+	url = git@github.com:congyu711/katex_cli.git
