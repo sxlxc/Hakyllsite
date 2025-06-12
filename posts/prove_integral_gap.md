@@ -1,5 +1,5 @@
 ---
-title: Proving constant integrality gap for linear programs
+title: Proving integrality gap for LPs
 tags:  optimization
 author: Yu Cong
 lang: en
