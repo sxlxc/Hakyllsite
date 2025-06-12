@@ -43,10 +43,9 @@
     position: relative;
   }
   .Proof:after {
-    content: '◾️';
+    content: '∎';
     position: absolute;
     right: -12px;
-    bottom: -2px;
   }
   
   table.postindex{
