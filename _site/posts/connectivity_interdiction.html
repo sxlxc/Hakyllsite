@@ -19,6 +19,24 @@
     <body>
         <div class="navbar-space">
         
+            <!-- A table of contents on the left side, but only for screens
+                that are big enough -->
+            <div id="contents-big">
+                <p class="mini-header">Contents <a id="up-arrow" href="#">↑</a></p>
+                <ul>
+<li><a href="#checking-k-vertex-connectivity">Checking <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>-vertex connectivity</a>
+<ul>
+<li><a href="#minimum-cut-for-edge-connectivity">Minimum cut for edge connectivity</a></li>
+<li><a href="#minimum-cut-for-vertex-connectivity">Minimum cut for vertex connectivity</a></li>
+</ul></li>
+<li><a href="#edge-connectivity-interdiction">(Edge) Connectivity interdiction</a>
+<ul>
+<li><a href="#reweighting">Reweighting</a></li>
+<li><a href="#more-on-normalized-min-cut">More on normalized min-cut</a></li>
+</ul></li>
+</ul>
+            </div>
+            
         </div>
         <div class="text-space">
         <header class="no-print">
@@ -238,9 +256,9 @@ factors) <span class="citation" data-cites="chalermsook_approximating_2022">[<a 
 algorithm should be sufficient. (Note that <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span> is at most <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> since costs are unit.) However, one can
 easily see that this sequence is not unimodal. Thus I don’t quite
 believe this claim.</p>
-<h2 data-number="2.3" id="comments-on-vygen_fptas_2024"><span class="header-section-number">2.3</span> Comments on <span class="citation" data-cites="vygen_fptas_2024">[<a href="#ref-vygen_fptas_2024" role="doc-biblioref">3</a>]</span></h2>
 <details>
 <summary>
+Comments on <span class="citation" data-cites="vygen_fptas_2024">[<a href="#ref-vygen_fptas_2024" role="doc-biblioref">3</a>]</span>
 </summary>
 <p>After reading <span class="citation" data-cites="chalermsook_approximating_2022">[<a href="#ref-chalermsook_approximating_2022" role="doc-biblioref">4</a>]</span>, I finally know why the authors use
 <a href="#normmincut" title="Problem 4">Problem 4</a> to solve

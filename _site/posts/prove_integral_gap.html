@@ -19,6 +19,18 @@
     <body>
         <div class="navbar-space">
         
+            <!-- A table of contents on the left side, but only for screens
+                that are big enough -->
+            <div id="contents-big">
+                <p class="mini-header">Contents <a id="up-arrow" href="#">↑</a></p>
+                <ul>
+<li><a href="#counting">Counting</a></li>
+<li><a href="#rounding">Rounding</a></li>
+<li><a href="#intermediate-problem">Intermediate problem</a></li>
+<li><a href="#notes">Notes</a></li>
+</ul>
+            </div>
+            
         </div>
         <div class="text-space">
         <header class="no-print">
@@ -116,7 +128,7 @@ optimum solution to <span class="katex"><span class="katex-html" aria-hidden="tr
 discussions are needed for the number of components in <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">G</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∖</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span></span></span></span>. The reduction can be done using
 the fact that if <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2311em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8861em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">σ</span></span></span></span><span style="top:-3.2em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.1em;"></span></span><span style="top:-3.4em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">λ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span> then <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.3889em;vertical-align:-0.4444em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9444em;"><span style="top:-2.6139em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">σ</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span style="top:-3.2em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.1em;"></span></span><span style="top:-3.4583em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">λ</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4444em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span>.)</li>
 </ol>
-<h1 data-number="2" id="approximation-algorithm"><span class="header-section-number">2</span> Approximation algorithm</h1>
+<h1 data-number="2" id="rounding"><span class="header-section-number">2</span> Rounding</h1>
 <p>A constant factor approximation algorithm based on LP may imply a
 constant upperbound of the corresponding LP.</p>
 <p>Examples:</p>
@@ -145,8 +157,7 @@ LP2 is no larger than <span class="katex"><span class="katex-html" aria-hidden="
 It is clear from the definition of LP2 that <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is a feasible integral solution of LP.
 Hence, applying eq(1) proves that the integral gap of LP is 2. (Note
 that in this example <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span>.)</p>
-<blockquote>
-<p><em>Notes</em></p>
+<h1 data-number="4" id="notes"><span class="header-section-number">4</span> Notes</h1>
 <p>There are many discussions about the integrality gap on cstheory.</p>
 <ol type="1">
 <li><a href="https://cstheory.stackexchange.com/questions/30984/exactly-solvable-but-non-trivial-integrality-gap" class="uri">https://cstheory.stackexchange.com/questions/30984/exactly-solvable-but-non-trivial-integrality-gap</a></li>
@@ -157,9 +168,18 @@ that in this example <span class="katex"><span class="katex-html" aria-hidden="t
 <li><a href="https://cstheory.stackexchange.com/questions/3871/minimum-maximal-solutions-of-lps" class="uri">https://cstheory.stackexchange.com/questions/3871/minimum-maximal-solutions-of-lps</a></li>
 </ol>
 <p>It seems that the integrality gap has a deep connection with hardness
-of approximation. I believe this kind of connections is more than
-empirical observations.</p>
-</blockquote>
+of approximation. There are two kinds of problems that i find
+particularly interesting.</p>
+<ul>
+<li>The LP has a relatively large gap, but some algorithm based on that
+LP achieves a better approximation than the gap.(see <a href="http://www.cis.upenn.edu/~sanjeev/postscript/FOCS09_MaxMin.pdf">this
+FOCS ’09 paper</a>)</li>
+<li>The integrality gap is small (a constant), but approximation algs
+based on the LP cannot do that good. (Zhiyi Huang gave a <a href="https://tcsuestc.com/2025/06/13/optimal-4-approximation-for-the-correlated-pandoras-problem/">talk</a>
+recently. The correlated Pandora’s problem has a natural LP formulation
+with gap <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span>, while <a href="https://tetali.math.gatech.edu/PUBLIS/mssc_final.pdf">it is
+NP-hard</a> to pproximate it within a ratio of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">ϵ</span></span></span></span>.)</li>
+</ul>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
 <div id="ref-ding_complexity_2008" class="csl-entry" role="listitem">

@@ -5,6 +5,7 @@ lang: en
 author: Yu Cong
 # draft: true
 date: 2025-02-13
+showtoc: true
 ---
 
 As a natural generalization of min-cut, the following problem seems interesting to me,
@@ -97,9 +98,9 @@ If one slightly modifies lemmas in section 2 in [@vygen_fptas_2024], there are s
 
 For unit cost, the optimum of normalized min-cut can be computed using the same complexity as connectivity interdiction (ignoring polylog factors) [@chalermsook_approximating_2022]. Consider the sequence $\set{\lambda_i=\frac{\min_{|F|\le i} w(C\setminus F)}{b+1-i}}$. If this is unimodal, $O(\log b)$ calls of connectivity interdiction algorithm should be sufficient. (Note that $b$ is at most $m$ since costs are unit.) However, one can easily see that this sequence is not unimodal. Thus I don't quite believe this claim.
 
-## Comments on [@vygen_fptas_2024]
 <details>
 <summary>
+Comments on [@vygen_fptas_2024]
 </summary>
 After reading [@chalermsook_approximating_2022], I finally know why the authors use [@normmincut] to solve connectivity interdiction. Almost all techniques they used are directly from [@chalermsook_approximating_2022]. Read section 2 of [@chalermsook_approximating_2022] until 2.2, you know almost everything needed for a FPTAS solving connectivity interdiction. In fact, the authors cite [@chalermsook_approximating_2022] in their paper,
 

@@ -3,6 +3,7 @@ title: Notes on Minimizing Sum of Piecewise Linear Convex Functions
 tags: alg, optimization
 author: Yu Cong
 lang: en
+showtoc: true
 ---
 
 

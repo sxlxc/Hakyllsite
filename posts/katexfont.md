@@ -5,6 +5,7 @@ author: Yu Cong with help from many others
 lang: zh
 # draft: true
 date: 2025-05-25
+showtoc: true
 ---
 
 > 现在有一个半成品可用 <https://github.com/congyu711/KaTeX>

@@ -5,6 +5,7 @@ author: Yu Cong
 lang: en
 # draft: true
 date: 2025-01-04
+showtoc: true
 ---
 
 \DeclareMathOperator{\B}{\mathcal B}

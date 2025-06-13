@@ -5,6 +5,7 @@ author: Yu Cong
 lang: en
 # draft: true
 date: 2025-04-01
+showtoc: true
 ---
 
 \DeclareMathOperator*{\opt}{OPT}
@@ -68,7 +69,7 @@ For $k$-cut we cannot use the simple counting argument since the dual LP is not 
 1. Given an optimal solution $x^*$, let $X$ be the set of edges $e$ such that $x_e^*=0$. The optimum to $\lambda_k$ on $G/X$ is the same as on $G$.
 2. For an optimal solution $x^*$, let $F$ be the set of edges $e$ such that $x_e^*=1$. Let $x^*|_{E-F}$ be the restriction of $x^*$ to $E-F$. $x^*|_{E-F}$ is a fully fractional optimum solution to $\lambda_k$. (Some discussions are needed for the number of components in $G\setminus F$. The reduction can be done using the fact that if $1\leq \frac{\lambda}{\sigma}\le c$ then $1\le \frac{\lambda+k}{\sigma+k}\le c$.)
 
-# Approximation algorithm
+# Rounding
 
 A constant factor approximation algorithm based on LP may imply a constant upperbound of the corresponding LP.
 
@@ -113,15 +114,18 @@ It is known that the polytope in LP2 is integral [@Schrijver2004]. Given any fea
 
 On the other hand, given a feasible integral solution $y$ of LP2, we set $x_e=1$ if any orientation of $e$ is in $y$. It is clear from the definition of LP2 that $x_e$ is a feasible integral solution of LP. Hence, applying eq(1) proves that the integral gap of LP is 2. (Note that in this example $c_1=1$ and $c_2=2$.)
 
-> *Notes*
->
-> There are many discussions about the integrality gap on cstheory.
->
-> 1. <https://cstheory.stackexchange.com/questions/30984/exactly-solvable-but-non-trivial-integrality-gap>
-> 2. <https://cstheory.stackexchange.com/questions/4915/integrality-gap-and-approximation-ratio>
-> 3. <https://cstheory.stackexchange.com/questions/392/the-importance-of-integrality-gap>
-> 4. <https://cstheory.stackexchange.com/questions/55188/randomized-rounding-schemes-that-depend-on-the-weights-in-the-lp-objective>
-> 5. <https://cstheory.stackexchange.com/questions/21060/optimization-problems-with-minimax-characterization-but-no-polynomial-time-algo>
-> 6. <https://cstheory.stackexchange.com/questions/3871/minimum-maximal-solutions-of-lps>
-> 
-> It seems that the integrality gap has a deep connection with hardness of approximation. I believe this kind of connections is more than empirical observations.
+# Notes
+
+There are many discussions about the integrality gap on cstheory.
+
+1. <https://cstheory.stackexchange.com/questions/30984/exactly-solvable-but-non-trivial-integrality-gap>
+2. <https://cstheory.stackexchange.com/questions/4915/integrality-gap-and-approximation-ratio>
+3. <https://cstheory.stackexchange.com/questions/392/the-importance-of-integrality-gap>
+4. <https://cstheory.stackexchange.com/questions/55188/randomized-rounding-schemes-that-depend-on-the-weights-in-the-lp-objective>
+5. <https://cstheory.stackexchange.com/questions/21060/optimization-problems-with-minimax-characterization-but-no-polynomial-time-algo>
+6. <https://cstheory.stackexchange.com/questions/3871/minimum-maximal-solutions-of-lps>
+
+It seems that the integrality gap has a deep connection with hardness of approximation. There are two kinds of problems that i find particularly interesting.
+
+- The LP has a relatively large gap, but some algorithm based on that LP achieves a better approximation than the gap.(see [this FOCS '09 paper](http://www.cis.upenn.edu/~sanjeev/postscript/FOCS09_MaxMin.pdf))
+- The integrality gap is small (a constant), but approximation algs based on the LP cannot do that good. (Zhiyi Huang gave a [talk](https://tcsuestc.com/2025/06/13/optimal-4-approximation-for-the-correlated-pandoras-problem/) recently. The correlated Pandora's problem has a natural LP formulation with gap $<4$, while [it is NP-hard](https://tetali.math.gatech.edu/PUBLIS/mssc_final.pdf) to pproximate it within a ratio of $4-\epsilon$.)

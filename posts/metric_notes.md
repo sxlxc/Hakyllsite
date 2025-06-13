@@ -5,6 +5,7 @@ author: Yu Cong
 lang: en
 # draft: true
 date: 2025-05-26
+showtoc: true
 ---
 
 \DeclareMathOperator*{\polylog}{polylog}
