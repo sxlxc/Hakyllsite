@@ -8,20 +8,11 @@ import ChaoDoc
 import Data.Either
 import Data.Functor
 import qualified Data.Map as M
--- import Data.Maybe
 import qualified Data.Text as T
 import Hakyll
 import System.IO.Unsafe
 import Text.Pandoc
 import Text.Pandoc.Citeproc
--- -- inports copied form https://vaibhavsagar.com/blog/2023/01/29/ghc-syntax-hakyll/
--- import           GHC.SyntaxHighlighter (Token(..), tokenizeHaskell)
--- import           Text.Blaze.Html.Renderer.Text (renderHtml)
--- import           Text.Pandoc.Definition (Block (CodeBlock, RawBlock), Pandoc)
--- import           Text.Pandoc.Walk (walk)
--- import qualified Text.Blaze.Html5 as H
--- import qualified Text.Blaze.Html5.Attributes as A
--- import qualified Data.Text.Lazy as L
 
 root :: String
 root = "https://talldoor.uk"
@@ -87,10 +78,11 @@ main = hakyll $ do
 
   match "posts/*" $ do
     route $ setExtension "html"
-    compile $
+    compile $ do
+      tocCtx <- getTocCtx (postCtxWithTags tags)
       chaoDocCompiler
-        >>= loadAndApplyTemplate "templates/post.html" (postCtxWithTags tags)
-        >>= loadAndApplyTemplate "templates/default.html" (postCtxWithTags tags)
+        >>= loadAndApplyTemplate "templates/post.html" tocCtx
+        >>= loadAndApplyTemplate "templates/default.html" tocCtx
         >>= relativizeUrls
         >>= katexFilter
 
@@ -173,39 +165,37 @@ defaultCtxWithTags tags = listField "tags" tagsCtx getAllTags <> defaultContext
               where getPosts :: Item (String, [Identifier])
                          -> Compiler [Item String]
                     getPosts (itemBody -> (_, is)) = mapM load is
--- pandocCompiler_ :: Compiler (Item String)
--- pandocCompiler_ =
---     let
---     mathExtensions =
---         [ Ext_tex_math_dollars
---         , Ext_tex_math_double_backslash
---         , Ext_latex_macros
---         , Ext_raw_tex
---         , Ext_raw_html
---         ]
---     newExtensions = foldr enableExtension defaultExtensions mathExtensions
---     defaultExtensions = writerExtensions defaultHakyllWriterOptions
---     writerOptions =
---         defaultHakyllWriterOptions
---         { writerExtensions = newExtensions
---         , writerHTMLMathMethod = KaTeX ""
---         }
---     in pandocCompilerWithTransformM defaultHakyllReaderOptions writerOptions pygmentsHighlight
---     where 
---       pygmentsHighlight :: Pandoc -> Compiler Pandoc
---       pygmentsHighlight = walkM \case
---         CodeBlock (_, listToMaybe -> mbLang, _) (T.unpack -> body) -> do
---           let lang = T.unpack (fromMaybe "text" mbLang)
---           RawBlock "html" . T.pack <$> callPygs lang body
---         block -> pure block
---         where
---           callPygs :: String -> String -> Compiler String
---           callPygs lang = unixFilter "pygmentize" [ "-l", lang
---                                                   , "-f", "html"
---                                                   , "-P", "cssclass=pygmentize-block"
---                                                   , "-P", "cssstyles=padding-left: 1em;"
---                                                   ]
 
+getTocCtx :: Context a -> Compiler (Context a)
+getTocCtx ctx = do
+  noToc      <- (Just "true" ==) <$> (getUnderlying >>= (`getMetadataField` "no-toc"))
+  writerOpts <- mkTocWriter defaultHakyllWriterOptions
+  toc        <- renderPandocWith chaoDocRead writerOpts =<< getResourceBody
+  pure $ mconcat [ ctx
+                 , constField "toc" $ killLinkIds (itemBody toc)
+                 , if noToc then boolField "no-toc" (pure noToc) else mempty
+                 ]
+ where
+  mkTocWriter :: WriterOptions -> Compiler WriterOptions
+  mkTocWriter writerOpts = do
+    tmpl <- either (const Nothing) Just <$> unsafeCompiler (compileTemplate "" "$toc$")
+    pure $ writerOpts
+      { writerTableOfContents = True
+      , writerTOCDepth        = 2
+      , writerTemplate        = tmpl
+      , writerHTMLMathMethod  = KaTeX ""
+      }
+  
+  asTxt :: (T.Text -> T.Text) -> String -> String
+  asTxt f = T.unpack . f . T.pack
+  
+  killLinkIds :: String -> String
+  killLinkIds = asTxt (mconcat . go . T.splitOn "id=\"toc-")
+   where
+    go :: [T.Text] -> [T.Text]
+    go = \case
+      []     -> []
+      x : xs -> x : map (T.drop 1 . T.dropWhile (/= '\"')) xs
 
 katexFilter :: Item String -> Compiler (Item String)
 katexFilter = withItemBody (unixFilter "./katex_cli" [])
@@ -238,7 +228,7 @@ myReadPandocBiblio ::
   (Pandoc -> Pandoc) -> -- apply a filter before citeproc
   Item String ->
   Compiler (Item Pandoc)
-myReadPandocBiblio ropt csl biblio filter item = do
+myReadPandocBiblio ropt csl biblio pdfilter item = do
   -- Parse CSL file, if given
   -- style <- unsafeCompiler $ CSL.readCSLFile Nothing . toFilePath . itemIdentifier $ csl
 
@@ -256,46 +246,9 @@ myReadPandocBiblio ropt csl biblio filter item = do
                   addMeta "csl" (MetaString csl) $
                     addMeta "link-citations" (MetaBool True) $
                       addMeta "reference-section-title" (MetaInlines [Str "References"]) $
-                        filter pandoc -- here's the change
+                        pdfilter pandoc -- here's the change
                         -- let a x = itemSetBody (pandoc' x)
   return $ fmap (const pandoc') item
-
-
--- code highlighting filter from https://vaibhavsagar.com/blog/2023/01/29/ghc-syntax-hakyll/
--- it seems that this doesn't work? wired
--- ghcSyntaxHighlight :: Pandoc -> Pandoc
--- ghcSyntaxHighlight = walk $ \case
---     CodeBlock (_, (isHaskell -> True):_, _) (tokenizeHaskell -> Just tokens) ->
---         RawBlock "html" . L.toStrict . renderHtml $ formatHaskellTokens tokens
---     block -> block
---     where isHaskell = (== "haskell")
-
--- formatHaskellTokens :: [(Token, T.Text)] -> H.Html
--- formatHaskellTokens tokens =
---     H.div H.! A.class_ "sourceCode" $
---         H.pre H.! A.class_ "sourceCode haskell" $
---             H.code H.! A.class_ "sourceCode haskell" $
---                 mapM_ tokenToHtml tokens
-
--- tokenToHtml :: (Token, T.Text) -> H.Html
--- tokenToHtml (tokenClass -> className, text) =
---     H.span H.!? (not $ T.null className, A.class_ (H.toValue className)) $
---         H.toHtml text
--- tokenClass :: Token -> T.Text
--- tokenClass = \case
---     KeywordTok -> "kw"
---     PragmaTok -> "pp" -- Preprocessor
---     SymbolTok -> "ot" -- Other
---     VariableTok -> "va"
---     ConstructorTok -> "dt" -- DataType
---     OperatorTok -> "op"
---     CharTok -> "ch"
---     StringTok -> "st"
---     IntegerTok -> "dv" -- DecVal
---     RationalTok -> "dv" -- DecVal
---     CommentTok -> "co"
---     SpaceTok -> ""
---     OtherTok -> "ot"
 
 myFilter :: Pandoc -> Pandoc
 myFilter = theoremFilter

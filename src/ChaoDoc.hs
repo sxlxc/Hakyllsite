@@ -12,13 +12,16 @@ import Control.Monad.State
 setMeta key val (Pandoc (Meta ms) bs) = Pandoc (Meta $ M.insert key val ms) bs
 
 -- On mac, please do `export LANG=C` before using this thing
-chaoDocRead = def{readerExtensions = enableExtension Ext_tex_math_double_backslash $
-                                     enableExtension Ext_tex_math_single_backslash $ 
-                                     enableExtension Ext_raw_tex $ pandocExtensions}
-chaoDocWrite = def{writerHTMLMathMethod = KaTeX "",
-                   -- writerHtml5          = True,
-                   --writerHighlightStyle = Just syntaxHighlightingStyle,
-                   writerNumberSections = True}
+chaoDocRead = def{readerExtensions =    enableExtension Ext_tex_math_double_backslash $
+                                        enableExtension Ext_tex_math_single_backslash $ 
+                                        enableExtension Ext_raw_tex 
+                                        pandocExtensions}
+chaoDocWrite = def{ writerHTMLMathMethod = KaTeX "",
+                    -- writerHtml5          = True,
+                    --writerHighlightStyle = Just syntaxHighlightingStyle,
+                    writerNumberSections = True,
+                    writerTableOfContents = True,
+                    writerTOCDepth = 2}
 
 chaoDocToPandoc :: Text -> Pandoc
 chaoDocToPandoc x = fromRight (Pandoc nullMeta []) $ runPure (readMarkdown chaoDocRead x)
@@ -37,23 +40,23 @@ chaoDocInline x = removeP $ unpack $ writeDocT $ chaoDocToPandoc x
   where removeP x = drop 3 (take (length x - 4) x) 
 
 incrementalBlock = ["Theorem",
-                  "Conjecture",
-                  "Definition",
-                  "Example",
-                  "Lemma",
-                  "Problem",
-                  "Proposition",
-                  "Corollary",
-                  "Observation",
-                  "定理",
-                  "猜想",
-                  "定义",
-                  "例",
-                  "引理",
-                  "问题",
-                  "命题",
-                  "推论",
-                  "观察"]
+                    "Conjecture",
+                    "Definition",
+                    "Example",
+                    "Lemma",
+                    "Problem",
+                    "Proposition",
+                    "Corollary",
+                    "Observation",
+                    "定理",
+                    "猜想",
+                    "定义",
+                    "例",
+                    "引理",
+                    "问题",
+                    "命题",
+                    "推论",
+                    "观察"]
 otherBlock = ["Proof","Remark","证明","备注"]             
 theoremClasses = incrementalBlock ++ otherBlock
 

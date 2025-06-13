@@ -5,6 +5,7 @@ tags: optimization
 author: Yu Cong and Hongjie Qing
 lang: en
 # draft: true
+showtoc: true
 date: 2025-06-05
 ---
 
