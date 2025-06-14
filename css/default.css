@@ -48,6 +48,7 @@ body {
     color: black;
     background-color: white;
     text-rendering: optimizeLegibility;
+    text-align: justify;
 }
 body a {
     color: #337ab7;
@@ -279,11 +280,13 @@ code {
     margin-top: 0
 }
 
-@media (max-width: 640px) {
+@media (max-width: 999px) {
     body {
-        width: 90%;
-        margin: 0;
+        /* width: 90%; */
+        margin: auto;
         padding: 0 5%;
+        text-align: left;
+        max-width: 876px;
     }
     /* .navright{
         overflow-x: auto;
@@ -304,24 +307,6 @@ code {
     display: none;
 }
 
-@media (min-width: 640px) {
-    .text-space {
-        width: min(90vw, 876px);;
-        margin: auto;
-        padding: 0;
-    }
-
-    nav {
-        margin: 0;
-        text-align: right;
-    }
-
-    nav a {
-        margin: 0;
-        display: inline;
-    }
-
-}
 @media (min-width: 1000px){
     body {
         max-width: 1350px;
@@ -330,8 +315,8 @@ code {
         display: -ms-flexbox;
         -ms-flex-flow: row wrap;
         flex-flow: row wrap;
-        width: 75%;
-        padding-right: 25%;
+        width: 88%;
+        padding-right: 12%;
         margin:auto;
     }
     .navbar-space {
@@ -376,8 +361,12 @@ code {
     .text-space {
         display: inline-block;
         width: 66%;
-        margin: 0;
-        padding: 0;
+    }
+}
+@media (min-width: 1360px){
+    body{
+        width: 75%;
+        padding-right: 25%;
     }
 }
 @media print
