@@ -19,6 +19,16 @@
     <body>
         <div class="navbar-space">
         
+            <!-- A table of contents on the left side, but only for screens
+                that are big enough -->
+            <div id="contents-big">
+                <p class="mini-header">Contents <a id="up-arrow" href="#">↑</a></p>
+                <ul>
+<li><a href="#packingcovering-defect">Packing/Covering Defect</a></li>
+<li><a href="#complexity">Complexity</a></li>
+</ul>
+            </div>
+            
         </div>
         <div class="text-space">
         <header class="no-print">
@@ -46,7 +56,7 @@
     <section class="header">
         Posted on June 15, 2025
         
-            by Yu Cong
+            by Yu Cong, Kangyi Tian
         
     </section>
     <div class="info">
@@ -74,12 +84,27 @@ of disjoint circuits.</p>
 <p>The left hand side <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">κ</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span> is called the
 <em>covering defect</em> and the right hand side <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6887em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.06366em;">ν</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span> is called the <em>packing
 defect</em>.</p>
+<h1 data-number="2" id="complexity"><span class="header-section-number">2</span> Complexity</h1>
+<p>Computing the corank <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6887em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6887em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span></span></span></span> and the
+component number <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">κ</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span> is easy.
+What about <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span> and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.06366em;">ν</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span>?</p>
+<p>The problem of determining if a sparse split graph (a special case of
+chordal graphs) can have its edges partitioned into edge-disjoint
+triangles is NP-complete <span class="citation" data-cites="feder_packing_2012">[<a href="#ref-feder_packing_2012" role="doc-biblioref">2</a>]</span>. So finding <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span> and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.06366em;">ν</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span> is NP-hard even for some special
+graphic matroids.</p>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
 <div id="ref-seymour_packing_1980" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[1] </div><div class="csl-right-inline">P.D. Seymour, Packing and covering with matroid
 circuits, <em>Journal of Combinatorial Theory, Series B</em>. 28 (1980)
 237–242 <a href="https://doi.org/10.1016/0095-8956(80)90067-2">10.1016/0095-8956(80)90067-2</a>.</div>
+</div>
+<div id="ref-feder_packing_2012" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">T.
+Feder, C. Subi, <a href="https://eccc.weizmann.ac.il/report/2012/013/">Packing
+<span>Edge</span>-<span>Disjoint</span> <span>Triangles</span> in
+<span>Given</span> <span>Graphs</span></a>, Weizmann Institute of
+Science, ECCC, 2012.</div>
 </div>
 </div>
     </section>

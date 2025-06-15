@@ -1,9 +1,10 @@
 ---
 title: Matroid circuit packing and covering
 tags:  matroid, optimization, combinatorics
-author: Yu Cong
+author: Yu Cong, Kangyi Tian
 lang: en
 draft: true
+showtoc: true
 date: 2025-06-15
 ---
 
@@ -23,3 +24,9 @@ $\nu(M)$ is the max number of disjoint circuits.
 :::
 
 The left hand side $\theta(M)-\kappa(M)$ is called the *covering defect* and the right hand side $r^*(M)-\nu(M)$ is called the *packing defect*.
+
+# Complexity
+
+Computing the corank $r^*$ and the component number $\kappa(M)$ is easy. What about $\theta(M)$ and $\nu(M)$?
+
+The problem of determining if a sparse split graph (a special case of chordal graphs) can have its edges partitioned into edge-disjoint triangles is NP-complete [@feder_packing_2012]. So finding $\theta(M)$ and $\nu(M)$ is NP-hard even for some special graphic matroids.
