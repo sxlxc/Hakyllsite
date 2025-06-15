@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>talldoor - Matroid circuit packing and covering</title>
+        <link rel="stylesheet" href="../katex/katex.min.css">
+        <script defer src="../katex/katex.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+SC&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/default.css" />
+        <link rel="stylesheet" href="../css/pygentize.css" />
+        <link rel="stylesheet" href="../css/chao-theorems.css">
+    
+    </head>
+    <body>
+        <div class="navbar-space">
+        
+        </div>
+        <div class="text-space">
+        <header class="no-print">
+            <nav class="navbar">
+                <a href="../">Home</a>
+                <div class="navright">
+                    <a href="../draft.html">Drafts</a>
+                    <a href="../about.html">About</a>
+                    <!-- <a href="/contact.html">Contact</a> -->
+                    <!-- <a href="/archive.html">Archive</a> -->
+                    <!-- <a href="/tags.html">Tags</a> -->
+                </div>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1 class="pagetitle">Matroid circuit packing and covering</h1>
+            <article>
+    <section class="subtitle">
+        
+        
+        <br><span style="font-weight: bold; color: red;">Draft</span>
+        
+    </section>
+    <section class="header">
+        Posted on June 15, 2025
+        
+            by Yu Cong
+        
+    </section>
+    <div class="info">
+        
+            Tags: <a title="All pages tagged 'matroid'." href="../tags/matroid.html" rel="tag">matroid</a>, <a title="All pages tagged 'optimization'." href="../tags/optimization.html" rel="tag">optimization</a>, <a title="All pages tagged 'combinatorics'." href="../tags/combinatorics.html" rel="tag">combinatorics</a>
+        
+    </div>    
+    <section>
+        <p>In the <a href="../posts/basepacking1.html">previous post</a>, we
+mainly focus on the algorithmic part of integral and fractional base
+packing and base covering. In this post we consider packing and covering
+of matroid circuits.</p>
+<h1 data-number="1" id="packingcovering-defect"><span class="header-section-number">1</span> Packing/Covering Defect</h1>
+<p>Seymour <span class="citation" data-cites="seymour_packing_1980">[<a href="#ref-seymour_packing_1980" role="doc-biblioref">1</a>]</span>
+proved the following theorem.</p>
+<div class="theorem-environment Theorem" data-index="1" type="Theorem">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">1</span></span>
+<p>Let <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mclose">)</span></span></span></span> be a matroid without
+coloop. Then one has <span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">κ</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7387em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.06366em;">ν</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span><span class="mpunct">,</span></span></span></span></span> where <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span>
+is the minimum number of circuits whose union is <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span></span></span></span>, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">κ</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span>
+is the number of connected components in <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span>, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6887em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6887em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span></span></span></span> is
+the corank and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.06366em;">ν</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span> is the max number
+of disjoint circuits.</p>
+</div>
+<p>The left hand side <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">κ</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span> is called the
+<em>covering defect</em> and the right hand side <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6887em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.06366em;">ν</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span> is called the <em>packing
+defect</em>.</p>
+<h1 class="unnumbered" id="bibliography">References</h1>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-seymour_packing_1980" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">P.D. Seymour, Packing and covering with matroid
+circuits, <em>Journal of Combinatorial Theory, Series B</em>. 28 (1980)
+237–242 <a href="https://doi.org/10.1016/0095-8956(80)90067-2">10.1016/0095-8956(80)90067-2</a>.</div>
+</div>
+</div>
+    </section>
+</article>
+
+        </main>
+
+        <footer class="no-print">
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>. 
+            <a href="https://github.com/congyu711/Hakyllsite">Source on Github</a>.
+            License <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0 </a>  <img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" alt="Creative Commons License" style="height: 12px; vertical-align: baseline;">
+
+        </footer>
+        </div>
+    </body>
+</html>
