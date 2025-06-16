@@ -23,7 +23,7 @@ $r^*$ is the corank and
 $\nu(M)$ is the max number of disjoint circuits.
 :::
 
-The left hand side $\theta(M)-\kappa(M)$ is called the *covering defect* and the right hand side $r^*(M)-\nu(M)$ is called the *packing defect*.
+The left hand side $\theta(M)-\kappa(M)$ is called the *circuit covering defect* and the right hand side $r^*(M)-\nu(M)$ is called the *circuit packing defect*. I guess the name "covering defect" comes from the fact that $\theta(M)-\kappa(M)$ is the gap between the circuit covering number and a lowerbound $\kappa(M)$. $\kappa(M)\leq \theta(M)$ since there is no circuit containing two elements in different components. The packing defect is the set-point dual of the covering version. To see the duality, one can write $\kappa(M)$ as the max size of $X\subset E$ such that $|C\cap X|\leq 1$ for all circuit $C$ and write $r^*(M)$ as the minimum size of $X\subset E$ such that $|X\cap C|\geq 1$ for all circuit $C$.
 
 # Complexity
 
