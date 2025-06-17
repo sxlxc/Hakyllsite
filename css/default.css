@@ -212,13 +212,15 @@ hr {
   display: block;
   height: 3px;
   border: 0;
-  border-top: 3px solid #ccc;
+  border-top: 3px dashed #ccc;
   margin: 1em 0;
   padding: 0;
 }
 
-table {
-    background-color: rgb(245, 245, 245);
+table, th, td {
+  border: 1px solid darkolivegreen;
+  border-collapse: collapse;
+  text-align: left;
 }
 
 figure {

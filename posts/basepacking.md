@@ -121,19 +121,23 @@ For fixed $\lambda$, $\mathbf 1 \in \lambda B(M)$ if and only if there exists $\
 
 > Note that this proof is a straightforward generalization of the tree packing theorem in [@Schrijver2004], which is similar to the blocking polyhedra method described in [@schrijver_polyhedral_1986].
 
+-------------
+
 In [@Galtier_2018b] there is a constructive proof that recovers the optimal $F\subset E$ in $\sigma(M)$ from any optimal solution of hitting set LP(dual to base packing).
 
-Define two sets $P, P'\in \R^{|E|}$.
+The idea is to show that any fraction solution $y$ to base hitting set can be converted to another solution $y'$ such that $y'(e)\in \set{0,c}$ for some global constant $c$ and $\sum_e w(e)y'(e)\leq \sum_e w(e)y(e)$.
+
+Define two sets $P, P'\in \R^{|E|}$,
 \begin{equation*}
 \begin{aligned}
-P   &=\set{y\in \R^{|E|}: y(e)\geq 0 \;\forall e\in E; y(B)\geq 1 \; \forall \text{ base B}}\\
-P'     &=\set{y\in P: \forall e\in E, \exists B^e\in \mathcal B \; s.t. \; e\in B^e \land y(B^e)=\min_{B\in \mathcal B} y(B)}
+P   &=\set{y\in \R^{|E|}: y(e)\geq 0 \;\forall e\in E; y(B)\geq 1 \; \forall \text{ base B}},\\
+P'     &=\set{y\in P: \forall e\in E, \exists B^e\in \mathcal B \; s.t. \; e\in B^e \land y(B^e)=\min_{B\in \mathcal B} y(B)}.
 \end{aligned}
 \end{equation*}
 
 $P'$ is contained in $P$ and every element is in a minimum base with respect to weights $y:E\to \R$.
 
-::: Proposition
+::: {.Proposition #y2yprime}
 Let $y\in P$. There exists $y'\in P'$ s.t. $y(e)\geq y'(e)$ for all $e$.
 :::
 
@@ -146,7 +150,7 @@ Then we define $y'$ as follows.
 y'(e)=
 \begin{cases}
 y(e)    & e\in B\\
-\min\limits_{e\in C_e-e} y(e) &e\notin B
+\min\limits_{e\in C_e} y(e) &e\notin B
 \end{cases}
 \end{equation*}
 
@@ -156,10 +160,27 @@ One can easily verify that $y'(e)\leq y(e)$ for all $e$ and $B$ is still the min
 2. For all base $B'$, $y'(B')\geq 1$ holds since $y'(B')\geq y'(B) = y(B)\geq 1$.
 :::
 
-The importance of $P'$ is that for any $y\in P'$ and set $E(\theta,y)=\set{e\in E:y(e)\leq \theta}$, 
-the size of the intersection of $E(\theta,y)$ and any minimum weight base $B$ is exactly the rank of $E(\theta,y)$. The proof is by contradiction.
+<!-- The importance of $P'$ is that for any $y\in P'$ and set $E(\theta,y)=\set{e\in E:y(e)\leq \theta}$, 
+the size of the intersection of $E(\theta,y)$ and any minimum weight base $B$ is exactly the rank of $E(\theta,y)$. The proof is by contradiction. -->
 
+[@y2yprime] shows that we can easily convert any solution to base hitting set ($y\in P$) to a more well-behaved solution ($y'\in P'$). Note that our final goal is to find some special optimal solution $y'\in \{0,c\}^E$. Thus we want to analyse the optimal $y'$ further.
 
+We are solving $\max_{y'} \set{\sum_e w(e)y'(e)| y'\in P'}$. Notice that the minimum weight base under weight $y'$ should always have weight 1. 
+We want to prove that for any weight $w$ there is an optimal $y'$ with only one non-zero value. Thus we consider expressing the solution with values in $y'$.
+Suppose we have computed the optimal $y'$ and let $\theta_1 < \ldots < \theta_h$ be the set of distinct values in $y'$. 
+Let $\mu_i$ be the number of edges with $y'(e)=\theta_i$. 
+One immediate observation is that the objective $\sum_e w(e)y'(e)$ can be written as $\sum_i \theta_i \mu_i$.
+Let $v_i=r(\set{e: y'(e)\leq \theta_{i}})-r(\set{e: y'(e)\leq \theta_{i-1}})$ be the rank increment when involving elements with $y'(e)=\theta_i$. Another immediate observation is that the weight of minimum base is $\sum_{e\in B} y'(e)=\sum_i v_i\theta_i=1$. Based on these observations we write the following LP for $\theta$.
+
+\begin{equation*}
+\begin{aligned}
+\min&   &   &\sum_i \mu_i\theta_i \\
+s.t.&   &   &\sum_i v_i\theta_i = 1\\
+    &   &   &0 \leq \theta_1\leq \theta_2\leq \ldots \leq \theta_h
+\end{aligned}
+\end{equation*}
+
+Suppose the optimal $y'$ is given, we can compute the optimal $\theta$ in the above LP and recover another solution $y''$ to base hitting set. One can see that $y''$ is still in $P'$. This LP has $h+1$ linearly independent constraints and $h$ variables. Thus only $h$ of the constraints are tight. We have already known that $\sum_i v_i\theta_i = 1$ must be tight. Then there is always an optimal solution $\theta$ such that $0=\theta_1=\ldots=\theta_k < \theta_{k+1}=\ldots = \theta_h =c$. Let $F$ be the set of elements with $y''(e)=0$. Note that the minimum weight base contains $r(F)$ elements of $F$. Thus we known that $c=\frac{1}{r(E)-r(F)}$. The objective is $\sum_{e\in E} w(e)y''(e)=\sum_{e\in E-F}w(e)y''(e)=\frac{\sum_{e\in E-F} w(e)}{r(E)-r(F)}$.
 
 -------------
 
@@ -167,7 +188,7 @@ the size of the intersection of $E(\theta,y)$ and any minimum weight base $B$ is
 Minimum fractional base covering is $\alpha(M)$.
 :::
 
-The proof is similar to and easier than the previous one. The corresponding polyhedron in $LP3$ becomes $\{x|\chi^{F}\cdot x\leq r(F)\; \forall F\subset E\}$ which is exactly the independence polytope.
+The proof is similar to and easier than the previous one. The corresponding polyhedron in $LP3$ becomes $\{x| x^T\chi^{F}\leq r(F)\; \forall F\subset E\}$ which is exactly the independence polytope. Similarly, constructive proof for base covering exists [@Galtier_2018b].
 
 Note that these two theorems can be generalized to weighted packing and covering of matroid bases.
 
@@ -183,7 +204,7 @@ Let $\varepsilon\in [0,1)$ be the fractional part of $\sigma(M)$ or $\alpha(M)$,
 
 ## Duality
 
-Applying the rank function of matroid dual derives the following(theorem 1 in [@catlin_fractional_1992]),
+Applying the rank function of matroid dual derives the following (Theorem 1 in [@catlin_fractional_1992]),
 
 ::: Theorem
 For matroid $M$ without any loop or coloop,
