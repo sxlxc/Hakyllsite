@@ -121,6 +121,47 @@ For fixed $\lambda$, $\mathbf 1 \in \lambda B(M)$ if and only if there exists $\
 
 > Note that this proof is a straightforward generalization of the tree packing theorem in [@Schrijver2004], which is similar to the blocking polyhedra method described in [@schrijver_polyhedral_1986].
 
+In [@Galtier_2018b] there is a constructive proof that recovers the optimal $F\subset E$ in $\sigma(M)$ from any optimal solution of hitting set LP(dual to base packing).
+
+Define two sets $P_{+}^{a,b}, P^{a,b}\in \R^{|E|}$.
+\begin{equation*}
+\begin{aligned}
+P_+^{a,b}   &=\set{y\in \R^{|E|}: a y(e)\geq b \;\forall e\in E; y(B)\geq 1 \; \forall \text{ base B}}\\
+P^{a,b}     &=\set{y\in P_+^{a,b}: \forall e\in E, \exists B^e\in \mathcal B \; s.t. \; e\in B^e \land y(B^e)=\min_{B\in \mathcal B} y(B)}
+\end{aligned}
+\end{equation*}
+
+$P^{a,b}$ is contained in $P_{+}^{a,b}$ and every element is in a minimum base with respect to weights $y:E\to \R$.
+
+::: Proposition
+Let $a\neq 0$, $b$ such that $rb\leq a$ and $y\in P_+^{a,b}$. There exists $y'\in P^{a,b}$ s.t. $y(e)\geq y'(e)$ for all $e$.
+:::
+
+::: Proof
+The proof is contrustive. Let $B=\set{e_1,\ldots, e_r}$ be a minimum weight base with $y$. 
+Assume that $y(e_1)\leq \ldots \leq y(e_r)$.
+For each element $e\notin B$, let $C_e$ be the fundamental circuit in $B+e$.
+Then we define $y'$ as follows.
+\begin{equation*}
+y'(e)=
+\begin{cases}
+y(e)    & e\in B\\
+\min\limits_{e\in C_e-e} y(e) &e\notin B
+\end{cases}
+\end{equation*}
+
+One can easily verify that $y'(e)\leq y(e)$ for all $e$ and $B$ is still the minimum weight base under weights $y'$. Now it remains to show that $y'\in P^{a,b}$. 
+
+1. Every element is in a minimum base. For $e\in B$ this is automatically satisfied. We consider $e\notin B$. Let $f\in C_e$ be the element in the fundamental circuit of $B+e$ with smallest weight $y(e)$. $B^e=B-e+f$ is a base and we have $y'(B^e)=y'(B)$.
+2. For all base $B'$, $y'(B')\geq 1$ holds since $y'(B')\geq y'(B) = y(B)\geq 1$.
+:::
+
+Note that $P_+^{1,0}$ is the polytope for base hitting set. The importance of $P^{a,b}$ is that for any $y\in P^{a,b}$ and set $P(\theta,y)=\set{e:y(e)\leq \theta}$, the size of the intersection of $P(\theta,y)$ and any minimum weight base $B$ is exactly the rank of $P(\theta,y)$. The proof is by contradiction.
+
+
+
+-------------
+
 ::: Theorem
 Minimum fractional base covering is $\alpha(M)$.
 :::
