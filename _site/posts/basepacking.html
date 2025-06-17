@@ -227,7 +227,18 @@ oracle for testing whether a dual solution <span class="katex"><span class="kate
 used for a polynomial time algorithm.</p>
 <p>For spanning tree packing the dual is graph min-cut problem, which is
 easy for graphic matroids but NP-Hard for general matroids (to find the
-cogirth). The separation oracle = find minimum weight base.</p>
+cogirth). The separation oracle = find minimum weight base. Chekuri and
+Quanrud <span class="citation" data-cites="chekuri_near_linear_2017">[<a href="#ref-chekuri_near_linear_2017" role="doc-biblioref">5</a>]</span>
+discovered near-linear time approximation scheme for some implicit
+fraction packing problems. For fractional base packing, their algorithm
+outputs a <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">ϵ</span><span class="mclose">)</span></span></span></span>-approximation
+with <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1702em;vertical-align:-0.25em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9202em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span></span><span style="top:-3.6023em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">~</span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord">/</span><span class="mord"><span class="mord mathnormal">ϵ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>
+independence oracle calls. For the capacitated version, the number of
+oracle calls becomes <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1702em;vertical-align:-0.25em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9202em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span></span><span style="top:-3.6023em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">~</span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">n</span><span class="mord">/</span><span class="mord"><span class="mord mathnormal">ϵ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>.</p>
+<blockquote>
+<p>Almost at the same time, <a href="https://dblp.org/pid/54/3460.html">Jérôme Galtier</a> published
+similar results for graphs <span class="citation" data-cites="Galtier_2018a">[<a href="#ref-Galtier_2018a" role="doc-biblioref">6</a>]</span> and for matroids <span class="citation" data-cites="Galtier_2018b">[<a href="#ref-Galtier_2018b" role="doc-biblioref">7</a>]</span>.</p>
+</blockquote>
 <p>For spanning tree covering the dual is finding a maximum edge set
 whose intersection with each spanning tree is at most 1. This problem
 can be thought as a set cover, in which the sets are <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">{</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord">∣</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mclose delimcenter" style="top:0em;">}</span></span></span></span></span> for each edge <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">e</span></span></span></span>. The separation oracle solves the following
@@ -259,6 +270,27 @@ covering and packing, <em>European Journal of Combinatorics</em>. 76
 <div class="csl-left-margin">[4] </div><div class="csl-right-inline">A.
 Schrijver, Polyhedral proof methods in combinatorial optimization,
 <em>Discrete Applied Mathematics</em>. 14 (1986) 111–133 <a href="https://doi.org/10.1016/0166-218X(86)90056-9">10.1016/0166-218X(86)90056-9</a>.</div>
+</div>
+<div id="ref-chekuri_near_linear_2017" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">C.
+Chekuri, K. Quanrud, Near-<span>Linear</span> <span>Time</span>
+<span>Approximation</span> <span>Schemes</span> for some
+<span>Implicit</span> <span>Fractional</span> <span>Packing</span>
+<span>Problems</span>, in: <em>Proceedings of the
+<span>Twenty</span>-<span>Eighth</span> <span>Annual</span>
+<span>ACM</span>-<span>SIAM</span> <span>Symposium</span> on
+<span>Discrete</span> <span>Algorithms</span></em>, Society for
+Industrial; Applied Mathematics, 2017: pp. 801–820 <a href="https://doi.org/10.1137/1.9781611974782.51">10.1137/1.9781611974782.51</a>.</div>
+</div>
+<div id="ref-Galtier_2018a" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">J.
+Galtier, Computing weighted strength and applications to partitioning,
+<em>SIAM Journal on Discrete Mathematics</em>. 32 (2018) 2747–2782 <a href="https://doi.org/10.1137/15M102914X">10.1137/15M102914X</a>.</div>
+</div>
+<div id="ref-Galtier_2018b" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">J.
+Galtier, Fast approximation of matroid packing and covering, <em>Annals
+of Operations Research</em>. 271 (2018) 575–598 <a href="https://doi.org/10.1007/s10479-018-2756-8">10.1007/s10479-018-2756-8</a>.</div>
 </div>
 </div>
     </section>

@@ -157,5 +157,8 @@ For graphic matroids, the strength and fractional arboricity are known to be com
 The idea is to consider the dual problem which has only $|E|$ variables. If there is a separation oracle for testing whether a dual solution $x$ is feasible, then ellipsoid method can be used for a polynomial time algorithm.
 
 For spanning tree packing the dual is graph min-cut problem, which is easy for graphic matroids but NP-Hard for general matroids (to find the cogirth). The separation oracle = find minimum weight base.
+Chekuri and Quanrud [@chekuri_near_linear_2017] discovered near-linear time approximation scheme for some implicit fraction packing problems. For fractional base packing, their algorithm outputs a $(1-\epsilon)$-approximation with $\tilde O(n/\epsilon^2)$ independence oracle calls. For the capacitated version, the number of oracle calls becomes $\tilde O(rn/\epsilon^2)$.
+
+> Almost at the same time, [Jérôme Galtier](https://dblp.org/pid/54/3460.html) published similar results for graphs [@Galtier_2018a] and for matroids [@Galtier_2018b].
 
 For spanning tree covering the dual is finding a maximum edge set whose intersection with each spanning tree is at most 1. This problem can be thought as a set cover, in which the sets are $\set{T|e\in T}$ for each edge $e$. The separation oracle solves the following problem: given edge weight $x:E\to [0,1]$, is there a spanning tree with weight greater than 1? We can simply find a matroid base with the largest weight. Thus for general matroid we can find the fractional arboricity through ellipsoid method.

@@ -34,6 +34,10 @@ main = hakyll $ do
   match "favicon.ico" $ do
     route idRoute
     compile copyFileCompiler
+  
+  match "404.html" $ do
+    route idRoute
+    compile copyFileCompiler
 
   match "css/*" $ do
     route idRoute
@@ -44,12 +48,6 @@ main = hakyll $ do
     compile $
       chaoDocCompiler
         >>= loadAndApplyTemplate "templates/about.html" defaultContext
-        >>= relativizeUrls
-  match "404.md" $ do
-    route $ setExtension "html"
-    compile $
-      chaoDocCompiler
-        >>= loadAndApplyTemplate "templates/default.html" defaultContext
         >>= relativizeUrls
 
   -- build up tags
