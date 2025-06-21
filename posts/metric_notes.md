@@ -43,5 +43,5 @@ s.t.&   &   (1-\delta_x - \delta_y) d^2(x,y)\leq \|v_x-v_y\|^2 &\leq (c^2+(\delt
 \end{aligned}
 \end{equation}
 
-Note that the dimension $p$ of $v_x$ can be $\poly(n)$. Lemma 3.1 shows that this SDP is a relaxation of weak $\sqrt{f(k)}$-nested composition. However, this SDP is **not** a relaxation of $(k,c)$-outlier embedding (find smallest $k$ for fixed $c$). The proof of thm 2.9 (the 2. above) is rouding the solution of SDP. Thm 2.6 (1. above) is showing that this SDP with $f(k)=125c H_k$ admits a solution with objective at most $k$.
+Note that the dimension $p$ of $v_x$ can be $\poly(n)$. Lemma 3.1 shows that this SDP is a relaxation of weak $\sqrt{f(k)}$-nested composition. This SDP is a relaxation of $(k,c)$-outlier embedding (find smallest $k$ for fixed $c$). The proof of thm 2.9 (the 2. above) is rouding the solution of SDP. Thm 2.6 (1. above) is showing that this SDP with $f(k)=125c H_k$ admits a solution with objective at most $k$.
 
