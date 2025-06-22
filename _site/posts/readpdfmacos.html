@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>talldoor - Pdf Readers for MacOS</title>
+        <title>talldoor - PDF 阅读器</title>
         <link rel="stylesheet" href="../katex/katex.min.css">
         <script defer src="../katex/katex.min.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,7 +35,7 @@
         </header>
 
         <main role="main">
-            <h1 class="pagetitle">Pdf Readers for MacOS</h1>
+            <h1 class="pagetitle">PDF 阅读器</h1>
             <article>
     <section class="subtitle">
         
@@ -54,40 +54,43 @@
     </div>    
     <section>
         <p>要研究东西总是需要读纸, 纸都是pdf, 所以好用的pdf reader很有用.</p>
-<p>我来给用过的pdf reader以及需要的功能进行对比.</p>
+<p>我在macOS上用过这些阅读器:</p>
 <ol type="1">
-<li><a href="https://skim-app.sourceforge.io/">skim</a>. skim还挺好用的,
-缺点是快捷键太不灵活, 如果能自己设置jk翻页之类的就好了, <a href="../posts/2024-05-23-buildskim.html">之前</a>修改了代码, 勉强可用,
-但是后来花了很长时间问AI工具都没搞明白如何更新目录和页码.</li>
-<li><a href="https://en.wikipedia.org/wiki/Preview_(macOS)">Preview</a>
-是一坨屎. 除了好看没有优点了. 为什么文件修改之后要focus才能更新页面?
-设置的视图在文件重新加载也不能恢复. 这就导致完全无法用它preview :(
-用latex写的东西. 一样无灵活的快捷键. skim和Preview都用Apple pdfkit,
-目前如果让app始终显示滚动条的话, pdfkit貌似不能正确处理pdf页面宽度.
-Preview在pdf里面的搜索功能据说会漏掉一些.</li>
-<li><a href="https://mozilla.github.io/pdf.js/">PDF.js(in Firefox)</a>
-很好, 某个版本是使用<code>j,k</code>下移页面的, 但是目前变成了翻页.
-这种按键逻辑就很奇怪,
+<li><p><a href="https://skim-app.sourceforge.io/">skim</a>.
+skim还挺好用的, 缺点是快捷键太不灵活, 如果能自己设置jk翻页之类的就好了,
+<a href="../posts/2024-05-23-buildskim.html">之前</a>修改了代码, 勉强可用,
+但是后来花了很长时间问AI工具都没搞明白如何更新目录和页码.</p></li>
+<li><p><a href="https://en.wikipedia.org/wiki/Preview_(macOS)">Preview</a>
+是一坨屎. 为什么文件修改之后要focus才能更新页面?
+设置的视图在文件重新加载也不能恢复. 这就导致完全无法用 Preview 来
+preview :( skim和Preview都用Apple pdfkit, 在app显示了纵向滚动条的情况下
+pdfkit 不能正确处理pdf页面宽度. (见skim <a href="https://sourceforge.net/p/skim-app/bugs/1520/">bug report</a>)</p>
+<blockquote>
+<p>我的解决方法是调整skim显示scrollbar的模式</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">defaults</span> write net.sourceforge.skim-app.skim AppleShowScrollBars <span class="at">-string</span> <span class="st">&quot;WhenScrolling&quot;</span></span></code></pre></div>
+<p>Preview在pdf里面的搜索功能据说会漏掉一些.</p>
+</blockquote></li>
+<li><p><a href="https://mozilla.github.io/pdf.js/">PDF.js(in
+Firefox)</a> 比 chrome 的阅读器好很多.
+某个版本是使用<code>j,k</code>移动页面的(也许我记错了, 是chrome的<a href="https://github.com/gdh1995/vimium-c/issues/7">插件</a>),
+但是目前变成了翻页. 这种按键逻辑很奇怪,
 为什么已经有了<code>n,p</code>来翻页还要把<code>j,k</code>设置成这样的功能?
-即使你想用<code>j,k</code>来翻页, 那么使用singe page mode也可以.
-快捷键做的最好的编辑器就是<a href="https://www.sumatrapdfreader.org/free-pdf-reader">sumatra</a>了,可惜只能在windows上用.
-如果用PDF.js来和编辑器一起写纸的话, vscode的插件可以在tab里用PDF.js预览,
-编译之后自动刷新, 速度有点慢.</li>
-<li>zotero 内置的 reader.
+即使有人想用<code>j,k</code>来翻页, 那么使用singe page mode也可以. <a href="https://www.sumatrapdfreader.org/free-pdf-reader">sumatra</a>的快捷键就是这样设计的,
+可惜只能在windows上用. 如果用PDF.js来和编辑器一起写纸的话,
+vscode的插件可以在tab里用PDF.js预览, 编译之后自动刷新,
+速度有点慢.</p></li>
+<li><p>zotero 内置的 reader.
 优点是可以准确的显示link到的东西(skim有类似功能,但是不能准确显示到目标),
 但是滚动起来好卡, 而且zotero的tab用起来很难受. 但是zotero有个很好的插件
 <a href="https://github.com/retorquere/zotero-open-pdf" class="uri">https://github.com/retorquere/zotero-open-pdf</a>,
-让你来选择用什么reader打开.</li>
+让你来选择用什么reader打开.</p></li>
 </ol>
 <p>对于写latex来说, 实际上不需要频繁看编译出来的内容. 我觉得<a href="https://tony-zorman.com/posts/pretty-latex.html">这种Emacs
 mode</a>就很好, 但是我不想花时间学如何用Emacs</p>
-<p>对于读纸,
-想要vim一样的键盘快捷键是因为用KDE的时候长期使用Okular养成的习惯.
-如果能修改skim, 加入一个修改快捷键的功能会很好,
-但是对于不懂objective-c的人来说可能太难了. skim源码在SourceForge上,
-要用svn, 也是另一个劝退的原因.</p>
-<p>对于这个网站来说, 如果katex能支持把字体改成firamath,
-可能所有的notes都可以写markdown然后用浏览器看了.</p>
+<p>用<code>jk</code>移动页面是Okular的习惯. 如果能修改skim,
+加入一个修改快捷键的功能会很好,
+但是对于不懂objective-c的人来说可能太难了.
+另一个困难是skim源码在SourceForge上, 要用svn.</p>
     </section>
 </article>
 
