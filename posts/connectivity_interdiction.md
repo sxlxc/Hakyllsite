@@ -53,11 +53,13 @@ There is a [list](https://lemon.cs.elte.hu/egres/open/Node-connectivity) of open
 
 # (Edge) Connectivity interdiction
 
-Connectivity interdiction is first studied by Zenklusen [@zenklusen_connectivity_2014].
+If we replace the vertex connectivity in [@prob2] with edge connectivity, then the problem is called connectivity interdiction and was first studied by Zenklusen [@zenklusen_connectivity_2014].
 
-::: Problem
+::: {.Problem #prob3}
 Given a graph $G=(V,E)$ and costs $c:E\to \Z_+$ and weights $w:E\to \Z_+$ and a budget $B\in \Z_+$, find the edge set $R$ such that $c(R)\leq B$ and that minimizes the $w$-weighted min cut in $(V,E\setminus R)$.
 :::
+
+The [Fault-Tolerant Path](https://arxiv.org/abs/2506.17008v1) problem (FTP) seems sililar to [@prob3]. In FTP problem, we are given a edge-weighted directed graph $G=(V,E)$, a subset $U \subseteq E$ of vulnerable edges, two vertices $s,t\in V$ and integers $k$ and $\ell$. The task is to decide whether there exists a subgraph $H$ of $G$ with total cost at most $ℓ$ such that, after the removal of any $k$ vulnerable edges, $H$ still contains an $s$-$t$-path. The problem degenerates into finding $k$-edge connected spanning subgraph if the set of vulnerable edges is $E$.
 
 
 A recent paper [@vygen_fptas_2024] gives an FPTAS for the problem. Here I try to develop the intuition since I have never seen an algorithm based on reweighting edges this complicated and ingenious.
@@ -90,7 +92,7 @@ The key part is the following new problem called normilized min-cut,
 Given a problem instance of connectivity interdiction, find a cut $C$ and its subset $F\subset C$ s.t. $0\leq c(F)\leq b$ and $\frac{w(C\setminus F)}{b+1-c(F)}$ is minimized.
 :::
 
-I have been thinking for a while how this problem is involved but have no clue. However, it indeed works... The weight function is defined based on an estimation of [@normmincut]. The authors claim that the optimal solution to b-free min-cut problem is a 2-approximate min-cut of the reweighted graph. Then they enumerate all 2-approximate min-cut of the reweighted graph and run the FPTAS for knapsack on each cut.
+~~I have been thinking for a while how this problem is involved but have no clue. However, it does work...~~ The weight function is defined based on an estimation of [@normmincut]. The authors claim that the optimal solution to b-free min-cut problem is a 2-approximate min-cut of the reweighted graph. Then they enumerate all 2-approximate min-cut of the reweighted graph and use the FPTAS alg for knapsack on each cut to find a $(1+\epsilon)$-approx solution.
 
 ## More on normalized min-cut
 
@@ -112,3 +114,5 @@ There is no clearly indication that very similar (in fact, almost identical) res
 It was mentioned in a footnote of [@chalermsook_approximating_2022] that a general version of normalized min-cut is used in [this paper](https://drops.dagstuhl.de/storage/00lipics/lipics-vol064-isaac2016/LIPIcs.ISAAC.2016.33/LIPIcs.ISAAC.2016.33.pdf), which in turn mentioned that normalized min-cut is an ordinary subroutine in MWU frameworks. This IPCO paper's writing style is toxic and causes huge waste of readers' time. I do not think this paper still can be accepted by IPCO if reviewers and PCs notice its relation with [CHN+22].
 
 </details>
+
+some notes [here](https://gitea.talldoor.uk/sxlxc/edge_conn_interdiction)

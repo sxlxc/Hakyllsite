@@ -7,7 +7,7 @@ draft: true
 date: 2025-06-23
 ---
 
-Apparently the title comes from [learn X in Y mins](https://learnxinyminutes.com/).
+The title comes from [learn X in Y mins](https://learnxinyminutes.com/).
 
 | X         | Y         |  refs |
 | :------   | :------   |  :-:  |
