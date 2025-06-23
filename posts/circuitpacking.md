@@ -30,3 +30,9 @@ The left hand side $\theta(M)-\kappa(M)$ is called the *circuit covering defect*
 Computing the corank $r^*$ and the component number $\kappa(M)$ is easy. What about $\theta(M)$ and $\nu(M)$?
 
 The problem of determining if a sparse split graph (a special case of chordal graphs) can have its edges partitioned into edge-disjoint triangles is NP-complete [@feder_packing_2012]. So finding $\theta(M)$ and $\nu(M)$ is NP-hard even for some special graphic matroids.
+
+# Cycle Double Cover
+
+[Cycle double cover conjecture](https://en.wikipedia.org/wiki/Cycle_double_cover) is a famous unsolved problem posed by W. T. Tutte, Itai and Rodeh, George Szekeres and Paul Seymour.
+
+...[@ding_packing_2009]
