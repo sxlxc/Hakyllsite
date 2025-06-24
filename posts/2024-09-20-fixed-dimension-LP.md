@@ -1,5 +1,5 @@
 ---
-title: Notes on Minimizing Sum of Piecewise Linear Convex Functions
+title: Minimizing Sum of PWL Convex Functions
 tags: alg, optimization
 author: Yu Cong
 lang: en

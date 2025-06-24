@@ -27,9 +27,9 @@ main = hakyll $ do
     route idRoute
     compile copyFileCompiler
 
-  -- match "fonts/*" $ do
-  --   route idRoute
-  --   compile copyFileCompiler
+  match "fonts/*" $ do
+    route idRoute
+    compile copyFileCompiler
 
   match "favicon.ico" $ do
     route idRoute

@@ -3,7 +3,7 @@ title: "Art gallery guardian"
 tags: CG
 lang: en
 author: Yu Cong
-# draft: true
+draft: true
 date: 2025-02-24
 ---
 
@@ -25,3 +25,4 @@ Cameras can do even better than convex partitioning.
 </figure>
 
 This kind of convex decomposition (maybe convex polytope covering? I will check [this thesis](https://summit.sfu.ca/libraries/pdf.js/web/viewer.html?file=%2F%2Fsummit.sfu.ca%2F_flysystem%2Ffedora%2Fsfu_migrate%2F6812%2Fb17620697.pdf) when i find time.) is not described [here](https://en.wikipedia.org/wiki/Polygon_partition#Partition_a_polygon_into_convex_polygons).
+

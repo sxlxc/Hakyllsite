@@ -1,42 +1,4 @@
-
-/* fonts */
-.noto-sans-sc-regular {
-  font-family: "Noto Sans SC", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.fira-sans-regular {
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.fira-sans-bold {
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.fira-sans-regular-italic {
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 400;
-  font-style: italic;
-}
-
-.fira-sans-bold-italic {
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 700;
-  font-style: italic;
-}
-
-.fira-code-regular {
-  font-family: "Fira Code", monospace;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
+@import "fonts.css";
 
 body {
     font-family: 'Fira Sans', 'Noto Sans SC', sans-serif;
@@ -49,6 +11,7 @@ body {
     background-color: white;
     text-rendering: optimizeLegibility;
     text-align: justify;
+    font-feature-settings: var(--fira-sans-ss05);
 }
 body a {
     color: #337ab7;
@@ -67,7 +30,9 @@ body a:hover {
 .text-space a[title] {
     color: darkolivegreen;
 }
-
+.sc {
+    font-variant-caps: small-caps;
+}
 
 p { hyphens: auto; }
 a.url { word-break: break-all; }
@@ -352,7 +317,7 @@ code {
     }
     div#contents-big {
         font-size: 80%;
-        padding-top: 0.25em;
+        padding-top: 0;
         padding-left: 1rem;
         text-align: left;
         max-width: 80%;
@@ -360,12 +325,13 @@ code {
         margin-right:1.7em;
         margin-left:0.25em;
         position:sticky;
-        top:3rem;
+        top:5rem;
         left:100%
     }
     div#contents-big .mini-header{
         font-weight: bold;
-        margin-bottom: 0;
+        margin: 0;
+        font-variant: small-caps;
     }
     .text-space {
         display: inline-block;
