@@ -29,10 +29,10 @@ For any finite metric on $V$ there is a corresponding graph shortest path metric
 Given two metric space $(X,d_X)$ and $(Y,d_Y)$, $(X,d_X)$ is said to have a $(k,c)$-outlier embedding into $(Y,d_Y)$ if there is a set $K\subset X$ of size at most $k$ and a mapping $\alpha: X\setminus K \to Y$ with distortion $\leq c$. Deciding if $(X,d_X)$ has a $(k,c)$-outlier embedding into $(Y,d_Y)$ is NP-Complete for $(Y,d_Y)=(\R^n, \ell_p)$.
 Authors of [@chawla_composition_2023] provide a polytime algorithm that constructs an $(O(k\polylog k), O(c))$-outlier embedding into $\ell_2$ (thm 2.9). They noticed the followings
 
-1. Given a subset $S\subset X$ of size $|X|-k$ and a partial embedding $\alpha: S \to Y$ with distortion $c_S$, there is a P time alg that finds a weak $125 H_k c_S$-nested composition. (thm 2.6, note that the host space can be any Banach space, thus a weak $125 H_k c_S$-nested composition into $\ell_2$)
-2. A weak $125 H_k c_S$-nested composition into $\ell_2$ implies an $(O(k\polylog k), O(c))$-outlier embedding into $\ell_2$ (thm 2.9, via Outlier SDP, lemma 3.1)
+1. Given a subset $S\subset X$ of size $|X|-k$ and a partial embedding $\alpha: S \to Y$ with distortion $c_S$, there is a polynomial time algorithm that finds a weak $125 H_k c_S$-nested composition. (thm 2.6, note that the host space can be any Banach space, thus a weak $125 H_k c_S$-nested composition into $\ell_2$)
+2. One can round a weak $125 H_k c_S$-nested composition for an $(O(k\polylog k), O(c))$-outlier embedding into $\ell_2$ (via rounding a SDP, lemma 3.1)
 
-Weak $f(k,c)$-nested composition is somewhat stronger than $(k,c)$-outlier embedding since the former additionally requires an expansion bound on $X$.
+Weak $f(k,c)$-nested composition is somewhat stronger than $(k,c)$-outlier embedding since the former additionally requires an expansion bound on outlier points.
 In fact I guess that the definition of weak $f$-nested composition is extracted from the SDP formulation of min-outlier.
 
 \begin{equation}
@@ -43,5 +43,6 @@ s.t.&   &   (1-\delta_x - \delta_y) d^2(x,y)\leq \|v_x-v_y\|^2 &\leq (c^2+(\delt
 \end{aligned}
 \end{equation}
 
-Note that the dimension $p$ of $v_x$ can be $\poly(n)$. Lemma 3.1 shows that this SDP is a relaxation of weak $\sqrt{f(k)}$-nested composition. This SDP is a relaxation of $(k,c)$-outlier embedding (find smallest $k$ for fixed $c$). The proof of thm 2.9 (the 2. above) is rouding the solution of SDP. Thm 2.6 (1. above) is showing that this SDP with $f(k)=125c H_k$ admits a solution with objective at most $k$.
-
+Note that this SDP is **not** a relaxation for $(k,c)$-outlier embedding (finding the smallest $k$ for fixed $c$) since the optimal solution may not satisfy the constraint $\|v_x-v_y\|^2\leq (c^2+f(k))d^2(x,y)$ for outlier $x$ and non-outlier $y$.
+However, (1.) shows that if $(X,d)$ admits a $(k,c)$-outlier embedding, then there is a weak $125 H_k c_S$-nested composition, which implies this SDP has a feasible solution with $f(k)=125 H_k c$ and integral $\delta_x$.
+Then one can use the rounding process in (2.) to get a $(O(\frac{\log^2 k}{\epsilon}k),(1+\epsilon)c)$-outlier embedding into $\ell_2$.
