@@ -40,8 +40,6 @@
     <section class="subtitle">
         
         
-        <br><span style="font-weight: bold; color: red;">Draft</span>
-        
     </section>
     <section class="header">
         Posted on February 24, 2025
@@ -62,9 +60,9 @@ hole. One is asked to put minimum number of 360° surveillance cameras
 such that every wall (every edge of the polygon) can be seen from at
 least one of the cameras.</p>
 <p>The book provides a upperbound of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">⌊</span><span class="mord mathnormal">n</span><span class="mord">/3</span><span class="mclose delimcenter" style="top:0em;">⌋</span></span></span></span></span> on the minimum number of cameras
-as well as an <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.023em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.773em;"><span style="top:-3.1473em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> algorithm to
-compute the solution. The method, which is based on triangulation, is
-the following. Decomposing the polygon into triangles gives us an <a href="https://en.wikipedia.org/wiki/Outerplanar_graph">outerplanar
+as well as a linear time algorithm to compute the solution. The method,
+which is based on triangulation, is the following. Decomposing the
+polygon into triangles gives us an <a href="https://en.wikipedia.org/wiki/Outerplanar_graph">outerplanar
 graph</a> which guarantees a 3-coloring. Observe that 3 vertices in one
 triangle must have 3 different colors. Thus installing cameras on
 vertices with one of the three colors is sufficient. The complexity
@@ -86,9 +84,15 @@ vertices(degree &gt; π)…</p>
 <img src="../images/art_gallery_guardian/ex.png" alt="1 camera is sufficient" style="width: 250px;" />
 1 camera is sufficient
 </figure>
-<p>This kind of convex decomposition (maybe convex polytope covering? I
-will check <a href="https://summit.sfu.ca/libraries/pdf.js/web/viewer.html?file=%2F%2Fsummit.sfu.ca%2F_flysystem%2Ffedora%2Fsfu_migrate%2F6812%2Fb17620697.pdf">this
-thesis</a> when i find time.) is not described <a href="https://en.wikipedia.org/wiki/Polygon_partition#Partition_a_polygon_into_convex_polygons">here</a>.</p>
+<p>Regarding the single camera case, a <a href="https://arxiv.org/pdf/2506.18818v1">recent paper</a> shows that
+testing whether a non-empty compact smooth region is star-shaped is
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">∀</span><span class="mord mathbb">R</span></span></span></span>-complete.</p>
+<p><del>This kind of convex decomposition (maybe convex polytope
+covering? I will check <a href="https://summit.sfu.ca/libraries/pdf.js/web/viewer.html?file=%2F%2Fsummit.sfu.ca%2F_flysystem%2Ffedora%2Fsfu_migrate%2F6812%2Fb17620697.pdf">this
+thesis</a> when i find time.) is not described <a href="https://en.wikipedia.org/wiki/Polygon_partition#Partition_a_polygon_into_convex_polygons">here</a>.</del></p>
+<p>The decision version of this problem is <a href="https://en.wikipedia.org/wiki/Existential_theory_of_the_reals"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">∃</span><span class="mord mathbb">R</span></span></span></span>-complete</a> (which implies it is
+NP-hard and in PSPACE). The optimization version is APX-hard. (see <a href="https://en.wikipedia.org/wiki/Art_gallery_problem#Computational_complexity">wikipedia</a>
+for refs)</p>
     </section>
 </article>
 
