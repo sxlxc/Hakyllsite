@@ -24,6 +24,29 @@ Arora, Rao and Vazirani made a famous work about approximating uniform sparsest 
 
 For any finite metric on $V$ there is a corresponding graph shortest path metric on $G=(V,E)$ with $c:E\to \R$. Given a finite metric on $V$, how to find $G$ with $|E|$ as small as possible? This looks similar to [a previous post in chinese](/posts/2023-01-26-minDAG.html). How to prove that computing the minimum number of edges is NP-hard?
 
+# Embedding tree metric into $(\R^{O(\log n)},\ell_\infty)$
+
+There is an exercise in [lecture notes 1](CMCS 39600) of TTIC CMCS 39600. Show that any $n$ point tree metric $(X,d)$ can be embedded isometrically into $(\R^{O(\log n)},\ell_\infty)$. 
+
+Let's first try the Fréchet embedding $f_{Y}: X\to \R^{|Y|}$ for some $Y\subset X$.
+Define $f_{Y}(x)=\bigoplus_{y\in Y} d(x,y)$, where $\oplus$ is the direct sum of vector coordinates. 
+Then one has
+
+\begin{equation*}
+\begin{aligned}
+\|f_Y(u)-f_y(v)\|_\infty    &= \max_{y\in Y} |d(y,u)-d(y,v)|\\
+                            &\leq d(u,v).
+\end{aligned}
+\end{equation*}
+
+The subset $Y$ needs to satisfy the followings,
+
+1. $|Y|=O(\log n)$ (dimension bound)
+2. for each pair of points $u,v\in X$, there exists an element $y\in Y$ such that $d(u,v)=|d(y,u)-d(y,v)|$. (isometric)
+
+It turns out that a hard example is the star $K_{1,n-1}$ with unit edge length. Now suppose we select any subset $Y$ and get the embedding $f_Y$. There must be at least two degree one vertices (say $u,v$) not in $Y$ since $Y\ll n$. Then we have $|d(y,u)-d(y,v)|=0$ for any $y$. However, the tree metric shows $d(u,v)=2$. Thus our Fréchet embedding is not isometric...
+
+
 # $(k,c)$-outlier embedding into $\ell_2$ [@chawla_composition_2023]
 
 Given two metric space $(X,d_X)$ and $(Y,d_Y)$, $(X,d_X)$ is said to have a $(k,c)$-outlier embedding into $(Y,d_Y)$ if there is a set $K\subset X$ of size at most $k$ and a mapping $\alpha: X\setminus K \to Y$ with distortion $\leq c$. Deciding if $(X,d_X)$ has a $(k,c)$-outlier embedding into $(Y,d_Y)$ is NP-Complete for $(Y,d_Y)=(\R^n, \ell_p)$.
