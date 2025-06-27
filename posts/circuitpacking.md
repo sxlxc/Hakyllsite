@@ -34,5 +34,6 @@ The problem of determining if a sparse split graph (a special case of chordal gr
 # Cycle Double Cover
 
 [Cycle double cover conjecture](https://en.wikipedia.org/wiki/Cycle_double_cover) is a famous unsolved problem posed by W. T. Tutte, Itai and Rodeh, George Szekeres and Paul Seymour.
+The cycle double cover conjecture asks whether every bridgeless undirected graph has a collection of cycles such that each edge of the graph is contained in exactly two of the cycles.
 
-...[@ding_packing_2009]
+read [@Zhang_CDC_2016] and [@ding_packing_2009]
