@@ -1,5 +1,5 @@
 ---
-title: Max number of points in "general" position
+title: Points in "general" position
 tags: combinatorics, CG
 author: Yu Cong
 lang: en
@@ -10,13 +10,7 @@ date: 2025-06-18
 
 # General Position
 
-An set of 2D points is said to be in general position if any 3 points are not collinear. Given a 2D area $D$, the max number of points one can place in $D$ in general position is infinity. However, what if one relaxes the collinear constraints to "seemingly collinear"? 
-
-More precisely, 3 points $(x_i,y_i)$ are said to be "seemingly collinear" if there is a linear function $f(x)$ fitting these points with error $\sum_{i\in [3]}(y_i-f(x_i))^2 \leq c$ for some global constant $c$. A set of 2D points is "seemingly in general position" if it does not contain any "seemingly collinear" triples.
-
-::: Problem
-Given a 2D area $D$, find the max number of points one can place in $D$ such that the points are "seemingly in general position".
-:::
+An set of 2D points is said to be in general position if any 3 points are not collinear. Given a set of points $P$ in the plane, find the largest subset $S\subset P$ in general position.
 
 ## Related Problems/Works
 
@@ -26,3 +20,45 @@ A set of points $S\subset \F_q^d$ is in general position if there are no $d+1$ p
 - [@froese_finding_2017] studied the problem of finding the largest subset of points in general position in a point set $P\subset \mathbb{Q}^2$. They showed that this problem is NP-hard, APX-hard and no $2^{o(n)}n^{O(1)}$-time alg under ETH.
 - [This blog post](https://adamsheffer.wordpress.com/2018/05/31/points-in-general-position/) discusses constructions of general-position point sets $\subset \Z^2$ with some extremal structures.
 - [@Suk_Zeng_2023] improved the upperbound of the max number $a(d,k,n)$ of points selected from $[n]^d$ such that no $k+2$ members lie on a $k$-flat.
+
+# Integer Program and Duality
+
+Let $P$ be a set of $n$ points in the plane.
+We can define $\binom{n}{2}$ lines and write a point-line incidence matrix $A_{\binom{n}{2}\times n}$ which indicates if point $p$ is on the line defined by $\{p_1,p_2\}$.
+Now we can write an IP for finding the largest subset of $P$ in general position.
+
+\begin{equation*}
+\begin{aligned}
+\max&   &   \sum_p &x_p  &   &\\
+s.t.&   &   \sum_p &A_{i,p}x_p \leq 2 & &\forall i\in \left[\binom{n}{2}\right]\\
+    &   &   &x_p\in \set{0,1}
+\end{aligned}
+\end{equation*}
+
+Consider its LP dual,
+
+\begin{equation*}
+\begin{aligned}
+\min&   &   \sum_i &2y_i    &   &\\
+s.t.&   &   \sum_i &A_{i,p}y_i\geq 1    &   &\forall p\in P\\
+    &   &       &y_i\in \set{0,1}
+\end{aligned}
+\end{equation*}
+
+One can see that the dual is finding the smallest number of lines to cover points in $P$. Denote by $\sigma$ the max number of general position points in $P$ and let $\alpha$ be the minimum line covering number. (Borrow these symbols from matroid strength and density.) There are some results in [@froese_finding_2017].
+
+::: Observation
+$\sqrt{\alpha}< \sigma \leq 2\alpha$.
+:::
+
+::: Proof
+The second inequality directly follows from LP duality. 
+For the first inequality, note that the largest set of points in general position defines $\binom{\sigma}{2}$ lines and any other point must lie on one of these lines. Thus these $\binom{\sigma}{2}$ lines cover every points in $P$. We have $\alpha \leq \binom{\sigma}{2} < \sigma^2$.
+:::
+
+Now I am interested in the gaps of above IPs. It seems that in terms of approximation algorithms one can only get a $\sqrt{\sigma}$-approx P-time alg? (see [master thesis of Cheng Cao](https://core.ac.uk/reader/147229038) and chatper 9 of David Eppstein's [book](https://ics.uci.edu/~eppstein/forbidden/))
+
+# Open Problems
+
+1. [No-three-in-line problem](https://en.wikipedia.org/wiki/No-three-in-line_problem)
+2. 
