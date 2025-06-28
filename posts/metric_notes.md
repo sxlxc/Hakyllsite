@@ -26,7 +26,7 @@ For any finite metric on $V$ there is a corresponding graph shortest path metric
 
 # Embedding tree metric into $(\R^{O(\log n)},\ell_\infty)$
 
-There is an exercise in [lecture notes 1](CMCS 39600) of TTIC CMCS 39600. Show that any $n$ point tree metric $(X,d)$ can be embedded isometrically into $(\R^{O(\log n)},\ell_\infty)$. 
+There is an exercise in [lecture notes 1](https://home.ttic.edu/~harry/teaching/pdf/lecture1.pdf) of TTIC CMCS 39600. Show that any $n$ point tree metric $(X,d)$ can be embedded isometrically into $(\R^{O(\log n)},\ell_\infty)$.
 
 Let's first try the Fréchet embedding $f_{Y}: X\to \R^{|Y|}$ for some $Y\subset X$.
 Define $f_{Y}(x)=\bigoplus_{y\in Y} d(x,y)$, where $\oplus$ is the direct sum of vector coordinates. 
