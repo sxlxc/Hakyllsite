@@ -76,4 +76,29 @@ Graph K
 </figure>
 :::
 
-Their proof is also based on LP.
+Their proof is also based on LP. In fact they prove the following theorem.
+
+::: Theorem
+Let $M$ be a matroid. The following statements are equivalent:
+
+1. $M$ does not contain $U_{2,4},F_7,F_7^*,M(K_{3,3}),M(K_5^-)$ or $M(K)$ as a minor;
+2. the linear system $\{ \sum_{e\in C} y_e \geq 2 \;\forall C, y_e\geq 0\}$ is TDI;
+3. the polytope $\{y: \sum_{e\in C} y_e \geq 2 \;\forall C, y_e\geq 0\}$ is integral.
+:::
+
+$2\to 3$ is easy. To show $3\to 1$ they prove that if $M$ satisfies 3 then so do its minors and none of the matroids in 1 satisfies 3. The hard part is proving $1\to 2$, for which they use the following two lemmas.
+
+::: Lemma
+If $M$ satisfies 1, then $M=M^*(G)$ for some graph $G$ that contains neither the planar dual of $K$ nor of $K_5^-$ as a minor.
+:::
+
+::: Proof
+A matroid $M$ is regular iff it has no minor isomorphic to $U_{2,4},F_7,F_7^*$. Then $M$ must be regular since it satisfies 1. The lemma then follows from the "excluded minor characterization of graphic matroids in regular matroids".
+A regular matroid is cographic iff it has no minor isomorphic to $M(K_5)$ and $M(K_{3,3})$. (see Corollary 10.4.3 in Oxley's Matroid Theory book 2nd edition)
+:::
+
+::: Lemma
+If a graph $G$ contains neither the planar dual of $K$ nor of $K_5^-$ as a minor, then $M^*(G)$ satisfies 2.
+:::
+
+This is the hardest part and it takes a lot of work to prove it.
