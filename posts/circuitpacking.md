@@ -62,4 +62,18 @@ s.t.&   &   \sum_{e\in C} y_e &\geq k    &   &\forall \text{ circuit $C$}\\
 \end{aligned}
 \end{equation*}
 
-Clearly the linear relaxation of $\nu_{k,w}$ and of $\tau_{k,w}$ are LP dual of each other and have the same optimum. For what class of matroids do we have equality for the integral version, $\nu_{k,w}=\tau_{k,w}$ ?
+Clearly the linear relaxation of $\nu_{k,w}$ and of $\tau_{k,w}$ are LP dual of each other and have the same optimum. For what class of matroids do we have equality $\nu_{k,w}=\tau_{k,w}$ for any weight function $w$?
+
+When $k=1$ this is relatively simple. First we can assume that $M$ contains no coloop since coloops won't appear in any circuit. Suppose that there are two circuits $C_1,C_2$ whose intersection is non-empty. Let $a,b,c$ be the smallest weight of elements in $C_1,C_2, C_1\cap C_2$ respectively. It follows by definition that $a\leq c$ and $b\leq c$. The max number of circuits we can pack in the matroid $M|_{C_1\cup C_2}$ is $\min(a+b,c)$. Now we further assume that $a,b\leq c\leq a+b$. The minimum weight of elements hitting every circuit is not necessarily $c$, since by the circuit axiom there must another circuit $C'\in C_1\cup C_2-e$ for any $e\in C_1\cap C_2$ which won't be hit if we are selecting element in $C_1\cap C_2$. Thus for the case of $k=1$, any matroid satisfying $\nu_{1,w}=\tau_{1,w}$ has no intersecting circuits.
+
+The characterization of matroids satisfying $\nu_{2,w}=\tau_{2,w}$ is the following theorem [@ding_packing_2009].
+
+::: Theorem
+A matroid satisfies $\nu_{2,w}=\tau_{2,w}$ iff none of its minor is isomorphic to $U_{2,4},F_7,F_7^*,M(K_{3,3}),M(K_5^-)$ or $M(K)$, where $K_5^-$ is $K_5$ deleting an edge and $K$ is a special 4-node graph.
+<figure>
+<img src="../images/circuitpacking/K.png" style="width: 250px;" />
+Graph K
+</figure>
+:::
+
+Their proof is also based on LP.
