@@ -102,3 +102,14 @@ If a graph $G$ contains neither the planar dual of $K$ nor of $K_5^-$ as a minor
 :::
 
 This is the hardest part and it takes a lot of work to prove it.
+
+They first prove a complete characterization of grpahs that contain neither the planar dual of $K$ nor that of $K_5^-$ as a minor using $0,1,2$-sum and then prove that summing operations preserves the TDI property.
+
+The $0,1,2$-sum theorem looks like this.
+Let $K^*$ and $P$ be the planar dual of graph $K$ and $K_5^-$ respectively. 
+
+::: {.Theorem title="informal, thm 3.1 in [@ding_packing_2009]"}
+A simple graph $G$ has no minors $P$ and $K^*$ iff $G$ can be obtained by repeatedly taking $0,1,2$-sums starting from some small graphs and from some cyclically 3-connected graphs with no minors $P$ and $K^*$.
+:::
+
+It remains to show that all the summand graphs in the above theorem have the TDI property. This is also a challenging task. Small graphs can be verified with the help of computers. The difficult case is the cyclically 3-connected graphs with no minors $P$ and $K^*$.
