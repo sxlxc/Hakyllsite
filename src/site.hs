@@ -5,14 +5,14 @@
 {-# LANGUAGE ViewPatterns #-}
 
 import ChaoDoc
-import Data.Either
-import Data.Functor
-import qualified Data.Map as M
+-- import Data.Either
+-- import Data.Functor
+-- import qualified Data.Map as M
 import qualified Data.Text as T
 import Hakyll
-import System.IO.Unsafe
+-- import System.IO.Unsafe
 import Text.Pandoc
-import Text.Pandoc.Citeproc
+-- import Text.Pandoc.Citeproc
 
 root :: String
 root = "https://talldoor.uk"
@@ -117,25 +117,25 @@ main = hakyll $ do
       let indexCtx =
             listField "posts" postCtx (return posts)
               `mappend` defaultContext
-
       getResourceBody
         >>= applyAsTemplate indexCtx
         >>= loadAndApplyTemplate "templates/index.html" indexCtx
         >>= relativizeUrls
 
   match "templates/*" $ compile templateBodyCompiler
+
   -- https://robertwpearce.com/hakyll-pt-2-generating-a-sitemap-xml-file.html
-  create ["sitemap.xml"] $ do
-    route idRoute
-    compile $ do
-      posts <- recentFirst =<< loadAll "posts/*"
-      singlePages <- loadAll (fromList ["about.md"])
-      let pages = posts <> singlePages
-          sitemapCtx =
-            constField "root" root
-              <> listField "pages" postCtx (return pages) -- here
-      makeItem ""
-        >>= loadAndApplyTemplate "templates/sitemap.xml" sitemapCtx
+  -- create ["sitemap.xml"] $ do
+  --   route idRoute
+  --   compile $ do
+  --     posts <- recentFirst =<< loadAll "posts/*"
+  --     singlePages <- loadAll (fromList ["about.md"])
+  --     let pages = posts <> singlePages
+  --         sitemapCtx =
+  --           constField "root" root
+  --             <> listField "pages" postCtx (return pages) -- here
+  --     makeItem ""
+  --       >>= loadAndApplyTemplate "templates/sitemap.xml" sitemapCtx
 
 --------------------------------------------------------------------------------
 postCtx :: Context String
@@ -169,6 +169,8 @@ defaultCtxWithTags tags = listField "tags" tagsCtx getAllTags <> defaultContext
           Compiler [Item String]
         getPosts (itemBody -> (_, is)) = mapM load is
 
+
+-- toc from https://github.com/slotThe/slotThe.github.io
 getTocCtx :: Context a -> Compiler (Context a)
 getTocCtx ctx = do
   noToc <- (Just "true" ==) <$> (getUnderlying >>= (`getMetadataField` "no-toc"))
@@ -205,56 +207,3 @@ getTocCtx ctx = do
 
 katexFilter :: Item String -> Compiler (Item String)
 katexFilter = withItemBody (unixFilter "./katex_cli" [])
-
--- copied from chao's site.hs for biblography
-cslFile :: String
-cslFile = "bib_style.csl"
-
-bibFile :: String
-bibFile = "reference.bib"
-
-chaoDocCompiler :: Compiler (Item String)
-chaoDocCompiler = do
-  ( getResourceBody
-      >>= myReadPandocBiblio chaoDocRead (T.pack cslFile) (T.pack bibFile) myFilter
-    )
-    <&> writePandocWith chaoDocWrite
-
-addMeta :: T.Text -> MetaValue -> Pandoc -> Pandoc
-addMeta name value (Pandoc meta a) =
-  let prevMap = unMeta meta
-      newMap = M.insert name value prevMap
-      newMeta = Meta newMap
-   in Pandoc newMeta a
-
-myReadPandocBiblio ::
-  ReaderOptions ->
-  T.Text -> -- csl file name
-  T.Text ->
-  (Pandoc -> Pandoc) -> -- apply a filter before citeproc
-  Item String ->
-  Compiler (Item Pandoc)
-myReadPandocBiblio ropt csl biblio pdfilter item = do
-  -- Parse CSL file, if given
-  -- style <- unsafeCompiler $ CSL.readCSLFile Nothing . toFilePath . itemIdentifier $ csl
-
-  -- We need to know the citation keys, add then *before* actually parsing the
-  -- actual page. If we don't do this, pandoc won't even consider them
-  -- citations!
-  -- let Biblio refs = itemBody biblio
-  pandoc <- itemBody <$> readPandocWith ropt item
-  let pandoc' =
-        fromRight pandoc $
-          unsafePerformIO $
-            runIO $
-              processCitations $
-                addMeta "bibliography" (MetaList [MetaString biblio]) $
-                  addMeta "csl" (MetaString csl) $
-                    addMeta "link-citations" (MetaBool True) $
-                      addMeta "reference-section-title" (MetaInlines [Str "References"]) $
-                        pdfilter pandoc -- here's the change
-                        -- let a x = itemSetBody (pandoc' x)
-  return $ fmap (const pandoc') item
-
-myFilter :: Pandoc -> Pandoc
-myFilter = theoremFilter

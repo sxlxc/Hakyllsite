@@ -1,15 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module ChaoDoc (chaoDocRead, chaoDocWrite, theoremFilter, chaoDocInline) where
+module ChaoDoc (chaoDocRead, chaoDocWrite, chaoDocCompiler) where
 
 import Control.Monad.State
 import Data.Either
 import Data.List (intersect)
 import Data.Maybe
-import Data.Text (Text, pack, unpack)
+import Data.Text (Text, pack)
+import Data.Functor
+import qualified Data.Map as M
+import qualified Data.Text as T
 import Text.Pandoc
 import Text.Pandoc.Walk (query, walk, walkM)
-import Data.Functor ((<&>))
+import Text.Pandoc.Citeproc
+import Hakyll
+import System.IO.Unsafe
 
 -- setMeta key val (Pandoc (Meta ms) bs) = Pandoc (Meta $ M.insert key val ms) bs
 
@@ -36,24 +41,11 @@ chaoDocWrite =
       writerTOCDepth = 2
     }
 
-chaoDocToPandoc :: Text -> Pandoc
-chaoDocToPandoc x = fromRight (Pandoc nullMeta []) $ runPure (readMarkdown chaoDocRead x)
-
-getInline :: Inline -> [Inline]
-getInline x = [x]
+-- getInline :: Inline -> [Inline]
+-- getInline x = [x]
 
 pandocToInline :: Pandoc -> [Inline]
-pandocToInline = query getInline
-
-writeDocT :: Pandoc -> Text
-writeDocT x = fromRight "" $ runPure $ writeHtml5String chaoDocWrite x
-
-chaoDocInline :: Text -> String
-chaoDocInline x = removeP $ unpack $ writeDocT $ chaoDocToPandoc x
-    where
-        removeP :: String -> String
-        removeP y = drop 3 (take (length y - 4) y)
-
+pandocToInline = query (:[])
 
 incrementalBlock :: [Text]
 incrementalBlock =
@@ -140,6 +132,11 @@ autorefFilter :: Pandoc -> Pandoc
 autorefFilter x = walk (autoref links) x
   where links = query theoremIndex x
 
+-- Filters only works on AST. However, citations must be preprocessed. 
+-- So it need to be handle here.
+thmNamePandoc :: Text -> Pandoc
+thmNamePandoc x = fromRight (Pandoc nullMeta []) . runPure $ readMarkdown chaoDocRead x
+
 makeTheorem :: Block -> Block
 makeTheorem (Div attr xs)
   | isNothing t = Div attr xs
@@ -158,5 +155,59 @@ makeTheorem (Div attr xs)
     nametext =
       if isNothing name
         then Str ""
-        else Span (addClass nullAttr "name") (pandocToInline $ chaoDocToPandoc $ fromJust name) -- titles should be rich
+        else Span (addClass nullAttr "name") (pandocToInline $ thmNamePandoc $ fromJust name)
 makeTheorem x = x
+
+
+-- bib from https://github.com/chaoxu/chaoxu.github.io/tree/develop
+cslFile :: String
+cslFile = "bib_style.csl"
+
+bibFile :: String
+bibFile = "reference.bib"
+
+chaoDocCompiler :: Compiler (Item String)
+chaoDocCompiler = do
+  ( getResourceBody
+      >>= myReadPandocBiblio chaoDocRead (T.pack cslFile) (T.pack bibFile) myFilter
+    )
+    <&> writePandocWith chaoDocWrite
+
+addMeta :: T.Text -> MetaValue -> Pandoc -> Pandoc
+addMeta name value (Pandoc meta a) =
+  let prevMap = unMeta meta
+      newMap = M.insert name value prevMap
+      newMeta = Meta newMap
+   in Pandoc newMeta a
+
+myReadPandocBiblio ::
+  ReaderOptions ->
+  T.Text -> -- csl file name
+  T.Text ->
+  (Pandoc -> Pandoc) -> -- apply a filter before citeproc
+  Item String ->
+  Compiler (Item Pandoc)
+myReadPandocBiblio ropt csl biblio pdfilter item = do
+  -- Parse CSL file, if given
+  -- style <- unsafeCompiler $ CSL.readCSLFile Nothing . toFilePath . itemIdentifier $ csl
+
+  -- We need to know the citation keys, add then *before* actually parsing the
+  -- actual page. If we don't do this, pandoc won't even consider them
+  -- citations!
+  -- let Biblio refs = itemBody biblio
+  pandoc <- itemBody <$> readPandocWith ropt item
+  let pandoc' =
+        fromRight pandoc $
+          unsafePerformIO $
+            runIO $
+              processCitations $
+                addMeta "bibliography" (MetaList [MetaString biblio]) $
+                  addMeta "csl" (MetaString csl) $
+                    addMeta "link-citations" (MetaBool True) $
+                      addMeta "reference-section-title" (MetaInlines [Str "References"]) $
+                        pdfilter pandoc -- here's the change
+                        -- let a x = itemSetBody (pandoc' x)
+  return $ fmap (const (myFilter pandoc)) item
+
+myFilter :: Pandoc -> Pandoc
+myFilter = theoremFilter
