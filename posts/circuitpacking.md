@@ -112,4 +112,45 @@ Let $K^*$ and $P$ be the planar dual of graph $K$ and $K_5^-$ respectively.
 A simple graph $G$ has no minors $P$ and $K^*$ iff $G$ can be obtained by repeatedly taking $0,1,2$-sums starting from some small graphs and from some cyclically 3-connected graphs with no minors $P$ and $K^*$.
 :::
 
-It remains to show that all the summand graphs in the above theorem have the TDI property. This is also a challenging task. Small graphs can be verified with the help of computers. The difficult case is the cyclically 3-connected graphs with no minors $P$ and $K^*$.
+It remains to show that all the summand graphs in the above theorem have the TDI property. 
+<!-- This is also a challenging task. Small graphs can be verified with the help of computers (we will see later). The difficult case is the cyclically 3-connected graphs with no minors $P$ and $K^*$. -->
+
+-----------
+
+**some notes on TDI (cf. section 22.7 in [@Schrijver_1986])**
+
+Let $A$ be a rational matrix and $b$ be an integral vector. For any rational $c$ we have the following inequalities:
+
+\begin{equation*}
+\begin{aligned}
+        &\max \set{ cx| Ax\leq b; x\geq 0; \text{$x$ integral}} \\
+\leq    &\max \set{ cx| Ax\leq b; x\geq 0}\\
+=       &\min \set{ yb| yA\geq c; y\geq 0}\\
+\leq    &\min \set{ yb| yA\geq c; y\geq 0; \text{$y$ half-integral}}\\
+\leq    &\min \set{ yb| yA\geq c; y\geq 0; \text{$y$ integral}}
+\end{aligned}
+\end{equation*}
+
+If we have equality on the last two $\leq$ for all integral $c$, then then all five optima are equal for each integral vector $c$. It suffices to require that the last two optimum are equal for each integral $c$.
+
+::: Theorem
+The rational system $Ax\leq b$ is TDI, iff 
+$\min \set{ yb| yA\geq c; y\geq 0; \text{$y$ half-integral}}$ 
+is finite and is attained by integral $y$ for each integral $c$ such that $\min \set{ yb| yA\geq c; y\geq 0}$ is finite.
+:::
+
+This is exactly the case of $k=2$ in the characterization of matroids with $\nu_{2,w}=\tau_{2,w}$.
+
+------------------
+
+The above theorem on TDI reduces proving that $\{ \sum_{e\in C} y_e \geq 2 \;\forall C, y_e\geq 0\}$ is TDI to proving that $\tau'=\max \{ \sum_C x_C |\sum_{C:e\in C} \frac{1}{2} x_e \geq w(e) \;\forall e, x_C\geq 0, \text{ $x_C$ half-integral}\}$ has an integral optimal solution for all nonnegative integral $w.$
+
+Recall that it remains to prove that some cographic matroids have the above property. The set of circuits corresponds to cuts in graphs. A graph is good if its cographic matroid satisfies that $\tau'$ has an integral optimal solution. They further characterizes good graphs using cuts.
+
+Let $\mathcal C$ be a collection(multiset) of cuts in $G$. $\mathcal C$ is truncatable if there is another collection $\mathcal D$ of cuts in $G$, such that 
+
+1. $|\mathcal D|\geq |\mathcal C|/2$,
+2. Let $d_{X}(e)$ for a collection $X$ be the number of elements in $X$ containing $e$. $d_{\mathcal D}(e)\leq 2 \floor{d_{\mathcal C}(e)/4}$ for all $e$
+
+A graph $G$ is truncatable if every collection of its cuts is truncatable.
+They shows that a graph is good if and only if it is truncatable. Then this becomes a graph theory problem. They provides some sufficient condition for graphs to be truncatable and manage to prove all the graphs we are interested in are good. (a 16-page long proof)

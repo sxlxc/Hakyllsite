@@ -29,14 +29,13 @@
     font-weight: normal;
   }
   .Proof {
-    padding: 0 0;
     font-style: normal;
     position: relative;
   }
   .Proof:after {
     content: '∎';
     position: absolute;
-    right: -12px;
+    right: 0px;
     bottom: 0px;
   }
   
