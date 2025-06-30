@@ -3,7 +3,7 @@ title: Matroid circuit packing and covering
 tags:  matroid, optimization, combinatorics
 author: Yu Cong, with the help of Kangyi Tian
 lang: en
-draft: true
+# draft: true
 showtoc: true
 date: 2025-06-15
 ---
@@ -154,3 +154,8 @@ Let $\mathcal C$ be a collection(multiset) of cuts in $G$. $\mathcal C$ is trunc
 
 A graph $G$ is truncatable if every collection of its cuts is truncatable.
 They shows that a graph is good if and only if it is truncatable. Then this becomes a graph theory problem. They provides some sufficient condition for graphs to be truncatable and manage to prove all the graphs we are interested in are good. (a 16-page long proof)
+
+Ding and Zang's work [@ding_packing_2009] characterizes matroids that satisfy $\nu_{2,w}=\tau_{2,w}$. As noted before and in their paper, matroids that satisfy $\nu_{1,w}=\tau_{1,w}$ must be direct sums of circuits (if there is no coloop). 
+The $k=1$ result can be understood as finding matroids whose fractional circuit packing number and fractional circuit hitting set number are equal.
+One may wonder if people have studied similar things on matroid bases.
+I only know that there are lots of works (see refs in [this paper](https://arxiv.org/abs/2408.00173)) on matroids that fractional base packing number (strength) equals to fractional base covering number (fractional arboricity or density). However, the analogous question for bases should be characterizing matroids with $\text{cogirth}=\floor{\text{strength}}.$ Is this problem interesting or is there any existing paper?
