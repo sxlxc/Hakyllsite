@@ -4,17 +4,17 @@ module ChaoDoc (chaoDocRead, chaoDocWrite, chaoDocCompiler) where
 
 import Control.Monad.State
 import Data.Either
+import Data.Functor
 import Data.List (intersect)
+import qualified Data.Map as M
 import Data.Maybe
 import Data.Text (Text, pack)
-import Data.Functor
-import qualified Data.Map as M
 import qualified Data.Text as T
-import Text.Pandoc
-import Text.Pandoc.Walk (query, walk, walkM)
-import Text.Pandoc.Citeproc
 import Hakyll
 import System.IO.Unsafe
+import Text.Pandoc
+import Text.Pandoc.Citeproc
+import Text.Pandoc.Walk (query, walk, walkM)
 
 -- setMeta key val (Pandoc (Meta ms) bs) = Pandoc (Meta $ M.insert key val ms) bs
 
@@ -45,7 +45,10 @@ chaoDocWrite =
 -- getInline x = [x]
 
 pandocToInline :: Pandoc -> [Inline]
-pandocToInline = query (:[])
+pandocToInline (Pandoc _ blocks) = case blocks of
+  [Plain inlines] -> inlines
+  [Para inlines] -> inlines
+  _ -> []
 
 incrementalBlock :: [Text]
 incrementalBlock =
@@ -130,10 +133,13 @@ autoref _ y = y
 
 autorefFilter :: Pandoc -> Pandoc
 autorefFilter x = walk (autoref links) x
-  where links = query theoremIndex x
+  where
+    links = query theoremIndex x
 
--- Filters only works on AST. However, citations must be preprocessed. 
--- So it need to be handle here.
+-- processCitations works on AST. If you want to use citations in theorem name,
+-- then you need to convert citations there to AST as well and then use processCitations\
+-- Thus one need to apply the theorem filter first.
+-- autoref still does not work.
 thmNamePandoc :: Text -> Pandoc
 thmNamePandoc x = fromRight (Pandoc nullMeta []) . runPure $ readMarkdown chaoDocRead x
 
@@ -157,7 +163,6 @@ makeTheorem (Div attr xs)
         then Str ""
         else Span (addClass nullAttr "name") (pandocToInline $ thmNamePandoc $ fromJust name)
 makeTheorem x = x
-
 
 -- bib from https://github.com/chaoxu/chaoxu.github.io/tree/develop
 cslFile :: String
@@ -207,7 +212,7 @@ myReadPandocBiblio ropt csl biblio pdfilter item = do
                       addMeta "reference-section-title" (MetaInlines [Str "References"]) $
                         pdfilter pandoc -- here's the change
                         -- let a x = itemSetBody (pandoc' x)
-  return $ fmap (const (myFilter pandoc)) item
+  return $ fmap (const pandoc') item
 
 myFilter :: Pandoc -> Pandoc
 myFilter = theoremFilter
