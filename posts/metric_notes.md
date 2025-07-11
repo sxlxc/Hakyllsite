@@ -46,6 +46,20 @@ The subset $Y$ needs to satisfy the followings,
 
 It turns out that a hard example is the star $K_{1,n-1}$ with unit edge length. Now suppose we select any subset $Y$ and get the embedding $f_Y$. There must be at least two degree one vertices (say $u,v$) not in $Y$ since $Y\ll n$. Then we have $|d(y,u)-d(y,v)|=0$ for any $y$. However, the tree metric shows $d(u,v)=2$. Thus our Fréchet embedding is not isometric...
 
+Or is it? We can adjust constraints on the desired point set $Y$ a little bit. Consider the coordinate for $y\in Y$. Instead of setting the value of the $y$-corrdinate for each $u$ with $d(u,y)$, we can make it a function of $u,y$ and the centroid of the tree. The condition (2.) is basically asking for a vertex set $Y$ such that for any path $u\sim v$ in the tree there is a vertex $y\in Y$ such that there is a path $y\sim u \sim v$ or $u\sim v \sim y$. (We can see that $|Y|$ is in $O(n)$ via the star example.)
+This condition can be changed to finding a path $u\sim y\sim v$. It is known that for any tree $T$ with $n$ vertices there is a vertex called centroid $c_T$ that decomposes the tree into 2 trees $L,R$ such that,
+
+1. $L\cap R=\set{c_T}$,
+2. $L\cup R=T$,
+3. $|L|,|R|\leq \frac{2}{3}n$.
+
+(using $L$ for the set of vertices in $L$...)
+
+We maintain a vector for each vertex in the tree metric space.
+Decompose the current tree $T$ into two parts $L$ and $R$ at the centroid $c_T$. Add a new dimension (the $c_T$-coordinate) for each vector: For $u\in L$ the new coordinate is $d(c_T,u)$; For $u\in R$ the new coordinate is $-d(c_T,u)$. One can prove by induction that the resulting vectors with $\ell_\infty$ norm is an isometrically embedding of the original metric space $(X,d)$. The dimension is the same as the depth of centroid decomposition, which is clearly $O(\log n)$.
+
+This method is described in [@linial_geometry_1995, Theorem 5.3].
+
 
 # $(k,c)$-outlier embedding into $\ell_2$ [@chawla_composition_2023]
 
