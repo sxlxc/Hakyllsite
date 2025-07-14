@@ -24,6 +24,8 @@ Arora, Rao and Vazirani made a famous work about approximating uniform sparsest 
 
 For any finite metric on $V$ there is a corresponding graph shortest path metric on $G=(V,E)$ with $c:E\to \R$. Given a finite metric on $V$, how to find $G$ with $|E|$ as small as possible? This looks similar to [a previous post in chinese](/posts/2023-01-26-minDAG.html). How to prove that computing the minimum number of edges is NP-hard?
 
+Consider a simple case that the metric space is 2D Euclidean space. One can see that the graph for the shortest path representation is a complete graph if and only if all the points in the 2D plane is in general position. However, deciding if a set of points in $\mathbb Q\times \mathbb Q$ is NP-complete. The reduction is from graph independent set. See [this post](/posts/points-in-general-position.md).
+
 # Embedding tree metric into $(\R^{O(\log n)},\ell_\infty)$
 
 There is an exercise in [lecture notes 1](https://home.ttic.edu/~harry/teaching/pdf/lecture1.pdf) of TTIC CMCS 39600. Show that any $n$ point tree metric $(X,d)$ can be embedded isometrically into $(\R^{O(\log n)},\ell_\infty)$.
