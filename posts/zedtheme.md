@@ -13,7 +13,7 @@ But for some reasons I cannot fully switch to it.
 
 Throw the following into `settings.json` to make the Light Modern theme looks like Zed's One Light.
 
-```yaml
+```jsonc
 // colors from zed's one light theme
 "editor.lineHeight": 1.6,
 "workbench.colorTheme": "Default Light Modern",
@@ -87,6 +87,14 @@ Throw the following into `settings.json` to make the Light Modern theme looks li
             ],
             "settings": {
                 "foreground": "#4e77ea"
+            }
+        },
+        {
+            "scope": [
+                "constant.character.escape"
+            ],
+            "settings": {
+                "foreground": "#AA4A44",
             }
         },
     ]
