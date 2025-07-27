@@ -60,7 +60,7 @@ For the first inequality, note that the largest set of points in general positio
 
 Now I am interested in the gaps of above IPs and approximations algorithms for $\sigma$. 
 For the $n\times n$ grid case there is a $3/4$ approximation [@HALL1975336].
-It seems that in general cases the currently best known polynomial time approximation ratio is $\sqrt{\sigma}$ ? (see [master thesis of Cheng Cao](https://core.ac.uk/reader/147229038) and chatper 9.5 of David Eppstein's [book](https://ics.uci.edu/~eppstein/forbidden/)) One can easily prove that the simple greedy method gives a $\sqrt{\sigma}$ approximation.
+It seems that in general cases the currently best known polynomial time approximation ratio is $\sqrt{\sigma}$ ? (see Cheng Cao's [master thesis](https://core.ac.uk/reader/147229038) and chatper 9.5 of David Eppstein's [book](https://ics.uci.edu/~eppstein/forbidden/)) One can easily prove that the simple greedy method gives a $\sqrt{\sigma}$ approximation.
 
 # Open Problems
 
