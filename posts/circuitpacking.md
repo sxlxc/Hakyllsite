@@ -8,7 +8,7 @@ showtoc: true
 date: 2025-06-15
 ---
 
-In the [previous post](/posts/basepacking1.html), we mainly focus on the algorithmic part of integral and fractional base packing and base covering. In this post we consider packing and covering of matroid circuits.
+In the [previous post](/posts/basepacking.html), we mainly focus on the algorithmic part of integral and fractional base packing and base covering. In this post we consider packing and covering of matroid circuits.
 
 # Packing/Covering Defect
 
