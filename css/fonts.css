@@ -49,5 +49,8 @@
     --fira-sans-frac: "frac" on;
     --fira-sans-ss05: "ss05" on;
     --fira-sans-smcp: "smcp" on;
+    --fira-sans-dlig: "dlig" on;
+    --fira-sans-liga: "liga" on;
+    --fira-sans-kern: "kern" on;
     font-variant-ligatures: none;
 }

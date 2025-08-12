@@ -11,7 +11,7 @@ body {
     background-color: white;
     text-rendering: optimizeLegibility;
     text-align: justify;
-    font-feature-settings: var(--fira-sans-ss05);
+    font-feature-settings: var(--fira-sans-ss05), var(--fira-sans-dlig), var(--fira-sans-liga), var(--fira-sans-kern);
 }
 body a {
     color: #337ab7;
