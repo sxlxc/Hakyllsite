@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>talldoor - Matroid girth</title>
+        <link rel="stylesheet" href="../katex/katex.min.css">
+        <script defer src="../katex/katex.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/default.css" />
+        <link rel="stylesheet" href="../css/pygentize.css" />
+        <link rel="stylesheet" href="../css/chao-theorems.css">
+    
+    </head>
+    <body>
+        <div class="navbar-space">
+        
+            <!-- A table of contents on the left side, but only for screens
+                that are big enough -->
+            <div id="contents-big">
+                <p class="mini-header">Contents <a id="up-arrow" href="#">↑</a></p>
+                <ul>
+<li><a href="#regular-matroid">Regular matroid</a></li>
+<li><a href="#perturbed-graphic-matroids">Perturbed graphic matroids</a></li>
+</ul>
+            </div>
+            
+        </div>
+        <div class="text-space">
+        <header class="no-print">
+            <nav class="navbar">
+                <a href="../">Home</a>
+                <div class="navright">
+                    <a href="../draft.html">Drafts</a>
+                    <a href="../about.html">About</a>
+                    <!-- <a href="/contact.html">Contact</a> -->
+                    <!-- <a href="/archive.html">Archive</a> -->
+                    <!-- <a href="/tags.html">Tags</a> -->
+                </div>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1 class="pagetitle">Matroid girth</h1>
+            <article>
+    <section class="subtitle">
+        
+        
+        <br><span style="font-weight: bold; color: red;">Draft</span>
+        
+    </section>
+    <section class="header">
+        Posted on August 12, 2025
+        
+            by Yu Cong
+        
+    </section>
+    <div class="info">
+        
+            Tags: <a title="All pages tagged 'matroid'." href="../tags/matroid.html" rel="tag">matroid</a>, <a title="All pages tagged 'optimization'." href="../tags/optimization.html" rel="tag">optimization</a>, <a title="All pages tagged 'combinatorics'." href="../tags/combinatorics.html" rel="tag">combinatorics</a>
+        
+    </div>    
+    <section>
+        <p>Let <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathcal" style="margin-right:0.07382em;">I</span><span class="mclose">)</span></span></span></span> be a matroid
+with non-negative weights <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9341em;vertical-align:-0.2452em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mrel mtight">≥</span><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2452em;"><span></span></span></span></span></span></span></span></span></span>. The girth of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span> is <span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3.0717em;vertical-align:-1.3217em;"></span><span class="mop">min</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.05em;"><span style="top:-1.8557em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">e</span><span class="mrel mtight">∈</span><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.3217em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mopen">(</span><span class="mord mathnormal">e</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord text"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord"> is a circuit of </span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size4">}</span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">.</span></span></span></span></span></p>
+<p>Cogirth of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span> is the girth of the
+dual matroid of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span>.</p>
+<p>Computing girth is NP-hard for binary matroids but can be done in
+polynomial time for graphs. <a href="https://en.wikipedia.org/wiki/Matroid_girth#Computational_complexity">Wikipedia</a>
+lists some negative complexity results, which mainly concern more
+general matroid classes than binary matroids. So here are some positive
+results filling the gap between graphic matroids and binary
+matroids.</p>
+<h1 data-number="1" id="regular-matroid"><span class="header-section-number">1</span> Regular matroid</h1>
+<div class="theorem-environment Theorem" data-index="1" type="Theorem" title="Seymour decomposition [@seymour_decomposition_1980]">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">1</span><span class="name">Seymour decomposition <span class="citation" data-cites="seymour_decomposition_1980">[<a href="#ref-seymour_decomposition_1980" role="doc-biblioref">1</a>]</span></span></span>
+<p>every regular matroid may be constructed by combining graphic
+matroids, co-graphic matroids, and a certain ten-element matroid that is
+neither graphic nor co-graphic, using 3 binary operations:</p>
+<ul>
+<li>1-sum is direct sum of two matroids</li>
+<li>2-sum is patching two matroid on 1 common element</li>
+<li>3-sum is patching two matroids on 3 common elements forming a
+3-circuit in each matroid.</li>
+</ul>
+</div>
+<h1 data-number="2" id="perturbed-graphic-matroids"><span class="header-section-number">2</span> Perturbed graphic matroids</h1>
+<h1 class="unnumbered" id="bibliography">References</h1>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-seymour_decomposition_1980" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">P.D. Seymour, Decomposition of regular
+matroids, <em>Journal of Combinatorial Theory, Series B</em>. 28 (1980)
+305–359 <a href="https://doi.org/10.1016/0095-8956(80)90075-1">10.1016/0095-8956(80)90075-1</a>.</div>
+</div>
+</div>
+    </section>
+</article>
+
+        </main>
+
+        <footer class="no-print">
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>. 
+            <a href="https://github.com/congyu711/Hakyllsite">Source on Github</a>.
+            License <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0 </a>  <img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" alt="Creative Commons License" style="height: 12px; vertical-align: baseline;">
+
+        </footer>
+        </div>
+    </body>
+</html>
