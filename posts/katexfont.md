@@ -119,6 +119,28 @@ KaTeX版本和XeLaTeX相比我觉得下标位置看起来还要更自然一点, 
 
 现在 [Typst](https://typst.app/) 看起来是个输出有点排版需求的html内容的好选择. [这里](https://kawayww.com/posts/example)是个例子, 可以看到公式被Typst变成了svg. 效果不错, 但是不知道如果有很多公式的话绘制一堆svg会不会很慢, 页面会不会变得很大.
 
-如果要修改$\KaTeX$的话, 我觉得会有很大的工作量. 一方面$\KaTeX$本身有点古老, 很多功能的实现方式太局限了. 另一方面我不懂js也不懂排版, 估计需要了解open type字体、`unicode-math`的工作方式等等.
+如果要修改$\KaTeX$的话, 我觉得会有很大的工作量. 一方面$\KaTeX$本身有点古老, 很多功能的实现方式太局限了. 另一方面我不懂js也不懂排版, 估计需要了解open type字体、[unicode-math](https://ctan.org/pkg/unicode-math?lang=en) 的工作方式等.
 
-先观察一段时间, Typst的html输出有没有变得更好用, 我有没有闲到会去学和写这个工具.
+<!-- 先观察一段时间, Typst的html输出有没有变得更好用, 我有没有闲到会去学和写这个工具. -->
+## Typst svg
+
+用这个来让 Typst 在 html 导出中把所有公式都变成 svg.
+
+```
+#show math.equation: html.frame
+#show math.equation.where(block: false): box
+```
+
+```sh
+typst compile input.typ -f html htmloutput.html --features html
+```
+
+测试用的文档是 <https://typst.app/project/rgLBUHLLRwTyTh16Ej3qlM>
+
+| outputs | size |
+| :--------------: | :------------: |
+| PDF-XeTeX | 25KB |
+| PDF-Typst | 39KB |
+| html-Typst | **194KB** |
+| FiraMath font | 122KB |
+

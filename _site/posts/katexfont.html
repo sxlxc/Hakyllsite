@@ -30,7 +30,10 @@
 <ul>
 <li><a href="#italic">Italic</a></li>
 </ul></li>
-<li><a href="#接下来">接下来…</a></li>
+<li><a href="#接下来">接下来…</a>
+<ul>
+<li><a href="#typst-svg">Typst svg</a></li>
+</ul></li>
 </ul>
             </div>
             
@@ -199,9 +202,41 @@ c-4-3.333-8.333-7.667-13 -13l-13-13l77-155 77-156c66 199.333 139 419.667
 <p>如果要修改<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8988em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">K</span><span class="mspace" style="margin-right:-0.17em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-2.905em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4678em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span>的话,
 我觉得会有很大的工作量. 一方面<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8988em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">K</span><span class="mspace" style="margin-right:-0.17em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-2.905em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4678em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span>本身有点古老,
 很多功能的实现方式太局限了. 另一方面我不懂js也不懂排版, 估计需要了解open
-type字体、<code>unicode-math</code>的工作方式等等.</p>
-<p>先观察一段时间, Typst的html输出有没有变得更好用,
-我有没有闲到会去学和写这个工具.</p>
+type字体、<a href="https://ctan.org/pkg/unicode-math?lang=en">unicode-math</a>
+的工作方式等.</p>
+<!-- 先观察一段时间, Typst的html输出有没有变得更好用, 我有没有闲到会去学和写这个工具. -->
+<h2 data-number="4.1" id="typst-svg"><span class="header-section-number">4.1</span> Typst svg</h2>
+<p>用这个来让 Typst 在 html 导出中把所有公式都变成 svg.</p>
+<pre><code>#show math.equation: html.frame
+#show math.equation.where(block: false): box</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">typst</span> compile input.typ <span class="at">-f</span> html htmloutput.html <span class="at">--features</span> html</span></code></pre></div>
+<p>测试用的文档是 <a href="https://typst.app/project/rgLBUHLLRwTyTh16Ej3qlM" class="uri">https://typst.app/project/rgLBUHLLRwTyTh16Ej3qlM</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">outputs</th>
+<th style="text-align: center;">size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">PDF-XeTeX</td>
+<td style="text-align: center;">25KB</td>
+</tr>
+<tr>
+<td style="text-align: center;">PDF-Typst</td>
+<td style="text-align: center;">39KB</td>
+</tr>
+<tr>
+<td style="text-align: center;">html-Typst</td>
+<td style="text-align: center;"><strong>194KB</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">FiraMath font</td>
+<td style="text-align: center;">122KB</td>
+</tr>
+</tbody>
+</table>
     </section>
 </article>
 
