@@ -73,8 +73,7 @@ dual matroid of <span class="katex"><span class="katex-html" aria-hidden="true">
 polynomial time for graphs. <a href="https://en.wikipedia.org/wiki/Matroid_girth#Computational_complexity">Wikipedia</a>
 lists some negative complexity results, which mainly concern more
 general matroid classes than binary matroids. So here are some positive
-results filling the gap between graphic matroids and binary
-matroids.</p>
+results filling the gap between graphic matroids and binary matroids<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
 <h1 data-number="1" id="regular-matroid"><span class="header-section-number">1</span> Regular matroid</h1>
 <div id="regulardecomp" class="theorem-environment Theorem" data-index="1" type="Theorem" title="Seymour decomposition [@seymour_decomposition_1980]">
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">1</span><span class="name">Seymour decomposition <span class="citation" data-cites="seymour_decomposition_1980">[<a href="#ref-seymour_decomposition_1980" role="doc-biblioref">1</a>]</span></span></span>
@@ -88,7 +87,7 @@ that is neither graphic nor cographic, using 3 binary operations:</p>
 3-circuit in each matroid.</li>
 </ul>
 </div>
-<p>This decomposition can be found in polynomial time<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p>This decomposition can be found in polynomial time<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
 <p><a href="#regulardecomp" title="Theorem 1">Theorem 1</a> leads to a
 natural algorithm for computing the girth in regular matroids. The
 decomposition of regular matroids gives us a binary tree, where each
@@ -164,6 +163,9 @@ the 2-sum case. There are only 3 common elements. We can enumerate all
 circuits of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> which contain one of
 the common elements.</p></li>
 </ol>
+<p>However, deciding whether a regular matroid has a circuit of length
+at most k containing two fixed elements <a href="https://mathoverflow.net/questions/434026/algorithm-for-finding-a-minimum-weight-circuit-in-a-weighted-binary-matroid#comment1118055_434045">is
+FPT</a>.</p>
 <h1 data-number="2" id="perturbed-graphic-matroids"><span class="header-section-number">2</span> Perturbed graphic matroids</h1>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
@@ -182,8 +184,9 @@ Combinatorial Theory, Series B</em>. 49 (1990) 241–281 <a href="https://doi.or
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1"><p>One can decide if a matroid <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span> can be decomposed into <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>
-using 1/2/3-sum in polynomial time. See <a href="https://www.emis.de/monographs/md/index.html" class="uri">https://www.emis.de/monographs/md/index.html</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Results can be found in <a href="https://matroidunion.org/?p=1106" class="uri">https://matroidunion.org/?p=1106</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>One can decide if a matroid <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span> can be decomposed into <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>
+using 1/2/3-sum in polynomial time. See <a href="https://www.emis.de/monographs/md/index.html" class="uri">https://www.emis.de/monographs/md/index.html</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
     </section>

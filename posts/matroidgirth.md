@@ -20,7 +20,9 @@ Cogirth of $M$ is the girth of the dual matroid of $M$.
 
 Computing girth is NP-hard for binary matroids but can be done in polynomial time for graphs.
 [Wikipedia](https://en.wikipedia.org/wiki/Matroid_girth#Computational_complexity) lists some negative complexity results, which mainly concern more general matroid classes than binary matroids. 
-So here are some positive results filling the gap between graphic matroids and binary matroids.
+So here are some positive results filling the gap between graphic matroids and binary matroids[^1].
+
+[^1]: Results can be found in <https://matroidunion.org/?p=1106>
 
 # Regular matroid
 
@@ -33,9 +35,9 @@ Every regular matroid may be constructed by combining graphic matroids, cographi
 forming a 3-circuit in each matroid.
 :::
 
-This decomposition can be found in polynomial time[^1].
+This decomposition can be found in polynomial time[^2].
 
-[^1]: One can decide if a matroid $M$ can be decomposed into $M_1$ and $M_2$ using 1/2/3-sum in polynomial time. See <https://www.emis.de/monographs/md/index.html>.
+[^2]: One can decide if a matroid $M$ can be decomposed into $M_1$ and $M_2$ using 1/2/3-sum in polynomial time. See <https://www.emis.de/monographs/md/index.html>.
 
 [@regulardecomp] leads to a natural algorithm for computing the girth in regular matroids. The decomposition of regular matroids gives us a binary tree, where each node is a regular matroid and each leaf is either (co)graphic or a special 10 element regular matroid.
 Every non-leaf node in the decomposition tree represents a regular matroid $M$ which is 1/2/3-sum of its two direct decendents $M_1$ and $M_2$. Let $A \oplus_i B$ be the $i$-sum of $A$ and $B$ for $i\in [3]$. Now there are only 3 cases:
@@ -68,5 +70,7 @@ Every non-leaf node in the decomposition tree represents a regular matroid $M$ w
     Thus $G$ is a tree and we can always assume that one of the matroids in the summands is graphic matroid, cographic matroid or $R_{10}$. Finding the minimum circuit containing a fixed element can be done in those matroids in polynomial time and there exists a algorithm that computes the tree in cubic time [@truemper_decomposition_1990].
 
 3. $M=M_1\oplus_3 M_2$. Similar to the 2-sum case. There are only 3 common elements. We can enumerate all circuits of $M_1$ which contain one of the common elements.
+
+However, deciding whether a regular matroid has a circuit of length at most k containing two fixed elements [is FPT](https://mathoverflow.net/questions/434026/algorithm-for-finding-a-minimum-weight-circuit-in-a-weighted-binary-matroid#comment1118055_434045).
 
 # Perturbed graphic matroids
