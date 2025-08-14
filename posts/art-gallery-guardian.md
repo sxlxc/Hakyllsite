@@ -30,3 +30,8 @@ Regarding the single camera case, a [recent paper](https://arxiv.org/pdf/2506.18
 ~~This kind of convex decomposition (maybe convex polytope covering? I will check [this thesis](https://summit.sfu.ca/libraries/pdf.js/web/viewer.html?file=%2F%2Fsummit.sfu.ca%2F_flysystem%2Ffedora%2Fsfu_migrate%2F6812%2Fb17620697.pdf) when i find time.) is not described [here](https://en.wikipedia.org/wiki/Polygon_partition#Partition_a_polygon_into_convex_polygons).~~
 
 The decision version of this problem is [$\exists \R$-complete](https://en.wikipedia.org/wiki/Existential_theory_of_the_reals) (which implies it is NP-hard and in PSPACE). The optimization version is APX-hard. (see [wikipedia](https://en.wikipedia.org/wiki/Art_gallery_problem#Computational_complexity) for refs)
+
+
+While the are gallery guardian problem is hard, a varient called the *contiguous art gallery problem* is polynomially solvable (in time $O(kn^2\log^2 n)$, where $n$ is the number of vertices in the polygon and $k$ is the solution size).
+Contiguous means that each guard is assigned a contiguous portion of the boundary.
+see <https://arxiv.org/pdf/2508.09734v1>
