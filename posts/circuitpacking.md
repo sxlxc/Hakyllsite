@@ -159,3 +159,22 @@ Ding and Zang's work [@ding_packing_2009] characterizes matroids that satisfy $\
 The $k=1$ result can be understood as finding matroids whose integral circuit packing number and integral circuit hitting set number are equal.
 One may wonder if people have studied similar things on matroid bases.
 There are lots of works (see refs in [this paper](https://arxiv.org/abs/2408.00173)) on homogeneous matroids which have the property that fractional base packing number (strength) equals to fractional base covering number (fractional arboricity or density). However, the analogous question for bases should be characterizing matroids with $\text{cogirth}=\floor{\text{strength}}.$ Is this problem interesting or is there any existing paper?
+
+*Updated on Aug 14th.* Yes, there is existing paper characterizing matroids with $\lambda=\floor{\sigma}.$
+
+Let $M$ be a matroid with $\floor{\sigma(M)}\geq k$. We call $M$ $k$-reducible if $\lambda(M)=\floor{\sigma(M)}=k$. Otherwise $M$ is $k$-irreducible. Let $C_1^*,\ldots,C_\ell^*$ be the set of minimum cocircuits of $M$. Then the *crux* of $M$, denoted $\chi(M)$, is defined to be
+\[
+\chi(M)=M\setminus\bigcup_{i=1}^\ell C_i^*.
+\]
+
+Let $\delta(M)$ be the number of connected components of $\chi(M)$.
+Assume that $\chi(M)$ has $d$ connected components $K_1,\ldots,K_d$. For each minimum cocircuit $C_j^*$ of $M$, let $\nu_j$ denote the largest subset of $\set{K_1,\ldots,K_d}$ such that the restriction of $M$ to $C_j^*\cup \left( \bigcup_{K\in \nu_j} K \right)$ is connected. Then the assembly hypergraph of $M$ , denoted $\mathcal H(M)$, is the non-uniform hypergraph whose vertices are labelled by the connected components $K_1, . . . , K_d$, where the hyperedges are labelled by the cocircuits $C_1^*,\ldots,C_\ell^*$, and the vertices incident with $C_j^*$ are precisely the members of $\nu_j$.
+
+::: {.Theorem title="Theorem 21 in [@bailey_note_2014]"}
+Suppose that $M$ is a matroid for which $\floor{σ(M)} = λ(M) = k$. Then we have the following.
+
+1. There exists a unique set of k-irreducible matroids $\mathcal M= \{M_1, . . . , M_m\}$ (for some integer $m$).
+2. There exists a unique rooted tree $R$ with $m$ leaves labelled by $M_1, . . . , M_m$, such that the root is labelled by $M$ and each non-leaf labelled by $K$ has $d= δ(K)$
+children, labelled by the connected components of $\chi(K)$.
+3. For each non-leaf, labelled by $K$ and its $d$ children labelled $K_1, . . . , K_d$, there exists a unique assembly hypergraph with $\ell$ hyperedges, and where $\sum_{i=1}^d r(K_i)=r(K)-\ell$.
+:::
