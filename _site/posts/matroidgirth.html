@@ -115,7 +115,7 @@ regular matroids is not known to be polynomially solvable. To understand
 what’s happening here we need to <del>look into Seymour’s
 proof</del>.</p>
 <blockquote>
-<p><em>I finally realized that one didn’t need to understand Seymour’s
+<p><em>I finally realized that one doesn’t need to understand Seymour’s
 55-page paper to see why the desired operations can be done in
 polynomial time… Readers who are not interested in the proof should skip
 this blockquote.</em></p>
@@ -167,6 +167,34 @@ the common elements.</p></li>
 at most k containing two fixed elements <a href="https://mathoverflow.net/questions/434026/algorithm-for-finding-a-minimum-weight-circuit-in-a-weighted-binary-matroid#comment1118055_434045">is
 FPT</a>.</p>
 <h1 data-number="2" id="perturbed-graphic-matroids"><span class="header-section-number">2</span> Perturbed graphic matroids</h1>
+<p>Jim Geelen and Rohan Kapadia <span class="citation" data-cites="geelen_computing_2018">[<a href="#ref-geelen_computing_2018" role="doc-biblioref">3</a>]</span> showed that the (co)girth can be
+computed in polynomial time for a subclass of binary matroids called
+perturbed graphic matroids.</p>
+<p>The most important problem in this field is the following.</p>
+<div id="conjgirth" class="theorem-environment Conjecture" data-index="2" type="Conjecture" title="Geelen, Gerards, and Whittle [@Geelen_Gerards_Whittle_2015]">
+<span class="theorem-header"><span class="type">Conjecture</span><span class="index">2</span><span class="name">Geelen, Gerards, and Whittle
+<span class="citation" data-cites="Geelen_Gerards_Whittle_2015">[<a href="#ref-Geelen_Gerards_Whittle_2015" role="doc-biblioref">4</a>]</span></span></span>
+<p>For any proper minor-closed class <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal">M</span></span></span></span> of binary matroids, there is a polynomial-time algorithm for
+computing the girth of matroids in <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal">M</span></span></span></span>.</p>
+</div>
+<p>Similar to Seymour’s decomposition for regular matroids, every proper
+minor-closed class of binary matroid admits a “decomposition” into
+graphic matroids and some binary matroids.</p>
+<div id="binarydecomp" class="theorem-environment Theorem" data-index="3" type="Theorem" title="[@Geelen_Gerards_Whittle_2015]">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">3</span><span class="name"><span class="citation" data-cites="Geelen_Gerards_Whittle_2015">[<a href="#ref-Geelen_Gerards_Whittle_2015" role="doc-biblioref">4</a>]</span></span></span>
+<p>For each proper minor-closed class <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal">M</span></span></span></span> of binary matroids, there exist integers <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> such that for each vertically <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>-connected matroid <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal">M</span></span></span></span>, there exist matrices <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">A</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0213em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathrm">GF</span></span><span class="mopen">(</span><span class="mord">2</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7713em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mbin mtight">×</span><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span></span> such that
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> is the incidence matrix of a graph,
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span> and either <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mclose">)</span></span></span></span> or <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6887em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6887em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mclose">)</span></span></span></span>.</p>
+</div>
+<p>Using <a href="#binarydecomp" title="Theorem 3">Theorem 3</a>, <a href="#conjgirth" title="Conjecture 2">Conjecture 2</a> is true if one
+can prove the followings:</p>
+<ol type="1">
+<li>there is a polynomial-time alg that finds the girth of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mclose">)</span></span></span></span>;</li>
+<li>One can reduce the problem of computing the girth of members of
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal">M</span></span></span></span> to that of computing the
+girth of vertically <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>-connected members
+of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal">M</span></span></span></span>.</li>
+</ol>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
 <div id="ref-seymour_decomposition_1980" class="csl-entry" role="listitem">
@@ -179,6 +207,18 @@ matroids, <em>Journal of Combinatorial Theory, Series B</em>. 28 (1980)
 Truemper, A decomposition theory for matroids. <span>V</span>.
 <span>Testing</span> of matrix total unimodularity, <em>Journal of
 Combinatorial Theory, Series B</em>. 49 (1990) 241–281 <a href="https://doi.org/10.1016/0095-8956(90)90030-4">10.1016/0095-8956(90)90030-4</a>.</div>
+</div>
+<div id="ref-geelen_computing_2018" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">J.
+Geelen, R. Kapadia, Computing <span>Girth</span> and
+<span>Cogirth</span> in <span>Perturbed</span> <span>Graphic</span>
+<span>Matroids</span>, <em>Combinatorica</em>. 38 (2018) 167–191 <a href="https://doi.org/10.1007/s00493-016-3445-3">10.1007/s00493-016-3445-3</a>.</div>
+</div>
+<div id="ref-Geelen_Gerards_Whittle_2015" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">J.
+Geelen, B. Gerards, G. Whittle, The highly connected matroids in
+minor-closed classes, <em>Annals of Combinatorics</em>. 19 (2015)
+107–123 <a href="https://doi.org/10.1007/s00026-015-0251-3">10.1007/s00026-015-0251-3</a>.</div>
 </div>
 </div>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">

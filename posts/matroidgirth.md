@@ -50,7 +50,7 @@ Every non-leaf node in the decomposition tree represents a regular matroid $M$ w
     For the 2/3-sum case we need to find in at least one of the summands the minimum circuit that contains a common element $e$. However, finding such a minimum circuit is regular matroids is not known to be polynomially solvable.
     To understand what's happening here we need to ~~look into Seymour's proof~~. 
     
-    > *I finally realized that one didn't need to understand Seymour's 55-page paper to see why the desired operations can be done in polynomial time... Readers who are not interested in the proof should skip this blockquote.*
+    > *I finally realized that one doesn't need to understand Seymour's 55-page paper to see why the desired operations can be done in polynomial time... Readers who are not interested in the proof should skip this blockquote.*
     >
     >   The proof of [@regulardecomp] has 3 parts:
     >   1. There is a special 10-element regular matroid $R_{10}$ such that any regular matroid can be obtained by 1/2-sums from regular matroids without $R_{10}$ minor and copies of $R_{10}$. 
@@ -74,3 +74,22 @@ Every non-leaf node in the decomposition tree represents a regular matroid $M$ w
 However, deciding whether a regular matroid has a circuit of length at most k containing two fixed elements [is FPT](https://mathoverflow.net/questions/434026/algorithm-for-finding-a-minimum-weight-circuit-in-a-weighted-binary-matroid#comment1118055_434045).
 
 # Perturbed graphic matroids
+
+Jim Geelen and Rohan Kapadia [@geelen_computing_2018] showed that the (co)girth can be computed in polynomial time for a subclass of binary matroids called perturbed graphic matroids.
+
+The most important problem in this field is the following.
+
+::: {.Conjecture title="Geelen, Gerards, and Whittle [@Geelen_Gerards_Whittle_2015]" #conjgirth}
+For any proper minor-closed class $\mathcal M$ of binary matroids, there is a polynomial-time algorithm for computing the girth of matroids in $\mathcal M$.
+:::
+
+Similar to Seymour's decomposition for regular matroids, every proper minor-closed class of binary matroid admits a "decomposition" into graphic matroids and some binary matroids.
+
+::: {.Theorem title="[@Geelen_Gerards_Whittle_2015]" #binarydecomp}
+For each proper minor-closed class $\mathcal M$ of binary matroids, there exist integers $k,t\geq 0$ such that for each vertically $k$-connected matroid $M\in \mathcal M$, there exist matrices $A,P\in \mathrm{GF}(2)^{r\times n}$ such that $A$ is the incidence matrix of a graph, $r(P)\leq t$ and either $M=M(A+P)$ or $M^*=M(A+P)$.
+:::
+
+Using [@binarydecomp], [@conjgirth] is true if one can prove the followings:
+
+1. there is a polynomial-time alg that finds the girth of $M(A+P)$;
+2. One can reduce the problem of computing the girth of members of $\mathcal M$ to that of computing the girth of vertically $k$-connected members of $\mathcal M$.
