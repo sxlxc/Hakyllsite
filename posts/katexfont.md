@@ -144,3 +144,8 @@ typst compile input.typ -f html htmloutput.html --features html
 | html-Typst | **194KB** |
 | FiraMath font | 122KB |
 
+# MathJax 4.0 is out
+
+<https://docs.mathjax.org/en/latest/upgrading/whats-new-4.0.html>
+
+MathJax 支持 FiraMath. 所以不用再修改 KaTeX.
