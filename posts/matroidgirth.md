@@ -73,9 +73,7 @@ Every non-leaf node in the decomposition tree represents a regular matroid $M$ w
 
 However, deciding whether a regular matroid has a circuit of length at most k containing two fixed elements [is FPT](https://mathoverflow.net/questions/434026/algorithm-for-finding-a-minimum-weight-circuit-in-a-weighted-binary-matroid#comment1118055_434045).
 
-# Perturbed graphic matroids
-
-Jim Geelen and Rohan Kapadia [@geelen_computing_2018] showed that the (co)girth can be computed in polynomial time for a subclass of binary matroids called perturbed graphic matroids.
+# Proper minor-closed class of binary matroids
 
 The most important problem in this field is the following.
 
@@ -89,7 +87,19 @@ Similar to Seymour's decomposition for regular matroids, every proper minor-clos
 For each proper minor-closed class $\mathcal M$ of binary matroids, there exist integers $k,t\geq 0$ such that for each vertically $k$-connected matroid $M\in \mathcal M$, there exist matrices $A,P\in \mathrm{GF}(2)^{r\times n}$ such that $A$ is the incidence matrix of a graph, $r(P)\leq t$ and either $M=M(A+P)$ or $M^*=M(A+P)$.
 :::
 
+The matroids $M(A+P)$ in [@binarydecomp] are called perturbed graphic matroids. Note that we can consider $k$ and $t$ in [@binarydecomp] as constants since for each minor-closed class they are fixed.
+
 Using [@binarydecomp], [@conjgirth] is true if one can prove the followings:
 
 1. there is a polynomial-time alg that finds the girth of $M(A+P)$;
 2. One can reduce the problem of computing the girth of members of $\mathcal M$ to that of computing the girth of vertically $k$-connected members of $\mathcal M$.
+
+## Perturbed graphic matroids
+
+Jim Geelen and Rohan Kapadia [@geelen_computing_2018] showed that the (co)girth can be computed in randomized polynomial time for a subclass of binary matroids called perturbed graphic matroids. They made a reduction from the (co)girth problem of perturbed graphic matroids to graph cuts and matchings using $(s,t)$-signed-grafts.
+
+<!--
+questions
+- how is even-cut matroid related to low rank pertubation of graphic matroids? are they closed under duality?
+- is it possible to obtain a deterministic alg now?  
+-->
