@@ -96,7 +96,46 @@ Using [@binarydecomp], [@conjgirth] is true if one can prove the followings:
 
 ## Perturbed graphic matroids
 
-Jim Geelen and Rohan Kapadia [@geelen_computing_2018] showed that the (co)girth can be computed in randomized polynomial time for a subclass of binary matroids called perturbed graphic matroids. They made a reduction from the (co)girth problem of perturbed graphic matroids to graph cuts and matchings using $(s,t)$-signed-grafts.
+Jim Geelen and Rohan Kapadia [@geelen_computing_2018] showed that the (co)girth can be computed in randomized polynomial time for a subclass of binary matroids called perturbed graphic matroids. They made a reduction from the (co)girth problem of perturbed graphic matroids to graph cuts and matchings using $(s,t)$-signed-grafts. IMO the reduction is quite tricky. Let $s$ and $t$ be two non-negative integers. An $(s,t)$-signed-graft is a tuple $(G,S,T,B,C,D)$ such that:
+
+- $G$ is a graph,
+- $S$ is an $s$-element set disjoint from $V(G)$,
+- $T$ is a $t$-element set disjoint from $E(G)$,
+- $B,C,D$ are 0-1 matrices.
+
+The incidence matrix of an $(s,t)$-signed-graft $(G,S,T,B,C,D)$ is
+\[
+A = \begin{array}{ccc}
+      & \begin{array}{cc} E(G) & T \end{array} \\
+    \begin{array}{c} V(G) \\ S \end{array}
+      & \left(
+        \begin{array}{cc}
+          A(G) & B \\
+          C & D 
+        \end{array}
+      \right)
+\end{array}
+\]
+where $A(G)$ is the incidence matrix of $G$. Denote the matroid $M(A)$ by $M(G,S,T,B,C,D)$.
+
+::: {.Lemma title="[@geelen_computing_2018,Lemma 4.1]"}
+Let $G$ be a graph and let $P\in \mathrm{GF}(2)^{V(G)\times E(G)}$ be a rank-$t$ matrix. Then there is a $(t,t)$-signed-graft $(G,S,T,B,C,D)$ such that 
+\[M(A(G)+P)=M(G,S,T,B,C,D)/T.\]
+:::
+The proof is taking $B,C$ as a rank decomposition of $P$ and applying some row operations.
+
+Recall that [@binarydecomp] says that each vertically $k$-connected matroid $M$ in a proper minor-closed class of binary matroids is *either* $M(A+P)$ or $M(A+P)^*$. One has to consider the girth and cogirth problem separately.
+
+::: {.Lemma title="the cogirth part. [@geelen_computing_2018,Lemma 4.2]"}
+Let $(G,S,T,B,C,D)$ be an $(s,t)$-signed-graft and $S'$ be a one-element set disjoint from $V(G)$. The cogirth of $M(G,S,T,B,C,D)/T$ is the mimimum of the cogirths of matroids $M(G,S',T,B,yC,yD)/T$ taken over all $y\in \mathrm{GF}(2)^{S'\times S}$.
+:::
+
+::: Proof
+To see this lemma, I suggest considering the flats instead of cocycles.
+
+- Each flat in $M=M(G,S',T,B,yC,yD)$ is also a flat $M'=M(G,S,T,B,C,D)$. Let $F'$ be a flat of $M'$ and $F$ be the corresponding set in $M$. If there is an element $e$ of $M\setminus F$ such that $e$ is linearly representable by vectors in $F$. Then $e$ is also representable by vectors in $F'$ by linearality of the multiplication.
+- For each flat $F$ in $M$, there is a $y\in \mathrm{GF}(2)^{S'\times S}$ such that $F'$ is a flat of $M'$. hmm... is this correct?
+:::
 
 <!--
 questions
