@@ -134,7 +134,14 @@ Let $(G,S,T,B,C,D)$ be an $(s,t)$-signed-graft and $S'$ be a one-element set dis
 To see this lemma, I suggest considering the flats instead of cocycles.
 
 - Each flat in $M=M(G,S',T,B,yC,yD)$ is also a flat $M'=M(G,S,T,B,C,D)$. Let $F'$ be a flat of $M'$ and $F$ be the corresponding set in $M$. If there is an element $e$ of $M\setminus F$ such that $e$ is linearly representable by vectors in $F$. Then $e$ is also representable by vectors in $F'$ by linearality of the multiplication.
-- For each flat $F$ in $M$, there is a $y\in \mathrm{GF}(2)^{S'\times S}$ such that $F'$ is a flat of $M'$. hmm... is this correct?
+- For each hyperplane $H$ in $M$, there is a $y\in \mathrm{GF}(2)^{S'\times S}$ such that $F'$ is a flat of $M'$.
+Note that this only works for cocircuits (hyperplanes) but not cocycles (flats). We can assume that the $A(G),B$ part is empty. Let the first $k$ columns be the hyperplane $H$. Then the matrix is 
+\[
+M=\begin{pmatrix}
+H & U
+\end{pmatrix}.
+\]
+We want to show that there is a $y\in \mathrm{GF}(2)^s$ such that $H^T y=\mathbf{0}$ and $U^T y=\mathbf{1}$. Let $B$ be a base in this linear matroid. Apply row operations to make $B$ a standard basis (at most one "1" in each column). The intersection of $B$ and $H$ has exactly $r-1$ vectors. Now we construct the vector $y$. If there is any vector in $B\cap H$ that has a "1" in the $k$-th coordinate, let $y[k]=0$; Otherwise, $y[k]=1$. Note that $H^T y=\mathbf{0}$ and $U^T y=\mathbf{1}$. Thus $H$ remains a hyperplane in $M'$.
 :::
 
 <!--
