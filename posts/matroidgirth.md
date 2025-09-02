@@ -20,7 +20,7 @@ Cogirth of $M$ is the girth of the dual matroid of $M$.
 
 Computing girth is NP-hard for binary matroids but can be done in polynomial time for graphs.
 [Wikipedia](https://en.wikipedia.org/wiki/Matroid_girth#Computational_complexity) lists some negative complexity results, which mainly concern more general matroid classes than binary matroids. 
-So here are some positive results filling the gap between graphic matroids and binary matroids[^1].
+So here are some positive results filling the gap between graphic matroids and binary matroids[^1]. Proofs that you don’t see here can easily be found in the references.
 
 [^1]: Results can be found in <https://matroidunion.org/?p=1106>
 
@@ -94,7 +94,7 @@ Using [@binarydecomp], [@conjgirth] is true if one can prove the followings:
 1. there is a polynomial-time alg that finds the girth of $M(A+P)$;
 2. One can reduce the problem of computing the girth of members of $\mathcal M$ to that of computing the girth of vertically $k$-connected members of $\mathcal M$.
 
-## Perturbed graphic matroids
+# Perturbed graphic matroids
 
 Jim Geelen and Rohan Kapadia [@geelen_computing_2018] showed that the (co)girth can be computed in randomized polynomial time for a subclass of binary matroids called perturbed graphic matroids. They made a reduction from the (co)girth problem of perturbed graphic matroids to graph cuts and matchings using $(s,t)$-signed-grafts. IMO the reduction is quite tricky. Let $s$ and $t$ be two non-negative integers. An $(s,t)$-signed-graft is a tuple $(G,S,T,B,C,D)$ such that:
 
@@ -118,7 +118,7 @@ A = \begin{array}{ccc}
 \]
 where $A(G)$ is the incidence matrix of $G$. Denote the matroid $M(A)$ by $M(G,S,T,B,C,D)$.
 
-::: {.Lemma title="[@geelen_computing_2018,Lemma 4.1]"}
+::: {.Lemma title="[@geelen_computing_2018,Lemma 4.1]" #lemgraft}
 Let $G$ be a graph and let $P\in \mathrm{GF}(2)^{V(G)\times E(G)}$ be a rank-$t$ matrix. Then there is a $(t,t)$-signed-graft $(G,S,T,B,C,D)$ such that 
 \[M(A(G)+P)=M(G,S,T,B,C,D)/T.\]
 :::
@@ -126,7 +126,9 @@ The proof is taking $B,C$ as a rank decomposition of $P$ and applying some row o
 
 Recall that [@binarydecomp] says that each vertically $k$-connected matroid $M$ in a proper minor-closed class of binary matroids is *either* $M(A+P)$ or $M(A+P)^*$. One has to consider the girth and cogirth problem separately.
 
-::: {.Lemma title="the cogirth part. [@geelen_computing_2018,Lemma 4.2]"}
+## Reductions
+
+::: {.Lemma title="the cogirth part. [@geelen_computing_2018,Lemma 4.2]" #lemcogirth}
 Let $(G,S,T,B,C,D)$ be an $(s,t)$-signed-graft and $S'$ be a one-element set disjoint from $V(G)$. The cogirth of $M(G,S,T,B,C,D)/T$ is the mimimum of the cogirths of matroids $M(G,S',T,B,yC,yD)/T$ taken over all $y\in \mathrm{GF}(2)^{S'\times S}$.
 :::
 
@@ -141,8 +143,34 @@ M=\begin{pmatrix}
 H & U
 \end{pmatrix}.
 \]
-We want to show that there is a $y\in \mathrm{GF}(2)^s$ such that $H^T y=\mathbf{0}$ and $U^T y=\mathbf{1}$. Let $B$ be a base in this linear matroid. Apply row operations to make $B$ a standard basis (at most one "1" in each column). The intersection of $B$ and $H$ has exactly $r-1$ vectors. Now we construct the vector $y$. If there is any vector in $B\cap H$ that has a "1" in the $k$-th coordinate, let $y[k]=0$; Otherwise, $y[k]=1$. Note that $H^T y=\mathbf{0}$ and $U^T y=\mathbf{1}$. Thus $H$ remains a hyperplane in $M'$.
+We want to show that there is a $y\in \mathrm{GF}(2)^s$ such that $H^T y=\mathbf{0}$ and $U^T y=\mathbf{1}.$ Let $B$ be a base in this linear matroid. Apply row operations to make $B$ a standard basis (at most one "1" in each column). The intersection of $B$ and $H$ has exactly $r-1$ vectors. Now we construct the vector $y.$ If there is any vector in $B\cap H$ that has a "1" in the $k$-th coordinate, let $y[k]=0$; Otherwise, we set $y[k]=1.$ Note that $H^T y=\mathbf{0}$ and $U^T y=\mathbf{1}.$ Thus $H$ remains a hyperplane in $M'.$
 :::
+
+::: {.Lemma title="the girth part. [@geelen_computing_2018,Lemma 4.3]"}
+Let $(G,S,T,B,C,D)$ be an $(s,t)$-signed-graft and $T'$ be a one-element set disjoint from $E(G).$ The girth of $M(G,S,T,B,C,D)/T$ is the mimimum of the girths of matroids $M(G,S',T,Bx,C,Dx)/T$ taken over all $x\in \mathrm{GF}(2)^{T\times T'}.$
+:::
+
+It follows from [@lemgraft] we need to consider the (co)girth of $M/T$ where $M$ is the matroid of an $(s,t)$-signed-graft.
+
+## cogirth → even cuts
+
+
+By [@lemcogirth], to compute the cogirth of an $(s,t)$-signed-graft we only need to consider binary matroid of the following kind:
+
+\[
+A=
+\begin{array}{ccc}
+      & \begin{array}{cc} E(G) & T \end{array} \\
+    \begin{array}{r} V(G) \\ \set{e} \end{array}
+      &
+        \begin{pmatrix}
+          A(G) & B \\
+          \sigma & \alpha
+        \end{pmatrix}
+\end{array}
+\]
+
+We want to find the cogirth of $M(A)/T$.
 
 <!--
 questions
