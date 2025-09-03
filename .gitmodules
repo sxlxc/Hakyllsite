@@ -1,3 +1,9 @@
 [submodule "katex_rust_fork"]
 	path = katex_rust_fork
 	url = git@github.com:congyu711/katex_cli.git
+[submodule "mathjax"]
+	path = mathjax
+	url = git@github.com:sxlxc/MathJax.git
+[submodule "mathjax-fira-font"]
+	path = mathjax-fira-font
+	url = git@github.com:sxlxc/mathjax-fira-font.git
