@@ -20,9 +20,8 @@ Cogirth of $M$ is the girth of the dual matroid of $M$.
 
 Computing girth is NP-hard for binary matroids but can be done in polynomial time for graphs.
 [Wikipedia](https://en.wikipedia.org/wiki/Matroid_girth#Computational_complexity) lists some negative complexity results, which mainly concern more general matroid classes than binary matroids. 
-So here are some positive results filling the gap between graphic matroids and binary matroids[^1]. Proofs that you don’t see here can easily be found in the references.
+So here are some positive results filling the gap between graphic matroids and binary matroids. (Results can be found in <https://matroidunion.org/?p=1106>.) Proofs that you don’t see here can easily be found in the references.
 
-[^1]: Results can be found in <https://matroidunion.org/?p=1106>
 
 # Regular matroid
 
@@ -35,9 +34,7 @@ Every regular matroid may be constructed by combining graphic matroids, cographi
 forming a 3-circuit in each matroid.
 :::
 
-This decomposition can be found in polynomial time[^2].
-
-[^2]: One can decide if a matroid $M$ can be decomposed into $M_1$ and $M_2$ using 1/2/3-sum in polynomial time. See <https://www.emis.de/monographs/md/index.html>.
+This decomposition can be found in polynomial time. One can decide if a matroid $M$ can be decomposed into $M_1$ and $M_2$ using 1/2/3-sum in polynomial time. See <https://www.emis.de/monographs/md/index.html>.
 
 [@regulardecomp] leads to a natural algorithm for computing the girth in regular matroids. The decomposition of regular matroids gives us a binary tree, where each node is a regular matroid and each leaf is either (co)graphic or a special 10 element regular matroid.
 Every non-leaf node in the decomposition tree represents a regular matroid $M$ which is 1/2/3-sum of its two direct decendents $M_1$ and $M_2$. Let $A \oplus_i B$ be the $i$-sum of $A$ and $B$ for $i\in [3]$. Now there are only 3 cases:
@@ -84,7 +81,7 @@ For any proper minor-closed class $\mathcal M$ of binary matroids, there is a po
 Similar to Seymour's decomposition for regular matroids, every proper minor-closed class of binary matroid admits a "decomposition" into graphic matroids and some binary matroids.
 
 ::: {.Theorem title="[@Geelen_Gerards_Whittle_2015]" #binarydecomp}
-For each proper minor-closed class $\mathcal M$ of binary matroids, there exist integers $k,t\geq 0$ such that for each vertically $k$-connected matroid $M\in \mathcal M$, there exist matrices $A,P\in \mathrm{GF}(2)^{r\times n}$ such that $A$ is the incidence matrix of a graph, $r(P)\leq t$ and either $M=M(A+P)$ or $M^*=M(A+P)$.
+For each proper minor-closed class $\mathcal M$ of binary matroids, there exist integers $k,t\geq 0$ such that for each vertically $k$-connected matroid $M\in \mathcal M$, there exist matrices $A,P\in \F_2^{r\times n}$ such that $A$ is the incidence matrix of a graph, $r(P)\leq t$ and either $M=M(A+P)$ or $M^*=M(A+P)$.
 :::
 
 The matroids $M(A+P)$ in [@binarydecomp] are called perturbed graphic matroids. Note that we can consider $k$ and $t$ in [@binarydecomp] as constants since for each minor-closed class they are fixed.
@@ -119,7 +116,7 @@ A = \begin{array}{ccc}
 where $A(G)$ is the incidence matrix of $G$. Denote the matroid $M(A)$ by $M(G,S,T,B,C,D)$.
 
 ::: {.Lemma title="[@geelen_computing_2018,Lemma 4.1]" #lemgraft}
-Let $G$ be a graph and let $P\in \mathrm{GF}(2)^{V(G)\times E(G)}$ be a rank-$t$ matrix. Then there is a $(t,t)$-signed-graft $(G,S,T,B,C,D)$ such that 
+Let $G$ be a graph and let $P\in \F_2^{V(G)\times E(G)}$ be a rank-$t$ matrix. Then there is a $(t,t)$-signed-graft $(G,S,T,B,C,D)$ such that 
 \[M(A(G)+P)=M(G,S,T,B,C,D)/T.\]
 :::
 The proof is taking $B,C$ as a rank decomposition of $P$ and applying some row operations.
@@ -129,25 +126,25 @@ Recall that [@binarydecomp] says that each vertically $k$-connected matroid $M$ 
 ## Reductions
 
 ::: {.Lemma title="the cogirth part. [@geelen_computing_2018,Lemma 4.2]" #lemcogirth}
-Let $(G,S,T,B,C,D)$ be an $(s,t)$-signed-graft and $S'$ be a one-element set disjoint from $V(G)$. The cogirth of $M(G,S,T,B,C,D)/T$ is the mimimum of the cogirths of matroids $M(G,S',T,B,yC,yD)/T$ taken over all $y\in \mathrm{GF}(2)^{S'\times S}$.
+Let $(G,S,T,B,C,D)$ be an $(s,t)$-signed-graft and $S'$ be a one-element set disjoint from $V(G)$. The cogirth of $M(G,S,T,B,C,D)/T$ is the mimimum of the cogirths of matroids $M(G,S',T,B,yC,yD)/T$ taken over all $y\in \F_2^{S'\times S}$.
 :::
 
 ::: Proof
 To see this lemma, I suggest considering the flats instead of cocycles.
 
 - Each flat in $M=M(G,S',T,B,yC,yD)$ is also a flat $M'=M(G,S,T,B,C,D)$. Let $F'$ be a flat of $M'$ and $F$ be the corresponding set in $M$. If there is an element $e$ of $M\setminus F$ such that $e$ is linearly representable by vectors in $F$. Then $e$ is also representable by vectors in $F'$ by linearality of the multiplication.
-- For each hyperplane $H$ in $M$, there is a $y\in \mathrm{GF}(2)^{S'\times S}$ such that $F'$ is a flat of $M'$.
+- For each hyperplane $H$ in $M$, there is a $y\in \F_2^{S'\times S}$ such that $F'$ is a flat of $M'$.
 Note that this only works for cocircuits (hyperplanes) but not cocycles (flats). We can assume that the $A(G),B$ part is empty. Let the first $k$ columns be the hyperplane $H$. Then the matrix is 
 \[
 M=\begin{pmatrix}
 H & U
 \end{pmatrix}.
 \]
-We want to show that there is a $y\in \mathrm{GF}(2)^s$ such that $H^T y=\mathbf{0}$ and $U^T y=\mathbf{1}.$ Let $B$ be a base in this linear matroid. Apply row operations to make $B$ a standard basis (at most one "1" in each column). The intersection of $B$ and $H$ has exactly $r-1$ vectors. Now we construct the vector $y.$ If there is any vector in $B\cap H$ that has a "1" in the $k$-th coordinate, let $y[k]=0$; Otherwise, we set $y[k]=1.$ Note that $H^T y=\mathbf{0}$ and $U^T y=\mathbf{1}.$ Thus $H$ remains a hyperplane in $M'.$
+We want to show that there is a $y\in \F_2^s$ such that $H^T y=\mathbf{0}$ and $U^T y=\mathbf{1}.$ Let $B$ be a base in this linear matroid. Apply row operations to make $B$ a standard basis (at most one "1" in each column). The intersection of $B$ and $H$ has exactly $r-1$ vectors. Now we construct the vector $y.$ If there is any vector in $B\cap H$ that has a "1" in the $k$-th coordinate, let $y[k]=0$; Otherwise, we set $y[k]=1.$ Note that $H^T y=\mathbf{0}$ and $U^T y=\mathbf{1}.$ Thus $H$ remains a hyperplane in $M'.$
 :::
 
 ::: {.Lemma title="the girth part. [@geelen_computing_2018,Lemma 4.3]"}
-Let $(G,S,T,B,C,D)$ be an $(s,t)$-signed-graft and $T'$ be a one-element set disjoint from $E(G).$ The girth of $M(G,S,T,B,C,D)/T$ is the mimimum of the girths of matroids $M(G,S',T,Bx,C,Dx)/T$ taken over all $x\in \mathrm{GF}(2)^{T\times T'}.$
+Let $(G,S,T,B,C,D)$ be an $(s,t)$-signed-graft and $T'$ be a one-element set disjoint from $E(G).$ The girth of $M(G,S,T,B,C,D)/T$ is the mimimum of the girths of matroids $M(G,S',T,Bx,C,Dx)/T$ taken over all $x\in \F_2^{T\times T'}.$
 :::
 
 It follows from [@lemgraft] we need to consider the (co)girth of $M/T$ where $M$ is the matroid of an $(s,t)$-signed-graft.
@@ -161,7 +158,7 @@ By [@lemcogirth], to compute the cogirth of an $(s,t)$-signed-graft we only need
 A=
 \begin{array}{ccc}
       & \begin{array}{cc} E(G) & T \end{array} \\
-    \begin{array}{r} V(G) \\ \set{e} \end{array}
+    \begin{array}{r} V(G) \\ \set{v} \end{array}
       &
         \begin{pmatrix}
           A(G) & B \\
@@ -172,6 +169,18 @@ A=
 
 We want to find the cogirth of $M(A)/T$.
 
+::: {.Proposition title="[@oxley_matroid_2011,Proposition 9.2.2]"}
+Let $A$ be a binary representation of a rank-$r$ binary matroid
+$M$. Then the cocircuit space of $M$ equals the row space of $A$. Moreover, this space
+has dimension $r$ and is the orthogonal subspace of the circuit space of $M$.
+:::
+
+What we are finding is the minimum support of vectors in the row space of $A$ such that the support has empty intersection with $T$. Note that the support of rows in the graph incidence matrix $A(G)$ has interpretation. They are exactly $\delta(X)$ where $X$ is the set of vertices for the summand rows. Thus we divide the problem into 2 cases. Let $B[u]$ be a $t$-dimentional binary label on each vertex.
+
+1. The row indexed by $\set{v}$ is not in the solution. Find the smallest cut $\delta(X)$ in $G$ such that $\sum_{u\in X}B[u]=\mathbf 0$.
+2. The row indexed by $\set{v}$ is in the solution. Now $\sigma$ represents a subset of edges in $G$. We want to find a cut $\delta(X)$ such that $\sigma \Delta \delta(X)$ is minimized and $\sum_{u\in X}B[u]=\alpha$.
+
+This is called the $t$-dimensional even-cut problem.
 <!--
 questions
 - how is even-cut matroid related to low rank pertubation of graphic matroids? are they closed under duality?

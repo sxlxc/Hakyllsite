@@ -47,3 +47,26 @@ If the LP has a bounded solution, then the optimal $x^*$ must be some vertex of 
 Thus for any bounded solution, the support is at most $r$.
 
 What about integer programs? One may think that the support should also be at most $r$, since the 0s in the optimal solution of its linear relaxation are integers. But rounding the fractional coordinates may break the feasibility. The currently best upperbound is roughly $m (3\|A\|_1+\sqrt{\log( \|A\|_1 )})$ [@Berndt_Brinkop_Jansen_Mnich_Stamm_2023].
+
+# Cocircuit space of binary matroids
+
+This comes from the proof of Lemma 4.2 in [@geelen_computing_2018].
+
+First, recall that we have the following property for binary matroid.
+
+::: {.Proposition title="[@oxley_matroid_2011,Proposition 9.2.2]" #roweqcocycle}
+Let $A$ be a binary representation of a rank-$r$ binary matroid
+$M$. Then the cocircuit space of $M$ equals the row space of $A$. Moreover, this space
+has dimension $r$ and is the orthogonal subspace of the circuit space of $M$.
+:::
+
+To see this proposition, consider doing some row operations and deleting zero rows to make the matrix $A$ become $[I_r| D]$. Note that row operations do not change the row space. The set of the first $r$ columns is a base of $M$ and the set of the rest $n-r$ columns is a cobase. Denote this base by $B$ and the cobase by $B^*$. Now the support of each row is a fundamental cociruit with respect to $B^*$. To see this claim, we have several approaches:
+
+1. The dual matroids of $[I_r|D]$ is $[-D^T|I_{n-r}]$. Since we are working with $\F_2$, the dual is just the binary matroid $[D^T|I_{n-r}]$. The claim follows easily.
+2. Take a row from $[I_r| D]$ and let $F^*$ be the set of columns with value $0$. One can easily see that this is a hyperplane since the rank is $r-1$ and any column not in $F^*$ has $1$ in that row, thus adding any element in $E\setminus F^*$ will increase the rank. Then the complement of $F^*$ is a cocircuit.
+
+The claim shows that the cocircuit space contains the row space. Now we prove the other side. Every circuit is a fundamental circuit to some base. Thus we can choose different cobase $B^*$ and do the same argument to show that every circuit in the row space. Hence, the cocircuit space is the same as row space of $A$.
+
+Here is the problem: Given a binary matroid $A\in \F_2^{r\times n}$ and a cocycle $C^*$ of $A$, there exists a vector $y\in \F_2^r$ such that $C^*$ remains a cocycle in $y^T A$.
+
+With [@roweqcocycle], you may think that this looks fine. The incidence vector of any cocycle is in the row space and $y^T A$ is a linear combination of row vectors. 
