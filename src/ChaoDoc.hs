@@ -33,7 +33,7 @@ chaoDocRead =
 chaoDocWrite :: WriterOptions
 chaoDocWrite =
   def
-    { writerHTMLMathMethod = KaTeX "",
+    { writerHTMLMathMethod = MathJax "",
       -- writerHtml5          = True,
       -- writerHighlightStyle = Just syntaxHighlightingStyle,
       writerNumberSections = True,

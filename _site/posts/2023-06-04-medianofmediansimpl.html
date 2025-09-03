@@ -20,7 +20,43 @@
         document.addEventListener('DOMContentLoaded', () => {
             pangu.autoSpacingPage();
         });
+
+        MathJax = {
+            options: {
+                enableMenu: false,
+                menuOptions: {
+                    settings: {
+                        enrich: true,         // true to enable semantic-enrichment
+                        collapsible: false,   // true to enable collapsible math
+                        speech: false,        // true to enable speech generation
+                        braille: false,       // true to enable Braille generation
+                        assistiveMml: false,  // true to enable assistive MathML
+                    }
+                }
+            },
+            output: {
+                font: 'mathjax-fira',
+                fontURL: '/mathjax-fira-font'
+            },
+            tex: {
+                macros: {
+                    floor: ["{\\left\\lfloor #1 \\right\\rfloor}", 1],
+                    ceil: ["{\\left\\lceil #1 \\right\\rceil}", 1],
+                    set: ["{\\left\\{ #1 \\right\\}}", 1],
+                    norm: ["{\\left\\| #1 \\right\\|}", 1],
+                    F: "{\\mathbb F}",
+                    R: "{\\mathbb R}",
+                    C: "{\\mathbb C}",
+                    Z: "{\\mathbb Z}",
+                    e: "{\\varepsilon}",
+                    mex: "\\mathop{\\operatorname{mex}}",
+                    lcm: "\\mathop{\\operatorname{lcm}}",
+                    dist: "\\mathop{\\operatorname{dist}}",
+                }
+            }
+        };
     </script>
+    <script src="../mathjax/tex-chtml.js" defer></script>
 
 </head>
 
@@ -79,7 +115,8 @@ sort这种东西… 于是准备写一个比 nth_element 更快的模板, 有返
 两个大于这个tuple的中位数. 这样我们就知道了,
 在tuple的中位数小于pivot的这些tuple里面,
 小于等于该tuple中位数的元素(每个tuple有三个这样的元素)都一定小于pivot.
-也就是说如果我们把<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1011em;vertical-align:-0.3511em;"></span><span class="mopen">⌈</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7014em;"><span style="top:-2.6489em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">5</span></span></span></span><span style="top:-3.2em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.1em;"></span></span><span style="top:-3.4em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3511em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">⌉</span></span></span></span>个tuple都按照他们的中位数大小关系排好序的话,
+也就是说如果我们把<span class="math inline">\(\lceil \frac{n}{5}
+\rceil\)</span>个tuple都按照他们的中位数大小关系排好序的话,
 排在pivot所在的tuple前面的这些tuple里面,有60%是一定比pivot小的,
 他们一定是前半个序列的前60%的元素,
 同理排在pivot所在tuple后面的所有tuple,
@@ -88,7 +125,9 @@ sort这种东西… 于是准备写一个比 nth_element 更快的模板, 有返
 pivot所在tuple经过排序之后恰好在第一个或最后一个, 实际上我们不排序!)
 注意到选择pivot仍然是一个select过程, 我们一样可以用这个median of
 median来做, 非常巧妙</p>
-<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord">/5</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord">0.7</span><span class="mord mathnormal">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span></p>
+<p><span class="math display">\[
+T(n)=T(n/5)+T(0.7n)+O(n)
+\]</span></p>
 <p>然后再来看看introsort是怎么做的</p>
 <p>这是<code>stl_algo.h</code>的实现</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">template</span><span class="op">&lt;</span><span class="kw">typename</span> _RandomAccessIterator<span class="op">,</span> <span class="kw">typename</span> _Size<span class="op">,</span> <span class="kw">typename</span> _Compare<span class="op">&gt;</span></span>

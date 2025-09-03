@@ -28,6 +28,14 @@ main = hakyll $ do
     route idRoute
     compile copyFileCompiler
 
+  match "mathjax/**" $ do
+    route idRoute
+    compile copyFileCompiler
+
+  match "mathjax-fira-font/**" $ do
+    route idRoute
+    compile copyFileCompiler
+
   match "fonts/*" $ do
     route idRoute
     compile copyFileCompiler
@@ -82,7 +90,7 @@ main = hakyll $ do
         >>= loadAndApplyTemplate "templates/post.html" tocCtx
         >>= loadAndApplyTemplate "templates/default.html" tocCtx
         >>= relativizeUrls
-        >>= katexFilter
+        -- >>= katexFilter
 
   create ["archive.html"] $ do
     route idRoute
@@ -191,7 +199,7 @@ getTocCtx ctx = do
           { writerTableOfContents = True,
             writerTOCDepth = 2,
             writerTemplate = tmpl,
-            writerHTMLMathMethod = KaTeX ""
+            writerHTMLMathMethod = MathJax ""
           }
 
     asTxt :: (T.Text -> T.Text) -> String -> String

@@ -20,7 +20,43 @@
         document.addEventListener('DOMContentLoaded', () => {
             pangu.autoSpacingPage();
         });
+
+        MathJax = {
+            options: {
+                enableMenu: false,
+                menuOptions: {
+                    settings: {
+                        enrich: true,         // true to enable semantic-enrichment
+                        collapsible: false,   // true to enable collapsible math
+                        speech: false,        // true to enable speech generation
+                        braille: false,       // true to enable Braille generation
+                        assistiveMml: false,  // true to enable assistive MathML
+                    }
+                }
+            },
+            output: {
+                font: 'mathjax-fira',
+                fontURL: '/mathjax-fira-font'
+            },
+            tex: {
+                macros: {
+                    floor: ["{\\left\\lfloor #1 \\right\\rfloor}", 1],
+                    ceil: ["{\\left\\lceil #1 \\right\\rceil}", 1],
+                    set: ["{\\left\\{ #1 \\right\\}}", 1],
+                    norm: ["{\\left\\| #1 \\right\\|}", 1],
+                    F: "{\\mathbb F}",
+                    R: "{\\mathbb R}",
+                    C: "{\\mathbb C}",
+                    Z: "{\\mathbb Z}",
+                    e: "{\\varepsilon}",
+                    mex: "\\mathop{\\operatorname{mex}}",
+                    lcm: "\\mathop{\\operatorname{lcm}}",
+                    dist: "\\mathop{\\operatorname{dist}}",
+                }
+            }
+        };
     </script>
+    <script src="../mathjax/tex-chtml.js" defer></script>
 
 </head>
 

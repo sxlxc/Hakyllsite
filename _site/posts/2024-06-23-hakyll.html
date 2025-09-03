@@ -20,7 +20,43 @@
         document.addEventListener('DOMContentLoaded', () => {
             pangu.autoSpacingPage();
         });
+
+        MathJax = {
+            options: {
+                enableMenu: false,
+                menuOptions: {
+                    settings: {
+                        enrich: true,         // true to enable semantic-enrichment
+                        collapsible: false,   // true to enable collapsible math
+                        speech: false,        // true to enable speech generation
+                        braille: false,       // true to enable Braille generation
+                        assistiveMml: false,  // true to enable assistive MathML
+                    }
+                }
+            },
+            output: {
+                font: 'mathjax-fira',
+                fontURL: '/mathjax-fira-font'
+            },
+            tex: {
+                macros: {
+                    floor: ["{\\left\\lfloor #1 \\right\\rfloor}", 1],
+                    ceil: ["{\\left\\lceil #1 \\right\\rceil}", 1],
+                    set: ["{\\left\\{ #1 \\right\\}}", 1],
+                    norm: ["{\\left\\| #1 \\right\\|}", 1],
+                    F: "{\\mathbb F}",
+                    R: "{\\mathbb R}",
+                    C: "{\\mathbb C}",
+                    Z: "{\\mathbb Z}",
+                    e: "{\\varepsilon}",
+                    mex: "\\mathop{\\operatorname{mex}}",
+                    lcm: "\\mathop{\\operatorname{lcm}}",
+                    dist: "\\mathop{\\operatorname{dist}}",
+                }
+            }
+        };
     </script>
+    <script src="../mathjax/tex-chtml.js" defer></script>
 
 </head>
 
@@ -66,10 +102,10 @@
 <p><a href="https://github.com/congyu711/Hakyllsite/tree/main/css" class="uri">https://github.com/congyu711/Hakyllsite/tree/main/css</a></p>
 <h1 data-number="2" id="math-and-bibliography"><span class="header-section-number">2</span> Math and Bibliography</h1>
 <p>Bib: <a href="https://github.com/chaoxu/chaoxu.github.io/blob/develop/ChaoDoc.hs" class="uri">https://github.com/chaoxu/chaoxu.github.io/blob/develop/ChaoDoc.hs</a></p>
-<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8988em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">K</span><span class="mspace" style="margin-right:-0.17em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-2.905em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4678em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span>: <a href="https://github.com/chaoxu/katex_cli" class="uri">https://github.com/chaoxu/katex_cli</a></p>
+<p><span class="math inline">\(\KaTeX\)</span>: <a href="https://github.com/chaoxu/katex_cli" class="uri">https://github.com/chaoxu/katex_cli</a></p>
 <h1 data-number="3" id="known-issues"><span class="header-section-number">3</span> Known issues</h1>
 <ul>
-<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8988em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">K</span><span class="mspace" style="margin-right:-0.17em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-2.905em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4678em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span>’s default font does not
+<li><span class="math inline">\(\KaTeX\)</span>’s default font does not
 match well with fira sans. I will try <a href="https://yingtongli.me/blog/2022/09/24/katex-custom-fonts.html">this</a>.</li>
 <li>title does not support math or styles (since I’m using filters only
 on <code>withItemBody</code>)</li>
