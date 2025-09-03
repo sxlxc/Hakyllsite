@@ -16,7 +16,7 @@ $(COMMANDS): site
 # using relative symlinks should be fine since everything only works at ./
 
 
-site: katex_cli
+site: katex_cli src/site.hs src/ChaoDoc.hs
 	cabal build
 	ln -sf "$(shell cabal list-bin exe:site)" site
 
