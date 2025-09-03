@@ -70,3 +70,17 @@ The claim shows that the cocircuit space contains the row space. Now we prove th
 Here is the problem: Given a binary matroid $A\in \F_2^{r\times n}$ and a cocycle $C^*$ of $A$, there exists a vector $y\in \F_2^r$ such that $C^*$ remains a cocycle in $y^T A$.
 
 With [@roweqcocycle], you may think that this looks fine. The incidence vector of any cocycle is in the row space and $y^T A$ is a linear combination of row vectors. 
+
+**Counterexample**: Consider the following binary matroid.
+
+\begin{bmatrix}
+0 & 0 & 0 & 1 & 1& 1& 1 \\
+0& 1&1&0&0&1&1\\
+1&0&1&0&1&0&1\\
+\end{bmatrix}
+
+Any single column vector is a flat. So its complement should be a cocycle. However, it is easy to see that $\begin{bmatrix}
+0 & 1 & 1 & 1 & 1& 1& 1
+\end{bmatrix}$ is not in the row space.
+
+The bug is the definition of cocycle and cocircuit space. Cocycle is union of cocircuits but things in cocircuit space is the symmetric difference of cocircuits. (Or if you prefer to call the disjoint union of circuits a cycle, the complement of flat is union of cocircuits not cocycle.)
