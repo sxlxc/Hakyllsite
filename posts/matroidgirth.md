@@ -143,7 +143,7 @@ H & U
 We want to show that there is a $y\in \F_2^s$ such that $H^T y=\mathbf{0}$ and $U^T y=\mathbf{1}.$ Let $B$ be a base in this linear matroid. Apply row operations to make $B$ a standard basis (at most one "1" in each column). The intersection of $B$ and $H$ has exactly $r-1$ vectors. Now we construct the vector $y.$ If there is any vector in $B\cap H$ that has a "1" in the $k$-th coordinate, let $y[k]=0$; Otherwise, we set $y[k]=1.$ Note that $H^T y=\mathbf{0}$ and $U^T y=\mathbf{1}.$ Thus $H$ remains a hyperplane in $M'.$
 :::
 
-::: {.Lemma title="the girth part. [@geelen_computing_2018,Lemma 4.3]"}
+::: {.Lemma title="the girth part. [@geelen_computing_2018,Lemma 4.3]" #lemgirth}
 Let $(G,S,T,B,C,D)$ be an $(s,t)$-signed-graft and $T'$ be a one-element set disjoint from $E(G).$ The girth of $M(G,S,T,B,C,D)/T$ is the mimimum of the girths of matroids $M(G,S',T,Bx,C,Dx)/T$ taken over all $x\in \F_2^{T\times T'}.$
 :::
 
@@ -168,6 +168,7 @@ A=
 \]
 
 We want to find the cogirth of $M(A)/T$.
+One useful proposition is the following. (See [this post](/posts/misleading_ideas.html#cocircuit-space-of-binary-matroids) for a proof sketch.)
 
 ::: {.Proposition title="[@oxley_matroid_2011,Proposition 9.2.2]"}
 Let $A$ be a binary representation of a rank-$r$ binary matroid
@@ -181,8 +182,24 @@ What we are finding is the minimum support of vectors in the row space of $A$ su
 2. The row indexed by $\set{v}$ is in the solution. Now $\sigma$ represents a subset of edges in $G$. We want to find a cut $\delta(X)$ such that $\sigma \Delta \delta(X)$ is minimized and $\sum_{u\in X}B[u]=\alpha$.
 
 This is called the $t$-dimensional even-cut problem.
-<!--
-questions
-- how is even-cut matroid related to low rank pertubation of graphic matroids? are they closed under duality?
-- is it possible to obtain a deterministic alg now?  
--->
+
+## girth → parity cycle + parity join
+
+Similar to the cogirth part, by [@lemgirth] we consider the following matrix
+
+\[
+A=
+\begin{array}{ccc}
+      & \begin{array}{cc} E(G) & \set{f} \end{array} \\
+    \begin{array}{r} V(G) \\ S \end{array}
+      &
+        \begin{pmatrix}
+          A(G) & b \\
+          C & d
+        \end{pmatrix}
+\end{array}
+\]
+and we want to compute the girth of $M(A)/\set{f}$. Each edge in $G$ has a label $c(e)\in\F_2^{s}$ (the submatrix $C$). Contracting an element in a matroid may change circuits. There are two cases:
+
+1. The minimum circuit does not contain $\set{f}$. Then the girth of $M(A)/\set{f}$ is the same as $M(A)\setminus \set{f}$. In this case we need to find the minimum cycle in $G$ such that the sum of its edge labels is exactly $\mathbf{0}$. This is the parity cycle problem.
+2. The minimum circuit contains $\set{f}$. Let the girth of $M(A)/\set{f}$ be $\lambda$. Then $M(A)$ has a minimum circuit that contains $f$ and has size $\lambda+1$. Let $T$ be the set of vertices whose characteristic vector is $b$. To find the minimum circuit of $M(A)$, we want to find the minimum edge set $F\subset E$ such that the sum of labels is $d$ and $T$ is exactly the set of vertices with odd degree in $G[F]$. This is called the parity $T$ join problem.

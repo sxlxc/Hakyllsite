@@ -74,6 +74,7 @@
 <ul>
 <li><a href="#reductions">Reductions</a></li>
 <li><a href="#cogirth-even-cuts">cogirth → even cuts</a></li>
+<li><a href="#girth-parity-cycle-parity-join">girth → parity cycle + parity join</a></li>
 </ul></li>
 </ul>
         </div>
@@ -335,7 +336,7 @@ basis (at most one “1” in each column). The intersection of <span class="mat
 <span class="math inline">\(y.\)</span> If there is any vector in <span class="math inline">\(B\cap H\)</span> that has a “1” in the <span class="math inline">\(k\)</span>-th coordinate, let <span class="math inline">\(y[k]=0\)</span>; Otherwise, we set <span class="math inline">\(y[k]=1.\)</span> Note that <span class="math inline">\(H^T y=\mathbf{0}\)</span> and <span class="math inline">\(U^T y=\mathbf{1}.\)</span> Thus <span class="math inline">\(H\)</span> remains a hyperplane in <span class="math inline">\(M'.\)</span></li>
 </ul>
 </div>
-<div class="theorem-environment Lemma" data-index="6" type="Lemma" title="the girth part. [@geelen_computing_2018,Lemma 4.3]">
+<div id="lemgirth" class="theorem-environment Lemma" data-index="6" type="Lemma" title="the girth part. [@geelen_computing_2018,Lemma 4.3]">
 <span class="theorem-header"><span class="type">Lemma</span><span class="index">6</span><span class="name">the girth part. <span class="citation" data-cites="geelen_computing_2018">[<a href="#ref-geelen_computing_2018" role="doc-biblioref">4</a>,Lemma
 4.3]</span></span></span>
 <p>Let <span class="math inline">\((G,S,T,B,C,D)\)</span> be an <span class="math inline">\((s,t)\)</span>-signed-graft and <span class="math inline">\(T'\)</span> be a one-element set disjoint from
@@ -361,7 +362,9 @@ A=
         \end{pmatrix}
 \end{array}
 \]</span></p>
-<p>We want to find the cogirth of <span class="math inline">\(M(A)/T\)</span>.</p>
+<p>We want to find the cogirth of <span class="math inline">\(M(A)/T\)</span>. One useful proposition is the
+following. (See <a href="../posts/misleading_ideas.html#cocircuit-space-of-binary-matroids">this
+post</a> for a proof sketch.)</p>
 <div class="theorem-environment Proposition" data-index="7" type="Proposition" title="[@oxley_matroid_2011,Proposition 9.2.2]">
 <span class="theorem-header"><span class="type">Proposition</span><span class="index">7</span><span class="name"><span class="citation" data-cites="oxley_matroid_2011">[<a href="#ref-oxley_matroid_2011" role="doc-biblioref">5</a>,Proposition 9.2.2]</span></span></span>
 <p>Let <span class="math inline">\(A\)</span> be a binary representation
@@ -388,11 +391,37 @@ is minimized and <span class="math inline">\(\sum_{u\in
 X}B[u]=\alpha\)</span>.</li>
 </ol>
 <p>This is called the <span class="math inline">\(t\)</span>-dimensional
-even-cut problem. <!--
-questions
-- how is even-cut matroid related to low rank pertubation of graphic matroids? are they closed under duality?
-- is it possible to obtain a deterministic alg now?  
---></p>
+even-cut problem.</p>
+<h2 data-number="3.3" id="girth-parity-cycle-parity-join"><span class="header-section-number">3.3</span> girth → parity cycle + parity
+join</h2>
+<p>Similar to the cogirth part, by <a href="#lemgirth" title="Lemma 6">Lemma 6</a> we consider the following matrix</p>
+<p><span class="math display">\[
+A=
+\begin{array}{ccc}
+      &amp; \begin{array}{cc} E(G) &amp; \set{f} \end{array} \\
+    \begin{array}{r} V(G) \\ S \end{array}
+      &amp;
+        \begin{pmatrix}
+          A(G) &amp; b \\
+          C &amp; d
+        \end{pmatrix}
+\end{array}
+\]</span> and we want to compute the girth of <span class="math inline">\(M(A)/\set{f}\)</span>. Each edge in <span class="math inline">\(G\)</span> has a label <span class="math inline">\(c(e)\in\F_2^{s}\)</span> (the submatrix <span class="math inline">\(C\)</span>). Contracting an element in a matroid
+may change circuits. There are two cases:</p>
+<ol type="1">
+<li>The minimum circuit does not contain <span class="math inline">\(\set{f}\)</span>. Then the girth of <span class="math inline">\(M(A)/\set{f}\)</span> is the same as <span class="math inline">\(M(A)\setminus \set{f}\)</span>. In this case we
+need to find the minimum cycle in <span class="math inline">\(G\)</span>
+such that the sum of its edge labels is exactly <span class="math inline">\(\mathbf{0}\)</span>. This is the parity cycle
+problem.</li>
+<li>The minimum circuit contains <span class="math inline">\(\set{f}\)</span>. Let the girth of <span class="math inline">\(M(A)/\set{f}\)</span> be <span class="math inline">\(\lambda\)</span>. Then <span class="math inline">\(M(A)\)</span> has a minimum circuit that contains
+<span class="math inline">\(f\)</span> and has size <span class="math inline">\(\lambda+1\)</span>. Let <span class="math inline">\(T\)</span> be the set of vertices whose
+characteristic vector is <span class="math inline">\(b\)</span>. To find
+the minimum circuit of <span class="math inline">\(M(A)\)</span>, we
+want to find the minimum edge set <span class="math inline">\(F\subset
+E\)</span> such that the sum of labels is <span class="math inline">\(d\)</span> and <span class="math inline">\(T\)</span> is exactly the set of vertices with odd
+degree in <span class="math inline">\(G[F]\)</span>. This is called the
+parity <span class="math inline">\(T\)</span> join problem.</li>
+</ol>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
 <div id="ref-seymour_decomposition_1980" class="csl-entry" role="listitem">
