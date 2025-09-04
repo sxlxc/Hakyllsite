@@ -5,7 +5,7 @@ title:  Yu Cong
     <ruby>宇<rt>yǔ</rt></ruby>
 ---
 
-I’m a first year PhD student at the University of Electronic Science and Technology of China(UESTC).
+I'm a second-year PhD student in the [Algorithms and Logic Group](https://tcsuestc.com/) at the University of Electronic Science and Technology of China (UESTC).
 
 <img src="/images/giantmxbc.jpeg" style="width: 275px; height: auto;" />
 
