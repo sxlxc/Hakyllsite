@@ -390,8 +390,16 @@ such that <span class="math inline">\(\sigma \Delta \delta(X)\)</span>
 is minimized and <span class="math inline">\(\sum_{u\in
 X}B[u]=\alpha\)</span>.</li>
 </ol>
-<p>This is called the <span class="math inline">\(t\)</span>-dimensional
-even-cut problem.</p>
+<p>These are called the <span class="math inline">\(t\)</span>-dimensional even-cut problem. Geelen
+and Kapadia discovered a random contraction algorithm which solves both
+of the problems in randomized polynomial time <span class="citation" data-cites="geelen_computing_2018">[<a href="#ref-geelen_computing_2018" role="doc-biblioref">4</a>]</span>.</p>
+<p>Note that the size of cut <span class="math inline">\(|\delta(X)|\)</span> is a submodular function on
+<span class="math inline">\(V(G)\)</span> but <span class="math inline">\(|\delta(X)\Delta \sigma|\)</span> is not
+necessarily submodular. The first case is minimizing a symmetric
+submodular function under some congruency constraints. Nägele, Sudakov
+and Zenklusen showed that Generalised Congruency-Constrained Submodular
+Minimization can be done in polynomial time if the field is small and
+the number of congruency constraints is constant <span class="citation" data-cites="Nägele_Sudakov_Zenklusen_2019">[<a href="#ref-Nägele_Sudakov_Zenklusen_2019" role="doc-biblioref">6</a>]</span>.</p>
 <h2 data-number="3.3" id="girth-parity-cycle-parity-join"><span class="header-section-number">3.3</span> girth → parity cycle + parity
 join</h2>
 <p>Similar to the cogirth part, by <a href="#lemgirth" title="Lemma 6">Lemma 6</a> we consider the following matrix</p>
@@ -450,6 +458,11 @@ Geelen, R. Kapadia, Computing <span>Girth</span> and
 <div id="ref-oxley_matroid_2011" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[5] </div><div class="csl-right-inline">J.G. Oxley, Matroid theory, 2nd ed, Oxford
 University Press, Oxford ; New York, 2011.</div>
+</div>
+<div id="ref-Nägele_Sudakov_Zenklusen_2019" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">M.
+Nägele, B. Sudakov, R. Zenklusen, Submodular minimization under
+congruency constraints, <em>Combinatorica</em>. 39 (2019) 1351–1386 <a href="https://doi.org/10.1007/s00493-019-3900-1">10.1007/s00493-019-3900-1</a>.</div>
 </div>
 </div>
     </section>

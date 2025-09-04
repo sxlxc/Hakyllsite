@@ -181,7 +181,10 @@ What we are finding is the minimum support of vectors in the row space of $A$ su
 1. The row indexed by $\set{v}$ is not in the solution. Find the smallest cut $\delta(X)$ in $G$ such that $\sum_{u\in X}B[u]=\mathbf 0$.
 2. The row indexed by $\set{v}$ is in the solution. Now $\sigma$ represents a subset of edges in $G$. We want to find a cut $\delta(X)$ such that $\sigma \Delta \delta(X)$ is minimized and $\sum_{u\in X}B[u]=\alpha$.
 
-This is called the $t$-dimensional even-cut problem.
+These are called the $t$-dimensional even-cut problem.
+Geelen and Kapadia discovered a random contraction algorithm which solves both of the problems in randomized polynomial time [@geelen_computing_2018].
+
+Note that the size of cut $|\delta(X)|$ is a submodular function on $V(G)$ but $|\delta(X)\Delta \sigma|$ is not necessarily submodular. The first case is minimizing a symmetric submodular function under some congruency constraints. Nägele, Sudakov and Zenklusen showed that Generalised Congruency-Constrained Submodular Minimization can be done in polynomial time if the field is small and the number of congruency constraints is constant [@Nägele_Sudakov_Zenklusen_2019].
 
 ## girth → parity cycle + parity join
 
