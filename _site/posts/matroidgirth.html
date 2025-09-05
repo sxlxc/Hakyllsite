@@ -393,9 +393,10 @@ X}B[u]=\alpha\)</span>.</li>
 and Kapadia discovered a random contraction algorithm which solves both
 of the problems in randomized polynomial time <span class="citation" data-cites="geelen_computing_2018">[<a href="#ref-geelen_computing_2018" role="doc-biblioref">4</a>]</span>.</p>
 <p>If the graph is not connected, it is possible that <span class="math inline">\(\delta(X)\)</span> is empty even if <span class="math inline">\(X\)</span> is non-empty. Fortunately, Geelen and
-Kapadia have done the reduction to connected graphs and we only need to
-require that <span class="math inline">\(X\neq \emptyset \land X\neq
-V(G)\)</span>.</p>
+Kapadia have done the reduction to connected graphs. However, for the
+second case their random contraction algorithm does not explicitly state
+what to do if <span class="math inline">\(\sigma \Delta
+\delta(X)\)</span> is empty…</p>
 <p>Note that the size of cut <span class="math inline">\(|\delta(X)|\)</span> is a submodular function on
 <span class="math inline">\(V(G)\)</span> but <span class="math inline">\(|\delta(X)\Delta \sigma|\)</span> is not
 necessarily submodular. The first case is minimizing a symmetric

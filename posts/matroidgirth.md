@@ -184,7 +184,8 @@ What we are finding is the minimum support of vectors in the row space of $A$ su
 These are called the $t$-dimensional even-cut problem.
 Geelen and Kapadia discovered a random contraction algorithm which solves both of the problems in randomized polynomial time [@geelen_computing_2018].
 
-If the graph is not connected, it is possible that $\delta(X)$ is empty even if $X$ is non-empty. Fortunately, Geelen and Kapadia have done the reduction to connected graphs and we only need to require that $X\neq \emptyset \land X\neq V(G)$.
+If the graph is not connected, it is possible that $\delta(X)$ is empty even if $X$ is non-empty. Fortunately, Geelen and Kapadia have done the reduction to connected graphs.
+However, for the second case their random contraction algorithm does not explicitly state what to do if $\sigma \Delta \delta(X)$ is empty...
 
 Note that the size of cut $|\delta(X)|$ is a submodular function on $V(G)$ but $|\delta(X)\Delta \sigma|$ is not necessarily submodular. The first case is minimizing a symmetric submodular function under some congruency constraints.
 
