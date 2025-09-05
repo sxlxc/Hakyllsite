@@ -166,9 +166,8 @@ which is not a circuit of <span class="math inline">\(M_1\)</span> and
 <span class="math inline">\(M_2\)</span> must be contained in <span class="math inline">\(C_1\cup C_2\setminus \set{e}\)</span>, where <span class="math inline">\(C_i\)</span> is a circuit in <span class="math inline">\(M_i\)</span> containing <span class="math inline">\(e\)</span>. Thus to find the minimum weighted new
 circuit we can compute the minimum circuit in <span class="math inline">\(M_1\)</span> containing <span class="math inline">\(e\)</span> (say <span class="math inline">\(C_1^*\)</span>) and replace the weight <span class="math inline">\(w(e)\)</span> in <span class="math inline">\(M_2\)</span> with <span class="math inline">\(w(C_1^*)-w(e)\)</span> and then find the minimum
 weight circuit in <span class="math inline">\(M_2\)</span> containing
-<span class="math inline">\(e\)</span>. <span class="math inline">\(\mathop{\mathrm{girth}}(M)=\min
-\set{\mathop{\mathrm{girth}}(M_1),\mathop{\mathrm{girth}}(M_2),\min\set{w(C):
-\text{$C$ is new circuit}}}\)</span>.</p>
+<span class="math inline">\(e\)</span>. The girth of <span class="math inline">\(M\)</span> is the minimum among <span class="math inline">\(\mathop{\mathrm{girth}}(M_1)\)</span>, <span class="math inline">\(\mathop{\mathrm{girth}}(M_2)\)</span> and <span class="math inline">\(\min\set{w(C): \text{$C$ is new
+circuit}}\)</span>.</p>
 <p>We need to prove that all these operations can be done in polynomial
 time.</p>
 <p>For the 2/3-sum case we need to find in at least one of the summands
@@ -381,25 +380,52 @@ rows. Thus we divide the problem into 2 cases. Let <span class="math inline">\(B
 vertex.</p>
 <ol type="1">
 <li>The row indexed by <span class="math inline">\(\set{v}\)</span> is
-not in the solution. Find the smallest cut <span class="math inline">\(\delta(X)\)</span> in <span class="math inline">\(G\)</span> such that <span class="math inline">\(\sum_{u\in X}B[u]=\mathbf 0\)</span>.</li>
+not in the solution. Find the smallest non-empty cut <span class="math inline">\(\delta(X)\)</span> in <span class="math inline">\(G\)</span> such that <span class="math inline">\(\sum_{u\in X}B[u]=\mathbf 0\)</span>.</li>
 <li>The row indexed by <span class="math inline">\(\set{v}\)</span> is
 in the solution. Now <span class="math inline">\(\sigma\)</span>
 represents a subset of edges in <span class="math inline">\(G\)</span>.
 We want to find a cut <span class="math inline">\(\delta(X)\)</span>
 such that <span class="math inline">\(\sigma \Delta \delta(X)\)</span>
-is minimized and <span class="math inline">\(\sum_{u\in
+is minimized and non-empty and <span class="math inline">\(\sum_{u\in
 X}B[u]=\alpha\)</span>.</li>
 </ol>
 <p>These are called the <span class="math inline">\(t\)</span>-dimensional even-cut problem. Geelen
 and Kapadia discovered a random contraction algorithm which solves both
 of the problems in randomized polynomial time <span class="citation" data-cites="geelen_computing_2018">[<a href="#ref-geelen_computing_2018" role="doc-biblioref">4</a>]</span>.</p>
+<p>If the graph is not connected, it is possible that <span class="math inline">\(\delta(X)\)</span> is empty even if <span class="math inline">\(X\)</span> is non-empty. Fortunately, Geelen and
+Kapadia have done the reduction to connected graphs and we only need to
+require that <span class="math inline">\(X\neq \emptyset \land X\neq
+V(G)\)</span>.</p>
 <p>Note that the size of cut <span class="math inline">\(|\delta(X)|\)</span> is a submodular function on
 <span class="math inline">\(V(G)\)</span> but <span class="math inline">\(|\delta(X)\Delta \sigma|\)</span> is not
 necessarily submodular. The first case is minimizing a symmetric
-submodular function under some congruency constraints. Nägele, Sudakov
-and Zenklusen showed that Generalised Congruency-Constrained Submodular
-Minimization can be done in polynomial time if the field is small and
-the number of congruency constraints is constant <span class="citation" data-cites="Nägele_Sudakov_Zenklusen_2019">[<a href="#ref-Nägele_Sudakov_Zenklusen_2019" role="doc-biblioref">6</a>]</span>.</p>
+submodular function under some congruency constraints.</p>
+<div id="probGCCSM" class="theorem-environment Problem" data-index="8" type="Problem" title="Generalised Congruency-Constrained Submodular Minimization (GCCSM)">
+<span class="theorem-header"><span class="type">Problem</span><span class="index">8</span><span class="name">Generalised
+Congruency-Constrained Submodular Minimization (GCCSM)</span></span>
+<p>Let <span class="math inline">\(f:2^N \to \Z\)</span> submodular,
+<span class="math inline">\(p\)</span> prime, <span class="math inline">\(k\in \Z_{\geq 0}\)</span>, <span class="math inline">\(r_1,\dots,r_k\in \Z_p\)</span>, and <span class="math inline">\(S_1,\dots,S_k\in N\)</span>. <span class="math display">\[\begin{equation*}
+\begin{aligned}
+\min&amp; &amp;  f(S)&amp;  &amp; &amp;\\
+s.t.&amp; &amp; |S\cap S_i|&amp;\equiv r_i  &amp; &amp;\forall i\in
+[k]\\
+    &amp; &amp; S&amp;\subset N
+\end{aligned}
+\end{equation*}\]</span></p>
+</div>
+<p>Nägele, Sudakov and Zenklusen showed that <a href="#probGCCSM" title="Problem 8">Problem 8</a> can be done in polynomial time if the
+field is small and the number of congruency constraints is constant
+<span class="citation" data-cites="Nägele_Sudakov_Zenklusen_2019">[<a href="#ref-Nägele_Sudakov_Zenklusen_2019" role="doc-biblioref">6</a>]</span>.</p>
+<div class="theorem-environment Theorem" data-index="9" type="Theorem" title="[@Nägele_Sudakov_Zenklusen_2019]">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">9</span><span class="name"><span class="citation" data-cites="Nägele_Sudakov_Zenklusen_2019">[<a href="#ref-Nägele_Sudakov_Zenklusen_2019" role="doc-biblioref">6</a>]</span></span></span>
+<p><a href="#probGCCSM" title="Problem 8">Problem 8</a> can be solved in
+time <span class="math inline">\(|N|^{2kp+O(1)}\)</span>.</p>
+</div>
+<ol type="1">
+<li>can we do better if the submodular function is symmetric?</li>
+<li>does this method apply to the symmetric difference case even if the
+objective is not submodular?</li>
+</ol>
 <h2 data-number="3.3" id="girth-parity-cycle-parity-join"><span class="header-section-number">3.3</span> girth → parity cycle + parity
 join</h2>
 <p>Similar to the cogirth part, by <a href="#lemgirth" title="Lemma 6">Lemma 6</a> we consider the following matrix</p>

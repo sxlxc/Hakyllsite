@@ -40,7 +40,7 @@ This decomposition can be found in polynomial time. One can decide if a matroid 
 Every non-leaf node in the decomposition tree represents a regular matroid $M$ which is 1/2/3-sum of its two direct decendents $M_1$ and $M_2$. Let $A \oplus_i B$ be the $i$-sum of $A$ and $B$ for $i\in [3]$. Now there are only 3 cases:
 
 1. $M=M_1\oplus_1 M_2$. Direct sum does not create new circuit. $\girth(M)=\min \set{\girth(M_1),\girth(M_2)}$.
-2. $M=M_1\oplus_2 M_2$. Let $e$ be the common element of $E(M_1)$ and $E(M_2)$. In this case there may be new circuits. However, any circuit of $M$ which is not a circuit of $M_1$ and $M_2$ must be contained in $C_1\cup C_2\setminus \set{e}$, where $C_i$ is a circuit in $M_i$ containing $e$. Thus to find the minimum weighted new circuit we can compute the minimum circuit in $M_1$ containing $e$ (say $C_1^*$) and replace the weight $w(e)$ in $M_2$ with $w(C_1^*)-w(e)$ and then find the minimum weight circuit in $M_2$ containing $e$. $\girth(M)=\min \set{\girth(M_1),\girth(M_2),\min\set{w(C): \text{$C$ is new circuit}}}$. 
+2. $M=M_1\oplus_2 M_2$. Let $e$ be the common element of $E(M_1)$ and $E(M_2)$. In this case there may be new circuits. However, any circuit of $M$ which is not a circuit of $M_1$ and $M_2$ must be contained in $C_1\cup C_2\setminus \set{e}$, where $C_i$ is a circuit in $M_i$ containing $e$. Thus to find the minimum weighted new circuit we can compute the minimum circuit in $M_1$ containing $e$ (say $C_1^*$) and replace the weight $w(e)$ in $M_2$ with $w(C_1^*)-w(e)$ and then find the minimum weight circuit in $M_2$ containing $e$. The girth of $M$ is the minimum among $\girth(M_1)$, $\girth(M_2)$ and $\min\set{w(C): \text{$C$ is new circuit}}$. 
 
     We need to prove that all these operations can be done in polynomial time. 
 
@@ -178,13 +178,35 @@ has dimension $r$ and is the orthogonal subspace of the circuit space of $M$.
 
 What we are finding is the minimum support of vectors in the row space of $A$ such that the support has empty intersection with $T$. Note that the support of rows in the graph incidence matrix $A(G)$ has interpretation. They are exactly $\delta(X)$ where $X$ is the set of vertices for the summand rows. Thus we divide the problem into 2 cases. Let $B[u]$ be a $t$-dimentional binary label on each vertex.
 
-1. The row indexed by $\set{v}$ is not in the solution. Find the smallest cut $\delta(X)$ in $G$ such that $\sum_{u\in X}B[u]=\mathbf 0$.
-2. The row indexed by $\set{v}$ is in the solution. Now $\sigma$ represents a subset of edges in $G$. We want to find a cut $\delta(X)$ such that $\sigma \Delta \delta(X)$ is minimized and $\sum_{u\in X}B[u]=\alpha$.
+1. The row indexed by $\set{v}$ is not in the solution. Find the smallest non-empty cut $\delta(X)$ in $G$ such that $\sum_{u\in X}B[u]=\mathbf 0$.
+2. The row indexed by $\set{v}$ is in the solution. Now $\sigma$ represents a subset of edges in $G$. We want to find a cut $\delta(X)$ such that $\sigma \Delta \delta(X)$ is minimized and non-empty and $\sum_{u\in X}B[u]=\alpha$.
 
 These are called the $t$-dimensional even-cut problem.
 Geelen and Kapadia discovered a random contraction algorithm which solves both of the problems in randomized polynomial time [@geelen_computing_2018].
 
-Note that the size of cut $|\delta(X)|$ is a submodular function on $V(G)$ but $|\delta(X)\Delta \sigma|$ is not necessarily submodular. The first case is minimizing a symmetric submodular function under some congruency constraints. Nägele, Sudakov and Zenklusen showed that Generalised Congruency-Constrained Submodular Minimization can be done in polynomial time if the field is small and the number of congruency constraints is constant [@Nägele_Sudakov_Zenklusen_2019].
+If the graph is not connected, it is possible that $\delta(X)$ is empty even if $X$ is non-empty. Fortunately, Geelen and Kapadia have done the reduction to connected graphs and we only need to require that $X\neq \emptyset \land X\neq V(G)$.
+
+Note that the size of cut $|\delta(X)|$ is a submodular function on $V(G)$ but $|\delta(X)\Delta \sigma|$ is not necessarily submodular. The first case is minimizing a symmetric submodular function under some congruency constraints.
+
+::: {.Problem title="Generalised Congruency-Constrained Submodular Minimization (GCCSM)" #probGCCSM}
+Let $f:2^N \to \Z$ submodular, $p$ prime, $k\in \Z_{\geq 0}$, $r_1,\dots,r_k\in \Z_p$, and $S_1,\dots,S_k\in N$. 
+\begin{equation*}
+\begin{aligned}
+\min& &  f(S)&  & &\\
+s.t.& & |S\cap S_i|&\equiv r_i  & &\forall i\in [k]\\
+    & & S&\subset N
+\end{aligned}
+\end{equation*}
+:::
+
+Nägele, Sudakov and Zenklusen showed that [@probGCCSM] can be done in polynomial time if the field is small and the number of congruency constraints is constant [@Nägele_Sudakov_Zenklusen_2019].
+
+::: {.Theorem title="[@Nägele_Sudakov_Zenklusen_2019]"}
+[@probGCCSM] can be solved in time $|N|^{2kp+O(1)}$.
+:::
+
+1. can we do better if the submodular function is symmetric?
+2. does this method apply to the symmetric difference case even if the objective is not submodular?
 
 ## girth → parity cycle + parity join
 
