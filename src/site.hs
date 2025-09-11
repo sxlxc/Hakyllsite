@@ -90,7 +90,7 @@ main = hakyll $ do
         >>= loadAndApplyTemplate "templates/post.html" tocCtx
         >>= loadAndApplyTemplate "templates/default.html" tocCtx
         >>= relativizeUrls
-        -- >>= katexFilter
+        -- >>= katexFilter  -- use mathjax.
 
   create ["archive.html"] $ do
     route idRoute

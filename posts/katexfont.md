@@ -19,7 +19,7 @@ showtoc: true
 3. <https://github.com/firamath/firamath.github.io/blob/master/bibliography.md>
 4. <https://learn.microsoft.com/en-us/typography/opentype/spec/math>
 
-# $\KaTeX$ 字体部分如何工作?
+#  KaTeX  字体部分如何工作?
 
 关于fonts和metrics有关的东西首先要看`dockers/fonts/`. 看起来 `fonts/`里面的字体是从docker中安装的texlive的computer modern fonts提取的. 然后`dockers/fonts/buildMetrics.sh` 调用 `src/metrics`里面的代码,直接从有关的tfm文件里读一些metric信息. 
 
@@ -58,7 +58,7 @@ showtoc: true
 
 # Plan
 
-1. 由于$\KaTeX$本身字体分成很多小文件, 首先我也把 Fira Math 分成小文件
+1. 由于 KaTeX 本身字体分成很多小文件, 首先我也把 Fira Math 分成小文件
 2. 然后想办法搞到正确的 `src/metrics/mapping.pl` for Fira Math
 3. 最后改改css或者先rebuild再改css之类的.
 
@@ -92,16 +92,13 @@ KaTeX_Main-Regular, KaTeX_Math-Italic.ttf 这些字体表现比较正常, 基本
 
 如果只是更换字体的话, 很多东西看起来有点奇怪
 
-[commit [866527](https://github.com/congyu711/Hakyllsite/commit/86652755a18568249d02aa3d28624ccec354ea84)  to commit ____] 这个blog在使用这个版本的firamath katex.
-
 ![修改字体、没有调整metric](/images/katexfont/withoutmetric.png)
 
-
-$$
-\sqrt{\frac{\int \sum_{aaaa}^{bbbb} \tilde{O}(\log n)\frac{adsf^k}{wer\R_n^k}}{sdf_k}}
-$$
-
 但是我觉得最常用的LP, SDP之类的规划问题显示起来效果还不错
+
+![XeLaTeX 使用 firamath](/images/katexfont/sdptest.png)
+
+以下是 mathjax 4.0 的效果
 
 \begin{equation}
 \begin{aligned}
@@ -111,15 +108,11 @@ s.t.&   &   (1-\delta_x - \delta_y) d^2(x,y)\leq \|v_x-v_y\|^2 &\leq (c^2+(\delt
 \end{aligned}
 \end{equation}
 
-![XeLaTeX](/images/katexfont/sdptest.png)
-
-KaTeX版本和XeLaTeX相比我觉得下标位置看起来还要更自然一点, 不过$f(k)$这里有巨大奇怪间隙. 行内公式还有些其他问题, 比如$\sum_i^j$, 我怀疑我复制错了size1的sum或者KaTeX又做了不符合标准的修改...
-
 # 接下来...
 
-现在 [Typst](https://typst.app/) 看起来是个输出有点排版需求的html内容的好选择. [这里](https://kawayww.com/posts/example)是个例子, 可以看到公式被Typst变成了svg. 效果不错, 但是不知道如果有很多公式的话绘制一堆svg会不会很慢, 页面会不会变得很大.
+现在[Typst](https://typst.app/)看起来是个输出有点排版需求的html内容的好选择. [这里](https://kawayww.com/posts/example)是个例子, 可以看到公式被Typst变成了svg. 效果不错, 但是不知道如果有很多公式的话绘制一堆svg会不会很慢, 页面会不会变得很大.
 
-如果要修改$\KaTeX$的话, 我觉得会有很大的工作量. 一方面$\KaTeX$本身有点古老, 很多功能的实现方式太局限了. 另一方面我不懂js也不懂排版, 估计需要了解open type字体、[unicode-math](https://ctan.org/pkg/unicode-math?lang=en) 的工作方式等.
+如果要修改 KaTeX 的话, 我觉得会有很大的工作量. 一方面 KaTeX 本身有点古老, 很多功能的实现方式太局限了. 另一方面我不懂js也不懂排版, 估计需要了解open type字体、[unicode-math](https://ctan.org/pkg/unicode-math?lang=en) 的工作方式等.
 
 <!-- 先观察一段时间, Typst的html输出有没有变得更好用, 我有没有闲到会去学和写这个工具. -->
 ## Typst svg

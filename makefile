@@ -16,10 +16,11 @@ $(COMMANDS): site
 # using relative symlinks should be fine since everything only works at ./
 
 
-site: katex_cli src/site.hs src/ChaoDoc.hs
+site: src/site.hs src/ChaoDoc.hs
 	cabal build
 	ln -sf "$(shell cabal list-bin exe:site)" site
 
-katex_cli:
-	cd katex_rust_fork && cargo build --release
-	ln -sf ./katex_rust_fork/target/release/katex_cli katex_cli
+# move from katex to mathjax
+# katex_cli:
+# 	cd katex_rust_fork && cargo build --release
+# 	ln -sf ./katex_rust_fork/target/release/katex_cli katex_cli
