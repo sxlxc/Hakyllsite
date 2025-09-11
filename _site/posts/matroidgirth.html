@@ -100,8 +100,6 @@
     <section class="subtitle">
         
         
-        <br><span style="font-weight: bold; color: red;">Draft</span>
-        
     </section>
     <section class="header">
         Posted on August 12, 2025
@@ -173,34 +171,8 @@ time.</p>
 <p>For the 2/3-sum case we need to find in at least one of the summands
 the minimum circuit that contains a common element <span class="math inline">\(e\)</span>. However, finding such a minimum
 circuit is regular matroids is not known to be polynomially solvable. To
-understand what’s happening here we need to <del>look into Seymour’s
-proof</del>.</p>
-<blockquote>
-<p><em>I finally realized that one doesn’t need to understand Seymour’s
-55-page paper to see why the desired operations can be done in
-polynomial time… Readers who are not interested in the proof should skip
-this blockquote.</em></p>
-The proof of <a href="#regulardecomp" title="Theorem 1">Theorem 1</a>
-has 3 parts:
-<ol type="1">
-<li><p>There is a special 10-element regular matroid <span class="math inline">\(R_{10}\)</span> such that any regular matroid can
-be obtained by 1/2-sums from regular matroids without <span class="math inline">\(R_{10}\)</span> minor and copies of <span class="math inline">\(R_{10}\)</span>.</p>
-<p>(Now we can assume that we are working with regular matroids which
-have no <span class="math inline">\(R_{10}\)</span> minor and are not
-separable via 1/2-sum.)</p></li>
-<li><p>There is another 12-element regular matroid <span class="math inline">\(R_{12}\)</span> such that any regular matroid can
-be obtained by 1/2/3-sums from matroids without <span class="math inline">\(R_{12}\)</span> minor.</p>
-<p>(Now we are working with regular matroids that are not separable via
-1/2/3-sum and have no <span class="math inline">\(R_{10}\)</span> or
-<span class="math inline">\(R_{12}\)</span> minors.)</p></li>
-<li><p>Every 3-connected regular matroid which is neither graphic nor
-cographic has an <span class="math inline">\(R_{10}\)</span> or <span class="math inline">\(R_{12}\)</span> minor.</p>
-<p>Let <span class="math inline">\(M\)</span> be a matroid. <span class="math inline">\(M\)</span> is 3-connected iff <span class="math inline">\(M\)</span> is not expressible as a 1- or 2-sum.
-(cf. <span class="citation" data-cites="seymour_decomposition_1980">[<a href="#ref-seymour_decomposition_1980" role="doc-biblioref">1</a>]</span> 2.10(b))</p>
-<p>It follows that the remaining regular matroids are graphic or
-cographic.</p></li>
-</ol>
-</blockquote>
+understand what’s happening here we need to look into <del>Seymour’s
+proof<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></del> the decomposition tree.</p>
 <p>Instead of considering our binary decomposition tree, we now
 construct a new graph <span class="math inline">\(G\)</span> where each
 vertex represents a graphic matroid, cographic matroid or <span class="math inline">\(R_{10}\)</span> and there is an edge between two
@@ -393,10 +365,7 @@ X}B[u]=\alpha\)</span>.</li>
 and Kapadia discovered a random contraction algorithm which solves both
 of the problems in randomized polynomial time <span class="citation" data-cites="geelen_computing_2018">[<a href="#ref-geelen_computing_2018" role="doc-biblioref">4</a>]</span>.</p>
 <p>If the graph is not connected, it is possible that <span class="math inline">\(\delta(X)\)</span> is empty even if <span class="math inline">\(X\)</span> is non-empty. Fortunately, Geelen and
-Kapadia have done the reduction to connected graphs. However, for the
-second case their random contraction algorithm does not explicitly state
-what to do if <span class="math inline">\(\sigma \Delta
-\delta(X)\)</span> is empty…</p>
+Kapadia have done the reduction to connected graphs.</p>
 <p>Note that the size of cut <span class="math inline">\(|\delta(X)|\)</span> is a submodular function on
 <span class="math inline">\(V(G)\)</span> but <span class="math inline">\(|\delta(X)\Delta \sigma|\)</span> is not
 necessarily submodular. The first case is minimizing a symmetric
@@ -422,11 +391,9 @@ field is small and the number of congruency constraints is constant
 <p><a href="#probGCCSM" title="Problem 8">Problem 8</a> can be solved in
 time <span class="math inline">\(|N|^{2kp+O(1)}\)</span>.</p>
 </div>
-<ol type="1">
-<li>can we do better if the submodular function is symmetric?</li>
-<li>does this method apply to the symmetric difference case even if the
-objective is not submodular?</li>
-</ol>
+<p>I think currently (Sep 2025) finding a deterministic polynomial time
+algorithm for <span class="math inline">\(t\)</span>-dim even cut is
+still open.</p>
 <h2 data-number="3.3" id="girth-parity-cycle-parity-join"><span class="header-section-number">3.3</span> girth → parity cycle + parity
 join</h2>
 <p>Similar to the cogirth part, by <a href="#lemgirth" title="Lemma 6">Lemma 6</a> we consider the following matrix</p>
@@ -457,6 +424,8 @@ E\)</span> such that the sum of labels is <span class="math inline">\(d\)</span>
 degree in <span class="math inline">\(G[F]\)</span>. This is called the
 parity <span class="math inline">\(T\)</span> join problem.</li>
 </ol>
+<p>Recently, Schlotter and Sebő find FPT time algorithm for the odd
+<span class="math inline">\(T\)</span>-join problem<span class="citation" data-cites="schlotter_odd_2025">[<a href="#ref-schlotter_odd_2025" role="doc-biblioref">7</a>]</span>.</p>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
 <div id="ref-seymour_decomposition_1980" class="csl-entry" role="listitem">
@@ -491,7 +460,36 @@ University Press, Oxford ; New York, 2011.</div>
 Nägele, B. Sudakov, R. Zenklusen, Submodular minimization under
 congruency constraints, <em>Combinatorica</em>. 39 (2019) 1351–1386 <a href="https://doi.org/10.1007/s00493-019-3900-1">10.1007/s00493-019-3900-1</a>.</div>
 </div>
+<div id="ref-schlotter_odd_2025" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">I.
+Schlotter, A. Sebő, Odd <span>Paths</span>, <span>Cycles</span>, and
+<span>\</span>(<span>T</span><span>\</span>)-<span>Joins</span>:
+<span>Connections</span> and <span>Algorithms</span>, <em>SIAM Journal
+on Discrete Mathematics</em>. 39 (2025) 484–504 <a href="https://doi.org/10.1137/23M158156X">10.1137/23M158156X</a>.</div>
 </div>
+</div>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p><em>I realized that one doesn’t need to understand
+Seymour’s 55-page paper to see why the desired operations can be done in
+polynomial time…</em><br> The proof of <a href="#regulardecomp" title="Theorem 1">Theorem 1</a> has 3 parts:<br />
+<br />
+- There is a special 10-element regular matroid <span class="math inline">\(R_{10}\)</span> such that any regular matroid can
+be obtained by 1/2-sums from regular matroids without <span class="math inline">\(R_{10}\)</span> minor and copies of <span class="math inline">\(R_{10}\)</span>. (Now we can assume that we are
+working with regular matroids which have no <span class="math inline">\(R_{10}\)</span> minor and are not separable via
+1/2-sum.)<br />
+<br />
+- There is another 12-element regular matroid <span class="math inline">\(R_{12}\)</span> such that any regular matroid can
+be obtained by 1/2/3-sums from matroids without <span class="math inline">\(R_{12}\)</span> minor. (Now we are working with
+regular matroids that are not separable via 1/2/3-sum and have no <span class="math inline">\(R_{10}\)</span> or <span class="math inline">\(R_{12}\)</span> minors.)<br />
+<br />
+- Every 3-connected regular matroid which is neither graphic nor
+cographic has an <span class="math inline">\(R_{10}\)</span> or <span class="math inline">\(R_{12}\)</span> minor. Let <span class="math inline">\(M\)</span> be a matroid. <span class="math inline">\(M\)</span> is 3-connected iff <span class="math inline">\(M\)</span> is not expressible as a 1- or 2-sum.
+(cf. <span class="citation" data-cites="seymour_decomposition_1980">[<a href="#ref-seymour_decomposition_1980" role="doc-biblioref">1</a>]</span> 2.10(b)) It follows that the
+remaining regular matroids are graphic or cographic.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
     </section>
 </article>
 

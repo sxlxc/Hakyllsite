@@ -3,7 +3,7 @@ title: Matroid girth
 tags:  matroid, optimization, combinatorics
 author: Yu Cong
 lang: en
-draft: true
+# draft: true
 showtoc: true
 date: 2025-08-12
 ---
@@ -45,22 +45,7 @@ Every non-leaf node in the decomposition tree represents a regular matroid $M$ w
     We need to prove that all these operations can be done in polynomial time. 
 
     For the 2/3-sum case we need to find in at least one of the summands the minimum circuit that contains a common element $e$. However, finding such a minimum circuit is regular matroids is not known to be polynomially solvable.
-    To understand what's happening here we need to ~~look into Seymour's proof~~. 
-    
-    > *I finally realized that one doesn't need to understand Seymour's 55-page paper to see why the desired operations can be done in polynomial time... Readers who are not interested in the proof should skip this blockquote.*
-    >
-    >   The proof of [@regulardecomp] has 3 parts:
-    >   1. There is a special 10-element regular matroid $R_{10}$ such that any regular matroid can be obtained by 1/2-sums from regular matroids without $R_{10}$ minor and copies of $R_{10}$. 
-    >
-    >       (Now we can assume that we are working with regular matroids which have no $R_{10}$ minor and are not separable via 1/2-sum.)
-    >   2. There is another 12-element regular matroid $R_{12}$ such that any regular matroid can be obtained by 1/2/3-sums from matroids without $R_{12}$ minor. 
-    > 
-    >       (Now we are working with regular matroids that are not separable via 1/2/3-sum and have no $R_{10}$ or $R_{12}$ minors.)
-    >   3. Every 3-connected regular matroid which is neither graphic nor cographic has an $R_{10}$ or $R_{12}$ minor.
-    >
-    >      Let $M$ be a matroid. $M$ is 3-connected iff $M$ is not expressible as a 1- or 2-sum. (cf. [@seymour_decomposition_1980] 2.10(b))
-    >
-    >      It follows that the remaining regular matroids are graphic or cographic.
+    To understand what's happening here we need to look into ~~Seymour's proof[^1]~~ the decomposition tree. 
 
     Instead of considering our binary decomposition tree, we now construct a new graph $G$ where each vertex represents a graphic matroid, cographic matroid or $R_{10}$ and there is an edge between two vertices if the corresponding matroids are patched using 1/2/3-sum. We claim that there is no cycle in the graph. The graph is connected. Assume that there is a cycle and let $M_1,M_2$ be two matroids whose corresponding vertices are in the cycle. Consider the LCA $M$ of $M_1$ and $M_2$ in the binary tree. $M$ represents a connected subgraph $H\subset G$ that contains $M_1$ and $M_2$ but not the entire cycle since otherwise there will be 2 1/2/3-sum operation between two regular matroids. However, $M_1$ and $M_2$ are still connected in $G-E[H]$ since $M_1$ and $M_2$ are in the same cycle, which contradicts the uniqueness of the LCA.
 
@@ -185,7 +170,6 @@ These are called the $t$-dimensional even-cut problem.
 Geelen and Kapadia discovered a random contraction algorithm which solves both of the problems in randomized polynomial time [@geelen_computing_2018].
 
 If the graph is not connected, it is possible that $\delta(X)$ is empty even if $X$ is non-empty. Fortunately, Geelen and Kapadia have done the reduction to connected graphs.
-However, for the second case their random contraction algorithm does not explicitly state what to do if $\sigma \Delta \delta(X)$ is empty...
 
 Note that the size of cut $|\delta(X)|$ is a submodular function on $V(G)$ but $|\delta(X)\Delta \sigma|$ is not necessarily submodular. The first case is minimizing a symmetric submodular function under some congruency constraints.
 
@@ -206,8 +190,7 @@ Nägele, Sudakov and Zenklusen showed that [@probGCCSM] can be done in polynomia
 [@probGCCSM] can be solved in time $|N|^{2kp+O(1)}$.
 :::
 
-1. can we do better if the submodular function is symmetric?
-2. does this method apply to the symmetric difference case even if the objective is not submodular?
+I think currently (Sep 2025) finding a deterministic polynomial time algorithm for $t$-dim even cut is still open.
 
 ## girth → parity cycle + parity join
 
@@ -229,3 +212,21 @@ and we want to compute the girth of $M(A)/\set{f}$. Each edge in $G$ has a label
 
 1. The minimum circuit does not contain $\set{f}$. Then the girth of $M(A)/\set{f}$ is the same as $M(A)\setminus \set{f}$. In this case we need to find the minimum cycle in $G$ such that the sum of its edge labels is exactly $\mathbf{0}$. This is the parity cycle problem.
 2. The minimum circuit contains $\set{f}$. Let the girth of $M(A)/\set{f}$ be $\lambda$. Then $M(A)$ has a minimum circuit that contains $f$ and has size $\lambda+1$. Let $T$ be the set of vertices whose characteristic vector is $b$. To find the minimum circuit of $M(A)$, we want to find the minimum edge set $F\subset E$ such that the sum of labels is $d$ and $T$ is exactly the set of vertices with odd degree in $G[F]$. This is called the parity $T$ join problem.
+
+Recently, Schlotter and Sebő find FPT time algorithm for the odd $T$-join problem[@schlotter_odd_2025].
+
+
+
+
+[^1]: *I realized that one doesn't need to understand Seymour's 55-page paper to see why the desired operations can be done in polynomial time...*<br>
+The proof of [@regulardecomp] has 3 parts:\
+\
+- There is a special 10-element regular matroid $R_{10}$ such that any regular matroid can be obtained by 1/2-sums from regular matroids without $R_{10}$ minor and copies of $R_{10}$. 
+    (Now we can assume that we are working with regular matroids which have no $R_{10}$ minor and are not separable via 1/2-sum.)\
+\
+- There is another 12-element regular matroid $R_{12}$ such that any regular matroid can be obtained by 1/2/3-sums from matroids without $R_{12}$ minor. 
+    (Now we are working with regular matroids that are not separable via 1/2/3-sum and have no $R_{10}$ or $R_{12}$ minors.)\
+\
+- Every 3-connected regular matroid which is neither graphic nor cographic has an $R_{10}$ or $R_{12}$ minor.
+    Let $M$ be a matroid. $M$ is 3-connected iff $M$ is not expressible as a 1- or 2-sum. (cf. [@seymour_decomposition_1980] 2.10(b))
+    It follows that the remaining regular matroids are graphic or cographic.
