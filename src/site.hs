@@ -14,8 +14,8 @@ import Hakyll
 import Text.Pandoc
 -- import Text.Pandoc.Citeproc
 
-root :: String
-root = "https://talldoor.uk"
+-- root :: String
+-- root = "https://???.??"
 
 --------------------------------------------------------------------------------
 main :: IO ()
@@ -149,7 +149,7 @@ main = hakyll $ do
 postCtx :: Context String
 postCtx =
   dateField "date" "%B %e, %Y"
-    <> constField "root" root
+    -- <> constField "root" root
     <> dateField "date" "%Y-%m-%d"
     <> defaultContext
 
@@ -213,5 +213,5 @@ getTocCtx ctx = do
           [] -> []
           x : xs -> x : map (T.drop 1 . T.dropWhile (/= '\"')) xs
 
-katexFilter :: Item String -> Compiler (Item String)
-katexFilter = withItemBody (unixFilter "./katex_cli" [])
+-- katexFilter :: Item String -> Compiler (Item String)
+-- katexFilter = withItemBody (unixFilter "./katex_cli" [])
