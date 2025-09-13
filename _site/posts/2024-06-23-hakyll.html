@@ -6,9 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>talldoor - About this site</title>
-    <link rel="stylesheet" href="../katex/katex.min.css">
-    <script defer src="../katex/katex.min.js"></script>
+    <title>About this site</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
@@ -17,10 +15,18 @@
     <link rel="stylesheet" href="../css/chao-theorems.css">
     <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
     <script>
+        // page title
+        document.addEventListener("DOMContentLoaded", function () {
+            const hostname = window.location.hostname;
+            document.title = document.title + " | " + hostname;
+        });
+
+        // pangu
         document.addEventListener('DOMContentLoaded', () => {
             pangu.autoSpacingPage();
         });
 
+        // mathjax
         MathJax = {
             options: {
                 menuOptions: {
@@ -56,7 +62,7 @@
             }
         };
     </script>
-    <script src="../mathjax/tex-chtml.js" defer></script>
+    <script defer src="../mathjax/tex-chtml.js"></script>
 
 </head>
 
@@ -102,54 +108,17 @@
 <p><a href="https://github.com/congyu711/Hakyllsite/tree/main/css" class="uri">https://github.com/congyu711/Hakyllsite/tree/main/css</a></p>
 <h1 data-number="2" id="math-and-bibliography"><span class="header-section-number">2</span> Math and Bibliography</h1>
 <p>Bib: <a href="https://github.com/chaoxu/chaoxu.github.io/blob/develop/ChaoDoc.hs" class="uri">https://github.com/chaoxu/chaoxu.github.io/blob/develop/ChaoDoc.hs</a></p>
-<p><span class="math inline">\(\KaTeX\)</span>: <a href="https://github.com/chaoxu/katex_cli" class="uri">https://github.com/chaoxu/katex_cli</a></p>
+<p><del>KaTeX: <a href="https://github.com/chaoxu/katex_cli" class="uri">https://github.com/chaoxu/katex_cli</a></del> MathJax: <a href="https://github.com/mathjax/MathJax" class="uri">https://github.com/mathjax/MathJax</a></p>
 <h1 data-number="3" id="known-issues"><span class="header-section-number">3</span> Known issues</h1>
 <ul>
-<li><span class="math inline">\(\KaTeX\)</span>’s default font does not
-match well with fira sans. I will try <a href="https://yingtongli.me/blog/2022/09/24/katex-custom-fonts.html">this</a>.</li>
+<li><del>KaTeX’s default font does not match well with fira sans. I will
+try <a href="https://yingtongli.me/blog/2022/09/24/katex-custom-fonts.html">this</a>.</del>
+For progress on modifying KaTeX, see <a href="../posts/katexfont.html">this post</a>.</li>
 <li>title does not support math or styles (since I’m using filters only
 on <code>withItemBody</code>)</li>
-<li>code highlighting. <a href="https://tony-zorman.com/posts.html" class="uri">https://tony-zorman.com/posts.html</a> has a good tutorial.
-<a href="https://www.haskellforall.com/2015/10/basic-haskell-examples.html">code
-highlighting test</a>:</li>
+<li>code highlighting is bad.</li>
+<li>rss?</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ot">putTodo ::</span> (<span class="dt">Int</span>, <span class="dt">String</span>) <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>putTodo (n, todo) <span class="ot">=</span> <span class="fu">putStrLn</span> (<span class="fu">show</span> n <span class="op">++</span> <span class="st">&quot;: &quot;</span> <span class="op">++</span> todo)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ot">prompt ::</span> [<span class="dt">String</span>] <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>prompt todos <span class="ot">=</span> <span class="kw">do</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">putStrLn</span> <span class="st">&quot;&quot;</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">putStrLn</span> <span class="st">&quot;Current TODO list:&quot;</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mapM_</span> putTodo (<span class="fu">zip</span> [<span class="dv">0</span><span class="op">..</span>] todos)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    command <span class="ot">&lt;-</span> <span class="fu">getLine</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    interpret command todos</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ot">interpret ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> [<span class="dt">String</span>] <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>interpret (<span class="ch">'+'</span><span class="op">:</span><span class="ch">' '</span><span class="op">:</span>todo) todos <span class="ot">=</span> prompt (todo<span class="op">:</span>todos)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>interpret (<span class="ch">'-'</span><span class="op">:</span><span class="ch">' '</span><span class="op">:</span>num ) todos <span class="ot">=</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">case</span> delete (<span class="fu">read</span> num) todos <span class="kw">of</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Nothing</span> <span class="ot">-&gt;</span> <span class="kw">do</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>            <span class="fu">putStrLn</span> <span class="st">&quot;No TODO entry matches the given number&quot;</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            prompt todos</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Just</span> todos' <span class="ot">-&gt;</span> prompt todos'</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>interpret  <span class="st">&quot;q&quot;</span>           todos <span class="ot">=</span> <span class="fu">return</span> ()</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>interpret  command       todos <span class="ot">=</span> <span class="kw">do</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">putStrLn</span> (<span class="st">&quot;Invalid command: `&quot;</span> <span class="op">++</span> command <span class="op">++</span> <span class="st">&quot;`&quot;</span>)</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    prompt todos</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ot">delete ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">Maybe</span> [a]</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>delete <span class="dv">0</span> (_<span class="op">:</span>as) <span class="ot">=</span> <span class="dt">Just</span> as</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>delete n (a<span class="op">:</span>as) <span class="ot">=</span> <span class="kw">do</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    as' <span class="ot">&lt;-</span> delete (n <span class="op">-</span> <span class="dv">1</span>) as</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span> (a<span class="op">:</span>as')</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>delete _  []    <span class="ot">=</span> <span class="dt">Nothing</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> <span class="kw">do</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">putStrLn</span> <span class="st">&quot;Commands:&quot;</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">putStrLn</span> <span class="st">&quot;+ &lt;String&gt; - Add a TODO entry&quot;</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">putStrLn</span> <span class="st">&quot;- &lt;Int&gt;    - Delete the numbered entry&quot;</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">putStrLn</span> <span class="st">&quot;q          - Quit&quot;</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    prompt []</span></code></pre></div>
     </section>
 </article>
 

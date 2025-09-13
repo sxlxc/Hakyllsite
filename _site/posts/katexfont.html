@@ -6,9 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>talldoor - 在 KaTeX 中使用 Fira Math</title>
-    <link rel="stylesheet" href="../katex/katex.min.css">
-    <script defer src="../katex/katex.min.js"></script>
+    <title>在 KaTeX 中使用 Fira Math</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
@@ -17,10 +15,18 @@
     <link rel="stylesheet" href="../css/chao-theorems.css">
     <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
     <script>
+        // page title
+        document.addEventListener("DOMContentLoaded", function () {
+            const hostname = window.location.hostname;
+            document.title = document.title + " | " + hostname;
+        });
+
+        // pangu
         document.addEventListener('DOMContentLoaded', () => {
             pangu.autoSpacingPage();
         });
 
+        // mathjax
         MathJax = {
             options: {
                 menuOptions: {
@@ -56,7 +62,7 @@
             }
         };
     </script>
-    <script src="../mathjax/tex-chtml.js" defer></script>
+    <script defer src="../mathjax/tex-chtml.js"></script>
 
 </head>
 
