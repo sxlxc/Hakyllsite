@@ -213,7 +213,7 @@ and we want to compute the girth of $M(A)/\set{f}$. Each edge in $G$ has a label
 1. The minimum circuit does not contain $\set{f}$. Then the girth of $M(A)/\set{f}$ is the same as $M(A)\setminus \set{f}$. In this case we need to find the minimum cycle in $G$ such that the sum of its edge labels is exactly $\mathbf{0}$. This is the parity cycle problem.
 2. The minimum circuit contains $\set{f}$. Let the girth of $M(A)/\set{f}$ be $\lambda$. Then $M(A)$ has a minimum circuit that contains $f$ and has size $\lambda+1$. Let $T$ be the set of vertices whose characteristic vector is $b$. To find the minimum circuit of $M(A)$, we want to find the minimum edge set $F\subset E$ such that the sum of labels is $d$ and $T$ is exactly the set of vertices with odd degree in $G[F]$. This is called the parity $T$ join problem.
 
-Recently, Schlotter and Sebő find FPT time algorithm for the odd $T$-join problem[@schlotter_odd_2025].
+Recently, Schlotter and Sebő find FPT time algorithm for the odd $T$-join problem[@schlotter_odd_2025]. Sebő has some open problems on this topic which can be found [here(page 11)](https://users.renyi.hu/~emlektab/emlektabla17.pdf).
 
 
 
