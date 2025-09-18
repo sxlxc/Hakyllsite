@@ -108,10 +108,12 @@ After reading [@chalermsook_approximating_2022], I finally know why the authors 
 
 > In a recent paper of Chalermsook et el. [CHN+22] on survivable network design, the same problem was first introduced (under a diﬀerent name “minimum normalized free cut”) to deal with a certain boxing constraint in the LPs. There, a special case of unit-edge costs is actually solved as a technical necessity. To obtain an FPTAS in this paper, we emphasize that we do not need to solve the normalized min-cut problem per se, but rather we use its optimal solution as a certificate in the analysis of the weight function $\tilde{w}(i)$ in Theorem 3.
 
-This paragraph is extremely misleading.
-There is no clearly indication that very similar (in fact, almost identical) results are proven [CHN+22]. Not to mention that the authors were somewhat avoiding my question (in my opinion) about Normalized min-cut(see [reweighting part](#reweighting)).
+This paragraph is somewhat misleading.
+There is no clearly indication that very similar (in fact, almost identical) results are proven [CHN+22]. 
+<!-- Not to mention that the authors were somewhat avoiding my question (in my opinion) about Normalized min-cut(see [reweighting part](#reweighting)). -->
 
-It was mentioned in a footnote of [@chalermsook_approximating_2022] that a general version of normalized min-cut is used in [this paper](https://drops.dagstuhl.de/storage/00lipics/lipics-vol064-isaac2016/LIPIcs.ISAAC.2016.33/LIPIcs.ISAAC.2016.33.pdf), which in turn mentioned that normalized min-cut is an ordinary subroutine in MWU frameworks. This IPCO paper's writing style is toxic and causes huge waste of readers' time. I do not think this paper still can be accepted by IPCO if reviewers and PCs notice its relation with [CHN+22].
+It was mentioned in a footnote of [@chalermsook_approximating_2022] that a general version of normalized min-cut is used in [this paper](https://drops.dagstuhl.de/storage/00lipics/lipics-vol064-isaac2016/LIPIcs.ISAAC.2016.33/LIPIcs.ISAAC.2016.33.pdf), which in turn mentioned that normalized min-cut is an ordinary subroutine in MWU frameworks.
+<!-- This IPCO paper's writing style is toxic and causes huge waste of readers' time. I do not think this paper still can be accepted by IPCO if reviewers and PCs notice its relation with [CHN+22]. -->
 
 </details>
 
