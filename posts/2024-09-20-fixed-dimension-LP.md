@@ -1,6 +1,6 @@
 ---
 title: Minimizing Sum of PWL Convex Functions
-tags: alg, optimization
+tags: alg, optimization, LP
 author: Yu Cong
 lang: en
 showtoc: true

@@ -1,6 +1,6 @@
 ---
 title: Proving integrality gap for LPs
-tags:  optimization
+tags:  optimization, LP
 author: Yu Cong
 lang: en
 # draft: true

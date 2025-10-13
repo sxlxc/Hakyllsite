@@ -1,6 +1,6 @@
 ---
 title: Metric notes
-tags: CG, optimization
+tags: metrics, optimization
 author: Yu Cong
 lang: en
 # draft: true

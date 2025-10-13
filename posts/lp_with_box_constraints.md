@@ -1,6 +1,6 @@
 ---
 title: LP with box constraints
-tags: optimization
+tags: optimization, LP
 lang: en
 author: Yu Cong
 # draft: true

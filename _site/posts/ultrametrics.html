@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ultrametric notes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/default.css" />
+    <link rel="stylesheet" href="../css/pygentize.css" />
+    <link rel="stylesheet" href="../css/chao-theorems.css">
+    <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
+    <script>
+        // page title
+        document.addEventListener("DOMContentLoaded", function () {
+            const hostname = window.location.hostname;
+            document.title = document.title + " | " + hostname;
+        });
+
+        // pangu
+        document.addEventListener('DOMContentLoaded', () => {
+            pangu.autoSpacingPage();
+        });
+
+        // mathjax
+        MathJax = {
+            options: {
+                menuOptions: {
+                    settings: {
+                        enrich: false,        // true to enable semantic-enrichment
+                        collapsible: false,   // true to enable collapsible math
+                        speech: false,        // true to enable speech generation
+                        braille: false,       // true to enable Braille generation
+                        assistiveMml: false,  // true to enable assistive MathML
+                    }
+                },
+                enableMenu: false
+            },
+            output: {
+                font: 'mathjax-fira',
+                fontURL: '/mathjax-fira-font'
+            },
+            tex: {
+                macros: {
+                    floor: ["{\\left\\lfloor #1 \\right\\rfloor}", 1],
+                    ceil: ["{\\left\\lceil #1 \\right\\rceil}", 1],
+                    set: ["{\\left\\{ #1 \\right\\}}", 1],
+                    norm: ["{\\left\\| #1 \\right\\|}", 1],
+                    F: "{\\mathbb F}",
+                    R: "{\\mathbb R}",
+                    C: "{\\mathbb C}",
+                    Z: "{\\mathbb Z}",
+                    e: "{\\varepsilon}",
+                    mex: "\\mathop{\\operatorname{mex}}",
+                    lcm: "\\mathop{\\operatorname{lcm}}",
+                    dist: "\\mathop{\\operatorname{dist}}",
+                }
+            }
+        };
+    </script>
+    <script defer src="../mathjax/tex-chtml.js"></script>
+
+</head>
+
+<body>
+    <div class="navbar-space">
+        
+        <!-- A table of contents on the left side, but only for screens
+                that are big enough -->
+        <div id="contents-big">
+            <p class="mini-header">Contents <a id="up-arrow" href="#">↑</a></p>
+            <ul>
+<li><a href="#ultrametrics">ultrametrics</a>
+<ul>
+<li><a href="#exact-c-hst">exact <span class="math inline">\(c\)</span>-HST</a></li>
+</ul></li>
+</ul>
+        </div>
+        
+    </div>
+    <div class="text-space">
+        <header class="no-print">
+            <nav class="navbar">
+                <a href="../">Home</a>
+                <div class="navright">
+                    <a href="../draft.html">Drafts</a>
+                    <a href="../about.html">About</a>
+                    <!-- <a href="/contact.html">Contact</a> -->
+                    <!-- <a href="/archive.html">Archive</a> -->
+                    <!-- <a href="/tags.html">Tags</a> -->
+                </div>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1 class="pagetitle">Ultrametric notes</h1>
+            <article>
+    <section class="subtitle">
+        
+        
+        <br><span style="font-weight: bold; color: red;">Draft</span>
+        
+    </section>
+    <section class="header">
+        Posted on October 13, 2025
+        
+            by Yu Cong
+        
+    </section>
+    <div class="info">
+        
+            Tags: <a title="All pages tagged 'LP'." href="../tags/LP.html" rel="tag">LP</a>, <a title="All pages tagged 'metrics'." href="../tags/metrics.html" rel="tag">metrics</a>
+        
+    </div>    
+    <section>
+        <p><a href="https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.APPROX/RANDOM.2023.2" class="uri">https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.APPROX/RANDOM.2023.2</a></p>
+<h1 data-number="1" id="ultrametrics"><span class="header-section-number">1</span> ultrametrics</h1>
+<div class="theorem-environment Definition" data-index="1" type="Definition" title="ultrametrics">
+<span class="theorem-header"><span class="type">Definition</span><span class="index">1</span><span class="name">ultrametrics</span></span>
+<p>A metric space <span class="math inline">\((X,d)\)</span> is a
+ultrametric if it satisfies the strong triangle inequality: <span class="math display">\[
+    d(x,y)\leq \max\{d(x,z),d(z,y)\} \quad \forall x,y,z\in X
+\]</span></p>
+</div>
+<p>Ultrametric is a special case of tree metric. To see this, consider
+the equivalence relation <span class="math inline">\(x \sim_{\leq r}
+y\)</span> if <span class="math inline">\(d(x,y)\leq r\)</span>. For
+each fixed <span class="math inline">\(r\)</span> there will be many
+equivalent classes. We collect all equivalent class for all possible
+<span class="math inline">\(r\)</span>. Let this collection of subsets
+be <span class="math inline">\(L\)</span>. Note that we dont really have
+to consider all values of <span class="math inline">\(r\)</span> but
+only smallest <span class="math inline">\(r\)</span> such that the set
+of equivalent classes changes.</p>
+<div class="theorem-environment Observation" data-index="2" type="Observation">
+<span class="theorem-header"><span class="type">Observation</span><span class="index">2</span></span>
+<p><span class="math inline">\(L\)</span> is laminar.</p>
+</div>
+<p>Now we have a tree-like structure. The root of the tree is the unique
+equivalent class of <span class="math inline">\(\sim_{\leq \max
+d(x,y)}\)</span>. The leaves will be equivalent classes of <span class="math inline">\(\sim_{\leq 0}\)</span>, i.e., singleton of
+elements in <span class="math inline">\(X\)</span>. Then the laminar
+strucuture of our collection <span class="math inline">\(L\)</span>
+naturally forms a tree.</p>
+<p>Note that</p>
+<ol class="example" type="1">
+<li>every leaf in this tree has the same height.</li>
+<li>the LCA of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> represents a equivalent class of <span class="math inline">\(\sim_{\leq d(x,y)}\)</span>.</li>
+</ol>
+<p>We have to decide the edge weights. Let <span class="math inline">\(e\)</span> be an edge between nodes <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> which are some equivalent class of
+<span class="math inline">\(\sim_{\leq a}\)</span> and <span class="math inline">\(\sim_{\leq b}\)</span>. Then the weight of this
+edge is <span class="math inline">\(\frac{1}{2}(a-b)\)</span> (assuming
+<span class="math inline">\(a\geq b\)</span>).</p>
+<p>Now as (2) shows, the distance of leaves in the tree is <span class="math display">\[\begin{equation*}
+\begin{aligned}
+    d_T(x,y)&amp;=d_T(\mathop{\mathrm{LCA}}(x,y),x) +
+d_T(\mathop{\mathrm{LCA}}(x,y),y)\\
+            &amp;=\frac{1}{2}(d(x,y) -0)+\frac{1}{2}(d(x,y) -0)\\
+            &amp;=d(x,y)
+\end{aligned}
+\end{equation*}\]</span></p>
+<p>Now i guess we have invented the so-called <em>Hierarchically
+Separated Trees</em> (HST). Any ultrametric can be converted into a HST
+in this way.</p>
+<h2 data-number="1.1" id="exact-c-hst"><span class="header-section-number">1.1</span> exact <span class="math inline">\(c\)</span>-HST</h2>
+<p>In the paper the input ultrametric is limited to a special kind
+called exact <span class="math inline">\(c\)</span>-HST. Let <span class="math inline">\(c&gt;1\)</span> be a constant. The tree structure
+is the same as HST but the edge weight is <span class="math inline">\(w((u,v))=\frac{1}{2}(c^{depth(u)}-c^{depth(v)})\)</span>.
+Let <span class="math inline">\(x,y\)</span> be two leaves in a exact
+<span class="math inline">\(c\)</span>-HST, then <span class="math inline">\(d(x,y)=c^{depth(\mathop{\mathrm{LCA}}(x,y))}\)</span>.</p>
+<p>The key to restricting input to an exact <span class="math inline">\(c\)</span>-HST is the following lemma.</p>
+<div class="theorem-environment Lemma" data-index="3" type="Lemma">
+<span class="theorem-header"><span class="type">Lemma</span><span class="index">3</span></span>
+<p>Given a metric space and its embedding into a distribution over
+ultrametrics with distortion <span class="math inline">\(\alpha\)</span>, there is an embedding into a
+distribution over exact <span class="math inline">\(c\)</span>-HSTs with
+distortion <span class="math inline">\(\alpha\cdot c\)</span>.</p>
+</div>
+<p><strong>An intuitive but failed proof method</strong> We try to show
+that any ultrametric can be embedded into an exact <span class="math inline">\(c\)</span>-HST with distortion <span class="math inline">\(c\)</span>. Proving the distortion can be reduced
+to the following combinatorial problem. Given a sequence of <span class="math inline">\(n\)</span> strictly increasing numbers <span class="math inline">\(\{a_i\}_{i\in [n]}\)</span>, find another sequence
+<span class="math inline">\(c^{x_1},\dots, c^{x_n}\)</span> where <span class="math inline">\(x_i\leq x_j\)</span> for all <span class="math inline">\(i&lt;j\)</span>, such that <span class="math inline">\(\max_i \frac{a_i}{c^{x_i}}\leq c \min_i
+\frac{a_i}{c^{x_i}}\)</span>. Now one can see that this is not always
+true for any fixed <span class="math inline">\(c\)</span>… so embedding
+into a distribution may be important.</p>
+    </section>
+</article>
+
+        </main>
+
+        <footer class="no-print">
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>.
+            <a href="https://github.com/congyu711/Hakyllsite">Source on Github</a>.
+            License <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0 </a> <img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" alt="Creative Commons License" style="height: 12px; vertical-align: baseline;">
+
+        </footer>
+    </div>
+</body>
+
+</html>

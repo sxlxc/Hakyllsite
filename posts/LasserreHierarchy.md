@@ -1,7 +1,7 @@
 ---
 title: Understanding Lasserre Hierarchy
 subtitle: From a Probabilistic Perspective
-tags: optimization
+tags: optimization, LP
 author: Yu Cong and Hongjie Qing
 lang: en
 # draft: true
