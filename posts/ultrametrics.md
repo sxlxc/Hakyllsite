@@ -85,6 +85,6 @@ If we embed into a distribution of 2-HSTs, then the indicator variable $\chi$ wi
 This kind of LP-formulating technique goes back to the uniform labeling LP of Jon Kleinberg and Eva Tardos (see their [JACM'02 paper](https://www.cs.cornell.edu/home/kleinber/focs99-mrf.pdf)) which in turn is analogous to the multiway cut LP of Călinescu (see [this paper](https://arxiv.org/pdf/1611.05530)).
 In all these problems we want to 'label' vertices in a graph and only edges with different labels contribute to the solution.
 
-The good part about embedding into 2-HSTs is we don't require the solution to integral. However, the main difficulty is that we need to solve $\log \Delta$ labeling problems and they are dependent. For example, if $x,y$ are not separated at level $r$, they shouldn't be separated at any higher level; In a distribution of 2-HSTs, this means that the probability of $x\sim y$ is non-decreasing in the level.
+A good property of embedding into 2-HSTs is we don't require the solution to integral. However, the main difficulty is that we need to solve $\log \Delta$ labeling problems and they are dependent. For example, if $x,y$ are not separated at level $r$, they shouldn't be separated at any higher level; In a distribution of 2-HSTs, this means that the probability of $x\sim y$ is non-decreasing in the level.
 
 With all these observation in mind, the LP seems intuitive.
