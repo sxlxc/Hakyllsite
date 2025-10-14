@@ -78,6 +78,7 @@
 <ul>
 <li><a href="#exact-c-hst">exact <span class="math inline">\(c\)</span>-HST</a></li>
 </ul></li>
+<li><a href="#lp-rounding">LP rounding</a></li>
 </ul>
         </div>
         
@@ -167,13 +168,17 @@ d_T(\mathop{\mathrm{LCA}}(x,y),y)\\
 Separated Trees</em> (HST). Any ultrametric can be converted into a HST
 in this way.</p>
 <h2 data-number="1.1" id="exact-c-hst"><span class="header-section-number">1.1</span> exact <span class="math inline">\(c\)</span>-HST</h2>
-<p>In the paper the input ultrametric is limited to a special kind
-called exact <span class="math inline">\(c\)</span>-HST. Let <span class="math inline">\(c&gt;1\)</span> be a constant. The tree structure
-is the same as HST but the edge weight is <span class="math inline">\(w((u,v))=\frac{1}{2}(c^{depth(u)}-c^{depth(v)})\)</span>.
+<p>In the paper the target ultrametrics are limited to a special kind
+called exact <span class="math inline">\(c\)</span>-HST. Let <span class="math inline">\(c&gt;1\)</span> be a constant. For a tree node
+<span class="math inline">\(u\)</span> which represents an equivalence
+class of <span class="math inline">\(\sim_{\leq x}\)</span>, we write
+<span class="math inline">\(level(u)\)</span> for <span class="math inline">\(x\)</span>. The tree structure is the same as HST
+but the edge weight is <span class="math inline">\(w((u,v))=\frac{1}{2}({level(u)}-{level(v)})\)</span>.
 Let <span class="math inline">\(x,y\)</span> be two leaves in a exact
-<span class="math inline">\(c\)</span>-HST, then <span class="math inline">\(d(x,y)=c^{depth(\mathop{\mathrm{LCA}}(x,y))}\)</span>.</p>
-<p>The key to restricting input to an exact <span class="math inline">\(c\)</span>-HST is the following lemma.</p>
-<div class="theorem-environment Lemma" data-index="3" type="Lemma">
+<span class="math inline">\(c\)</span>-HST, then <span class="math inline">\(d(x,y)={level(\mathop{\mathrm{LCA}}(x,y))}\)</span>.</p>
+<p>The following lemma shows that we only lose a constant factor in the
+distortion when restricting the target space to exact <span class="math inline">\(c\)</span>-HSTs.</p>
+<div id="exactHST" class="theorem-environment Lemma" data-index="3" type="Lemma">
 <span class="theorem-header"><span class="type">Lemma</span><span class="index">3</span></span>
 <p>Given a metric space and its embedding into a distribution over
 ultrametrics with distortion <span class="math inline">\(\alpha\)</span>, there is an embedding into a
@@ -187,6 +192,45 @@ to the following combinatorial problem. Given a sequence of <span class="math in
 \frac{a_i}{c^{x_i}}\)</span>. Now one can see that this is not always
 true for any fixed <span class="math inline">\(c\)</span>… so embedding
 into a distribution may be important.</p>
+<h1 data-number="2" id="lp-rounding"><span class="header-section-number">2</span> LP rounding</h1>
+<p>The authors then focus on embedding a given metric space <span class="math inline">\((N,d)\)</span> into distribution ober exact
+2-HSTs. By <a href="#exactHST" title="Lemma 3">Lemma 3</a> they lose a
+2-factor in the optimal distortion. It’s safe to assume that <span class="math inline">\(\min_{x,y\in N}d(x,y)=1\)</span> and <span class="math inline">\(\max_{x,y\in N}d(x,y)=\Delta\)</span>. (Thus our
+embedding is always expanding.)</p>
+<p>Assume that we embed <span class="math inline">\((N,d)\)</span> into
+a single 2-HST. (<span class="math inline">\(N\)</span> is the set of
+leaves in the tree.) Consider nodes with the same level in the 2-HST.
+Recall that each nodes represents a subset of <span class="math inline">\(N\)</span> and these sets form the equivalence
+class of <span class="math inline">\(\sim_{\leq 2^{p}}\)</span> where
+<span class="math inline">\(p\)</span> is the level. The height of the
+tree is <span class="math inline">\(O(\log \Delta)\)</span>. Now
+consider the distortion of this embedding. Let <span class="math inline">\(q\)</span> be the distortion and let <span class="math inline">\(\chi_{x,y}\in\set{0,1}\)</span> be an incidator
+variable such that <span class="math inline">\(\chi_{x,y}=0\)</span> iff
+<span class="math inline">\(x\sim y\)</span>. (we omit the subscripts if
+there is no confusion.)</p>
+<p><span class="math display">\[
+    \sum_{r=0}^{\log \Delta} r \cdot \chi_{x,y} \leq q\cdot d(x,y) \quad
+\forall x,y\in X
+\]</span></p>
+<!-- For a fixed $r$, the equivalence relation $\sim$ defines a graph $(N,E)$ where $(u,v)\in E$ iff $u\sim v$ (equivalently, $d(u,v)\leq c^r$). -->
+<p>If we embed into a distribution of 2-HSTs, then the indicator
+variable <span class="math inline">\(\chi\)</span> will become the
+probability that <span class="math inline">\(x,y\)</span> are not in the
+same eqivalence class.</p>
+<p>This kind of LP-formulating technique goes back to the uniform
+labeling LP of Jon Kleinberg and Eva Tardos (see their <a href="https://www.cs.cornell.edu/home/kleinber/focs99-mrf.pdf">JACM’02
+paper</a>) which in turn is analogous to the multiway cut LP of
+Călinescu (see <a href="https://arxiv.org/pdf/1611.05530">this
+paper</a>). In all these problems we want to ‘label’ vertices in a graph
+and only edges with different labels contribute to the solution.</p>
+<p>The good part about embedding into 2-HSTs is we don’t require the
+solution to integral. However, the main difficulty is that we need to
+solve <span class="math inline">\(\log \Delta\)</span> labeling problems
+and they are dependent. For example, if <span class="math inline">\(x,y\)</span> are not separated at level <span class="math inline">\(r\)</span>, they shouldn’t be separated at any
+higher level; In a distribution of 2-HSTs, this means that the
+probability of <span class="math inline">\(x\sim y\)</span> is
+non-decreasing in the level.</p>
+<p>With all these observation in mind, the LP seems intuitive.</p>
     </section>
 </article>
 
