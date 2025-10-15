@@ -92,7 +92,7 @@ With all these observation in mind, the LP seems intuitive.
 # TODO
 
 - understand their LP.
-    - connections to CKR relaxation
+    - connections to CKR relaxation [A nice lecture notes you should read](https://courses.grainger.illinois.edu/cs583/sp2018/Notes/multiwaycut-ckr.pdf) Interpretation of CKR relaxation via geometric view on $k$-simplex, via strengthening metric relaxation and via Lovász extension of submodular functions.
     - connections to LP hierarchies
     - why the optimal solution is not always a distribution of HSTs
 - how to move from exact 2-HST to general HSTs?
