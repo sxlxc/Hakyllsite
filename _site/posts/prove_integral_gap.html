@@ -75,9 +75,16 @@
         <div id="contents-big">
             <p class="mini-header">Contents <a id="up-arrow" href="#">↑</a></p>
             <ul>
-<li><a href="#counting">Counting</a></li>
+<li><a href="#counting">Counting</a>
+<ul>
+<li><a href="#tree-packing-theorem">tree packing theorem</a></li>
+<li><a href="#k-cut"><span class="math inline">\(k\)</span>-cut</a></li>
+</ul></li>
 <li><a href="#rounding">Rounding</a></li>
-<li><a href="#intermediate-problem">Intermediate problem</a></li>
+<li><a href="#intermediate-problem">Intermediate problem</a>
+<ul>
+<li><a href="#minimum-k-edge-connected-spanning-subgraph">minimum <span class="math inline">\(k\)</span>-edge-connected spanning subgraph</a></li>
+</ul></li>
 <li><a href="#notes">Notes</a></li>
 </ul>
         </div>
@@ -125,7 +132,7 @@ gaps of linear programs.</p>
 papers.</p>
 <h1 data-number="1" id="counting"><span class="header-section-number">1</span> Counting</h1>
 <p>Just do the counting.</p>
-<p>An example would be the celebrated tree packing theorem.</p>
+<h2 data-number="1.1" id="tree-packing-theorem"><span class="header-section-number">1.1</span> tree packing theorem</h2>
 <div class="theorem-environment Example" data-index="1" type="Example">
 <span class="theorem-header"><span class="type">Example</span><span class="index">1</span></span>
 <p>Consider the following integer program on graph <span class="math inline">\(G=(V,E)\)</span>, <span class="math display">\[\begin{align*}
@@ -160,8 +167,7 @@ one endpoint in <span class="math inline">\(S_i\)</span> (denoted by
 <span class="math inline">\(e[S_i]\)</span>) must contain a cut of <span class="math inline">\(G\)</span> since the <span class="math inline">\(G\)</span> is connected. One can see that <span class="math inline">\(2|E-F^*|=\sum_i |e[S_i]|\ge \lambda
 (r(E)-r(F))\)</span> since the number of component is <span class="math inline">\(r(E)-r(F^*)\)</span>.</p>
 </div>
-<p>A stronger example is the <span class="math inline">\(k\)</span>-cut
-LP.</p>
+<h2 data-number="1.2" id="k-cut"><span class="header-section-number">1.2</span> <span class="math inline">\(k\)</span>-cut</h2>
 <div class="theorem-environment Example" data-index="3" type="Example">
 <span class="theorem-header"><span class="type">Example</span><span class="index">3</span></span>
 <p><span class="math display">\[\begin{align*}
@@ -206,11 +212,16 @@ c\)</span>.)</li>
 constant upperbound of the corresponding LP.</p>
 <p>Examples:</p>
 <ol type="1">
-<li>vertex cover and set cover: <a href="https://courses.grainger.illinois.edu/cs598csc/sp2011/Lectures/lecture_4.pdf" class="uri">https://courses.grainger.illinois.edu/cs598csc/sp2011/Lectures/lecture_4.pdf</a></li>
-<li>facility location: <a href="https://www.cs.dartmouth.edu/~deepc/LecNotes/Appx/5.%20Deterministic%20Rounding%20for%20Facility%20Location.pdf" class="uri">https://www.cs.dartmouth.edu/~deepc/LecNotes/Appx/5.%20Deterministic%20Rounding%20for%20Facility%20Location.pdf</a></li>
+<li>vertex cover and set cover <a href="https://courses.grainger.illinois.edu/cs598csc/sp2011/Lectures/lecture_4.pdf">uiuc
+cs598csc</a></li>
+<li>facility location <a href="https://www.cs.dartmouth.edu/~deepc/LecNotes/Appx/5.%20Deterministic%20Rounding%20for%20Facility%20Location.pdf">Dartmouth</a></li>
+<li>CKR relaxation of multiway cut <a href="https://courses.grainger.illinois.edu/cs583/sp2018/Notes/multiwaycut-ckr.pdf">uiuc
+cs583</a></li>
+<li>uniform labeling <a href="https://www.cs.cornell.edu/home/kleinber/focs99-mrf.pdf">FOCS’99</a>
+basically multiway cut with assignment cost.</li>
 </ol>
 <h1 data-number="3" id="intermediate-problem"><span class="header-section-number">3</span> Intermediate problem</h1>
-<p>I read this in <span class="citation" data-cites="chalermsook_approximating_2022">[<a href="#ref-chalermsook_approximating_2022" role="doc-biblioref">4</a>]</span>. Suppose that we want to prove
+<p>I read about this in <span class="citation" data-cites="chalermsook_approximating_2022">[<a href="#ref-chalermsook_approximating_2022" role="doc-biblioref">4</a>]</span>. Suppose that we want to prove
 constant gap for <span class="math inline">\(LP1\)</span>. The idea is
 to find another LP (say <span class="math inline">\(LP2\)</span>) which
 is integral or has constant gap and to prove that <span class="math inline">\(\frac{\mathop{\mathrm{OPT}}(IP1)}{\mathop{\mathrm{OPT}}(IP2)}\le
@@ -220,7 +231,7 @@ c_2\)</span>. Finally we will have something like this,</p>
 \mathop{\mathrm{OPT}}(IP1)\le c_1\mathop{\mathrm{OPT}}(IP2)= c_1
 \mathop{\mathrm{OPT}}(LP2)\le c_1 c_2 \mathop{\mathrm{OPT}}(LP1)
 \end{equation}\]</span></p>
-<p>The example in <span class="citation" data-cites="chalermsook_approximating_2022">[<a href="#ref-chalermsook_approximating_2022" role="doc-biblioref">4</a>]</span> is finding the minimum <span class="math inline">\(k\)</span>-edge-connected spanning subgraph.</p>
+<h2 data-number="3.1" id="minimum-k-edge-connected-spanning-subgraph"><span class="header-section-number">3.1</span> minimum <span class="math inline">\(k\)</span>-edge-connected spanning subgraph</h2>
 <p>We want to prove that the integral gap for the following LP is 2.</p>
 <p><span class="math display">\[\begin{align*}
 LP1=\min&amp;   &amp; \sum_{e\in E} w(e&amp;)x_e    &amp; &amp;\\
@@ -264,12 +275,12 @@ particularly interesting.</p>
 <ul>
 <li>The LP has a relatively large gap, but some algorithm based on that
 LP achieves a better approximation than the gap.(see <a href="http://www.cis.upenn.edu/~sanjeev/postscript/FOCS09_MaxMin.pdf">this
-FOCS ’09 paper</a>)</li>
+FOCS’09 paper</a>)</li>
 <li>The integrality gap is small (a constant), but approximation algs
-based on the LP cannot do that good. (Zhiyi Huang gave a <a href="https://tcsuestc.com/2025/06/13/optimal-4-approximation-for-the-correlated-pandoras-problem/">talk</a>
-recently. The correlated Pandora’s problem has a natural LP formulation
-with gap <span class="math inline">\(&lt;4\)</span>, while <a href="https://tetali.math.gatech.edu/PUBLIS/mssc_final.pdf">it is
-NP-hard</a> to pproximate it within a ratio of <span class="math inline">\(4-\epsilon\)</span>.)</li>
+based on the LP cannot do that good. (Zhiyi Huang gave a <a href="https://tcsuestc.com/2025/06/13/optimal-4-approximation-for-the-correlated-pandoras-problem/">talk
+at UESTC</a> recently. <a href="https://arxiv.org/abs/2509.17029" class="uri">https://arxiv.org/abs/2509.17029</a> The correlated
+Pandora’s problem has a natural LP formulation with gap <span class="math inline">\(&lt;4\)</span>, while <a href="https://tetali.math.gatech.edu/PUBLIS/mssc_final.pdf">it is
+NP-hard</a> to aproximate it within a ratio of <span class="math inline">\(4-\epsilon\)</span>.)</li>
 </ul>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">

@@ -20,7 +20,7 @@ Here are some methods with examples that I read in books and papers.
 
 Just do the counting.
 
-An example would be the celebrated tree packing theorem.
+## tree packing theorem
 
 ::: Example
 Consider the following integer program on graph $G=(V,E)$,
@@ -48,7 +48,7 @@ If $G$ is not connected, Let $G_1,...,G_k$ be the set of components in $G$. One 
 We fix $F^*\in \arg\min \frac{|E-F^*|}{r(E)-r(F^*)}$. $r(E)-r(F^*)$ must be positive and $E-F^*$ is a cut in $G$. Suppose $E-F^*$ is any cut in $G$. Let $S_1,...,S_h$ be components in $G\setminus (E\setminus F^*)$. For any $S_i$, the set of edges with exactly one endpoint in $S_i$ (denoted by $e[S_i]$) must contain a cut of $G$ since the $G$ is connected. One can see that $2|E-F^*|=\sum_i |e[S_i]|\ge \lambda (r(E)-r(F))$ since the number of component is $r(E)-r(F^*)$.
 :::
 
-A stronger example is the $k$-cut LP.
+## $k$-cut
 
 ::: Example
 \begin{align*}
@@ -75,20 +75,21 @@ A constant factor approximation algorithm based on LP may imply a constant upper
 
 Examples:
 
-1. vertex cover and set cover: <https://courses.grainger.illinois.edu/cs598csc/sp2011/Lectures/lecture_4.pdf>
-2. facility location: <https://www.cs.dartmouth.edu/~deepc/LecNotes/Appx/5.%20Deterministic%20Rounding%20for%20Facility%20Location.pdf>
+1. vertex cover and set cover [uiuc cs598csc](https://courses.grainger.illinois.edu/cs598csc/sp2011/Lectures/lecture_4.pdf)
+2. facility location [Dartmouth](https://www.cs.dartmouth.edu/~deepc/LecNotes/Appx/5.%20Deterministic%20Rounding%20for%20Facility%20Location.pdf)
+3. CKR relaxation of multiway cut [uiuc cs583](https://courses.grainger.illinois.edu/cs583/sp2018/Notes/multiwaycut-ckr.pdf)
+4. uniform labeling [FOCS'99](https://www.cs.cornell.edu/home/kleinber/focs99-mrf.pdf) basically multiway cut with assignment cost.
 
 
 # Intermediate problem
 
-I read this in [@chalermsook_approximating_2022]. Suppose that we want to prove constant gap for $LP1$. The idea is to find another LP (say $LP2$) which is integral or has constant gap and to prove that $\frac{\opt(IP1)}{\opt(IP2)}\le c_1$ and $\frac{\opt(LP2)}{\opt(LP1)}\le c_2$. Finally we will have something like this,
+I read about this in [@chalermsook_approximating_2022]. Suppose that we want to prove constant gap for $LP1$. The idea is to find another LP (say $LP2$) which is integral or has constant gap and to prove that $\frac{\opt(IP1)}{\opt(IP2)}\le c_1$ and $\frac{\opt(LP2)}{\opt(LP1)}\le c_2$. Finally we will have something like this,
 
 \begin{equation}
 \opt(IP1)\le c_1\opt(IP2)= c_1 \opt(LP2)\le c_1 c_2 \opt(LP1)
 \end{equation}
 
-The example in [@chalermsook_approximating_2022] is finding the minimum $k$-edge-connected spanning subgraph.
-
+## minimum $k$-edge-connected spanning subgraph
 
 We want to prove that the integral gap for the following LP is 2.
 
@@ -127,5 +128,5 @@ There are many discussions about the integrality gap on cstheory.
 
 It seems that the integrality gap has a deep connection with hardness of approximation. There are two kinds of problems that i find particularly interesting.
 
-- The LP has a relatively large gap, but some algorithm based on that LP achieves a better approximation than the gap.(see [this FOCS '09 paper](http://www.cis.upenn.edu/~sanjeev/postscript/FOCS09_MaxMin.pdf))
-- The integrality gap is small (a constant), but approximation algs based on the LP cannot do that good. (Zhiyi Huang gave a [talk](https://tcsuestc.com/2025/06/13/optimal-4-approximation-for-the-correlated-pandoras-problem/) recently. The correlated Pandora's problem has a natural LP formulation with gap $<4$, while [it is NP-hard](https://tetali.math.gatech.edu/PUBLIS/mssc_final.pdf) to pproximate it within a ratio of $4-\epsilon$.)
+- The LP has a relatively large gap, but some algorithm based on that LP achieves a better approximation than the gap.(see [this FOCS'09 paper](http://www.cis.upenn.edu/~sanjeev/postscript/FOCS09_MaxMin.pdf))
+- The integrality gap is small (a constant), but approximation algs based on the LP cannot do that good. (Zhiyi Huang gave a [talk at UESTC](https://tcsuestc.com/2025/06/13/optimal-4-approximation-for-the-correlated-pandoras-problem/) recently. <https://arxiv.org/abs/2509.17029> The correlated Pandora's problem has a natural LP formulation with gap $<4$, while [it is NP-hard](https://tetali.math.gatech.edu/PUBLIS/mssc_final.pdf) to aproximate it within a ratio of $4-\epsilon$.)

@@ -82,7 +82,7 @@ Now consider the distortion of this embedding. Let $q$ be the distortion and let
 
 If we embed into a distribution of 2-HSTs, then the indicator variable $\chi$ will become the probability that $x,y$ are not in the same eqivalence class.
 
-This kind of LP-formulating technique goes back to the uniform labeling LP of Jon Kleinberg and Eva Tardos (see their [JACM'02 paper](https://www.cs.cornell.edu/home/kleinber/focs99-mrf.pdf)) which in turn is analogous to the multiway cut LP of Călinescu (see [this paper](https://arxiv.org/pdf/1611.05530)).
+This kind of LP-formulating technique goes back to the uniform labeling LP of Jon Kleinberg and Eva Tardos (see their [JACM'02 paper](https://www.cs.cornell.edu/home/kleinber/focs99-mrf.pdf)) which in turn is analogous to the multiway cut LP of Călinescu (see this [IPCO'17 paper](https://arxiv.org/pdf/1611.05530)).
 In all these problems we want to 'label' vertices in a graph and only edges with different labels contribute to the solution.
 
 A good property of embedding into 2-HSTs is we don't require the solution to integral. However, the main difficulty is that we need to solve $\log \Delta$ labeling problems and they are dependent. For example, if $x,y$ are not separated at level $r$, they shouldn't be separated at any higher level; In a distribution of 2-HSTs, this means that the probability of $x\sim y$ is non-decreasing in the level.
@@ -92,6 +92,7 @@ With all these observation in mind, the LP seems intuitive.
 # TODO
 
 - understand their LP.
-    - why don't they use the same variable for separation as uniform labeling LP?
+    - connections to CKR relaxation
+    - connections to LP hierarchies
     - why the optimal solution is not always a distribution of HSTs
 - how to move from exact 2-HST to general HSTs?
