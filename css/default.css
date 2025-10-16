@@ -21,9 +21,13 @@ body a:hover {
     text-decoration: underline;
     text-decoration-style: solid;
 }
-.text-space a:visited {
-    color: #7e50a9; /* Color for visited links */
+main a:hover {
+    background-color:thistle;
+    text-decoration: none;
 }
+/* .text-space a:visited {
+    color: #7e50a9;
+} */
 .text-space .langtag {
     color: gray;
 }
