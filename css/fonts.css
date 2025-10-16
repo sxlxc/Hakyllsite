@@ -1,18 +1,5 @@
 
 /* fonts */
-.noto-sans-sc-regular {
-  font-family: "Noto Sans SC", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-.noto-sans-sc-bold {
-  font-family: "Noto Sans SC", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-}
-
 
 @font-face {
   font-family: "Fira Sans";

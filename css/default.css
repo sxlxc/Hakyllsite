@@ -1,7 +1,6 @@
-@import "fonts.css";
 
 body {
-    font-family: 'Fira Sans', 'Noto Sans SC', sans-serif;
+    font-family: 'Fira Sans', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
