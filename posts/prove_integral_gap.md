@@ -75,21 +75,23 @@ A constant factor approximation algorithm based on LP may imply a constant upper
 
 Examples:
 
-1. vertex cover and set cover [uiuc cs598csc](https://courses.grainger.illinois.edu/cs598csc/sp2011/Lectures/lecture_4.pdf)
-2. facility location [Dartmouth](https://www.cs.dartmouth.edu/~deepc/LecNotes/Appx/5.%20Deterministic%20Rounding%20for%20Facility%20Location.pdf)
-3. CKR relaxation of multiway cut [uiuc cs583](https://courses.grainger.illinois.edu/cs583/sp2018/Notes/multiwaycut-ckr.pdf)
-4. uniform labeling [FOCS'99](https://www.cs.cornell.edu/home/kleinber/focs99-mrf.pdf) basically multiway cut with assignment cost.
-
+(@) vertex cover. simple threshold rounding or the LP structure (there is a half integral optimal solution)
+(@) facility location. [Dartmouth](https://www.cs.dartmouth.edu/~deepc/LecNotes/Appx/5.%20Deterministic%20Rounding%20for%20Facility%20Location.pdf)
+(@) CKR relaxation of multiway cut [uiuc cs583 sp18](https://courses.grainger.illinois.edu/cs583/sp2018/Notes/multiwaycut-ckr.pdf)
+(@) uniform labeling (multiway cut with assignment cost) [FOCS'99](https://www.cs.cornell.edu/home/kleinber/focs99-mrf.pdf)
+(@gsn) generalized steiner network problem with skew-supermodular requirements. iterative rounding. [uiuc cs598 sp09](https://courses.grainger.illinois.edu/cs598csc/sp2009/lectures/lecture_14_draft.pdf)
 
 # Intermediate problem
 
 I read about this in [@chalermsook_approximating_2022]. Suppose that we want to prove constant gap for $LP1$. The idea is to find another LP (say $LP2$) which is integral or has constant gap and to prove that $\frac{\opt(IP1)}{\opt(IP2)}\le c_1$ and $\frac{\opt(LP2)}{\opt(LP1)}\le c_2$. Finally we will have something like this,
 
 \begin{equation}
-\opt(IP1)\le c_1\opt(IP2)= c_1 \opt(LP2)\le c_1 c_2 \opt(LP1)
+\opt(IP1)\le c_1\opt(IP2)\le c_1 \opt(LP2)\le c_1 c_2 \opt(LP1)
 \end{equation}
 
 ## minimum $k$-edge-connected spanning subgraph
+
+This problem is a special case of @gsn in the rounding part.
 
 We want to prove that the integral gap for the following LP is 2.
 

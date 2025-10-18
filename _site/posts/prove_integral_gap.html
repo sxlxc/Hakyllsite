@@ -213,14 +213,16 @@ c\)</span>.)</li>
 <p>A constant factor approximation algorithm based on LP may imply a
 constant upperbound of the corresponding LP.</p>
 <p>Examples:</p>
-<ol type="1">
-<li>vertex cover and set cover <a href="https://courses.grainger.illinois.edu/cs598csc/sp2011/Lectures/lecture_4.pdf">uiuc
-cs598csc</a></li>
-<li>facility location <a href="https://www.cs.dartmouth.edu/~deepc/LecNotes/Appx/5.%20Deterministic%20Rounding%20for%20Facility%20Location.pdf">Dartmouth</a></li>
+<ol class="example" type="1">
+<li>vertex cover. simple threshold rounding or the LP structure (there
+is a half integral optimal solution)</li>
+<li>facility location. <a href="https://www.cs.dartmouth.edu/~deepc/LecNotes/Appx/5.%20Deterministic%20Rounding%20for%20Facility%20Location.pdf">Dartmouth</a></li>
 <li>CKR relaxation of multiway cut <a href="https://courses.grainger.illinois.edu/cs583/sp2018/Notes/multiwaycut-ckr.pdf">uiuc
-cs583</a></li>
-<li>uniform labeling <a href="https://www.cs.cornell.edu/home/kleinber/focs99-mrf.pdf">FOCS’99</a>
-basically multiway cut with assignment cost.</li>
+cs583 sp18</a></li>
+<li>uniform labeling (multiway cut with assignment cost) <a href="https://www.cs.cornell.edu/home/kleinber/focs99-mrf.pdf">FOCS’99</a></li>
+<li>generalized steiner network problem with skew-supermodular
+requirements. iterative rounding. <a href="https://courses.grainger.illinois.edu/cs598csc/sp2009/lectures/lecture_14_draft.pdf">uiuc
+cs598 sp09</a></li>
 </ol>
 <h1 data-number="3" id="intermediate-problem"><span class="header-section-number">3</span> Intermediate problem</h1>
 <p>I read about this in <span class="citation" data-cites="chalermsook_approximating_2022">[<a href="#ref-chalermsook_approximating_2022" role="doc-biblioref">4</a>]</span>. Suppose that we want to prove
@@ -230,10 +232,11 @@ is integral or has constant gap and to prove that <span class="math inline">\(\f
 c_1\)</span> and <span class="math inline">\(\frac{\mathop{\mathrm{OPT}}(LP2)}{\mathop{\mathrm{OPT}}(LP1)}\le
 c_2\)</span>. Finally we will have something like this,</p>
 <p><span class="math display">\[\begin{equation}
-\mathop{\mathrm{OPT}}(IP1)\le c_1\mathop{\mathrm{OPT}}(IP2)= c_1
+\mathop{\mathrm{OPT}}(IP1)\le c_1\mathop{\mathrm{OPT}}(IP2)\le c_1
 \mathop{\mathrm{OPT}}(LP2)\le c_1 c_2 \mathop{\mathrm{OPT}}(LP1)
 \end{equation}\]</span></p>
 <h2 data-number="3.1" id="minimum-k-edge-connected-spanning-subgraph"><span class="header-section-number">3.1</span> minimum <span class="math inline">\(k\)</span>-edge-connected spanning subgraph</h2>
+<p>This problem is a special case of 5 in the rounding part.</p>
 <p>We want to prove that the integral gap for the following LP is 2.</p>
 <p><span class="math display">\[\begin{align*}
 LP1=\min&amp;   &amp; \sum_{e\in E} w(e&amp;)x_e    &amp; &amp;\\
