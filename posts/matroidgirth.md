@@ -219,6 +219,13 @@ Recently, Schlotter and Sebő find FPT time algorithm for the odd $T$-join probl
 
 Fomin and others studied FPT algorithms of [Space Cover]{.sc} problem (which is a generalization of matroid girth problem) on perturbed graphic matroids [@fomin_covering_2019].
 
+::: {.Problem title="[Space Cover]{.sc}"}
+Let $G=(V,E)$ be a multigraph on $n$ vertices and $m$ edges and let $P$ be a $n\times m$ matrix with constant rank. We write $I(G)$ for the incidence matrix of $G$.
+Given a set of terminal edges $T\subset E$ and an integer $k$, decide if there is a edge set $F\subset E\setminus T$ with $|F|<k$ such that $T\subset \span(F)$ in the binary matroid of $M(I(G)+P)$.
+:::
+
+They show that [Space Cover]{.sc} generalizes steiner tree and multiway cut even when $P$ is absent and they focus on FPT algorithms with parameter $k$. This problem is solvable in time $k^{O(k)}\poly(n+m)$.
+
 
 [^1]: *I realized that one doesn't need to understand Seymour's 55-page paper to see why the desired operations can be done in polynomial time...*<br>
 The proof of [@regulardecomp] has 3 parts:\

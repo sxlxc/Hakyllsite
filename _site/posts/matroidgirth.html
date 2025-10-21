@@ -61,6 +61,9 @@
                     mex: "\\mathop{\\operatorname{mex}}",
                     lcm: "\\mathop{\\operatorname{lcm}}",
                     dist: "\\mathop{\\operatorname{dist}}",
+                    poly: "\\mathop{\\operatorname{poly}}",
+                    polylog: "\\mathop{\\operatorname{polylog}}",
+                    span: "\\mathop{\\operatorname{span}}",
                 }
             }
         };
@@ -443,6 +446,20 @@ matroids</h1>
 <p>Fomin and others studied FPT algorithms of <span class="sc">Space
 Cover</span> problem (which is a generalization of matroid girth
 problem) on perturbed graphic matroids <span class="citation" data-cites="fomin_covering_2019">[<a href="#ref-fomin_covering_2019" role="doc-biblioref">8</a>]</span>.</p>
+<div class="theorem-environment Problem" data-index="10" type="Problem" title="[Space Cover]{.sc}">
+<span class="theorem-header"><span class="type">Problem</span><span class="index">10</span><span class="name"><span class="sc">Space
+Cover</span></span></span>
+<p>Let <span class="math inline">\(G=(V,E)\)</span> be a multigraph on
+<span class="math inline">\(n\)</span> vertices and <span class="math inline">\(m\)</span> edges and let <span class="math inline">\(P\)</span> be a <span class="math inline">\(n\times m\)</span> matrix with constant rank. We
+write <span class="math inline">\(I(G)\)</span> for the incidence matrix
+of <span class="math inline">\(G\)</span>. Given a set of terminal edges
+<span class="math inline">\(T\subset E\)</span> and an integer <span class="math inline">\(k\)</span>, decide if there is a edge set <span class="math inline">\(F\subset E\setminus T\)</span> with <span class="math inline">\(|F|&lt;k\)</span> such that <span class="math inline">\(T\subset \span(F)\)</span> in the binary matroid
+of <span class="math inline">\(M(I(G)+P)\)</span>.</p>
+</div>
+<p>They show that <span class="sc">Space Cover</span> generalizes
+steiner tree and multiway cut even when <span class="math inline">\(P\)</span> is absent and they focus on FPT
+algorithms with parameter <span class="math inline">\(k\)</span>. This
+problem is solvable in time <span class="math inline">\(k^{O(k)}\poly(n+m)\)</span>.</p>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
 <div id="ref-seymour_decomposition_1980" class="csl-entry" role="listitem">
