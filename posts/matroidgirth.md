@@ -215,7 +215,9 @@ and we want to compute the girth of $M(A)/\set{f}$. Each edge in $G$ has a label
 
 Recently, Schlotter and Sebő find FPT time algorithm for the odd $T$-join problem[@schlotter_odd_2025]. Sebő has some open problems on this topic which can be found [here(page 11)](https://users.renyi.hu/~emlektab/emlektabla17.pdf).
 
+# More on perturbed graphic matroids
 
+Fomin and others studied FPT algorithms of [Space Cover]{.sc} problem (which is a generalization of matroid girth problem) on perturbed graphic matroids [@fomin_covering_2019].
 
 
 [^1]: *I realized that one doesn't need to understand Seymour's 55-page paper to see why the desired operations can be done in polynomial time...*<br>
