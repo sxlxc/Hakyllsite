@@ -3,6 +3,7 @@ author: Yu Cong
 title:  给 skim 加点键盘快捷键!
 tags: macos
 lang: zh
+date: 2024-05-23
 ---
 
 > 2024年八月之后, 就没有再使用自己编译的skim了, 键盘快捷键用的不多

@@ -3,6 +3,7 @@ title:  Finding the largest slope of segments connecting two sets of points on 2
 tags: alg, CG
 author: Yu Cong
 lang: zh
+date: 2023-07-23
 ---
 
 >好长的标题啊

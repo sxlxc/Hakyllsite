@@ -3,6 +3,7 @@ title: Primal Dual Method
 tags: alg
 author: Yu Cong
 lang: zh
+date: 2022-05-04
 ---
 
 看了这本书

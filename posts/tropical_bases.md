@@ -3,6 +3,7 @@ title: Tropical bases and matroid circuits
 tags: matroid
 author: Yu Cong
 lang: en
+date: 2024-07-11
 ---
 
 

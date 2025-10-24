@@ -2,6 +2,7 @@
 title:  矩估计
 tags: statistics
 lang: zh
+date: 2022-06-22
 ---
 
 > 复习计量经济学，看到矩估计

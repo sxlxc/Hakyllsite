@@ -2,6 +2,7 @@
 title: 什么样的核函数可以用于非参数估计?
 tags: statistics
 lang: zh
+date: 2022-09-08
 ---
 
 > 2022 在计量2课上想的问题

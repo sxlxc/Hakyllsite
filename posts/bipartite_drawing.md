@@ -3,6 +3,7 @@ layout: post
 title:  "Bipartite Graph Drawing Problem"
 tags: zzz
 hide: true
+date: 2022-05-05
 ---
 
 最近遇到一个问题：给出二分图$G(V_1,V_2,E)$，$E\subset V_1 \times V_2$求两侧顶点排序使得边的交叉数量最少。

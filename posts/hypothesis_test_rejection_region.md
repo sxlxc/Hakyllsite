@@ -2,6 +2,7 @@
 title:  "单侧参数假设检验的拒绝域"
 lang: zh
 tags: statistics
+date: 2021-12-06
 ---
 
 

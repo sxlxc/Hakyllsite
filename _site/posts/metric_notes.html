@@ -142,14 +142,13 @@ found a proof in <em>Proofs from THE BOOK</em> <a href="https://link.springer.co
 <h1 data-number="3" id="shortest-path-representation"><span class="header-section-number">3</span> Shortest path representation</h1>
 <p>For any finite metric on <span class="math inline">\(V\)</span> there
 is a corresponding graph shortest path metric on <span class="math inline">\(G=(V,E)\)</span> with <span class="math inline">\(c:E\to \R\)</span>. Given a finite metric on <span class="math inline">\(V\)</span>, how to find <span class="math inline">\(G\)</span> with <span class="math inline">\(|E|\)</span> as small as possible? This looks
-similar to <a href="../posts/2023-01-26-minDAG.html">a previous post in
-chinese</a>. How to prove that computing the minimum number of edges is
-NP-hard?</p>
+similar to <a href="../posts/minDAG.html">a previous post in chinese</a>.
+How to prove that computing the minimum number of edges is NP-hard?</p>
 <p>Consider a simple case that the metric space is 2D Euclidean space.
 One can see that the graph for the shortest path representation is a
 complete graph if and only if all the points in the 2D plane is in
 general position. However, deciding if a set of points in <span class="math inline">\(\mathbb Q\times \mathbb Q\)</span> is NP-complete.
-The reduction is from graph independent set. See <a href="../posts/points-in-general-position.md">this post</a>.</p>
+The reduction is from graph independent set. See <a href="../posts/points_in_general_position.html">this post</a>.</p>
 <h1 data-number="4" id="embedding-tree-metric-into-rolog-nell_infty"><span class="header-section-number">4</span> Embedding tree metric into <span class="math inline">\((\R^{O(\log n)},\ell_\infty)\)</span></h1>
 <p>There is an exercise in <a href="https://home.ttic.edu/~harry/teaching/pdf/lecture1.pdf">lecture
 notes 1</a> of TTIC CMCS 39600. Show that any <span class="math inline">\(n\)</span> point tree metric <span class="math inline">\((X,d)\)</span> can be embedded isometrically into

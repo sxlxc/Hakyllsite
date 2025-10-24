@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Shifting Cards"
-date:   2023-05-03 0:00:00 +0800
+date:   2023-05-03
 hide: true
 tags: zzz
 ---

@@ -3,6 +3,7 @@ title: C++ kd-tree implementations
 tags: alg, C++
 author: Yu Cong
 lang: zh
+date: 2023-04-01
 ---
 
 > 2025年4月25日更新. 最近有UCR做并行的同学来访问, [讲$k$d-tree](https://tcsuestc.com/2025/04/22/parallel-kd-tree-with-batch-updates/), 写的十分好.

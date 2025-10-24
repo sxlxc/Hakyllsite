@@ -3,6 +3,7 @@ author: Yu Cong
 title:  Mutually orthogonal Latin squares and projective planes and hypergraphs and matching and base packing
 tags: combinatorics
 lang: en
+date: 2024-03-01
 ---
 finally a title with lots of 'and'
 

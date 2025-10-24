@@ -3,6 +3,7 @@ title: 运筹学会数学规划分会第十届研究生论坛
 tags: travel
 author: Yu Cong
 lang: zh
+date: 2024-11-09
 ---
 
 <!-- ### <https://arxiv.org/abs/2209.10336> 边伟

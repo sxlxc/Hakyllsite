@@ -2,6 +2,7 @@
 title: Autoregressive Process & Weakly Stationarity
 tags: econometrics
 lang: zh
+date: 2022-10-18
 ---
 
 > 2022 计量2 课程内容 后面发现问题出在没有学过随机过程

@@ -4,6 +4,7 @@ tags: alg, optimization, LP
 author: Yu Cong
 lang: en
 showtoc: true
+date: 2024-09-20
 ---
 
 

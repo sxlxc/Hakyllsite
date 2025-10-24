@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Stoer-Wagner算法cut-of-the-phase部分证明"
-date:   2022-2-15 8:30:08 +0800
+date:   2022-02-15
 tags: alg
 lang: zh
 ---

@@ -3,6 +3,7 @@ layout: post
 title:  "Hall's Theorem"
 tags: zzz
 hide: true
+date: 2023-03-02
 ---
 
 [bipartite perfect matching](https://cs.stackexchange.com/questions/50410/perfect-matching-in-a-graph-and-complete-matching-in-bipartite-graph)

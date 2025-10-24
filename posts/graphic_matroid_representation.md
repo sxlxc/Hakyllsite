@@ -4,6 +4,7 @@ tags: matroid
 author: Yu Cong
 lang: en
 # draft: true
+date: 2025-01-09
 ---
 
 > While reading <https://arxiv.org/pdf/2407.09477> (for a reading group), I realized that I lack knowledge about matroid representation.

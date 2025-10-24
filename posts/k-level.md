@@ -1,6 +1,6 @@
 ---
 title:  k-level
-date:   2022-9-25 00:00:00 +0800
+date: 2022-09-25
 tags: alg, CG
 lang: zh
 ---

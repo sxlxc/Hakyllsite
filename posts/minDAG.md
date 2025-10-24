@@ -2,6 +2,8 @@
 title: DAG with smallest number of vertices
 tags: alg, combinatorics
 lang: zh
+date: 2023-01-26
+
 ---
 
 <!-- >我还没有非常仔细的想这个问题，也还没去查。这个问题可能非常简单，可能已经有人研究过这个问题了 -->

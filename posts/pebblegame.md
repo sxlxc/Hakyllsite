@@ -3,6 +3,7 @@ author: Yu Cong
 title:  Collecting pebbles and (hyper)graph sparsity
 tags: alg, sage, combinatorics
 lang: en
+date: 2024-03-11
 ---
 
 > assuming familiarity with basic matroid thoery

@@ -3,6 +3,7 @@ title: About this site
 tags: hakyll, katex
 author: Yu Cong
 lang: en
+date: 2024-06-23
 ---
 
 
