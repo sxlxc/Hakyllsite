@@ -24,9 +24,9 @@ main = hakyll $ do
     route idRoute
     compile copyFileCompiler
 
-  match "katex/**" $ do
-    route idRoute
-    compile copyFileCompiler
+  -- match "katex/**" $ do
+  --   route idRoute
+  --   compile copyFileCompiler
 
   match "mathjax/**" $ do
     route idRoute
@@ -40,9 +40,9 @@ main = hakyll $ do
     route idRoute
     compile copyFileCompiler
 
-  match "favicon.ico" $ do
-    route idRoute
-    compile copyFileCompiler
+  -- match "favicon.ico" $ do
+  --   route idRoute
+  --   compile copyFileCompiler
 
   match "404.html" $ do
     route idRoute
@@ -92,6 +92,26 @@ main = hakyll $ do
         >>= relativizeUrls
         -- >>= katexFilter  -- use mathjax.
 
+  match "standalone/*" $ do
+    route $ setExtension "html"
+    compile $ do
+      tocCtx <- getTocCtx (postCtxWithTags tags)
+      chaoDocCompiler
+        >>= loadAndApplyTemplate "templates/standalone.html" tocCtx
+        >>= relativizeUrls
+  create ["notes.html"] $ do
+    route idRoute
+    compile $ do
+      notes <- recentFirst =<< loadAll "standalone/*"
+      let notesCtx =
+            listField "posts" postCtx (return notes)
+              `mappend` constField "title" "Notes"
+              `mappend` defaultContext
+      makeItem ""
+        >>= loadAndApplyTemplate "templates/notes.html" notesCtx
+        >>= loadAndApplyTemplate "templates/index.html" notesCtx
+        >>= relativizeUrls
+
   create ["archive.html"] $ do
     route idRoute
     compile $ do
@@ -102,20 +122,20 @@ main = hakyll $ do
               `mappend` defaultContext
       makeItem ""
         >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
-        >>= loadAndApplyTemplate "templates/default.html" archiveCtx
+        >>= loadAndApplyTemplate "templates/index.html" archiveCtx
         >>= relativizeUrls
 
   create ["draft.html"] $ do
     route idRoute
     compile $ do
       posts <- recentFirst =<< loadAll "posts/*"
-      let archiveCtx =
+      let draftCtx =
             listField "posts" postCtx (return posts)
               `mappend` constField "title" "Drafts"
               `mappend` defaultContext
       makeItem ""
-        >>= loadAndApplyTemplate "templates/draft.html" archiveCtx
-        >>= loadAndApplyTemplate "templates/default.html" archiveCtx
+        >>= loadAndApplyTemplate "templates/draft.html" draftCtx
+        >>= loadAndApplyTemplate "templates/index.html" draftCtx
         >>= relativizeUrls
 
   match "index.html" $ do

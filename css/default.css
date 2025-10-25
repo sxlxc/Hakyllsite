@@ -27,7 +27,8 @@ body a:hover {
 }
 
 main a:hover {
-    background-color: thistle;
+    background-color: #e6f0ff;
+    color: #002266;
     text-decoration: none;
 }
 
@@ -81,10 +82,6 @@ header {
 
 .navbar a:visited {
     color: black;
-}
-
-.navbar a:hover {
-    text-decoration: none;
 }
 
 nav {
