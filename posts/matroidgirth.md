@@ -161,7 +161,7 @@ $M$. Then the cocircuit space of $M$ equals the row space of $A$. Moreover, this
 has dimension $r$ and is the orthogonal subspace of the circuit space of $M$.
 :::
 
-What we are finding is the minimum support of vectors in the row space of $A$ such that the support has empty intersection with $T$. Note that the support of rows in the graph incidence matrix $A(G)$ has interpretation. They are exactly $\delta(X)$ where $X$ is the set of vertices for the summand rows. Thus we divide the problem into 2 cases. Let $B[u]$ be a $t$-dimentional binary label on each vertex.
+What we are finding is the minimum support of vectors in the row space of $A$ such that the support has empty intersection with $T$[^2]. Note that the support of rows in the graph incidence matrix $A(G)$ has interpretation. They are exactly $\delta(X)$ where $X$ is the set of vertices for the summand rows. Thus we divide the problem into 2 cases. Let $B[u]$ be a $t$-dimentional binary label on each vertex.
 
 1. The row indexed by $\set{v}$ is not in the solution. Find the smallest non-empty cut $\delta(X)$ in $G$ such that $\sum_{u\in X}B[u]=\mathbf 0$.
 2. The row indexed by $\set{v}$ is in the solution. Now $\sigma$ represents a subset of edges in $G$. We want to find a cut $\delta(X)$ such that $\sigma \Delta \delta(X)$ is minimized and non-empty and $\sum_{u\in X}B[u]=\alpha$.
@@ -239,3 +239,5 @@ The proof of [@regulardecomp] has 3 parts:\
 - Every 3-connected regular matroid which is neither graphic nor cographic has an $R_{10}$ or $R_{12}$ minor.
     Let $M$ be a matroid. $M$ is 3-connected iff $M$ is not expressible as a 1- or 2-sum. (cf. [@seymour_decomposition_1980] 2.10(b))
     It follows that the remaining regular matroids are graphic or cographic.
+
+[^2]: Why? We want to find the cocircuit with minimum size. This is exactly the vector with minimum number of 1s in the cocircuit space if our matroid is binary. In binary matroid the symmetric difference of (co)circuits contains a (co)circuit and is dependent.

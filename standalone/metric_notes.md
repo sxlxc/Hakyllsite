@@ -1,5 +1,6 @@
 ---
 title: Metric notes
+subtitle: Outlier embedding
 tags: metrics, optimization
 author: Yu Cong
 lang: en

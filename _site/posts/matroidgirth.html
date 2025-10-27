@@ -358,9 +358,9 @@ the circuit space of <span class="math inline">\(M\)</span>.</p>
 </div>
 <p>What we are finding is the minimum support of vectors in the row
 space of <span class="math inline">\(A\)</span> such that the support
-has empty intersection with <span class="math inline">\(T\)</span>. Note
-that the support of rows in the graph incidence matrix <span class="math inline">\(A(G)\)</span> has interpretation. They are exactly
-<span class="math inline">\(\delta(X)\)</span> where <span class="math inline">\(X\)</span> is the set of vertices for the summand
+has empty intersection with <span class="math inline">\(T\)</span><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Note that the support of rows in
+the graph incidence matrix <span class="math inline">\(A(G)\)</span> has
+interpretation. They are exactly <span class="math inline">\(\delta(X)\)</span> where <span class="math inline">\(X\)</span> is the set of vertices for the summand
 rows. Thus we divide the problem into 2 cases. Let <span class="math inline">\(B[u]\)</span> be a <span class="math inline">\(t\)</span>-dimentional binary label on each
 vertex.</p>
 <ol type="1">
@@ -533,6 +533,10 @@ regular matroids that are not separable via 1/2/3-sum and have no <span class="m
 cographic has an <span class="math inline">\(R_{10}\)</span> or <span class="math inline">\(R_{12}\)</span> minor. Let <span class="math inline">\(M\)</span> be a matroid. <span class="math inline">\(M\)</span> is 3-connected iff <span class="math inline">\(M\)</span> is not expressible as a 1- or 2-sum.
 (cf. <span class="citation" data-cites="seymour_decomposition_1980">[<a href="#ref-seymour_decomposition_1980" role="doc-biblioref">1</a>]</span> 2.10(b)) It follows that the
 remaining regular matroids are graphic or cographic.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Why? We want to find the cocircuit with minimum size.
+This is exactly the vector with minimum number of 1s in the cocircuit
+space if our matroid is binary. In binary matroid the symmetric
+difference of (co)circuits contains a (co)circuit and is dependent.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
     </section>
