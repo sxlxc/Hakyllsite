@@ -8,3 +8,4 @@ build/
 # binaries
 katex_cli
 site
+_site/

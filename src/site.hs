@@ -40,9 +40,9 @@ main = hakyll $ do
     route idRoute
     compile copyFileCompiler
 
-  -- match "favicon.ico" $ do
-  --   route idRoute
-  --   compile copyFileCompiler
+  match "favicon.ico" $ do
+    route idRoute
+    compile copyFileCompiler
 
   match "404.html" $ do
     route idRoute
