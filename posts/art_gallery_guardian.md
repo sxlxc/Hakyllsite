@@ -34,4 +34,4 @@ The decision version of this problem is [$\exists \R$-complete](https://en.wikip
 
 While the are gallery guardian problem is hard, a varient called the *contiguous art gallery problem* is polynomially solvable (in time $O(kn^2\log^2 n)$, where $n$ is the number of vertices in the polygon and $k$ is the solution size).
 Contiguous means that each guard is assigned a contiguous portion of the boundary.
-see <https://arxiv.org/pdf/2508.09734v1>
+see <https://arxiv.org/pdf/2508.09734v1>. (Later they close the gap and show that the Contiguous Art Gallery problem is in $\Theta(n\log n)$)
