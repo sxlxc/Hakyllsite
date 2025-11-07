@@ -156,7 +156,7 @@ y(e)    & e\in B\\
 
 One can easily verify that $y'(e)\leq y(e)$ for all $e$ and $B$ is still the minimum weight base under weights $y'$. Now it remains to show that $y'\in P'$. 
 
-1. Every element is in a minimum base. For $e\in B$ this is automatically satisfied. We consider $e\notin B$. Let $f\in C_e$ be the element in the fundamental circuit of $B+e$ with smallest weight $y(e)$. $B^e=B-e+f$ is a base and we have $y'(B^e)=y'(B)$.
+1. Every element is in a minimum base. For $e\in B$ this is automatically satisfied. We consider $e\notin B$. Let $f\in C_e$ be the element in the fundamental circuit of $B+e$ with smallest weight $y(e)$. $B^e=B+e-f$ is a base and we have $y'(B^e)=y'(B)$.
 2. For all base $B'$, $y'(B')\geq 1$ holds since $y'(B')\geq y'(B) = y(B)\geq 1$.
 :::
 
