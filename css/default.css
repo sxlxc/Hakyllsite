@@ -1,3 +1,22 @@
+:root {
+    --color-text: black;
+    --color-tag1: gray;
+    --color-tag2: darkolivegreen;
+    --color-bg: white;
+    --color-link: #337ab7;
+    --color-linkhbg: #e6f0ff;
+    --color-linkh: #002266;
+    --color-bq: olivedrab;
+    --color-notice: #fb4f4f;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-text: white;
+        --color-bg: black;
+    }
+}
+
 html {
     scrollbar-gutter: stable;
 }
@@ -9,15 +28,15 @@ body {
     font-style: normal;
     font-size: 1.2em;
     line-height: 125%;
-    color: black;
-    background-color: white;
+    color: var(--color-text);
+    background-color: var(--color-bg);
     text-rendering: optimizeLegibility;
     text-align: justify;
     font-feature-settings: var(--fira-sans-ss05), var(--fira-sans-dlig), var(--fira-sans-liga), var(--fira-sans-kern);
 }
 
 body a {
-    color: #337ab7;
+    color: var(--color-link);
     text-decoration: none;
 }
 
@@ -27,20 +46,13 @@ body a:hover {
 }
 
 main a:hover {
-    background-color: #e6f0ff;
-    color: #002266;
+    background-color: var(--color-linkhbg);
+    color: var(--color-linkh);
     text-decoration: none;
 }
 
-/* .text-space a:visited {
-    color: #7e50a9;
-} */
 .text-space .langtag {
-    color: gray;
-}
-
-.text-space a[title] {
-    color: darkolivegreen;
+    color: var(--color-tag1);
 }
 
 .sc {
@@ -60,14 +72,11 @@ header {
     font-family: "IosevkaC", sans-serif;
 }
 
-/* Navbar styling  only for top bar!!!*/
+/* top bar*/
 .navbar {
     display: flex;
-    /* Uses flexbox for layout */
     justify-content: space-between;
-    /* Distributes space between elements */
     align-items: center;
-    /* Vertically centers the items */
 }
 
 .navright a {
@@ -77,16 +86,16 @@ header {
 /* Links inside the navbar */
 .navbar a {
     text-decoration: none;
-    color: black;
+    color: var(--color-text);
 }
 
 .navbar a:visited {
-    color: black;
+    color: var(--color-text);
 }
 
 nav {
     text-align: right;
-    border-bottom: solid 1px black;
+    border-bottom: solid 1px var(--color-text);
 }
 
 nav a {
@@ -114,7 +123,7 @@ nav a {
 
 
 footer {
-    color: #555;
+    color: var(--color-text);
     font-size: 12px;
     margin-top: 30px;
     text-align: right;
@@ -165,13 +174,13 @@ h3 {
 article .header {
     font-size: 1rem;
     font-style: normal;
-    color: #555;
+    color: var(--color-tag1);
     text-align: left;
 }
 
 
 .info {
-    color: darkolivegreen;
+    color: var(--color-tag2);
     font-size: 1.1rem;
     font-style: normal;
     text-align: left;
@@ -179,19 +188,19 @@ article .header {
 }
 
 .info a {
-    color: darkolivegreen;
+    color: var(--color-tag2);
     font-size: 1.1rem;
     font-style: normal;
     text-align: left;
 }
 
 .info a:visited {
-    color: darkolivegreen;
+    color: var(--color-tag2);
 }
 
 .ascii-art {
     margin: 0;
-    border: 2px solid black;
+    border: 2px solid var(--color-text);
     padding: 10px;
     background-color: #f0f0f0;
     display: block;
@@ -202,12 +211,11 @@ article .header {
 blockquote {
     margin: 0em 0px;
     padding: 0em 1em;
-    border-left: 3px solid olivedrab;
+    border-left: 3px solid var(--color-bq);
 }
 
 blockquote p {
     margin: 0;
-    /* Removes default paragraph margin inside blockquote */
 }
 
 hr {
@@ -283,7 +291,7 @@ code {
 
 
 .draft-notice {
-    color: #fb4f4f;
+    color: var(--color-notice);
     margin: 1em auto;
     text-align: center
 }
@@ -303,22 +311,17 @@ code {
         text-align: left;
         max-width: 876px;
     }
-
-    /* .navright{
-        overflow-x: auto;
-        overflow-y: hidden;
-        white-space: nowrap;
-    } */
-    .katex-display {
+    mjx-container[display="true"]
+    /*, .katex-display */ {
         overflow-x: auto;
         overflow-y: hidden;
     }
 
-    .katex-display>.katex>.katex-html>.tag {
+    /* .katex-display>.katex>.katex-html>.tag {
         display: inline-block;
         position: relative;
         padding-left: 10pt;
-    }
+    } */
 }
 
 .navbar-space {
