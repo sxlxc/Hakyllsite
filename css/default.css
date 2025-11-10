@@ -190,16 +190,12 @@ article .header {
 }
 
 .ascii-art {
+    margin: 0;
     border: 2px solid black;
-    /* Adds a solid border */
     padding: 10px;
-    /* Adds space between the border and the content */
     background-color: #f0f0f0;
-    /* Optional: background color to make it stand out */
-    display: inline-block;
-    /* Keeps the border close to the content */
+    display: block;
     font-family: monospace;
-    /* Ensures consistent ASCII art font */
     line-height: normal;
 }
 
@@ -391,6 +387,26 @@ code {
     .text-space {
         display: inline-block;
         width: 66%;
+    }
+
+    .gallery {
+        padding-top: 60px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .gallery {
+        column-width: 280px;
+        /* target column width */
+        column-gap: 20px;
+    }
+
+    .gallery img {
+        width: 100%;
+        display: block;
+        margin-bottom: 10px;
     }
 }
 
