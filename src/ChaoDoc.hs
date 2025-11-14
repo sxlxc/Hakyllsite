@@ -1,7 +1,10 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE LambdaCase #-}
+{-# LANGUAGE BlockArguments #-}
 
 module ChaoDoc (chaoDocRead, chaoDocWrite, chaoDocCompiler) where
 
+import SideNoteHTML (usingSideNotesHTML)
 import Control.Monad.State
 import Data.Either
 import Data.Functor
@@ -13,6 +16,7 @@ import qualified Data.Text as T
 import Hakyll
 import System.IO.Unsafe
 import Text.Pandoc
+import Text.Pandoc.Builder
 import Text.Pandoc.Citeproc
 import Text.Pandoc.Walk (query, walk, walkM)
 
@@ -215,4 +219,4 @@ myReadPandocBiblio ropt csl biblio pdfilter item = do
   return $ fmap (const pandoc') item
 
 myFilter :: Pandoc -> Pandoc
-myFilter = theoremFilter
+myFilter = usingSideNotesHTML chaoDocWrite . theoremFilter

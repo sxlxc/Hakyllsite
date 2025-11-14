@@ -45,7 +45,7 @@ Every non-leaf node in the decomposition tree represents a regular matroid $M$ w
     We need to prove that all these operations can be done in polynomial time. 
 
     For the 2/3-sum case we need to find in at least one of the summands the minimum circuit that contains a common element $e$. However, finding such a minimum circuit is regular matroids is not known to be polynomially solvable.
-    To understand what's happening here we need to look into ~~Seymour's proof[^1]~~ the decomposition tree. 
+    To understand what's happening here we need to look into ~~Seymour's proof~~[^1] the decomposition tree. 
 
     Instead of considering our binary decomposition tree, we now construct a new graph $G$ where each vertex represents a graphic matroid, cographic matroid or $R_{10}$ and there is an edge between two vertices if the corresponding matroids are patched using 1/2/3-sum. We claim that there is no cycle in the graph. The graph is connected. Assume that there is a cycle and let $M_1,M_2$ be two matroids whose corresponding vertices are in the cycle. Consider the LCA $M$ of $M_1$ and $M_2$ in the binary tree. $M$ represents a connected subgraph $H\subset G$ that contains $M_1$ and $M_2$ but not the entire cycle since otherwise there will be 2 1/2/3-sum operation between two regular matroids. However, $M_1$ and $M_2$ are still connected in $G-E[H]$ since $M_1$ and $M_2$ are in the same cycle, which contradicts the uniqueness of the LCA.
 
@@ -228,16 +228,16 @@ They show that [Space Cover]{.sc} generalizes steiner tree and multiway cut even
 
 
 [^1]: *I realized that one doesn't need to understand Seymour's 55-page paper to see why the desired operations can be done in polynomial time...*<br>
-The proof of [@regulardecomp] has 3 parts:\
-\
-- There is a special 10-element regular matroid $R_{10}$ such that any regular matroid can be obtained by 1/2-sums from regular matroids without $R_{10}$ minor and copies of $R_{10}$. 
-    (Now we can assume that we are working with regular matroids which have no $R_{10}$ minor and are not separable via 1/2-sum.)\
-\
-- There is another 12-element regular matroid $R_{12}$ such that any regular matroid can be obtained by 1/2/3-sums from matroids without $R_{12}$ minor. 
-    (Now we are working with regular matroids that are not separable via 1/2/3-sum and have no $R_{10}$ or $R_{12}$ minors.)\
-\
-- Every 3-connected regular matroid which is neither graphic nor cographic has an $R_{10}$ or $R_{12}$ minor.
-    Let $M$ be a matroid. $M$ is 3-connected iff $M$ is not expressible as a 1- or 2-sum. (cf. [@seymour_decomposition_1980] 2.10(b))
-    It follows that the remaining regular matroids are graphic or cographic.
+The proof of [@regulardecomp] has 3 parts:
+
+    - There is a special 10-element regular matroid $R_{10}$ such that any regular matroid can be obtained by 1/2-sums from regular matroids without $R_{10}$ minor and copies of $R_{10}$. 
+(Now we can assume that we are working with regular matroids which have no $R_{10}$ minor and are not separable via 1/2-sum.)
+
+    - There is another 12-element regular matroid $R_{12}$ such that any regular matroid can be obtained by 1/2/3-sums from matroids without $R_{12}$ minor. 
+(Now we are working with regular matroids that are not separable via 1/2/3-sum and have no $R_{10}$ or $R_{12}$ minors.)
+
+    - Every 3-connected regular matroid which is neither graphic nor cographic has an $R_{10}$ or $R_{12}$ minor.
+Let $M$ be a matroid. $M$ is 3-connected iff $M$ is not expressible as a 1- or 2-sum. (cf.<span class="citation" data-cites="seymour_decomposition_1980">[<a href="#ref-seymour_decomposition_1980" role="doc-biblioref">1</a>]</span> 2.10(b))
+It follows that the remaining regular matroids are graphic or cographic.
 
 [^2]: Why? We want to find the cocircuit with minimum size. This is exactly the vector with minimum number of 1s in the cocircuit space if our matroid is binary. In binary matroid the symmetric difference of (co)circuits contains a (co)circuit and is dependent.

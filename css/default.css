@@ -218,15 +218,6 @@ blockquote p {
     margin: 0;
 }
 
-hr {
-    display: block;
-    height: 3px;
-    border: 0;
-    border-top: 3px dashed #ccc;
-    margin: 1em 0;
-    padding: 0;
-}
-
 table,
 th,
 td {
@@ -236,12 +227,10 @@ td {
 }
 
 figure {
-    /* border: thin #c0c0c0 solid; */
     display: flex;
     flex-flow: column;
     padding: 5px;
     margin: auto;
-    /* width: 60%; */
     max-width: 80%;
 }
 
@@ -275,7 +264,6 @@ div.highlight,
 pre code {
     margin: auto;
     padding: 10px;
-    background: #eee;
     overflow: auto;
     display: block;
 }
@@ -283,7 +271,6 @@ pre code {
 code {
     font-family: "IosevkaC", monospace;
     margin: 0 auto;
-    background: #eee;
     display: inline-block;
     padding: 0px 2px;
     border-radius: 2px;
@@ -303,7 +290,8 @@ code {
     margin-top: 0
 }
 
-@media (max-width: 999px) {
+/* phones -- no sidebar no sidenotes*/
+@media (max-width: 768px) {
     body {
         /* width: 90%; */
         margin: auto;
@@ -328,7 +316,8 @@ code {
     display: none;
 }
 
-@media (min-width: 1000px) {
+/* sidebar. no sidenotes */
+@media (min-width: 769px) {
     body {
         max-width: 1350px;
         display: -webkit-flex;
@@ -336,8 +325,8 @@ code {
         display: -ms-flexbox;
         -ms-flex-flow: row wrap;
         flex-flow: row wrap;
-        width: 88%;
-        padding-right: 12%;
+        width: 95%;
+        padding-right: 5%;
         margin: auto;
     }
 
@@ -412,8 +401,8 @@ code {
         margin-bottom: 10px;
     }
 }
-
-@media (min-width: 1360px) {
+/* sidebar+sidenotes */
+@media (min-width: 1200px) {
     body {
         width: 75%;
         padding-right: 25%;

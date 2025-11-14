@@ -1,7 +1,7 @@
 
 code.sourceCode
 {
-    background: #eeeeee8f;
+    background: inherit
 }
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 code span.al { color: #CB4B16; font-weight: bold; } /* Alert */
