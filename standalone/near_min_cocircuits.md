@@ -28,7 +28,8 @@ At time 0 we assign 2 robots at the middle of each edge facing opposite directio
 $j=0$ holds trivially. Suppose that the claim is true for $\leq j-1$ and consider time interval $\left[ (j-1)g^-/2,jg^-/2\right]$. Note that the trajectories of one robot and its copies must be a tree since otherwise there is a cycle of length $g^-$ in the graph. Then one can see that on each edge there cannot be two copies facing the same direction. Thus each robots splits into $2m$ copies in this time interval and the claim follows.
 
 A recent paper [@Aissi_Baiou_Barahona_2025] slightly improves the bound. For cuts integer edge weights can be converted to parallel edges. However, for cycles this is not the case. On unweighted graphs the number of minimum circuits is called the kissing number. The authors mention that there are existing works on kissing numbers, roughly ${\rm Kiss}(G)\leq 2m(m-n+1)/g$.
-In [@Aissi_Baiou_Barahona_2025] the improved bound is $n^4/4$ is the weighted girth is even and $n^3/2$ is the weighted girth is odd. These upperbounds are asymptotically tight. Consider $K_{n,n}$ with unit cost, the number of $C_4$ in it is $\binom{n}{2}^2$. For odd girth consider $K_n$, the number of $C_3$ is $\binom{n}{3}$.
+In [@Aissi_Baiou_Barahona_2025] the improved bound is $n^4/4$ when the weighted girth is even and $n^3/2$ when the weighted girth is odd.
+These upperbounds are asymptotically tight. Consider $K_{n,n}$ with unit cost, the number of $C_4$ in it is $\binom{n}{2}^2$. For odd girth consider $K_n$, the number of $C_3$ is $\binom{n}{3}$.
 
 # \# α-minimum circuits in regular matroids
 
