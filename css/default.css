@@ -273,6 +273,9 @@ code {
     display: inline-block;
     padding: 0px 2px;
     border-radius: 2px;
+    font-variant-ligatures: none;
+    font-kerning: none;
+    text-rendering: optimizeSpeed;
 }
 
 

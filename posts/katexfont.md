@@ -130,12 +130,16 @@ typst compile input.typ -f html htmloutput.html --features html
 
 测试用的文档是 <https://typst.app/project/rgLBUHLLRwTyTh16Ej3qlM>
 
-| outputs | size |
-| :--------------: | :------------: |
-| PDF-XeTeX | 25KB |
-| PDF-Typst | 39KB |
-| html-Typst | **194KB** |
-| FiraMath font | 122KB |
+```
++-----------------+-------+
+|    outputs      | size  |
++-----------------+-------+
+| PDF-XeTeX       | 25KB  |
+| PDF-Typst       | 39KB  |
+| html-Typst      | 194KB |
+| FiraMath font   | 122KB |
++-----------------+-------+
+```
 
 # MathJax 4.0 is out
 
