@@ -14,7 +14,7 @@ showtoc: true
 \DeclareMathOperator{\OPT}{OPT}
 
 There are few text books in combinatorial optimization discussing topics in matroid base packing, while matroid base covering([matroid partition problem](https://en.wikipedia.org/wiki/Matroid_partitioning)) is everywhere.
-Packing and covering of trees in graphs is discussed in chapter 51 of [@Schrijver2004].
+Packing and covering of trees in graphs can be found in chapter 51 in [@Schrijver2004].
 
 # Base packing & base covering
 
@@ -42,13 +42,6 @@ s.t.&   & \sum_{B:e\in B} x_B &\geq 1   &   &\forall e\in E\\
 
 Integer programs are hard and these IPs have exponential number of variables. We consider the linear relaxations.
 
-> For any LP with bounded solutions, there must exist an optimal solution with support at most 
-> For similar problem on integer programming,
-> one might think that there is also a small support based on the knowledge that the optimal 
-> solution for the integer program is simply a integer point inside the feasible region.
-> However, the size of support for integer programs is not that small. Currently the best known 
-> upperbound is roughly $m\cdot \polylog(\|{A}\|_1)$, see [this paper](https://drops.dagstuhl.de/storage/00lipics/lipics-vol283-isaac2023/LIPIcs.ISAAC.2023.13/LIPIcs.ISAAC.2023.13.pdf).
-
 Actually these two problems are not hard on general matroids. 
 Both of them can be solved in polynomial number of independence oracle calls.
 
@@ -56,8 +49,6 @@ Both of them can be solved in polynomial number of independence oracle calls.
 - matroid base packing ≈ matroid union. Maximum integral base packing number is $\arg\max\limits_k r_{k}(E)=kr(M)$.
 
 Thus the integral version of these two problem is polynomial solvable (in terms of the number of oracle calls) since matroid union is tractable. We will discuss computing the fractional version later.
-
-> The base covering number may be much larger than the base packing number, since $E-B_k$ may not be independent for $M$. ($B_k$ is the union of bases in the optimal packing)
 
 # Matroid strength and density
 
@@ -119,9 +110,10 @@ Hence $\sigma(M)=\max \{\lambda | \mathbf 1\in \lambda B(M)\}$ since $Q=B(M)$.
 For fixed $\lambda$, $\mathbf 1 \in \lambda B(M)$ if and only if there exists $\lambda_b\geq 0$ for all bases of $M$ such that $\sum_b \lambda_b=\lambda$ and $\sum_b \lambda_b \chi^b\leq 1$. Hence this shows $\sigma(M)$ is exactly the base packing LP $\max\{\sum_b{\lambda_b}| \sum_{b}\lambda_b\chi^b\leq 1,\lambda_b\geq 0\;\forall b\in B\}$.
 :::
 
-> Note that this proof is a straightforward generalization of the tree packing theorem in [@Schrijver2004], which is similar to the blocking polyhedra method described in [@schrijver_polyhedral_1986].
 
--------------
+Note that this proof is a straightforward generalization of the tree packing theorem in [@Schrijver2004], which is similar to the blocking polyhedra method described in [@schrijver_polyhedral_1986].
+
+## Constructive proof
 
 In [@Galtier_2018b] there is a constructive proof that recovers the optimal $F\subset E$ in $\sigma(M)$ from any optimal solution of hitting set LP(dual to base packing).
 
@@ -182,7 +174,6 @@ s.t.&   &   &\sum_i v_i\theta_i = 1\\
 
 Suppose the optimal $y'$ is given, we can compute the optimal $\theta$ in the above LP and recover another solution $y''$ to base hitting set. One can see that $y''$ is still in $P'$. This LP has $h+1$ linearly independent constraints and $h$ variables. Thus only $h$ of the constraints are tight. We have already known that $\sum_i v_i\theta_i = 1$ must be tight. Then there is always an optimal solution $\theta$ such that $0=\theta_1=\ldots=\theta_k < \theta_{k+1}=\ldots = \theta_h =c$. Let $F$ be the set of elements with $y''(e)=0$. Note that the minimum weight base contains $r(F)$ elements of $F$. Thus we known that $c=\frac{1}{r(E)-r(F)}$. The objective is $\sum_{e\in E} w(e)y''(e)=\sum_{e\in E-F}w(e)y''(e)=\frac{\sum_{e\in E-F} w(e)}{r(E)-r(F)}$.
 
--------------
 
 ::: Theorem
 Minimum fractional base covering is $\alpha(M)$.
@@ -220,8 +211,7 @@ For graphic matroids, the strength and fractional arboricity are known to be com
 The idea is to consider the dual problem which has only $|E|$ variables. If there is a separation oracle for testing whether a dual solution $x$ is feasible, then ellipsoid method can be used for a polynomial time algorithm.
 
 For spanning tree packing the dual is graph min-cut problem, which is easy for graphic matroids but NP-Hard for general matroids (to find the cogirth). The separation oracle = find minimum weight base.
-Chekuri and Quanrud [@chekuri_near_linear_2017] discovered near-linear time approximation scheme for some implicit fraction packing problems. For fractional base packing, their algorithm outputs a $(1-\epsilon)$-approximation with $\tilde O(n/\epsilon^2)$ independence oracle calls. For the capacitated version, the number of oracle calls becomes $\tilde O(rn/\epsilon^2)$.
-
-> Almost at the same time, [Jérôme Galtier](https://dblp.org/pid/54/3460.html) published similar results for graphs [@Galtier_2018a] and for matroids [@Galtier_2018b].
+Chekuri and Quanrud [@chekuri_near_linear_2017] discovered near-linear time approximation scheme for some implicit fraction packing problems. For fractional base packing, their algorithm outputs a (1-ε)-approximation with $\tilde O(n/\epsilon^2)$ independence oracle calls. For the capacitated version, the number of oracle calls becomes $\tilde O(rn/\epsilon^2)$.
+Almost at the same time, [Jérôme Galtier](https://dblp.org/pid/54/3460.html) published similar results for graphs [@Galtier_2018a] and for matroids [@Galtier_2018b].
 
 For spanning tree covering the dual is finding a maximum edge set whose intersection with each spanning tree is at most 1. This problem can be thought as a set cover, in which the sets are $\set{T|e\in T}$ for each edge $e$. The separation oracle solves the following problem: given edge weight $x:E\to [0,1]$, is there a spanning tree with weight greater than 1? We can simply find a matroid base with the largest weight. Thus for general matroid we can find the fractional arboricity through ellipsoid method.
