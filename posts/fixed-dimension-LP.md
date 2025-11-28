@@ -24,7 +24,7 @@ This can be solve in $O(2^{2^d}(m+n))$ through Megiddo's algorithm for multidime
 
 I want to show that for general piecewise linear convex functions in $\R^d$, [my problem](#probpwl) can be formulated as a [LP-type](https://en.wikipedia.org/wiki/LP-type_problem) problem with low combinatorial dimension.
 
-A failed attempt is trying to write $F=\sum_i f_i$. However, there may be too many breakpoints on $F$. (see [a previous post](/posts/2024-09-16-piecewise-linear.html)).
+A failed attempt is trying to write $F=\sum_i f_i$. However, there may be too many breakpoints on $F$. (see [a previous post](/posts/2024-09-16-piecewise-linear)).
 Another possible way is using some dimension reduction techniques [@grohe_dimension_2014]. 
 
 # color refinement on matrices

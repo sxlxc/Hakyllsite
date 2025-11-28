@@ -23,7 +23,7 @@ MathJax: <https://github.com/mathjax/MathJax>
 
 # Known issues
 
-- ~~KaTeX's default font does not match well with fira sans. I will try [this](https://yingtongli.me/blog/2022/09/24/katex-custom-fonts.html).~~ For progress on modifying KaTeX, see [this post](/posts/katexfont.html).
+- ~~KaTeX's default font does not match well with fira sans. I will try [this](https://yingtongli.me/blog/2022/09/24/katex-custom-fonts.html).~~ For progress on modifying KaTeX, see [this post](/posts/katexfont).
 - title does not support math or styles (since I'm using filters only on `withItemBody`)
 - code highlighting is bad.
 - rss?

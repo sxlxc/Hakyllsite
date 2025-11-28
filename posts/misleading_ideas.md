@@ -30,7 +30,7 @@ However, LP(1) is **not** [the dual of Max-flow](https://en.wikipedia.org/wiki/M
 
 Given a linear program with a rank $r$ constraint matrix, what is the size of support of its optimal solution?
 
-This is mentioned in [a previous post](/posts/basepacking.html). The description there is not precise.
+This is mentioned in [a previous post](/posts/basepacking). The description there is not precise.
 Consider the following linear program,
 
 \begin{equation*}

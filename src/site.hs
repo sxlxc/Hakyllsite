@@ -13,11 +13,24 @@ import Hakyll
 -- import System.IO.Unsafe
 import Text.Pandoc
 -- import Text.Pandoc.Citeproc
-
--- root :: String
--- root = "https://???.??"
+import System.FilePath
 
 --------------------------------------------------------------------------------
+-- https://www.rohanjain.in/hakyll-clean-urls/
+cleanRoute :: Routes
+cleanRoute = customRoute createIndexRoute
+  where
+    createIndexRoute ident = takeDirectory p </> takeBaseName p </> "index.html"
+                            where p = toFilePath ident
+
+cleanIndexHtmls :: Item String -> Compiler (Item String)
+cleanIndexHtmls = return . fmap (replaceAll pattern replacement)
+    where
+      pattern::String = "/index.html"
+      replacement::String->String = const "/"
+
+--------------------------------------------------------------------------------
+
 main :: IO ()
 main = hakyll $ do
   match "images/**" $ do
@@ -45,7 +58,7 @@ main = hakyll $ do
     compile copyFileCompiler
 
   match "404.html" $ do
-    route idRoute
+    route cleanRoute
     compile copyFileCompiler
 
   match "css/*" $ do
@@ -53,7 +66,7 @@ main = hakyll $ do
     compile compressCssCompiler
 
   match "about.md" $ do
-    route $ setExtension "html"
+    route cleanRoute
     compile $
       chaoDocCompiler
         >>= loadAndApplyTemplate "templates/about.html" defaultContext
@@ -63,7 +76,7 @@ main = hakyll $ do
   tags <- buildTags "posts/*" (fromCapture "tags/*.html")
   tagsRules tags $ \tag pattern -> do
     let title = "Posts tagged \"" ++ tag ++ "\""
-    route idRoute
+    route cleanRoute
     compile $ do
       posts <- recentFirst =<< loadAll pattern
       let ctx =
@@ -76,14 +89,14 @@ main = hakyll $ do
         >>= relativizeUrls
 
   create ["tags.html"] $ do
-    route idRoute
+    route cleanRoute
     compile $ do
       makeItem ""
         >>= loadAndApplyTemplate "templates/tags.html" (defaultCtxWithTags tags)
         >>= loadAndApplyTemplate "templates/default.html" (defaultCtxWithTags tags)
 
   match "posts/*" $ do
-    route $ setExtension "html"
+    route cleanRoute
     compile $ do
       tocCtx <- getTocCtx (postCtxWithTags tags)
       chaoDocCompiler
@@ -93,14 +106,15 @@ main = hakyll $ do
         -- >>= katexFilter  -- use mathjax.
 
   match "standalone/*" $ do
-    route $ setExtension "html"
+    route cleanRoute
     compile $ do
       tocCtx <- getTocCtx (postCtxWithTags tags)
       chaoDocCompiler
         >>= loadAndApplyTemplate "templates/standalone.html" tocCtx
         >>= relativizeUrls
+
   create ["notes.html"] $ do
-    route idRoute
+    route cleanRoute
     compile $ do
       notes <- recentFirst =<< loadAll "standalone/*"
       let notesCtx =
@@ -111,9 +125,10 @@ main = hakyll $ do
         >>= loadAndApplyTemplate "templates/notes.html" notesCtx
         >>= loadAndApplyTemplate "templates/index.html" notesCtx
         >>= relativizeUrls
+        >>= cleanIndexHtmls
 
   create ["archive.html"] $ do
-    route idRoute
+    route cleanRoute
     compile $ do
       posts <- recentFirst =<< loadAll "posts/*"
       let archiveCtx =
@@ -124,9 +139,10 @@ main = hakyll $ do
         >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
         >>= loadAndApplyTemplate "templates/index.html" archiveCtx
         >>= relativizeUrls
+        >>= cleanIndexHtmls
 
   create ["draft.html"] $ do
-    route idRoute
+    route cleanRoute
     compile $ do
       posts <- recentFirst =<< loadAll "posts/*"
       let draftCtx =
@@ -137,6 +153,7 @@ main = hakyll $ do
         >>= loadAndApplyTemplate "templates/draft.html" draftCtx
         >>= loadAndApplyTemplate "templates/index.html" draftCtx
         >>= relativizeUrls
+        >>= cleanIndexHtmls
 
   match "index.html" $ do
     route idRoute
@@ -149,6 +166,7 @@ main = hakyll $ do
         >>= applyAsTemplate indexCtx
         >>= loadAndApplyTemplate "templates/index.html" indexCtx
         >>= relativizeUrls
+        >>= cleanIndexHtmls
 
   match "templates/*" $ compile templateBodyCompiler
 
@@ -166,6 +184,7 @@ main = hakyll $ do
   --       >>= loadAndApplyTemplate "templates/sitemap.xml" sitemapCtx
 
 --------------------------------------------------------------------------------
+
 postCtx :: Context String
 postCtx =
   dateField "date" "%B %e, %Y"

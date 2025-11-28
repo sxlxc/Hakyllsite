@@ -11,7 +11,7 @@ date: 2025-05-23
 
 我在macOS上用过这些阅读器:
 
-1. [skim](https://skim-app.sourceforge.io/). skim还挺好用的, 缺点是快捷键太不灵活, 如果能自己设置jk翻页之类的就好了, [之前](/posts/2024-05-23-buildskim.html)修改了代码, 勉强可用, 但是后来花了很长时间问AI工具都没搞明白如何更新目录和页码.
+1. [skim](https://skim-app.sourceforge.io/). skim还挺好用的, 缺点是快捷键太不灵活, 如果能自己设置jk翻页之类的就好了, [之前](/posts/2024-05-23-buildskim)修改了代码, 勉强可用, 但是后来花了很长时间问AI工具都没搞明白如何更新目录和页码.
 2. [Preview](https://en.wikipedia.org/wiki/Preview_(macOS)) 是一坨屎. 为什么文件修改之后要focus才能更新页面? 设置的视图在文件重新加载也不能恢复. 这就导致完全无法用 Preview 来 preview :( 
     skim和Preview都用Apple pdfkit, 在app显示了纵向滚动条的情况下 pdfkit 不能正确处理pdf页面宽度. (见skim [bug report](https://sourceforge.net/p/skim-app/bugs/1520/))
 

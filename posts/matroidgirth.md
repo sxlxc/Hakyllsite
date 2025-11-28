@@ -153,7 +153,7 @@ A=
 \]
 
 We want to find the cogirth of $M(A)/T$.
-One useful proposition is the following. (See [this post](/posts/misleading_ideas.html#cocircuit-space-of-binary-matroids) for a proof sketch.)
+One useful proposition is the following. (See [this post](/posts/misleading_ideas/#cocircuit-space-of-binary-matroids) for a proof sketch.)
 
 ::: {.Proposition title="[@oxley_matroid_2011,Proposition 9.2.2]"}
 Let $A$ be a binary representation of a rank-$r$ binary matroid
