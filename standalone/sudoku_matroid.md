@@ -8,7 +8,7 @@ showtoc: true
 
 This is a note on Emil Jeřábek's answer in the mathoverflow link.
 
-Ref:
+Refs:
 
 - <https://matroidunion.org/?p=1070>
 - <https://mathoverflow.net/questions/129143>

@@ -56,7 +56,7 @@ We only care about the discrete distribution on feasible integral points.
 However, each $x\in K$ only describes some marginal probabilities and this this marginal probability may not be even feasible. Consider the following 2D example. Any point in $\text{green area}\setminus \text{orange area}$ is not a marginal distribution of any possible joint distribution over $(0,0),(1,0)$ and $(1,1)$. The idea is to iteratively prune this area.
 
 <figure>
-<img src="../images/lasserre/feasiblepoints.png" alt="2D example" style="width: 300px;display: block; margin: auto;" />
+<img src="/images/lasserre/feasiblepoints.png" alt="2D example" style="width: 300px;display: block; margin: auto;" />
 </figure>
 
 Now we need to think about how to represent all possible joint distribution. One natural way is to use a vector $y\in \R^{2^n}$ for the distribution law of every possible integer point in $\set{0,1}^n$.
