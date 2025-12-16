@@ -23,7 +23,9 @@ showtoc: true
 
 关于fonts和metrics有关的东西首先要看`dockers/fonts/`. 看起来 `fonts/`里面的字体是从docker中安装的texlive的computer modern fonts提取的. 然后`dockers/fonts/buildMetrics.sh` 调用 `src/metrics`里面的代码,直接从有关的tfm文件里读一些metric信息. 
 
-(我猜)生成的ttf,woff2等字体是保存 unicode -> (字形+一些信息) 这个映射关系的文件. `src/metrics/mapping.pl` 就是从tex math到unicode的映射. 做完这个输出这样的东西
+(我猜)生成的ttf,woff2等字体是保存 unicode -> (字形+一些信息) 这个映射关系的文件.
+
+`src/metrics/mapping.pl` 就是从tex math到unicode的映射. 做完这个输出这样的东西
 
 ```json
 {

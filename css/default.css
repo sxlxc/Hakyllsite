@@ -183,7 +183,6 @@ article .header {
     font-size: 1.1rem;
     font-style: normal;
     text-align: left;
-    padding-bottom: 1em;
 }
 
 .info a {
@@ -197,6 +196,10 @@ article .header {
     color: var(--color-tag2);
 }
 
+section.body {
+    margin-top: 2rem;
+}
+
 .ascii-art {
     margin: 0;
     border: 2px solid var(--color-text);
@@ -208,8 +211,8 @@ article .header {
 }
 
 blockquote {
-    margin: 0em 0px;
-    padding: 0em 1em;
+    margin: 1rem 0;
+    padding: 0 0 0 1.5em;
     border-left: 3px solid var(--color-bq);
 }
 
