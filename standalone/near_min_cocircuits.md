@@ -37,3 +37,8 @@ These upperbounds are asymptotically tight. Consider $K_{n,n}$ with unit cost, t
 
 - can we improve the bound in [@Gurjar_Vishnoi_2021] to $O(m^{c\alpha})$?
 - is it possible to find a unified way to upperbound the number of minimum circuit in graphic and cographic matroids?
+
+A recent paper[^1] shows that there is no polynomial algorithm approximating the girth or the cogirth of binary matroids to any constant factor.
+
+
+[^1]: [PCP-free APX-Hardness of Nearest Codeword and Minimum Distance](https://arxiv.org/abs/2503.11131), merged into [another paper](https://arxiv.org/abs/2410.02636) in FOCS'25
