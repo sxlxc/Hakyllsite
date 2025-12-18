@@ -98,9 +98,9 @@ KaTeX_Main-Regular, KaTeX_Math-Italic.ttf 这些字体表现比较正常, 基本
 
 但是我觉得最常用的LP, SDP之类的规划问题显示起来效果还不错
 
-![XeLaTeX 使用 firamath](/images/katexfont/sdptest.png)
+![XeLaTeX with firamath](/images/katexfont/sdptest.png)
 
-以下是 mathjax 4.0 的效果
+以下是 mathjax 4.0
 
 \begin{equation}
 \begin{aligned}

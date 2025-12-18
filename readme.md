@@ -3,4 +3,4 @@
 2. `make site`
 3. `make build/watch/rebuild/clean`
 
-favicon: twoslice font https://joefatula.com/twoslice.html
+favicon: [twoslice font](https://joefatula.com/twoslice.html)

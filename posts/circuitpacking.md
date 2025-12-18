@@ -71,7 +71,7 @@ The characterization of matroids satisfying $\nu_{2,w}=\tau_{2,w}$ is the follow
 ::: Theorem
 A matroid satisfies $\nu_{2,w}=\tau_{2,w}$ iff none of its minor is isomorphic to $U_{2,4},F_7,F_7^*,M(K_{3,3}),M(K_5^-)$ or $M(K)$, where $K_5^-$ is $K_5$ deleting an edge and $K$ is a special 4-node graph.
 <figure>
-<img src="../images/circuitpacking/K.png" style="width: 250px;" />
+<img src="/images/circuitpacking/K.png" style="width: 250px;" />
 Graph K
 </figure>
 :::
