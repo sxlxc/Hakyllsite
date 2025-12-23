@@ -34,7 +34,7 @@ Block | B | B | B |  ← band 2
 
 Note that a $n\times n$ sudoku contains $n$ bands, $n$ stacks and $n$ blocks. So there are $n^4$ cells and each cell can be filled with some number in $[n^2]$.
 
-# the hidden matroid
+# matroid on constraint set
 
 We will see that there is a matroid with constraints as its groundset.[^1]
 
@@ -77,7 +77,7 @@ Then we have $\phi_G(s)=1$.
 Again there is a $G^*$ that satisfies every constraint and we have $\sum_i \alpha_i+\sum_j \beta_j=1$.
 Now consider any grid $G$ that satisfies $T$.
 We have $\phi_G(s)=\sum_i \alpha_i \mathbf{1} + \sum_j \beta_j s_j = \mathbf{1}$.
-One can see that the equation holds if and only if every $s_j$ is $\mathbf 1$, which contradicts the fact that $s\notin \span(T+V_0)$.
+~~One can see that the equation holds if and only if every $s_j$ is $\mathbf 1$, which contradicts the fact that $s\notin \span(T+V_0)$.~~ [^5]
 :::
 
 Now we show (@span) in [@spanmatroid] for sudoku span.
@@ -89,7 +89,12 @@ It is easy to see that if $f(T)$ satisfies (@span) then $f(T)\cap S$ also satisf
 Then it follows that $\span_\#(T)$ is a span function of a matroid.
 :::
 
-# sudoku matroid on graphs
+# sudoku on graphs
+
+We are going to play sudoku on a subclass of perfect graphs that every edge is in some maximum clique.
+For example, sudoku graphs and octohedron belongs to this class.
+
+TODO: see if there is a name for this class <https://www.graphclasses.org/classes.cgi?search=perfect>
 
 [^1]: The idea is from the joint work of authors in the mathoverflow question. I think this is a simpler and more intuitive proof.
 
@@ -98,3 +103,5 @@ Then it follows that $\span_\#(T)$ is a span function of a matroid.
 [^3]: Later we will see that $S$ is not linearly independent and thus is not a base of $V$.
 
 [^4]: We will work on vector spaces. To avoid confusions we use $\span_\#$ for sudoku span function and use $\span$ for the span function in vector spaces and matroids.
+
+[^5]: This requires some properties of the [sudoku graph](https://en.wikipedia.org/wiki/Sudoku_graph) and does not hold for all perfect graphs. See the $K_{2,2,2}$ example in the matroid union post.
