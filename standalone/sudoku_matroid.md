@@ -94,8 +94,6 @@ Then it follows that $\span_\#(T)$ is a span function of a matroid.
 We are going to play sudoku on a subclass of perfect graphs that every edge is in some maximum clique.
 For example, sudoku graphs and octohedron belongs to this class.
 
-TODO: see if there is a name for this class <https://www.graphclasses.org/classes.cgi?search=perfect>
-
 [^1]: The idea is from the joint work of authors in the mathoverflow question. I think this is a simpler and more intuitive proof.
 
 [^2]: Note that $\span(T\cup V_0)$ is the subspace of $V$ spanned by vectors in $T\cup V_0$.
