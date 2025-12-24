@@ -91,8 +91,8 @@ Then it follows that $\span_\#(T)$ is a span function of a matroid.
 
 # sudoku on graphs
 
-We are going to play sudoku on a subclass of perfect graphs that every edge is in some maximum clique.
-For example, sudoku graphs and octohedron belongs to this class.
+We are going to play Sudoku on a class of connected graphs whose clique number $\omega(G)$ equals the chromatic number $\chi(G)$, and in which every edge belongs to some maximum clique. In other words, we are interested in the clique sum of cliques with the same size.
+For example, sudoku graphs and octahedron belongs to this class.
 
 [^1]: The idea is from the joint work of authors in the mathoverflow question. I think this is a simpler and more intuitive proof.
 
