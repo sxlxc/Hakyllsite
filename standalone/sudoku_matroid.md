@@ -92,7 +92,16 @@ Then it follows that $\span_\#(T)$ is a span function of a matroid.
 # sudoku on graphs
 
 We are going to play Sudoku on a class of connected graphs whose clique number $\omega(G)$ equals the chromatic number $\chi(G)$, and in which every edge belongs to some maximum clique. In other words, we are interested in the clique sum of cliques with the same size.
-For example, sudoku graphs and octahedron belongs to this class.
+For example, binary graphs, sudoku graphs and octahedron belong to this class.
+
+Why we only want to play sudoku on this kind of graphs?
+I think the matroid span proof heavily relies on the linear mapping $\psi_G$ that maps satisfied constraints to $\mathbf 1$. So we want the set of maximum cliques to fully describe the structure of a proper coloring.
+One can also see that for this kind of grpahs $\chi(G)$ does not always equal $\omega(G)$. A counterexample would be $C_5$. 
+
+Is there a nice characterization of graphs that
+
+1. $\omega(G)=\chi(G)$ and that
+2. maximum cliques cover all edges?
 
 [^1]: The idea is from the joint work of authors in the mathoverflow question. I think this is a simpler and more intuitive proof.
 
