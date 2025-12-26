@@ -91,17 +91,47 @@ Then it follows that $\span_\#(T)$ is a span function of a matroid.
 
 # sudoku on graphs
 
-We are going to play Sudoku on a class of connected graphs whose clique number $\omega(G)$ equals the chromatic number $\chi(G)$, and in which every edge belongs to some maximum clique. In other words, we are interested in the clique sum of cliques with the same size.
-For example, binary graphs, sudoku graphs and octahedron belong to this class.
+We are going to play Sudoku on a class of connected graphs whose clique number $\omega(G)$ equals the chromatic number $\chi(G)$, and in which every edge belongs to some maximum clique.
+For example, bipartite graphs, sudoku graphs and octahedron belong to this class.
 
-Why we only want to play sudoku on this kind of graphs?
-I think the matroid span proof heavily relies on the linear mapping $\psi_G$ that maps satisfied constraints to $\mathbf 1$. So we want the set of maximum cliques to fully describe the structure of a proper coloring.
-One can also see that for this kind of grpahs $\chi(G)$ does not always equal $\omega(G)$. A counterexample would be $C_5$. 
+Here are some graph classes that every edge belongs to some maximum clique:
+
+- odd cycles. $\omega(G)\neq \chi(G)$
+- bipartite graphs. $\omega(G)= \chi(G)$ and we have sudoku matroid on maximum cliques.
+- sudoku graphs. $\omega(G)= \chi(G)$ and sudoku matroid ✓
+- octahedron. $\omega(G)= \chi(G)$ and sudoku matroid ×
 
 Is there a nice characterization of graphs that
 
 1. $\omega(G)=\chi(G)$ and that
 2. maximum cliques cover all edges?
+
+Let $G$ be a graph in which every edge is in a maximum clique. 
+Let $H$ be the clique line graph of $G$, in which the vertex set is the set of maximum cliques and there are $k$-parallel edges if two cliques share $k$ vertices.
+
+::: Lemma
+If $H$ is a tree, then $G$ is a perfect graph.
+:::
+
+::: Proof
+$G$ is chordal.
+:::
+
+::: Lemma
+If $H$ is bipartite, then $\omega(G)=\chi(G)$.
+:::
+
+::: Proof
+Let $C$ be a maximum clique in $G$. There are maximum cliques sharing vertices with $C$. We write $S_i\subset C$ for the vertex intersections. One can see that if $S_i\cap S_j$ is nonempty then we will have a triangle in the clique line graph $H$.
+So we assume $S_i$'s are disjoint since $H$ is bipartite.
+
+Now consider an edge coloring of $H$ and recover from it a proper vertex coloring of $G$.
+It follows from Kőnig's theorem that $H$ has a edge coloring using exactly $\Delta$ colors where ...
+:::
+
+::: Remark
+Bipartite $H$ covers octahedron and even cycles but not sudoku graphs.
+:::
 
 [^1]: The idea is from the joint work of authors in the mathoverflow question. I think this is a simpler and more intuitive proof.
 
