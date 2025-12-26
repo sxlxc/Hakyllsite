@@ -126,7 +126,10 @@ Let $C$ be a maximum clique in $G$. There are maximum cliques sharing vertices w
 So we assume $S_i$'s are disjoint since $H$ is bipartite.
 
 Now consider an edge coloring of $H$ and recover from it a proper vertex coloring of $G$.
-It follows from Kőnig's theorem that $H$ has a edge coloring using exactly $\Delta$ colors where ...
+It follows from Kőnig's theorem that $H$ has an edge coloring using exactly $\Delta$ colors where $\Delta$ is the max degree in $H$. Note that each edge in $H$ corresponds to a shared vertex of two cliques.
+We color the vertex with the same color as the corresponds edge in $H$.
+Now the partial coloring is proper for each clique since colors are taken from a proper edge coloring.
+Finally, one can see that for each maximum clique the number of uncolored vertices is exactly the number of unused colors, since $S_i$'s are disjoint.
 :::
 
 ::: Remark
