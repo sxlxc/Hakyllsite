@@ -106,8 +106,12 @@ Is there a nice characterization of graphs that
 1. $\omega(G)=\chi(G)$ and that
 2. maximum cliques cover all edges?
 
+## solvability
+
 Let $G$ be a graph in which every edge is in a maximum clique. 
 Let $H$ be the clique line graph of $G$, in which the vertex set is the set of maximum cliques and there are $k$-parallel edges if two cliques share $k$ vertices.
+
+Note that one can also think about the uniform hypergraph of maximum cliques and see that $H$ is the [line graph of an uniform hypergraph](https://en.wikipedia.org/wiki/Line_graph_of_a_hypergraph).
 
 ::: Lemma
 If $H$ is a tree, then $G$ is a perfect graph.
@@ -135,6 +139,10 @@ Finally, one can see that for each maximum clique the number of uncolored vertic
 ::: Remark
 Bipartite $H$ covers octahedron and even cycles but not sudoku graphs.
 :::
+
+
+## matroid on maximum cliques
+
 
 [^1]: The idea is from the joint work of authors in the mathoverflow question. I think this is a simpler and more intuitive proof.
 
