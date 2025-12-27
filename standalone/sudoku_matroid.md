@@ -113,6 +113,9 @@ Let $H$ be the clique line graph of $G$, in which the vertex set is the set of m
 
 Note that one can also think about the uniform hypergraph of maximum cliques and see that $H$ is the [line graph of an uniform hypergraph](https://en.wikipedia.org/wiki/Line_graph_of_a_hypergraph).
 
+There are some existing works on uniform hypergraph coloring.
+Czumaj and Sohler [@czumaj_testing_2001] showed an $\e$-tester for $\ell$-colorability of $k$-uniform hypergraphs with running time $\exp(\tilde O(k\ell/\e)^2)$.
+
 ::: Lemma
 If $H$ is a tree, then $G$ is a perfect graph.
 :::
