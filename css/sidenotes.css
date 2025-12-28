@@ -73,7 +73,7 @@ div .sidenote pre {
 
 .sidenote-number {
     counter-increment: sidenote-counter;
-    color: var(--color-linkh);
+    color: var(--color-link);
 }
 
 .sidenote-number:after,
@@ -155,7 +155,7 @@ label.margin-toggle:not(.sidenote-number) {
 
     /* Linkify sidenotes iff they are clickable */
     .sidenote-number:after {
-        color: var(--color-linkh);
+        color: var(--color-link);
         text-decoration: none;
     }
 

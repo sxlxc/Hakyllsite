@@ -117,7 +117,7 @@ There are some existing works on uniform hypergraph coloring.
 Czumaj and Sohler [@czumaj_testing_2001] showed an $\e$-tester for $\ell$-colorability of $k$-uniform hypergraphs with running time $\exp(\tilde O(k\ell/\e)^2)$. 
 However, note that their definition of proper coloring on hypergraphs is that every hyperedge is not monochromatic.
 We are interested in that whether a $k$-uniform hypergraph is *$k$-rainbow colorable*.
-A hypergraph is $k$-rainbow colorable if there exists a vertex coloring using $k$ colors such that each hyperedge has all the $k$ colors. See [@guruswami_hardness_2018] and [@guruswami_rainbow_2020] for references.
+A hypergraph is $k$-rainbow colorable if there exists a vertex coloring using $k$ colors such that each hyperedge has all the $k$ colors. See [@guruswami_hardness_2018] and [@guruswami_rainbow_2020] for references. Another equivalent question is that if a given $k$-uniform hypergraph is $k$-partite.[^6]
 
 ::: Lemma
 If $H$ is a tree, then $G$ is a perfect graph.
@@ -159,3 +159,5 @@ Bipartite $H$ covers octahedron and even cycles but not sudoku graphs.
 [^4]: We will work on vector spaces. To avoid confusions we use $\span_\#$ for sudoku span function and use $\span$ for the span function in vector spaces and matroids.
 
 [^5]: This requires some properties of the [sudoku graph](https://en.wikipedia.org/wiki/Sudoku_graph) and does not hold for all perfect graphs. See the $K_{2,2,2}$ example in the matroid union post.
+
+[^6]: I guess there should be some papers showing that it's NP-complete to decide if a  $k$-uniform hypergraph is $k$-partite. haven't found one.
