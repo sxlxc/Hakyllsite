@@ -56,7 +56,7 @@ date: 2022-05-05
 
 #### (5/18) 固定一侧的最优解是否是NP-Hard
 
-~~另外我觉得固定一侧找另一侧最优解应该也是 NP-Hard ~~
+~~另外我觉得固定一侧找另一侧最优解应该也是 NP-Hard~~
 
 ~~大概类似[Crossing-Number-Is-NP-Complete_Garey_Johnson.pdf](https://learn.fmi.uni-sofia.bg/pluginfile.php/160153/mod_resource/content/4/Crossing-Number-Is-NP-Complete_Garey_Johnson.pdf)证明 bipartite crossing的方法，从 linear arrangement 归约，考虑一个linear arrangement问题，构造二分图，用类似栅栏的形状来让一侧的点无法移动，然后把linear arrangement 的点插入到另一侧，连边。~~
 
