@@ -68,12 +68,12 @@ Then $T$ spans $s$ in the sudoku if and only if $s\in \span(T\cup V_0)$ in the v
 ::: Proof
 Note that $T$ spans $s$ means that for any sudoku grid $G$ such that $\phi_G(t)=\mathbf 1$ for all $t\in T$, we have $\phi_G(s)=\mathbf 1$.
 
-**the if part** Since $s\in \span(T\cup V_0)$, we can write $s$ as $\sum_i \alpha_i t_i+y$ where $t_i\in T$ and $y\in V_0$.
+**[the if part]** Since $s\in \span(T\cup V_0)$, we can write $s$ as $\sum_i \alpha_i t_i+y$ where $t_i\in T$ and $y\in V_0$.
 It follows from the linearity of $\phi$ that $\phi_G(s)=\sum_i \alpha_i \mathbf{1}+0$ holds for every grid satisfying $T$. Then we pick a correctly filled grid $G^*$.
 One can see that $\mathbf{1}=\phi_G(s)= (\sum_i \alpha_i) \mathbf{1}$ which implies $\sum_i \alpha_i=1$.
 Then we have $\phi_G(s)=1$.
 
-**the only if part** Suppose by contradiction that $s\notin \span(T\cup V_0)$ and for every $G$ satisfying $T$ we have $\phi_G(s)=\mathbf 1$. We can write $s=\sum_i \alpha_i t_i + \sum_j \beta_j s_j+y$ where $s_j$'s are in the basis $S$ but not in the span.
+**[the only if part]** Suppose by contradiction that $s\notin \span(T\cup V_0)$ and for every $G$ satisfying $T$ we have $\phi_G(s)=\mathbf 1$. We can write $s=\sum_i \alpha_i t_i + \sum_j \beta_j s_j+y$ where $s_j$'s are in the basis $S$ but not in the span.
 Again there is a $G^*$ that satisfies every constraint and we have $\sum_i \alpha_i+\sum_j \beta_j=1$.
 Now consider any grid $G$ that satisfies $T$.
 We have $\phi_G(s)=\sum_i \alpha_i \mathbf{1} + \sum_j \beta_j s_j = \mathbf{1}$.
@@ -114,7 +114,10 @@ Let $H$ be the clique line graph of $G$, in which the vertex set is the set of m
 Note that one can also think about the uniform hypergraph of maximum cliques and see that $H$ is the [line graph of an uniform hypergraph](https://en.wikipedia.org/wiki/Line_graph_of_a_hypergraph).
 
 There are some existing works on uniform hypergraph coloring.
-Czumaj and Sohler [@czumaj_testing_2001] showed an $\e$-tester for $\ell$-colorability of $k$-uniform hypergraphs with running time $\exp(\tilde O(k\ell/\e)^2)$.
+Czumaj and Sohler [@czumaj_testing_2001] showed an $\e$-tester for $\ell$-colorability of $k$-uniform hypergraphs with running time $\exp(\tilde O(k\ell/\e)^2)$. 
+However, note that their definition of proper coloring on hypergraphs is that every hyperedge is not monochromatic.
+We are interested in that whether a $k$-uniform hypergraph is *$k$-rainbow colorable*.
+A hypergraph is $k$-rainbow colorable if there exists a vertex coloring using $k$ colors such that each hyperedge has all the $k$ colors. See [@guruswami_hardness_2018] and [@guruswami_rainbow_2020] for references.
 
 ::: Lemma
 If $H$ is a tree, then $G$ is a perfect graph.
