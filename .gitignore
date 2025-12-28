@@ -5,6 +5,7 @@ dist-newstyle/
 cache/
 packagedb/
 build/
+_site/
 # binaries
 katex_cli
 site
