@@ -1,11 +1,13 @@
 
 COMMANDS := build watch rebuild clean
-.PHONY: $(COMMANDS)
+.PHONY: $(COMMANDS), publish
 
 # Set the default goal, so running 'make' without arguments will run 'make build'.
 .DEFAULT_GOAL := build
 
 
+publish:
+	rsync -avz --delete -e ssh ./_site/ root@paqtt1611v:/var/www/talldoor
 # --- 
 $(COMMANDS): site
 	@echo "Running command: ./site $@"

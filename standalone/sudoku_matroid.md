@@ -115,9 +115,15 @@ Note that one can also think about the uniform hypergraph of maximum cliques and
 
 There are some existing works on uniform hypergraph coloring.
 Czumaj and Sohler [@czumaj_testing_2001] showed an $\e$-tester for $\ell$-colorability of $k$-uniform hypergraphs with running time $\exp(\tilde O(k\ell/\e)^2)$. 
-However, note that their definition of proper coloring on hypergraphs is that every hyperedge is not monochromatic.
-We are interested in that whether a $k$-uniform hypergraph is *$k$-rainbow colorable*.
+Note that the definition of proper coloring on hypergraphs is no monochromatic hyperedge.
+
+Our sudoku problem is equivalent to the following questions:
+
+1. Whether a $k$-uniform hypergraph is *$k$-rainbow colorable*.
 A hypergraph is $k$-rainbow colorable if there exists a vertex coloring using $k$ colors such that each hyperedge has all the $k$ colors. See [@guruswami_hardness_2018] and [@guruswami_rainbow_2020] for references. Another equivalent question is that if a given $k$-uniform hypergraph is $k$-partite.[^6]
+2. Find the strong chromatic number $\gamma(H)$ of $k$-uniform hypergraphs. A coloring is strong if no color appears twice in the same hyperedge. (see [@agnarsson_strong_2005]) We want to check if $\gamma(H)=k$.
+
+We try to characterize this subclass of $k$-uniform hypergraphs using line graphs.
 
 ::: Lemma
 If $H$ is a tree, then $G$ is a perfect graph.
