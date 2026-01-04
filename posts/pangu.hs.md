@@ -1,8 +1,8 @@
 ---
-title: pangu.hs ?
+title: pangu.hs
 tags: hakyll
 lang: zh
-draft: true
+showtoc: true
 date: 2025-12-15
 ---
 
@@ -21,9 +21,9 @@ pangu在每个段落上的工作是独立的，不会需要知道别的段落的
 
 我发现貌似作者自己也没总结出什么中英文排版加空格、换全角或中文标点的规则（也可能是因为ww和大陆习惯也不同），而且正则表达式里漏洞很多。
 
-按照正常人的想法，pangu.hs 需要根据一些规则来替换字符和删减空格，所以应该把这些规则写下来然后弄一个存放规则的list，程序根据这个list里的规则来调整文本，同时用户见到自己不想要的rule也可以直接comment它。
+pangu.hs 需要根据一些规则来替换字符和删减空格，所以应该把这些规则写下来然后弄一个存放规则的list，程序根据这个list里的规则来调整文本，同时用户见到自己不想要的rule也可以直接comment它。
 
-我完全无编写Haskell代码的经验，于是求助Gemini和ChatGPT。相比于regex他们更推荐用 [megaparsec](https://hackage.haskell.org/package/megaparsec)。
+我没有在Haskell中使用正则表达式的经验，于是求助Gemini和ChatGPT。相比于regex他们更推荐用 [megaparsec](https://hackage.haskell.org/package/megaparsec)。
 如果要 find and replace，就需要用[`streamEdit`](https://hackage.haskell.org/package/replace-megaparsec-1.5.0.1/docs/Replace-Megaparsec.html#v:streamEdit).
 这函数会找所有不重叠的section，完成替换任务。
 
@@ -49,9 +49,8 @@ applyRules rules input = foldl (flip applyOnce) input rules
   where
     applyOnce rule = streamEdit (try rule) id
 ```
-
-然后选择要启用哪些`Rule`
-
+<details>
+  <summary>然后即可这样选择要启用哪些`Rule`</summary>
 ```hs
 recursiveRules :: RuleSet
 recursiveRules =
@@ -82,9 +81,24 @@ pangu input =
   applyRules onepassRules $ applyRulesRecursively recursiveRules input
 ```
 
-代码在 <https://github.com/sxlxc/pangu.hs> 可以看到。
-功能并不和 pangu.py 完全一致
+</details>
+
+完整代码在 <https://github.com/sxlxc/pangu.hs> 可以看到。
+功能并不和pangu.py完全一致
 
 # Pandoc filter
 
 现在想要在hakyll里使用这个包。
+这部分很简单，只要实现上文说的想法就好了。
+pandoc-types提供了很多方便写filter的函数，我们实现好处理 `[Inline]` 的filter就好了。
+
+```hs
+panguFilter :: Pandoc -> Pandoc
+panguFilter = walk transformBlocks
+  where
+    transformBlocks :: Block -> Block
+    transformBlocks (Para inlines) = Para (panguInlines inlines)
+    transformBlocks x = x
+```
+
+完整的实现可以看[这个commit](https://github.com/sxlxc/Hakyllsite/commit/aa54a6a6014269646b190b78c708dc358c3e4fb0#diff-41a377645bcbb4f6f5b24bf5a69734635f3d75e7d0c2d6a7507ed7a4573bc7f9)。

@@ -49,6 +49,9 @@ main a:hover {
     color: var(--color-linkh);
     text-decoration: none;
 }
+summary {
+    background-color: var(--color-linkhbg);
+}
 
 .text-space .langtag {
     color: var(--color-tag1);
