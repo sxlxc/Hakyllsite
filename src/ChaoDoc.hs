@@ -1,10 +1,8 @@
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE LambdaCase #-}
 {-# LANGUAGE BlockArguments #-}
+{-# LANGUAGE OverloadedStrings #-}
 
 module ChaoDoc (chaoDocRead, chaoDocWrite, chaoDocCompiler) where
 
-import SideNoteHTML (usingSideNotesHTML)
 import Control.Monad.State
 import Data.Either
 import Data.Functor
@@ -14,9 +12,11 @@ import Data.Maybe
 import Data.Text (Text, pack)
 import qualified Data.Text as T
 import Hakyll
+import Pangu (isCJK, pangu)
+import SideNoteHTML (usingSideNotesHTML)
 import System.IO.Unsafe
 import Text.Pandoc
-import Text.Pandoc.Builder
+-- import Text.Pandoc.Builder
 import Text.Pandoc.Citeproc
 import Text.Pandoc.Walk (query, walk, walkM)
 
@@ -219,4 +219,62 @@ myReadPandocBiblio ropt csl biblio pdfilter item = do
   return $ fmap (const pandoc') item
 
 myFilter :: Pandoc -> Pandoc
-myFilter = usingSideNotesHTML chaoDocWrite . theoremFilter
+myFilter = usingSideNotesHTML chaoDocWrite . theoremFilter . panguFilter
+
+-- pangu filter
+lastChar :: Inline -> Maybe Char
+lastChar e = case e of
+  Str s -> if null (T.unpack s) then Nothing else Just (last (T.unpack s))
+  Emph is -> lastCharList is
+  Strong is -> lastCharList is
+  Strikeout is -> lastCharList is
+  Link _ is _ -> lastCharList is
+  Span _ is -> lastCharList is
+  Quoted _ is -> lastCharList is
+  _ -> Nothing
+  where
+    lastCharList [] = Nothing
+    lastCharList is = lastChar (last is)
+
+firstChar :: Inline -> Maybe Char
+firstChar e = case e of
+  Str s -> if null (T.unpack s) then Nothing else Just (head (T.unpack s))
+  Emph is -> firstCharList is
+  Strong is -> firstCharList is
+  Strikeout is -> firstCharList is
+  Link _ is _ -> firstCharList is
+  Span _ is -> firstCharList is
+  Quoted _ is -> firstCharList is
+  _ -> Nothing
+  where
+    firstCharList [] = Nothing
+    firstCharList is = firstChar (head is)
+
+panguInline :: Inline -> Inline
+panguInline e = case e of
+  Str s -> Str (pangu s)
+  Emph is -> Emph (panguInlines is)
+  Strong is -> Strong (panguInlines is)
+  Strikeout is -> Strikeout (panguInlines is)
+  Link at is tg -> Link at (panguInlines is) tg
+  Span at is -> Span at (panguInlines is)
+  Quoted qt is -> Quoted qt (panguInlines is)
+  _ -> e
+
+panguInlines :: [Inline] -> [Inline]
+panguInlines = foldr (addSpace . panguInline) []
+  where
+    addSpace x [] = [x]
+    addSpace x (y : ys)
+      | shouldSpace x y = x : Space : y : ys
+      | otherwise = x : y : ys
+    shouldSpace x y = case (lastChar x, firstChar y) of
+      (Just lc, Just fc) -> isCJK lc /= isCJK fc
+      _ -> False
+
+panguFilter :: Pandoc -> Pandoc
+panguFilter = walk transformBlocks
+  where
+    transformBlocks :: Block -> Block
+    transformBlocks (Para inlines) = Para (panguInlines inlines)
+    transformBlocks x = x

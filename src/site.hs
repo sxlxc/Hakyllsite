@@ -5,15 +5,10 @@
 {-# LANGUAGE ViewPatterns #-}
 
 import ChaoDoc
--- import Data.Either
--- import Data.Functor
--- import qualified Data.Map as M
 import qualified Data.Text as T
 import Hakyll
--- import System.IO.Unsafe
-import Text.Pandoc
--- import Text.Pandoc.Citeproc
 import System.FilePath
+import Text.Pandoc
 
 --------------------------------------------------------------------------------
 -- https://www.rohanjain.in/hakyll-clean-urls/
@@ -21,13 +16,14 @@ cleanRoute :: Routes
 cleanRoute = customRoute createIndexRoute
   where
     createIndexRoute ident = takeDirectory p </> takeBaseName p </> "index.html"
-                            where p = toFilePath ident
+      where
+        p = toFilePath ident
 
 cleanIndexHtmls :: Item String -> Compiler (Item String)
 cleanIndexHtmls = return . fmap (replaceAll pattern replacement)
-    where
-      pattern::String = "/index.html"
-      replacement::String->String = const "/"
+  where
+    pattern :: String = "/index.html"
+    replacement :: String -> String = const "/"
 
 --------------------------------------------------------------------------------
 
@@ -103,7 +99,7 @@ main = hakyll $ do
         >>= loadAndApplyTemplate "templates/post.html" tocCtx
         >>= loadAndApplyTemplate "templates/default.html" tocCtx
         >>= relativizeUrls
-        -- >>= katexFilter  -- use mathjax.
+  --    >>= katexFilter
 
   match "standalone/*" $ do
     route cleanRoute
@@ -170,18 +166,18 @@ main = hakyll $ do
 
   match "templates/*" $ compile templateBodyCompiler
 
-  -- https://robertwpearce.com/hakyll-pt-2-generating-a-sitemap-xml-file.html
-  -- create ["sitemap.xml"] $ do
-  --   route idRoute
-  --   compile $ do
-  --     posts <- recentFirst =<< loadAll "posts/*"
-  --     singlePages <- loadAll (fromList ["about.md"])
-  --     let pages = posts <> singlePages
-  --         sitemapCtx =
-  --           constField "root" root
-  --             <> listField "pages" postCtx (return pages) -- here
-  --     makeItem ""
-  --       >>= loadAndApplyTemplate "templates/sitemap.xml" sitemapCtx
+-- https://robertwpearce.com/hakyll-pt-2-generating-a-sitemap-xml-file.html
+-- create ["sitemap.xml"] $ do
+--   route idRoute
+--   compile $ do
+--     posts <- recentFirst =<< loadAll "posts/*"
+--     singlePages <- loadAll (fromList ["about.md"])
+--     let pages = posts <> singlePages
+--         sitemapCtx =
+--           constField "root" root
+--             <> listField "pages" postCtx (return pages) -- here
+--     makeItem ""
+--       >>= loadAndApplyTemplate "templates/sitemap.xml" sitemapCtx
 
 --------------------------------------------------------------------------------
 
@@ -215,7 +211,6 @@ defaultCtxWithTags tags = listField "tags" tagsCtx getAllTags <> defaultContext
           Item (String, [Identifier]) ->
           Compiler [Item String]
         getPosts (itemBody -> (_, is)) = mapM load is
-
 
 -- toc from https://github.com/slotThe/slotThe.github.io
 getTocCtx :: Context a -> Compiler (Context a)

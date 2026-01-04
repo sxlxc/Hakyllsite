@@ -7,7 +7,7 @@ cabal-version:      >= 1.10
 executable site
   hs-source-dirs:   src
   main-is:          site.hs
-  other-modules:    ChaoDoc, SideNoteHTML
+  other-modules:    ChaoDoc, SideNoteHTML, Pangu
   build-depends:    base   >= 4.18
                   , hakyll >= 4.15
                   , mtl >= 2.2.2
@@ -23,6 +23,8 @@ executable site
                   , filepath
                   -- , ghc-syntax-highlighter
                   -- , blaze-html >= 0.9
+                  , megaparsec
+                  , replace-megaparsec
   ghc-options:    -Weverything
                   -Wno-implicit-prelude
                   -Wno-missing-import-lists
