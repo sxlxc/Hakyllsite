@@ -152,6 +152,10 @@ Finally, one can see that for each maximum clique the number of uncolored vertic
 Bipartite $H$ covers octahedron and even cycles but not sudoku graphs.
 :::
 
+First we need to find a nice characterization of line graph or something else that covers sudoku graphs but excludes odd cycles.
+I guess there should be some connections in group theory.
+The plan is to try graph classes in [Graph families defined by their automorphisms](https://en.wikipedia.org/wiki/Graph_automorphism#Graph_families_defined_by_their_automorphisms).
+Note that regular graphs, vertex-transitive graphs and Cayley graphs won't work.
 
 ## matroid on maximum cliques
 
