@@ -5,6 +5,7 @@
 {-# LANGUAGE ViewPatterns #-}
 
 import ChaoDoc
+import Data.Maybe (fromMaybe)
 import qualified Data.Text as T
 import Hakyll
 import System.FilePath
@@ -181,11 +182,19 @@ main = hakyll $ do
 
 --------------------------------------------------------------------------------
 
+isZhField :: Context String
+isZhField = boolFieldM "isZh" isZh
+  where
+    isZh :: Item String -> Compiler Bool
+    isZh item = do
+      maybeLang <- getMetadataField (itemIdentifier item) "lang"
+      return (maybeLang == Just "zh")
+
 postCtx :: Context String
 postCtx =
   dateField "date" "%B %e, %Y"
-    -- <> constField "root" root
     <> dateField "date" "%Y-%m-%d"
+    <> isZhField
     <> defaultContext
 
 postCtxWithTags :: Tags -> Context String

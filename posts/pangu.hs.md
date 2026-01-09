@@ -102,3 +102,9 @@ panguFilter = walk transformBlocks
 ```
 
 完整的实现可以看[这个commit](https://github.com/sxlxc/Hakyllsite/commit/aa54a6a6014269646b190b78c708dc358c3e4fb0#diff-41a377645bcbb4f6f5b24bf5a69734635f3d75e7d0c2d6a7507ed7a4573bc7f9)。
+
+# CSS `text-autospace`
+
+一月九号才在[知乎](https://zhuanlan.zhihu.com/p/1990751194956723768)看到CSS也支持类似的功能: [`text-autospace`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-autospace)
+
+2025年九月份就已经在主流浏览器上可用。

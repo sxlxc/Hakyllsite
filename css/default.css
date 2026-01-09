@@ -32,6 +32,10 @@ body {
     background-color: var(--color-bg);
     text-rendering: optimizeLegibility;
     text-align: justify;
+    text-autospace: no-autospace;   /*using pangu.hs*/
+}
+body.lang-zh {
+    text-align: left;
 }
 
 body a {
