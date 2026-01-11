@@ -3,6 +3,7 @@ title: k-cut notes
 author: Yu Cong
 lang: en
 date: 2025-12-24
+showtoc: true
 ---
 
 # Near linear time 2-approximation in $\poly(m,n,k)$ regime.
