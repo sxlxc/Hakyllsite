@@ -30,7 +30,7 @@
                         assistiveMml: false,  // true to enable assistive MathML
                     }
                 },
-                enableMenu: false
+                // enableMenu: false
             },
             output: {
                 font: 'mathjax-fira',
@@ -61,7 +61,7 @@
 
 </head>
 
-<body>
+<body $if(isZh)$class="lang-zh" $endif$>
     <div class="navbar-space">
         $if(showtoc)$
         <!-- A table of contents on the left side, but only for screens
@@ -73,15 +73,6 @@
         $endif$
     </div>
     <div class="text-space">
-        <header class="no-print">
-            <nav class="navbar">
-                <a href="/notes/">Notes</a>
-                <div class="navright">
-                    <a href="/draft">Drafts</a>
-                    <a href="/about">About</a>
-                </div>
-            </nav>
-        </header>
         <main role="main">
             <h1 class="pagetitle">$title$</h1>
             <article>

@@ -157,8 +157,65 @@ I guess there should be some connections in group theory.
 The plan is to try graph classes in [Graph families defined by their automorphisms](https://en.wikipedia.org/wiki/Graph_automorphism#Graph_families_defined_by_their_automorphisms).
 Note that regular graphs, vertex-transitive graphs and Cayley graphs won't work.
 
+## integral, Cayley and NEPS
+
+[Sudoku graphs](https://en.wikipedia.org/wiki/Sudoku_graph) are [integral](https://en.wikipedia.org/wiki/Integral_graph) [Cayley](https://en.wikipedia.org/wiki/Cayley_graph) graphs.
+
+I guess integral might be a key property to separate odd cycles and sudoku graphs, since the only integral odd cycle is $C_3$ which does not contradict the $\chi=\omega$ condition.
+
+### integral & NEPS
+
+Torsten Sander [@Sander_2009] proved that sudoku graphs are integral.
+By integral it means that the eigenvalues of the adjacency matrix are all integral.
+
+Sander's proof basically shows that sudoku graphs are NEPS of four complete graphs and then uses a existing theorem on eigenvalues of NEPS.
+Given a set $B\subset \set{0,1}^n-\mathbf 0$ and graphs $G_1,\ldots,G_n$, the non-complete extended $p$-sum (NEPS) of these graphs with respect to basis $B$ is the graph $G$ with vertex set $V(G)=V(G_1)\times \dots \times V(G_n)$ and edge set $E(G)$ such that $(x_1,\ldots,x_n),(y_1,\ldots,y_n)\in V(G)$ are adjacent iff there exists some $n$-tuple $(b_1,\ldots,b_n)\in B$ such that $x_i=y_i$ whenever $b_i=0$ and $x_i,y_i$ are adjacent in $G_i$ whenever $b_i=1$.
+
+::: Lemma
+Let $n\geq 2$ be an integer and $G_1,\ldots,G_4=K_n$.
+If $G$ is the NEPS of $G_i$ for basis
+\begin{equation*}
+\begin{aligned}
+  B=\{&(0,0,0,1),\\
+   &(0,0,1,0),\\ 
+   &(0,1,0,0),\\ 
+   &(1,0,0,0),\\ 
+   &(0,1,0,1),\\ 
+   &(1,1,0,0),\\ 
+   &(0,0,1,1)\}
+\end{aligned}
+\end{equation*}
+then $G$ is a sudoku graph.
+:::
+
+See Figure 3 in [@Sander_2009] for the proof.
+
+### Cayley
+
+Let $G$ be a group and let $S$ be a generating set of $G$. The Cayley graph $\Gamma(G,S)$ is a directed regular graph in which the vertices are the elements in $G$ and there is an edge from $u$ to $su$ with label $s$ for every $s\in S$.
+
+A sudoku graph with $n^2\times n^2$ vertices is a Cayley graph of the abelian group $Z_n^4$.
+(Sudoku graphs are undirected. Consider a bi-directional edge undirected.)
+There's a one-to-one mapping from every vertex in sudoku graph (every cell in sudoku grid) to $Z_n^4$.
+The tuple $(a,b,c,d)$ indexes the vertex in the $a$-th band, $b$-th row in that band, $c$-th stack and $d$-th column in that stack.(assuming numbers are 0-indexed.)
+Then the generating set is
+\begin{equation*}
+\begin{aligned}
+S   &=    \{(0,0,0,x),\forall x\in Z_n\}\\
+    &\cup \{(0,0,x,0),\forall x\in Z_n\}\\
+    &\cup \{(0,x,0,0),\forall x\in Z_n\}\\
+    &\cup \{(x,0,0,0),\forall x\in Z_n\}\\
+    &\cup \{(0,x,0,y),\forall x,y\in Z_n\}\\ 
+    &\cup \{(x,y,0,0),\forall x,y\in Z_n\}\\ 
+    &\cup \{(0,0,x,y),\forall x,y\in Z_n\}\\ 
+\end{aligned}
+\end{equation*}
+
+Now one can see that each tuple in the basis of NEPS corresponds to a pattern of elements in generating set.
+
 ## matroid on maximum cliques
 
+...
 
 [^1]: The idea is from the joint work of authors in the mathoverflow question. I think this is a simpler and more intuitive proof.
 
