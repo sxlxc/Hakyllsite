@@ -22,19 +22,9 @@
 </head>
 
 <body>
-    <div class="navbar-space">
-    </div>
+    <div class="toc"></div>
     <div class="text-space">
-        <header class="no-print">
-            <nav class="navbar">
-                <a href="/">Home</a>
-                <div class="navright">
-                    <a href="/draft">Drafts</a>
-                    <a href="/about">About</a>
-                </div>
-            </nav>
-        </header>
-
+        $partial("templates/navbar.html")$
         <main role="main">
             $body$
         </main>

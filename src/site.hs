@@ -5,7 +5,6 @@
 {-# LANGUAGE ViewPatterns #-}
 
 import ChaoDoc
-import Data.Maybe (fromMaybe)
 import qualified Data.Text as T
 import Hakyll
 import System.FilePath

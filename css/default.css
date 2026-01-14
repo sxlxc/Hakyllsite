@@ -318,7 +318,7 @@ code {
     } */
 }
 
-.navbar-space {
+.toc {
     display: none;
 }
 
@@ -336,7 +336,7 @@ code {
         margin: auto;
     }
 
-    .navbar-space {
+    .toc {
         margin-top: 5rem;
         margin-left: 0;
         margin-right: 0;

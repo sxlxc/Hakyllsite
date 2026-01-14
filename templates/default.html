@@ -2,67 +2,11 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="googlebot" content="noindex">
-    <title>$title$</title>
-    <link rel="stylesheet" href="/css/fonts.css" />
-    <link rel="stylesheet" href="/css/default.css" />
-    <link rel="stylesheet" href="/css/pygentize.css" />
-    <link rel="stylesheet" href="/css/chao-theorems.css">
-    <link rel="stylesheet" href="/css/sidenotes.css">
-    <script>
-        // page title
-        document.addEventListener("DOMContentLoaded", function () {
-            const hostname = window.location.hostname;
-            document.title = document.title + " | " + hostname;
-        });
-        // mathjax
-        MathJax = {
-            options: {
-                menuOptions: {
-                    settings: {
-                        enrich: false,        // true to enable semantic-enrichment
-                        collapsible: false,   // true to enable collapsible math
-                        speech: false,        // true to enable speech generation
-                        braille: false,       // true to enable Braille generation
-                        assistiveMml: false,  // true to enable assistive MathML
-                    }
-                },
-                // enableMenu: false
-            },
-            output: {
-                font: 'mathjax-fira',
-                fontPath: '/mathjax-fira-font'
-            },
-            tex: {
-                macros: {
-                    floor: ["{\\left\\lfloor #1 \\right\\rfloor}", 1],
-                    ceil: ["{\\left\\lceil #1 \\right\\rceil}", 1],
-                    set: ["{\\left\\{ #1 \\right\\}}", 1],
-                    norm: ["{\\left\\| #1 \\right\\|}", 1],
-                    F: "{\\mathbb F}",
-                    R: "{\\mathbb R}",
-                    C: "{\\mathbb C}",
-                    Z: "{\\mathbb Z}",
-                    e: "{\\varepsilon}",
-                    mex: "\\mathop{\\operatorname{mex}}",
-                    lcm: "\\mathop{\\operatorname{lcm}}",
-                    dist: "\\mathop{\\operatorname{dist}}",
-                    poly: "\\mathop{\\operatorname{poly}}",
-                    polylog: "\\mathop{\\operatorname{polylog}}",
-                    span: "\\mathop{\\operatorname{span}}",
-                }
-            }
-        };
-    </script>
-    <script defer src="/mathjax/tex-chtml.js"></script>
-
+$partial("templates/head.html")$
 </head>
 
 <body $if(isZh)$class="lang-zh" $endif$>
-    <div class="navbar-space">
+    <div class="toc">
         $if(showtoc)$
         <!-- A table of contents on the left side, but only for screens
                 that are big enough -->
@@ -73,15 +17,7 @@
         $endif$
     </div>
     <div class="text-space">
-        <header class="no-print">
-            <nav class="navbar">
-                <a href="/">Home</a>
-                <div class="navright">
-                    <a href="/draft">Drafts</a>
-                    <a href="/about">About</a>
-                </div>
-            </nav>
-        </header>
+        $partial("templates/navbar.html")$
         <main role="main">
             <h1 class="pagetitle">$title$</h1>
                     $body$
