@@ -34,6 +34,8 @@ Block | B | B | B |  ← band 2
 
 Note that a $n\times n$ sudoku contains $n$ bands, $n$ stacks and $n$ blocks. So there are $n^4$ cells and each cell can be filled with some number in $[n^2]$.
 
+Solving $n\times n$ sudoku is NP-hard.^[see [wikipedia](https://en.wikipedia.org/wiki/Mathematics_of_Sudoku#cite_note-8)]
+
 # matroid on constraint set
 
 We will see that there is a matroid with constraints as its groundset.[^1]
