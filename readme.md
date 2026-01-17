@@ -1,6 +1,6 @@
 
-1. deps: [`ghcup`](https://www.haskell.org/ghcup/), ~~[`rustup`](https://rust-lang.github.io/rustup/)~~ Currently using ghc-9.6.7 and cabal 3.12.1.0
-2. `make site`
-3. `make build/watch/rebuild/clean`
+The Haskell part is compiled with ghc-9.6.7 and cabal 3.12.1.0
 
-favicon: [twoslice font](https://joefatula.com/twoslice.html)
+pandoc filters:
+ - theorem and biliography filters are copied from [chaodoc](https://github.com/chaoxu/chaoxu.github.io/blob/develop/ChaoDoc.hs)
+ - [pangu.hs](https://github.com/sxlxc/pangu.hs), which add spaces between CJK and ascii chars, can be found in [this commit](https://github.com/sxlxc/Hakyllsite/commit/aa54a6a6014269646b190b78c708dc358c3e4fb0)
