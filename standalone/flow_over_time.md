@@ -50,7 +50,7 @@ We say an $s$-$t$-path $P$ is in the support of a flow over time if at some time
 However, it is still tricky to satisfy the flow conservation.
 Fortunately, we have the following lemma.
 
-::: Lemma
+::: {.Lemma #pathdecomp}
 There exists an optimal flow over time such that for every $s$-$t$-path $P$ in its support, flows are sent along $P$ for time $T-\tau(P)$.
 :::
 
@@ -59,6 +59,8 @@ There exists an optimal flow over time such that for every $s$-$t$-path $P$ in i
 It follows from definitions that the number of robots we sent at time $\theta$ is amount of outgoing flows from $s_\theta$ in the time expanded network.
 Then hopefully one can come up with a proof the the above lemma while avoiding cut over time.
 However, i find it hard to do so. Anyway, the statement is a corollary of the max-flow min-cut over time theorem.
+
+If [@pathdecomp] can be proven without $s$-$t$-cut over time, then one can derive the same algorithm as Ford & Fulkerson.
 
 
 Ford and Fulkerson's approach:
