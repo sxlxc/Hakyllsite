@@ -1,7 +1,6 @@
 .theorem-environment {
-  padding: 0 0;
   font-style: italic;
-  padding-top: 10pt;
+  margin-top: 1em;
 }
 
 .theorem-header {
