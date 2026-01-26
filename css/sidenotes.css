@@ -95,7 +95,7 @@ div .sidenote pre {
 .sidenote::before {
     content: counter(sidenote-counter) " ";
     font-size: 0.8rem;
-    top: -0.4rem;
+    top: -0.55rem;
     position: absolute;
     right: calc(100% + 0.5em);
 }

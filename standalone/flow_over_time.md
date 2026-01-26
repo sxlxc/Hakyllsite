@@ -1,12 +1,12 @@
 ---
-title: Flow over time
+title: Flows over time
 author: Yu Cong
 lang: en
 date: 2026-01-20
-# showtoc: true
+showtoc: true
 ---
 
-This is a note on Martin Skutella's [slides](https://www3.math.tu-berlin.de/combi/MDS/summerschool11-material/flows_over_time_bereinigt.pdf) on flow over time, whose audiences are those who know flow but not flow over time.^[A more comprehensive and readable introduction on this topic is his [paper](https://www3.math.tu-berlin.de/Vorlesungen/SS08/NetOpt/flows_over_time.pdf).]
+This is a note on Martin Skutella's [slides](https://www3.math.tu-berlin.de/combi/MDS/summerschool11-material/flows_over_time_bereinigt.pdf) on flows over time, whose audiences are those who know flow but not flow over time.^[A more comprehensive and readable introduction on this topic is his [paper](https://www3.math.tu-berlin.de/Vorlesungen/SS08/NetOpt/flows_over_time.pdf).]
 I find this problem a great example for modeling real-world applications and for doing reductions to solve (seemingly) new theory problem.
 
 Consider a pipe system carrying materials from a source to a sink. A pipe system can be naturally modelled by a digraph.
@@ -15,7 +15,9 @@ Each arc $e$ has a capacity $c_e$, meaning the amount of material it can carry p
 
 Now a natural and pratical question is, given time $T$, what is the maximum quantity of materials the system can transport from $s$ to $t$ in time interval $[0,T)$?
 
-::: {.Problem title="flow over time"}
+# Max flow over time
+
+::: {.Problem title="Max flow over time"}
 Given a digraph $G=(V,E)$ with capacity $c:E\to \Z_+$ and transit time $\tau:E\to \Z_+$ on arcs, a source node $s\in V$ and a sink node $t\in V$, and a time horizon $T>0$,
 find the maximum $s$-$t$-flow over time.
 :::
@@ -35,10 +37,10 @@ At the first glance of this problem, one may come up with the idea of spliting v
 This is called the *time expanded network*. Time expanded networks reduce flow over time to static max flow, but the running time is pseudopolynomial in the input size, since the number of time stamps is $T$. 
 Though time expanded network does not lead to a polynomial time algorithm, the reduction to static flow shows that there is an integral optimal solution which is also acyclic in the time expanded network.
 
-Is there a polynomial-time algorithm for flow over time?
+Is there a polynomial-time algorithm for max-flow over time?
 
 Here's some intuitive thought.
-Assume that the time horizon $T$ is infinite. Then the optimal flow over time is simply the static maximum flow and the transit time is useless in this case.
+Assume that the time horizon $T$ is infinite. Then the maximum flow over time is simply the static maximum flow and the transit time is useless in this case.
 Now suppose that the time horizon $T$ is large enough (say... much larger than the longest simple path from $s$ to $t$), then the optimal solution should be routing the static max flow^[also it's not clear how to break ties.] until the flow cannot arrive before time $T$, then swapping to a flow with shorter transit time.
 
 One way to formalize this intuitive idea is to look at the set of $s$-$t$-paths.
@@ -60,11 +62,22 @@ It follows from definitions that the number of robots we sent at time $\theta$ i
 Then hopefully one can come up with a proof the the above lemma while avoiding cut over time.
 However, i find it hard to do so. Anyway, the statement is a corollary of the max-flow min-cut over time theorem.
 
-If [@pathdecomp] can be proven without $s$-$t$-cut over time, then one can derive the same algorithm as Ford & Fulkerson.
+If [@pathdecomp] can be proven without $s$-$t$-cut over time, then one can derive the same algorithm as Ford & Fulkerson[^FF].
+
+# Earliest arrival flow
+
+::: {.Definition title="Earliest arrival flow"}
+A feasible $s$-$t$-flow over time with time $f$ horizon $T$ is called earliest arrival flow if it maximizes the cumulative flow $\sum\limits_{e\in \delta^{\text{in}}(t)} \int_0^{\theta-\tau_e} f_e(\psi) d\psi$ into $t$ for all $\theta\in [0,T]$.
+:::
+
+Apparently, the earliest arrival flow must be some max $s$-$t$-flow over time. However, it not obvious if such a flow exists in any networks.
 
 
-Ford and Fulkerson's approach:
 
-1. restrict the solution to temporally repeated flow, which is sending flows along each path in the decomposition of some static acyclic $s$-$t$-flow until the arrival time exceeds $T$. This always leads to feasible flow over time.
-2. use flow decomposition to show that the maximum temporaly repeated flow comes from any static flow in $\arg\max_{f} T|f|-\sum_{e\in E}\tau_e f_e$, which is a min-cost circulation problem and can be solved in strongly polynomial time.^[It seems that at the time (1958) Ford & Fulkerson inventing this flow over time algorithm, the strongly polynomial-time alg for circulation isn't known. (See Schrijver's book and refs therein.) They formulated this problem with LP used primal-dual to solve it.]
-3. find a max-flow min-cut over time theorem, and show that the dual LP (which is integral) for min cut over time has the same optimum as maximum tempraly repeated flow. Also min-cut over time is always no smaller than flow over time. It follows that the maximum flow over time is indeed achieved by temporally repeated flows.
+[^FF]:
+    This is roughly how Ford & Fulkerson's algorithm works:
+
+    - restrict the solution to temporally repeated flow, which is sending flows along each path in the decomposition of some static acyclic $s$-$t$-flow until the arrival time exceeds $T$. This always leads to feasible flow over time.
+    - use flow decomposition to show that the maximum temporaly repeated flow comes from any static flow in $\arg\max_{f} T|f|-\sum_{e\in E}\tau_e f_e$, which is a min-cost circulation problem and can be solved in strongly polynomial time. 
+    (It seems that, at the time (1958) when Ford and Fulkerson invented this algorithm, a strongly polynomial-time algorithm for circulation had not yet been found. (See Schrijver's book and refs therein.) They formulated this problem with LP and used primal-dual to solve it.)
+    - find a max-flow min-cut over time theorem, and show that the dual LP (which is integral) for min cut over time has the same optimum as maximum tempraly repeated flow. Also min-cut over time is always no smaller than flow over time. It follows that the maximum flow over time is indeed achieved by temporally repeated flows.
