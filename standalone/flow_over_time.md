@@ -62,7 +62,15 @@ It follows from definitions that the number of robots we sent at time $\theta$ i
 Then hopefully one can come up with a proof the the above lemma while avoiding cut over time.
 However, i find it hard to do so. Anyway, the statement is a corollary of the max-flow min-cut over time theorem.
 
-If [@pathdecomp] can be proven without $s$-$t$-cut over time, then one can derive the same algorithm as Ford & Fulkerson[^FF].
+[@pathdecomp] reduces the complexity of max-flow over time by showing there must be some optimal solution $f$ with decomposition $\mathcal P = \set{P_1,\dots,P_h}$, such that we send flows in each $s$-$t$-path $P_i$ during time $[0,T-\tau(P_i)]$.
+Let $x$ be a static flow and let $x_P$ be the amount of flow sent in some $s$-$t$-path $P$.
+The flow value is
+\[
+\sum_{P\in \mathcal P} x_P (T-\tau(P)) = T |x| - \sum_e x_e \tau_e.
+\]
+
+Then maximizing $T |x| - \sum_e x_e \tau_e$ can be solved in polynomial time by reducing it to a min-cost circulation problem.
+This leads to the same method as Ford and Fulkerson's algorithm[^FF].
 
 # Earliest arrival flow
 
@@ -74,7 +82,7 @@ Apparently, the earliest arrival flow must be some max $s$-$t$-flow over time. H
 
 
 
-[^FF]:
+[^FF]: {-}
     This is roughly how Ford & Fulkerson's algorithm works:
 
     - restrict the solution to temporally repeated flow, which is sending flows along each path in the decomposition of some static acyclic $s$-$t$-flow until the arrival time exceeds $T$. This always leads to feasible flow over time.
