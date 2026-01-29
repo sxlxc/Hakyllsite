@@ -57,6 +57,17 @@ summary {
     background-color: var(--color-linkhbg);
 }
 
+/*mathML*/
+.htmlmathparagraph, mtext,math {
+    font-family: Lete Sans Math;
+}
+#math-container {
+    display: block;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: .5em;
+}
+
 .text-space .langtag {
     color: var(--color-tag1);
 }

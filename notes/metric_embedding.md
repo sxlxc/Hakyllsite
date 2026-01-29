@@ -35,12 +35,12 @@ Let's first try the Fréchet embedding $f_{Y}: X\to \R^{|Y|}$ for some $Y\subset
 Define $f_{Y}(x)=\bigoplus_{y\in Y} d(x,y)$, where $\oplus$ is the direct sum of vector coordinates. 
 Then one has
 
-\begin{equation*}
+\[
 \begin{aligned}
 \|f_Y(u)-f_y(v)\|_\infty    &= \max_{y\in Y} |d(y,u)-d(y,v)|\\
                             &\leq d(u,v).
 \end{aligned}
-\end{equation*}
+\]
 
 The subset $Y$ needs to satisfy the followings,
 

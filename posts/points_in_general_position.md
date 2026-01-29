@@ -27,23 +27,23 @@ Let $P$ be a set of $n$ points in the plane.
 We can define $\binom{n}{2}$ lines and write a point-line incidence matrix $A_{\binom{n}{2}\times n}$ which indicates if point $p$ is on the line defined by $\{p_1,p_2\}$.
 Now we can write an IP for finding the largest subset of $P$ in general position.
 
-\begin{equation*}
+\[
 \begin{aligned}
 \max&   &   \sum_p &x_p  &   &\\
 s.t.&   &   \sum_p &A_{i,p}x_p \leq 2 & &\forall i\in \left[\binom{n}{2}\right]\\
     &   &   &x_p\in \set{0,1}
 \end{aligned}
-\end{equation*}
+\]
 
 Consider its LP dual,
 
-\begin{equation*}
+\[
 \begin{aligned}
 \min&   &   \sum_i &2y_i    &   &\\
 s.t.&   &   \sum_i &A_{i,p}y_i\geq 1    &   &\forall p\in P\\
     &   &       &y_i\in \set{0,1}
 \end{aligned}
-\end{equation*}
+\]
 
 One can see that the dual is finding the smallest number of lines to cover points in $P$. Denote by $\sigma$ the max number of general position points in $P$ and let $\alpha$ be the minimum line covering number. (Borrow these symbols from matroid strength and density.) There are some results in [@froese_finding_2017].
 

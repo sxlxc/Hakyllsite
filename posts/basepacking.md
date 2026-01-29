@@ -120,12 +120,12 @@ In [@Galtier_2018b] there is a constructive proof that recovers the optimal $F\s
 The idea is to show that any fraction solution $y$ to base hitting set can be converted to another solution $y'$ such that $y'(e)\in \set{0,c}$ for some global constant $c$ and $\sum_e w(e)y'(e)\leq \sum_e w(e)y(e)$.
 
 Define two sets $P, P'\in \R^{|E|}$,
-\begin{equation*}
+\[
 \begin{aligned}
 P   &=\set{y\in \R^{|E|}: y(e)\geq 0 \;\forall e\in E; y(B)\geq 1 \; \forall \text{ base B}},\\
 P'     &=\set{y\in P: \forall e\in E, \exists B^e\in \mathcal B \; s.t. \; e\in B^e \land y(B^e)=\min_{B\in \mathcal B} y(B)}.
 \end{aligned}
-\end{equation*}
+\]
 
 $P'$ is contained in $P$ and every element is in a minimum base with respect to weights $y:E\to \R$.
 
@@ -138,13 +138,13 @@ The proof is contrustive. Let $B=\set{e_1,\ldots, e_r}$ be a minimum weight base
 Assume that $y(e_1)\leq \ldots \leq y(e_r)$.
 For each element $e\notin B$, let $C_e$ be the fundamental circuit in $B+e$.
 Then we define $y'$ as follows.
-\begin{equation*}
+\[
 y'(e)=
 \begin{cases}
 y(e)    & e\in B\\
 \min\limits_{e\in C_e} y(e) &e\notin B
 \end{cases}
-\end{equation*}
+\]
 
 One can easily verify that $y'(e)\leq y(e)$ for all $e$ and $B$ is still the minimum weight base under weights $y'$. Now it remains to show that $y'\in P'$. 
 
@@ -164,13 +164,13 @@ Let $\mu_i$ be the number of edges with $y'(e)=\theta_i$.
 One immediate observation is that the objective $\sum_e w(e)y'(e)$ can be written as $\sum_i \theta_i \mu_i$.
 Let $v_i=r(\set{e: y'(e)\leq \theta_{i}})-r(\set{e: y'(e)\leq \theta_{i-1}})$ be the rank increment when involving elements with $y'(e)=\theta_i$. Another immediate observation is that the weight of minimum base is $\sum_{e\in B} y'(e)=\sum_i v_i\theta_i=1$. Based on these observations we write the following LP for $\theta$.
 
-\begin{equation*}
+\[
 \begin{aligned}
 \min&   &   &\sum_i \mu_i\theta_i \\
 s.t.&   &   &\sum_i v_i\theta_i = 1\\
     &   &   &0 \leq \theta_1\leq \theta_2\leq \ldots \leq \theta_h
 \end{aligned}
-\end{equation*}
+\]
 
 Suppose the optimal $y'$ is given, we can compute the optimal $\theta$ in the above LP and recover another solution $y''$ to base hitting set. One can see that $y''$ is still in $P'$. This LP has $h+1$ linearly independent constraints and $h$ variables. Thus only $h$ of the constraints are tight. We have already known that $\sum_i v_i\theta_i = 1$ must be tight. Then there is always an optimal solution $\theta$ such that $0=\theta_1=\ldots=\theta_k < \theta_{k+1}=\ldots = \theta_h =c$. Let $F$ be the set of elements with $y''(e)=0$. Note that the minimum weight base contains $r(F)$ elements of $F$. Thus we known that $c=\frac{1}{r(E)-r(F)}$. The objective is $\sum_{e\in E} w(e)y''(e)=\sum_{e\in E-F}w(e)y''(e)=\frac{\sum_{e\in E-F} w(e)}{r(E)-r(F)}$.
 

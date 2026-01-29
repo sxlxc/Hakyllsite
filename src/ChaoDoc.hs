@@ -28,16 +28,15 @@ chaoDocRead =
   def
     { readerExtensions =
         enableExtension Ext_tex_math_double_backslash $
-          enableExtension Ext_tex_math_single_backslash $
-            enableExtension
-              Ext_raw_tex
-              pandocExtensions
+        enableExtension Ext_tex_math_single_backslash $
+        enableExtension Ext_latex_macros              $
+        enableExtension Ext_raw_tex pandocExtensions
     }
 
 chaoDocWrite :: WriterOptions
 chaoDocWrite =
   def
-    { writerHTMLMathMethod = MathJax "",
+    { writerHTMLMathMethod = MathML,
       -- writerHtml5          = True,
       -- writerHighlightStyle = Just syntaxHighlightingStyle,
       writerNumberSections = True,
@@ -177,7 +176,8 @@ bibFile = "reference.bib"
 
 chaoDocCompiler :: Compiler (Item String)
 chaoDocCompiler = do
-  ( getResourceBody
+  macros <- loadBody "math-macros.tex"
+  ( (getResourceBody <&> fmap (\body -> macros ++ "\n\n" ++ body))
       >>= myReadPandocBiblio chaoDocRead (T.pack cslFile) (T.pack bibFile) myFilter
     )
     <&> writePandocWith chaoDocWrite
@@ -219,7 +219,7 @@ myReadPandocBiblio ropt csl biblio pdfilter item = do
   return $ fmap (const pandoc') item
 
 myFilter :: Pandoc -> Pandoc
-myFilter = usingSideNotesHTML chaoDocWrite . theoremFilter . panguFilter
+myFilter = usingSideNotesHTML chaoDocWrite . theoremFilter . panguFilter . displayMathFilter
 
 -- pangu filter
 lastChar :: Inline -> Maybe Char
@@ -278,3 +278,11 @@ panguFilter = walk transformBlocks
     transformBlocks :: Block -> Block
     transformBlocks (Para inlines) = Para (panguInlines inlines)
     transformBlocks x = x
+
+-- display math wrapper for MathML
+displayMathFilter :: Pandoc -> Pandoc
+displayMathFilter = walk wrapDisplayMath
+  where
+    wrapDisplayMath m@(Math DisplayMath _) =
+      Span ("math-container", [], []) [m]
+    wrapDisplayMath x = x

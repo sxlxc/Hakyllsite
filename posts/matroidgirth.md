@@ -175,13 +175,13 @@ Note that the size of cut $|\delta(X)|$ is a submodular function on $V(G)$ but $
 
 ::: {.Problem title="Generalised Congruency-Constrained Submodular Minimization (GCCSM)" #probGCCSM}
 Let $f:2^N \to \Z$ submodular, $p$ prime, $k\in \Z_{\geq 0}$, $r_1,\dots,r_k\in \Z_p$, and $S_1,\dots,S_k\in N$. 
-\begin{equation*}
+\[
 \begin{aligned}
 \min& &  f(S)&  & &\\
 s.t.& & |S\cap S_i|&\equiv r_i  & &\forall i\in [k]\\
     & & S&\subset N
 \end{aligned}
-\end{equation*}
+\]
 :::
 
 Nägele, Sudakov and Zenklusen showed that [@probGCCSM] can be done in polynomial time if the field is small and the number of congruency constraints is constant [@Nägele_Sudakov_Zenklusen_2019].

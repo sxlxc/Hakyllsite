@@ -40,13 +40,13 @@ Note that
 We have to decide the edge weights. Let $e$ be an edge between nodes $u$ and $v$ which are some equivalent class of $\sim_{\leq a}$ and $\sim_{\leq b}$. Then the weight of this edge is $\frac{1}{2}(a-b)$ (assuming $a\geq b$).
 
 Now as (@lca) shows, the distance of leaves in the tree is
-\begin{equation*}
+\[
 \begin{aligned}
     d_T(x,y)&=d_T(\lca(x,y),x) + d_T(\lca(x,y),y)\\
             &=\frac{1}{2}(d(x,y) -0)+\frac{1}{2}(d(x,y) -0)\\
             &=d(x,y)
 \end{aligned}
-\end{equation*}
+\]
 
 Now i guess we have invented the so-called *Hierarchically Separated Trees* (HST). Any ultrametric can be converted into a HST in this way.
 

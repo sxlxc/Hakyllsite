@@ -29,21 +29,21 @@ When I started writing this post, I hadn’t found so many “useful links” ye
 
 We want to solve a 0-1 integer program. Since this task is NP-hard in general, we usually consider its linear relaxation. Different LP formulations have different integrality gaps. For example, consider the following linear relaxation of the  max matching IP in non-bipartite graph.
 
-\begin{equation*}
+\[
 \begin{aligned}
 \sum_{e\in \delta(v)} x(e)&\leq 1   &   &\forall v\in V\\
                     x(e)&\in [0,1]  &   &\forall e\in E
 \end{aligned}
-\end{equation*}
+\]
 `:(`, this polytope is not integral. Edmonds proved that the following formulation is integral.
 
-\begin{equation*}
+\[
 \begin{aligned}
 \sum_{e\in \delta(v)} x(e)&\leq 1   &   &\forall v\in V\\
                     x(e)&\in [0,1]  &   &\forall e\in E\\
 \sum_{e\in E[U]} x(e) &\leq (|U|-1)/2 &  &\forall U\subset V, |U| \text{ odd}
 \end{aligned}
-\end{equation*}
+\]
 
 Schrijver [@schrijver_polyhedral_1986] showed that those odd constraints can be obtained by adding cutting planes to the previous polytope. Fortunately for matching polytope we have a polynomial time separation oracle. However, for harder problems adding cutting planes may make the program NP-hard to solve. Lasserre hierarchy is a method to strengthen the polytope to approaching the integer hull while providing provable good properties and keeping the program polynomial time solvable (if applied constant number of times).
 
@@ -80,13 +80,13 @@ For any probability distribution $y$, the moment matrix is psd.
 
 ::: Proof
 We need to verify $z^T M(y) z\geq 0$ for any $z$.
-\begin{equation*}
+\[
 \begin{aligned}
 z^T M(y) z    &= \sum_I \sum_J z_I y_{I\cup J} z_J\\
                     &= \sum_I \sum_J z_I E[\prod_{i\in I\cup J} X_i] z_J\\
                     &= E\left[\left( \sum_I (z_I \prod_{i\in I} X_i)\right)^2 \right]
 \end{aligned}
-\end{equation*}
+\]
 :::
 
 Note that in the proof something like sum of squares appears. Lasserre hierarchy has deep connections with [SOS optimization](https://en.wikipedia.org/wiki/Sum-of-squares_optimization) and is also known as sum-of-squares hierarchy.
@@ -104,7 +104,7 @@ It is psd since $M(y)$ is psd. The determinant is $y_I(1-y_I)\geq 0$.
 
 Let $\pr_D[p]$ be the probability of selecting $p\in\set{0,1}^n$ in $D$. It remains to prove the following system of linear equations has a solution such that $\pr_D[p]\in [0,1]$ for all $p$.
 
-\begin{equation*}
+\[
 \begin{aligned}
 y_{[n]} &=  \pr_D[\mathbf 1]\\
 y_{[n]\setminus \set{n}} &= \sum_{p:\bigwedge\limits_{i\in [n-1]}(p_i=1)} \pr_D[p]\\
@@ -113,7 +113,7 @@ y_{[n]\setminus \set{n-1}} &= \sum_{p:\bigwedge\limits_{i\in [n]\setminus \set{n
 y_{\set{1}} &= \sum_{p:p_1=1} \pr_D[p]\\
 y_\emptyset &= \sum_p \pr_D[p]
 \end{aligned}
-\end{equation*}
+\]
 I believe this can be proven with the idea of Lemma 2 [here](https://sites.math.washington.edu/~rothvoss/lecturenotes/lasserresurvey.pdf).
 
 
@@ -123,24 +123,24 @@ I believe this can be proven with the idea of Lemma 2 [here](https://sites.math.
 Let the projection of $y$ be $(y_{\set{1}},\dots,y_{\set{n}})^T$. For any $y$ the projection should always lie in $K$.
 One may want to define moment matrices for constraints $Ax\geq b$. This is called the moment matrix of slacks. For simplicity we only consider one linear constraint $a^Tx-b\geq 0$. The moment matrix for this constraint is $M(y)=\left( \sum_{i=1}^n a_i y_{I\cup J\cup \set{i}}-b y_{I\cup J} \right)_{I,J\subseteq [n]}$. Then we can do similar arguments.
 
-\begin{equation*}
+\[
 \begin{aligned}
 z^T M(y) z    &= \sum_I \sum_J z_I z_J (\sum_{i=1}^n a_i y_{I\cup J\cup \set{i}}-b y_{I\cup J})\\
                     &= \sum_I \sum_J z_I z_J (\sum_i a_i E[\prod_{k\in I\cup J\cup\set{i}} X_k] - b E[\prod_{k\in I\cup J}X_k] )\\
                     &= E\left[ \sum_I \sum_J z_I z_J (\sum_i a_i X_i -b) \prod_{k\in I\cup J}X_k \right]\\
                     &= E\left[ (\sum_i a_i X_i -b) \left(\sum_I z_I \prod_{i\in I} X_i \right)^2 \right]
 \end{aligned}
-\end{equation*}
+\]
 
 Note that we can combine the expectations since they are taken over the same probability distribution. 
 Now assume that we have $a^TX-b\geq 0$.
 
-\begin{equation*}
+\[
 \begin{aligned}
  E&\left[ (\sum_i a_i X_i -b) \left(\sum_I z_I \prod_{i\in I} X_i \right)^2 \right]\\
     &= \sum \pr[\cdots](a^T X-b)\left(\sum_I z_I \prod_{i\in I} X_i \right)^2 \geq 0
 \end{aligned}
-\end{equation*}
+\]
 
 If $a^TX\geq b$ is satisfied, then the corresponding slack moment matrix is psd.
 
@@ -196,21 +196,21 @@ For each moment matrix of slacks one can use exactly the same arguments to show 
 :::
 
 $y\in \las_t(K)$ is a probability distribution if we consider only $|I|\leq t$, $y_I=\pr[\bigwedge_{i\in I}X_i=1]$. The vectors $z^{(1)},z^{(2)}$ we constructed in the previous proof can be understood as conditional probabilities. 
-\begin{equation*}
+\[
 \begin{aligned}
 &z^{(1)}_I=\frac{y_{I\cup\set{i}}}{y_i}=\frac{\pr[\bigwedge_{k\in I\cup \set{i}}X_k=1]}{\pr[X_i=1]}=\pr[\bigwedge_{k\in I}X_k=1 | X_i=1]\\
 &z^{(2)}_I=\frac{y_I-y_{I\cup\set{i}}}{1-y_i}=\frac{\pr[\bigwedge_{k\in I} (X_k=1) \land X_i=0]}{\pr[X_i=0]}=\pr[\bigwedge_{k\in I}X_k=1 | X_i=0]
 \end{aligned}
-\end{equation*}
+\]
 
 The proof is basically showing that
 
-\begin{equation*}
+\[
 \begin{aligned}
 y_I &= \pr[X_i=1] \pr[\bigwedge_{k\in I}X_k=1 | X_i=1]+\pr[X_i=0] \pr[\bigwedge_{k\in I}X_k=1 | X_i=0]\\
     &= \pr[\bigwedge_{i\in I}X_i=1]
 \end{aligned}
-\end{equation*}
+\]
 
 For any partially feasible probability distribution $y\in\las_t(K)$, $y_i \in (0,1)$ implies that both $X_i=0$ and $X_i=1$ happen with non-zero probability, which in turn impies $z^{(1)},z^{(2)}\in \las_{t-1}(K)$. One can also explicitly express $y$ as convex combination and see the relation with Möbius inversion, see p9 in [this notes](https://sites.math.washington.edu/~rothvoss/lecturenotes/lasserresurvey.pdf).
 
@@ -249,13 +249,13 @@ In this section we briefly show the non-probabilistic view of Lasserre hierarchy
 Everything in this section can be found in [`useful_link[6]`](https://people.eecs.berkeley.edu/~venkatg/pubs/papers/thesis-ali-kemal-sinop.pdf).
 
 Consider the following polynomial optimiation problem
-\begin{equation*}
+\[
 \begin{aligned}
 \min&   &   a(x)&    &   &\\
 s.t.&   &   b(x)&\geq 0 &   &\forall b\in B\\
     &   &   x&\in\set{0,1}^n
 \end{aligned}
-\end{equation*}
+\]
 where $a,b,c$ are polynomials. We want to formulate this problem with SDP.
 
 We can consider polynomials $a,b$ as multilinear polynomials. Since $x_i\in \set{0,1}$, we have $x_i^2=x_i$. Now we can consider enumerating $x_S=\prod_{i\in S}x_i$ and write these polynomials as linear functions. For example, we can rewrite $a(x)=\sum_{S\subset [n]}\sum_{\alpha_S:S\to \Z} a_S \prod_{i\in S}x_i^{\alpha_S(i)}$ as $\sum_{S\subset [n]} a_S x_S$ which is linear in the moment sequence $(x_\emptyset, x_{\set{1}},\ldots,x_{[n]})$.
@@ -264,25 +264,25 @@ Recall that our goal is to find a SDP formulation. A common technique is replace
 
 Then the program becomes the following SDP
 
-\begin{equation*}
+\[
 \begin{aligned}
 \min&   &   \sum_{S\subseteq [n]}a_S x_S&    &   &\\
 s.t.&   &   M^b(x)&\succeq 0 &   &\forall b\in B\\
     &   &   M(x)&\succeq 0\\
     &   &   x_{\emptyset}&=1
 \end{aligned}
-\end{equation*}
+\]
 
 Note that if the max degree of polynomials $a,b$ is at most $d$, then the following program is a relaxation of the original polynomial optimiation problem (cf. [Corollary 3.2.2.](https://people.eecs.berkeley.edu/~venkatg/pubs/papers/thesis-ali-kemal-sinop.pdf)).
 
-\begin{equation*}
+\[
 \begin{aligned}
 \min&   &   \sum_{S\subseteq [n]}a_S x_S&    &   &\\
 s.t.&   &   M_{F}^b(x)&\succeq 0 &   &\forall b\in B\\
     &   &   M_{F\uplus V_{\leq d}}(x)&\succeq 0\\
     &   &   x_{\emptyset}&=1
 \end{aligned}
-\end{equation*}
+\]
 where $F\subset 2^{[n]}$, $\uplus(A,B)=\set{a\cup b| \forall a\in A,b\in B}$ is element-wise union and $M_{F}$ is the submatrix of $M(F)$ on entries $F\times F$.
 Taking $F=\binom{[n]}{\leq t}$ gives us $\las_t$.
 
@@ -335,35 +335,35 @@ Computing the determinant gives us $\|x_S(f)\|^2(1-\|x_S(f)\|^2)\geq 0$.
 \end{bmatrix}\succeq 0\]
 The determinant is $\|x_S(f)\|^2(\|x_T(g)\|^2-\|x_S(f)\|^2)\geq 0$.
 3. We only need to show $\|x_S(f)\|^2=\|x_{S+u}(f\land u=0)\|^2 +\|x_{S+u}(f\land u=1)\|^2$ and the rest follows by induction. Note that $x_u(0)+x_u(1)=x_\emptyset$ since we have $\|x_u(0)\|^2+\|x_u(1)\|^2=\|x_{\emptyset}\|^2$ and they are orthogonal.
-\begin{equation*}
+\[
 \begin{aligned}
 \|x_{S+u}(f\land u=0)\|^2 +\|x_{S+u}(f\land u=1)\|^2 &= \langle{x_S(f)},{x_u(0)}\rangle+\langle{x_S(f)},{x_u(1)}\rangle\\
 &= \langle{x_S(f)},{x_u(0)+x_u(1)}\rangle\\
 &= \langle{x_S(f)},{x_\emptyset}\rangle=\|x_S(f)\|^2
 \end{aligned}
-\end{equation*}
+\]
 4. Notice that $x_{S+u}(f\land u=1)$ and $x_{S+u}(f\land u=0)$ are orthogonal. Denote by $x_S(f')$ the projection of $f$ on the hyperplane spanned by $x_{S+u}(f\land u=1)$ and $x_{S+u}(f\land u=0)$. One can verify that $f'=x_{S+u}(f\land u=1)+x_{S+u}(f\land u=0)$. Then it remains to show $\langle x_S(f'), x_S(f)\rangle=\|x_S(f)\|^2$, which immediately follows from 3.
 :::
 
 Then write $x_u=x_{\set{u}}(1)$. The follwing "SDP" is a relaxation of sparsest cut.
 
-\begin{equation*}
+\[
 \begin{aligned}
 \min&   &   \frac{\sum_{u < v}c_{u,v}\|x_u-x_v\|^2}{\sum_{u < v}D_{u,v}\|x_u-x_v\|^2}\\
 s.t.&   &   \sum_{u < v}D_{u,v}\|x_u-x_v\|^2&\geq 0\\
     &   &   x\in \las_r(V)&
 \end{aligned}
-\end{equation*}
+\]
 
 Scaling every $x_S(f)$ by a factor of the square root of the objective's denominator gives us a real SDP.
 
-\begin{equation*}
+\[
 \begin{aligned}
 \min&   &   \sum_{u < v}c_{u,v}\|x_u-x_v\|^2\\
 s.t.&   &   \sum_{u < v}D_{u,v}\|x_u-x_v\|^2&= 1\\
     &   &   x\in \las_r(V),\|x_\emptyset\|^2&>0
 \end{aligned}
-\end{equation*}
+\]
 
 The rounding method is too complicated, so it won't be covered here.
 
@@ -398,12 +398,12 @@ It turns out that problems occur in the proof of [@conv]. If $\las_t(K)$ is defi
 
 Sometimes $K$ is given in a compact form. For example, consider finding matroid cogirth.
 
-\begin{equation*}
+\[
 \begin{aligned}
 \min&   &   \sum_{e\in E} x_e&  &   &\\
 s.t.&   &   \sum_{e\in B} x_e&\geq 1 &  &\forall \text{ base $B$}\\
     &   &                 x_e&\geq 0 &  &\forall e\in E
 \end{aligned}
-\end{equation*}
+\]
 
 If $K$ is only accessable through a separation oracle, is it possible to optimize over $\las_t(K)$ in polynomial time for constant $t$?

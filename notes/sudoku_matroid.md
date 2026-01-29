@@ -176,7 +176,7 @@ Given a set $B\subset \set{0,1}^n-\mathbf 0$ and graphs $G_1,\ldots,G_n$, the no
 ::: Lemma
 Let $n\geq 2$ be an integer and $G_1,\ldots,G_4=K_n$.
 If $G$ is the NEPS of $G_i$ for basis
-\begin{equation*}
+\[
 \begin{aligned}
   B=\{&(0,0,0,1),\\
    &(0,0,1,0),\\ 
@@ -186,7 +186,7 @@ If $G$ is the NEPS of $G_i$ for basis
    &(1,1,0,0),\\ 
    &(0,0,1,1)\}
 \end{aligned}
-\end{equation*}
+\]
 then $G$ is a sudoku graph.
 :::
 
@@ -201,7 +201,7 @@ A sudoku graph with $n^2\times n^2$ vertices is a Cayley graph of the abelian gr
 There's a one-to-one mapping from every vertex in sudoku graph (every cell in sudoku grid) to $Z_n^4$.
 The tuple $(a,b,c,d)$ indexes the vertex in the $a$-th band, $b$-th row in that band, $c$-th stack and $d$-th column in that stack.(assuming numbers are 0-indexed.)
 Then the generating set is
-\begin{equation*}
+\[
 \begin{aligned}
 S   &=    \{(0,0,0,x),\forall x\in Z_n\}\\
     &\cup \{(0,0,x,0),\forall x\in Z_n\}\\
@@ -211,7 +211,7 @@ S   &=    \{(0,0,0,x),\forall x\in Z_n\}\\
     &\cup \{(x,y,0,0),\forall x,y\in Z_n\}\\ 
     &\cup \{(0,0,x,y),\forall x,y\in Z_n\}\\ 
 \end{aligned}
-\end{equation*}
+\]
 
 Now one can see that each tuple in the basis of NEPS corresponds to a pattern of elements in generating set.
 

@@ -25,6 +25,18 @@
   font-weight: bold;
   font-style: italic;
 }
+@font-face {
+  font-family: "Lete Sans Math";
+  src: url("/fonts/LeteSansMath.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Lete Sans Math";
+  src: url("/fonts/LeteSansMath-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+}
 
 @font-face {
   font-family: "IosevkaC";

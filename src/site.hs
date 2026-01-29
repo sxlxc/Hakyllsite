@@ -37,15 +37,16 @@ main = hakyll $ do
   --   route idRoute
   --   compile copyFileCompiler
 
-  match "mathjax/**" $ do
-    route idRoute
-    compile copyFileCompiler
+  -- match "mathjax/**" $ do
+  --   route idRoute
+  --   compile copyFileCompiler
 
-  match "mathjax-fira-font/**" $ do
-    route idRoute
-    compile copyFileCompiler
+  -- match "mathjax-fira-font/**" $ do
+  --   route idRoute
+  --   compile copyFileCompiler
+  match "math-macros.tex" $ compile getResourceBody
 
-  match "fonts/*" $ do
+  match "fonts/*.woff2" $ do
     route idRoute
     compile copyFileCompiler
 

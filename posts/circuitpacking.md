@@ -46,21 +46,21 @@ Given a matroid $M=(E,\mathcal I)$ and a non-negative integral weight function $
 
 [@ding_packing_2009] studied a related (and seemingly simplier) optimization variant. How many circuits can we pack with element capacity $k w(e)$?
 
-\begin{equation*}
+\[
 \begin{aligned}
 \nu_{k,w}=\max&   &   \sum_C x_C&    &   &\\
 s.t.&   &   \sum_{C:e\in C} x_C &\leq k w(e)    &   &\forall e\in E\\
     &   &                   x_C &\in \Z_{\geq 0}
 \end{aligned}
-\end{equation*}
+\]
 
-\begin{equation*}
+\[
 \begin{aligned}
 \tau_{k,w}=\min&   &   \sum_e w(e)&y_e    &   &\\
 s.t.&   &   \sum_{e\in C} y_e &\geq k    &   &\forall \text{ circuit $C$}\\
     &   &                   y_e &\in \Z_{\geq 0}
 \end{aligned}
-\end{equation*}
+\]
 
 Clearly the linear relaxation of $\nu_{k,w}$ and of $\tau_{k,w}$ are LP dual of each other and have the same optimum. For what class of matroids do we have equality $\nu_{k,w}=\tau_{k,w}$ for any weight function $w$?
 
@@ -121,7 +121,7 @@ It remains to show that all the summand graphs in the above theorem have the TDI
 
 Let $A$ be a rational matrix and $b$ be an integral vector. For any rational $c$ we have the following inequalities:
 
-\begin{equation*}
+\[
 \begin{aligned}
         &\max \set{ cx| Ax\leq b; x\geq 0; \text{$x$ integral}} \\
 \leq    &\max \set{ cx| Ax\leq b; x\geq 0}\\
@@ -129,7 +129,7 @@ Let $A$ be a rational matrix and $b$ be an integral vector. For any rational $c$
 \leq    &\min \set{ yb| yA\geq c; y\geq 0; \text{$y$ half-integral}}\\
 \leq    &\min \set{ yb| yA\geq c; y\geq 0; \text{$y$ integral}}
 \end{aligned}
-\end{equation*}
+\]
 
 If we have equality on the last two $\leq$ for all integral $c$, then then all five optima are equal for each integral vector $c$. It suffices to require that the last two optimum are equal for each integral $c$.
 

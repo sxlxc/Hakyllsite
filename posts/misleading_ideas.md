@@ -33,13 +33,13 @@ Given a linear program with a rank $r$ constraint matrix, what is the size of su
 This is mentioned in [a previous post](/posts/basepacking). The description there is not precise.
 Consider the following linear program,
 
-\begin{equation*}
+\[
 \begin{aligned}
 \min&   &   c^Tx&   \\
 s.t.&   &   Ax&\leq b\\
     &   &   x&\geq 0
 \end{aligned}
-\end{equation*}
+\]
 
 Let $r$ be the rank of $A$. We may assume $b\geq0$. For any $c$ that this LP has a bounded solution, there must exist an optimal solution $x^*$ with support at most $r$.
 There are at most $r$ tight constraints in $Ax\leq b$ and hence the optimal solution $x^*$ lies in the intersection of $\R^n_+$ and a rank $\geq n-r$ affine subspace, which is a convex polyhedron.
