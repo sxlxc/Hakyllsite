@@ -101,18 +101,18 @@ main = hakyll $ do
         >>= relativizeUrls
   --    >>= katexFilter
 
-  match "standalone/*" $ do
+  match "notes/*" $ do
     route cleanRoute
     compile $ do
       tocCtx <- getTocCtx (postCtxWithTags tags)
       chaoDocCompiler
-        >>= loadAndApplyTemplate "templates/standalone.html" tocCtx
+        >>= loadAndApplyTemplate "templates/note.html" tocCtx
         >>= relativizeUrls
 
   create ["notes.html"] $ do
     route cleanRoute
     compile $ do
-      notes <- recentFirst =<< loadAll "standalone/*"
+      notes <- recentFirst =<< loadAll "notes/*"
       let notesCtx =
             listField "posts" postCtx (return notes)
               `mappend` constField "title" "Notes"
