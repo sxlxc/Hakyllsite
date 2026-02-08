@@ -25,7 +25,7 @@ Useful links:
 
 When I started writing this post, I hadn’t found so many “useful links” yet. The content below and link 1.2. only focus on using the Lasserre hierarchy on LPs, while 3.4.5.6. mention more general cases.
 
-# $K\subset [0,1]^n \to K\cap \set{0,1}^n$
+# $K\subset [0,1]^n \to K\cap \{0,1\}^n$
 
 We want to solve a 0-1 integer program. Since this task is NP-hard in general, we usually consider its linear relaxation. Different LP formulations have different integrality gaps. For example, consider the following linear relaxation of the  max matching IP in non-bipartite graph.
 

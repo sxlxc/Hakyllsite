@@ -33,17 +33,6 @@ main = hakyll $ do
     route idRoute
     compile copyFileCompiler
 
-  -- match "katex/**" $ do
-  --   route idRoute
-  --   compile copyFileCompiler
-
-  -- match "mathjax/**" $ do
-  --   route idRoute
-  --   compile copyFileCompiler
-
-  -- match "mathjax-fira-font/**" $ do
-  --   route idRoute
-  --   compile copyFileCompiler
   match "math-macros.tex" $ compile getResourceBody
 
   match "fonts/*.woff2" $ do
@@ -242,7 +231,7 @@ getTocCtx ctx = do
           { writerTableOfContents = True,
             writerTOCDepth = 2,
             writerTemplate = tmpl,
-            writerHTMLMathMethod = MathJax ""
+            writerHTMLMathMethod = MathML
           }
 
     asTxt :: (T.Text -> T.Text) -> String -> String
@@ -255,6 +244,3 @@ getTocCtx ctx = do
         go = \case
           [] -> []
           x : xs -> x : map (T.drop 1 . T.dropWhile (/= '\"')) xs
-
--- katexFilter :: Item String -> Compiler (Item String)
--- katexFilter = withItemBody (unixFilter "./katex_cli" [])
