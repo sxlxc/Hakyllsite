@@ -215,11 +215,6 @@ section.body {
 }
 
 .ascii-art {
-    margin: 0;
-    border: 2px solid var(--color-text);
-    padding: 10px;
-    background-color: #f0f0f0;
-    display: block;
     font-family: monospace;
     line-height: normal;
 }
@@ -403,23 +398,15 @@ code {
     }
 
     .gallery {
-        padding-top: 60px;
+        margin-top: 2em;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-        justify-content: center;
-    }
-
-    .gallery {
-        column-width: 280px;
-        /* target column width */
-        column-gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 12px;
     }
 
     .gallery img {
         width: 100%;
         display: block;
-        margin-bottom: 10px;
     }
 }
 /* sidebar+sidenotes */
