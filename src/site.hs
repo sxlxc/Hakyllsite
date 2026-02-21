@@ -215,7 +215,7 @@ getTocCtx :: Context a -> Compiler (Context a)
 getTocCtx ctx = do
   noToc <- (Just "true" ==) <$> (getUnderlying >>= (`getMetadataField` "no-toc"))
   writerOpts <- mkTocWriter defaultHakyllWriterOptions
-  toc <- renderPandocWith chaoDocRead writerOpts =<< getResourceBody
+  toc <- writePandocWith writerOpts <$> chaoDocPandocCompiler
   pure $
     mconcat
       [ ctx,

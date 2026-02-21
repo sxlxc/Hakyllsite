@@ -1,7 +1,7 @@
 {-# LANGUAGE BlockArguments #-}
 {-# LANGUAGE OverloadedStrings #-}
 
-module ChaoDoc (chaoDocRead, chaoDocWrite, chaoDocCompiler) where
+module ChaoDoc (chaoDocRead, chaoDocWrite, chaoDocPandocCompiler, chaoDocCompiler) where
 
 import Control.Monad.State
 import Data.Either
@@ -48,10 +48,12 @@ chaoDocWrite =
 -- getInline x = [x]
 
 pandocToInline :: Pandoc -> [Inline]
-pandocToInline (Pandoc _ blocks) = case blocks of
-  [Plain inlines] -> inlines
-  [Para inlines] -> inlines
-  _ -> []
+pandocToInline (Pandoc _ blocks) = go (reverse blocks)
+  where
+    go (Plain inlines : _) = inlines
+    go (Para inlines : _) = inlines
+    go (_ : xs) = go xs
+    go [] = []
 
 incrementalBlock :: [Text]
 incrementalBlock =
@@ -143,8 +145,20 @@ autorefFilter x = walk (autoref links) x
 -- then you need to convert citations there to AST as well and then use processCitations\
 -- Thus one need to apply the theorem filter first.
 -- autoref still does not work.
+mathMacros :: Text
+mathMacros = unsafePerformIO (pack <$> readFile "math-macros.tex")
+{-# NOINLINE mathMacros #-}
+
+prependMacros :: Text -> Text -> Text
+prependMacros macros body = macros <> "\n\n" <> body
+
+prependMathMacros :: Text -> Text
+prependMathMacros = prependMacros mathMacros
+
 thmNamePandoc :: Text -> Pandoc
-thmNamePandoc x = fromRight (Pandoc nullMeta []) . runPure $ readMarkdown chaoDocRead x
+thmNamePandoc x =
+  fromRight (Pandoc nullMeta []) . runPure $
+    readMarkdown chaoDocRead (prependMathMacros x)
 
 makeTheorem :: Block -> Block
 makeTheorem (Div attr xs)
@@ -174,13 +188,16 @@ cslFile = "bib_style.csl"
 bibFile :: String
 bibFile = "reference.bib"
 
+chaoDocPandocCompiler :: Compiler (Item Pandoc)
+chaoDocPandocCompiler = do
+  macros <- T.pack <$> loadBody "math-macros.tex"
+  body <- getResourceBody
+  let bodyWithMacros =
+        fmap (T.unpack . prependMacros macros . T.pack) body
+  myReadPandocBiblio chaoDocRead (T.pack cslFile) (T.pack bibFile) myFilter bodyWithMacros
+
 chaoDocCompiler :: Compiler (Item String)
-chaoDocCompiler = do
-  macros <- loadBody "math-macros.tex"
-  ( (getResourceBody <&> fmap (\body -> macros ++ "\n\n" ++ body))
-      >>= myReadPandocBiblio chaoDocRead (T.pack cslFile) (T.pack bibFile) myFilter
-    )
-    <&> writePandocWith chaoDocWrite
+chaoDocCompiler = chaoDocPandocCompiler <&> writePandocWith chaoDocWrite
 
 addMeta :: T.Text -> MetaValue -> Pandoc -> Pandoc
 addMeta name value (Pandoc meta a) =
