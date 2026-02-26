@@ -22,7 +22,7 @@ I read about MWU methods on 2 problems, finding the $k$-edge-connected spanning 
 Plotkin, Shmoys and Tardos [@plotkin_fast_1991] found a Lagrangian relaxation method for approximately solving fractional packing (or covering) problems.
 The original paper is old. I found [this note](https://www.columbia.edu/~nhw2114/files/Fast_Approximation_Algorithms_for_Fractional_Packing_Problems.pdf) summarizing its techniques.
 
-Formally, we want to find $x\in P$ such that $Ax\leq b$ where $P\in\R^n$ is a polytope, $b\in \R^m_+$ and for any $x\in P$ we have $Ax\geq 0$. Moreover, we assume that for any $c\in \R^n_+$, optimizing $c\cdot x$ over $x\in P$ is easy.
+Formally, we want to find $x\in P$ such that $Ax\leq b$ where $P\in\R^n_+$ is a polytope, $b\in \R^m_+$ and for any $x\in P$ we have $Ax\geq 0$. Moreover, we assume that for any $c\in \R^n_+$, optimizing $c\cdot x$ over $x\in P$ is easy.
 
 One can think $x\in P$ as an indicator vector of a collection of subsets of $[m]$ and $Ax\leq b$ would be packing constraints.
 Sometimes $Ax\leq b$ is not feasible for any $x\in P$. So one may want to relax the packing constraint by finding the minimum $\lambda>0$ such that $Ax\leq \lambda b$ is feasible.
@@ -37,7 +37,7 @@ Sometimes $Ax\leq b$ is not feasible for any $x\in P$. So one may want to relax 
 \end{aligned}
 \end{equation}
 
-Note that the two "$\geq$" indicates applying Lagrangian dual twice.
+Note that the two "$\geq$"s indicate that we are applying Lagrangian dual twice.
 Strong duality holds since the primal problem is feasible and bounded.
 Hence, there exists dual variable $y^*$ such that $\min_{x\in P} {y^*}^T Ax/{y^*}^Tb=\lambda^*$.
 Also, $\min_{x\in P} y^T Ax$ in the last line is an optimization over $P$ with a linear objective $y^T Ax$, which is easy to solve by assumption.
@@ -56,5 +56,10 @@ In the paper they use the following two conditions:
 1. $\lambda_x y^T b - y^T Ax \leq \e \lambda_x y^T b$,
 2. $y^T Ax - \min_{x'} y^TAx'\leq \e (y^T Ax+\lambda_x y^T b)$.
 
-The RHS of these conditions look strange since we actually want to bound $\frac{\lambda_x y^Tb}{\min_{x'} y^TA}$.
-One can verify that for $x,y$ satisfying these conditions and small enough $\e$, $x$ is a $6\e$-approximate solution.
+The RHS of these conditions look strange since we actually want to bound $\frac{\lambda_x y^Tb}{\min_{x'} y^TAx'}$.
+One can verify that for $x,y$ satisfying these conditions and small enough $\e$, $x$ is a $6\e$-approximate solution.^[See lemma 3.2 [here](https://www.columbia.edu/~nhw2114/files/Fast_Approximation_Algorithms_for_Fractional_Packing_Problems.pdf) for details. I didn't come up with an intuitive explanation of these conditions.]
+
+Now the goal becomes to iteratively update the primal and dual solutions and finally to approximately satisfy these constraints.
+Given a primal solution $x\in P$ and fixed tolerance $\e$, one can compute a dual solution $y$ that satisfies the first condition $\lambda_x y^T b - y^T Ax \leq \e \lambda_x y^T b$.^[Lemma 4.1 in Blake Sisson's note.] Then the updating part looks similar to MWU.
+
+I was planning to write about details in PST framework and connections between Garg–Könemann positive packing framework, but later found that there is already a [nice MWU survey](https://theoryofcomputing.org/articles/v008a006/) describing PST framework using MWU meta-algorithm.
