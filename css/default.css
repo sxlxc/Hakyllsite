@@ -43,18 +43,16 @@ body a {
     text-decoration: none;
 }
 
-body a:hover {
-    text-decoration: underline;
-    text-decoration-style: solid;
-}
-
-main a:hover {
+.text-space a:hover {
     background-color: var(--color-linkhbg);
     color: var(--color-linkh);
     text-decoration: none;
 }
 summary {
     background-color: var(--color-linkhbg);
+}
+summary:hover {
+    cursor: pointer;
 }
 
 /*mathML*/
@@ -117,7 +115,7 @@ nav {
 
 nav a {
     font-size: 1.2rem;
-    margin-left: 0.5em;
+    /*margin-left: 0.5em;*/
     display: inline-block;
     vertical-align: middle;
     text-decoration: none;
