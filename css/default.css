@@ -48,7 +48,7 @@ body a {
     color: var(--color-linkh);
     text-decoration: none;
 }
-summary {
+details {
     background-color: var(--color-linkhbg);
 }
 summary:hover {

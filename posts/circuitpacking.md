@@ -44,6 +44,28 @@ For example, [this question](https://math.stackexchange.com/questions/1835067/mu
 Given a matroid $M=(E,\mathcal I)$ and a non-negative integral weight function $w:E\to \Z_{\geq 0}$, decide if there is a multiset of circuits of $M$ such that each element in $E$ is covered by at least 1 and at most $w(e)$ circuits in the multiset.
 :::
 
+## Matroids with the circuit cover property
+
+::: {.Problem title="circuit cover"}
+Let $M$ be a matroid on groundset $E$ and let $w:E\to \Z_+$ be a weight function. Find a list of circuit of $M$ such that each element $e$ is contained in exactly $w(e)$ circuits in the list.
+:::
+
+One can see that certain weights can never allow a circuit cover.
+If $(M,w)$ has a circuit cover, then the weight function $w$ must satisfy the following *admissibility* conditions:
+
+1. $w(e)\geq 0$ for any element $e$,
+2. $w(D)\equiv 0 \mod 2$ for any cocircuit $D$,
+3. if $e\in D$, then $w(e)\leq w(D-e)$.
+
+A matroid $M$ has the *circuit cover property* if $(M,w)$ has a circuit cover for every *admissible* weight $w$.
+[@fu_matroids_1999] characterized binary matroids with circuit cover property.
+
+::: Theorem
+Let $M$ be a binary matroid. Then $M$ has the circuit cover property if and only if $M$ has no minor isomorphic to any of $F^*_7,R_{10},M^*(K_5)$ or $M(P_{10})$.
+:::
+
+## Matroids satisfying $\nu_{k,w}=\tau_{k,w}$
+
 [@ding_packing_2009] studied a related (and seemingly simplier) optimization variant. How many circuits can we pack with element capacity $k w(e)$?
 
 \[
@@ -115,10 +137,8 @@ A simple graph $G$ has no minors $P$ and $K^*$ iff $G$ can be obtained by repeat
 It remains to show that all the summand graphs in the above theorem have the TDI property. 
 <!-- This is also a challenging task. Small graphs can be verified with the help of computers (we will see later). The difficult case is the cyclically 3-connected graphs with no minors $P$ and $K^*$. -->
 
------------
-
-**some notes on TDI (cf. section 22.7 in [@Schrijver_1986])**
-
+<details>
+<summary>**some notes on TDI (cf. section 22.7 in [@Schrijver_1986])**</summary>
 Let $A$ be a rational matrix and $b$ be an integral vector. For any rational $c$ we have the following inequalities:
 
 \[
@@ -141,7 +161,7 @@ is finite and is attained by integral $y$ for each integral $c$ such that $\min 
 
 This is exactly the case of $k=2$ in the characterization of matroids with $\nu_{2,w}=\tau_{2,w}$.
 
-------------------
+</details>
 
 The above theorem on TDI reduces proving that $\{ \sum_{e\in C} y_e \geq 2 \;\forall C, y_e\geq 0\}$ is TDI to proving that $\tau'=\max \{ \sum_C x_C |\sum_{C:e\in C} \frac{1}{2} x_e \geq w(e) \;\forall e, x_C\geq 0, \text{ $x_C$ half-integral}\}$ has an integral optimal solution for all nonnegative integral $w.$
 
