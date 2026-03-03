@@ -387,10 +387,9 @@ code {
         padding-top: 0;
         padding-left: 1rem;
         text-align: left;
-        max-width: 80%;
+        max-width: 60%;
         clear: both;
-        margin-right: 1.7em;
-        margin-left: 0.25em;
+        margin-right: 4em;
         position: sticky;
         top: 5rem;
         left: 100%
@@ -405,6 +404,7 @@ code {
     .text-space {
         display: inline-block;
         width: 66%;
+        max-width: 800px;
     }
 }
 /* sidebar+sidenotes */
