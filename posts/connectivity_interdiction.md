@@ -8,6 +8,8 @@ date: 2025-02-13
 showtoc: true
 ---
 
+\newcommand{\mincut}{\operatorname{mincut}}
+
 As a natural generalization of min-cut, the following problem seems interesting to me,
 
 :::{.Problem #prob1}
@@ -49,7 +51,25 @@ Finding the minimum edge set whose removal breaks the $k$-edge connectivity is "
 
 With the knowledge of how to compute vertex connectivity, we try to compute the minimum cut for $k$-vertex connectivity in a similar way. First we can find the vertex pair $(s,t)$ with the smallest number of internally disjoint paths. Note that we are dealing with the modified graph when computing the vertex connectivity number with flow. Hence the min-cut may contain edges that are not in the original graph, i.e., the edges connecting $v_{in}$ and $v_{out}$. For example, consider a graph where every edge has multiplicities 2. The min-cut reported by the flow algorithm should only contain edges between $v_{in}$ and $v_{out}$.
 
-There is a [list](https://lemon.cs.elte.hu/egres/open/Node-connectivity) of open problems on vertex(node) connectivity. I guess [@prob1] is NP-hard but cannot prove it. However, the capacitated version of [@prob2] and [@prob1] is hard. Given a graph $G=(V,E)$ and edge weights $w:E\to \Z_{\geq 0}$ and costs $c:E\to \Z_{\geq 0}$ and a budget $b\geq 0$, find edge set $F\subset E$ such that $c(F)\leq b$ and such that removing $F$ minimizes the vertex connectivity of $G-F$. Similar to the edge connectivity case (which will be shown in the next section), if the cost $c$ is nontrivial then kanpsack is a special case of this problem. (Consider $G=K_n$ for some large $k$. Pick a $K_{n-1}$ in $G$ and set the cost of edges in $K_{n-1}$ to infinity.) How hard is [@prob2] if costs are trivial?
+There is a [list](https://lemon.cs.elte.hu/egres/open/Node-connectivity) of open problems on vertex(node) connectivity. ~~I guess [@prob1] is NP-hard but cannot prove it.~~ 
+
+*Update on 2025.3.4* It turns out that finding the minimum edge set whose removal breaks $k$-connectivity (for fixed $k$) is quite easy.
+
+::: Theorem
+Let $k$ be a fixed integer. Given a graph $G$, the minimum edge set breaking $k$-connectivity can be found in polynomial time.
+In fact, the solution is $\min \set{\mincut(G-X)|X\subset V, |X|\leq k-1}$.
+:::
+
+::: Proof
+One can verify if $G$ is $k$-connected in polynomial time. So we assume that $G$ is $k$-connected, for otherwise the solution is emptyset.
+
+Suppose for a contradiction that there is a minimum edge set $F$ that breaks $k$-connectivity and is not in $\set{\mincut(G-X)|X\subset V, |X|\leq k-1}$.
+Then one can see that $G-F$ is $k-1$-connected and there must be a set of $k-1$ vertex whose removal disconnects the $G-F$.
+We write $N_G(X)$ for the set of edges incident to some vertex in $X$ in graph $G$.
+Thus we have $F'=F+N_{G-F}(X)$ is a cut of $G$. One can see that $F'-N_G(X)$ is also a cut of $G-X$ and is not smaller than $\min\{ \mincut(G-X)\}$ for all $|X|=k-1$, a contradiction.
+:::
+
+However, the capacitated version of [@prob2] and [@prob1] is hard. Given a graph $G=(V,E)$ and edge weights $w:E\to \Z_{\geq 0}$ and costs $c:E\to \Z_{\geq 0}$ and a budget $b\geq 0$, find edge set $F\subset E$ such that $c(F)\leq b$ and such that removing $F$ minimizes the vertex connectivity of $G-F$. Similar to the edge connectivity case (which will be shown in the next section), if the cost $c$ is nontrivial then kanpsack is a special case of this problem. (Consider $G=K_n$ for some large $k$. Pick a $K_{n-1}$ in $G$ and set the cost of edges in $K_{n-1}$ to infinity.) How hard is [@prob2] if costs are trivial?
 
 # (Edge) Connectivity interdiction
 
