@@ -5,7 +5,7 @@ author: Yu Cong
 lang: en
 draft: true
 date: 2025-10-30
-# showtoc: true
+showtoc: true
 ---
 
 Irene Pivotto wrote a lot on matroid union on biased graphs and related matroids. These matroids seem closely related to graphic matroids.
@@ -48,7 +48,7 @@ del Greco proved an analogue to Seymour’s theorem for frame matroids. However,
 > **Problem 1:** find a polynomial-time algorithm that, given a binary matroid $M$, determines whether $M$ is an even cycle matroid.
 >
 >
->**Problem 2:** find a polynomial-time algorithm that, given a ternary matroid 𝑀, determines whether 𝑀 is a signed-graphic matroid.
+> **Problem 2:** find a polynomial-time algorithm that, given a ternary matroid $M$, determines whether $M$ is a signed-graphic matroid.
 
 10 years later, Bertrand Guenin and Cheolwon Heo showed that even-cycle and even-cut matroids can be recognized in polynomial time, see [this paper](https://link.springer.com/article/10.1007/s10107-023-01944-6).
 
@@ -56,4 +56,4 @@ del Greco proved an analogue to Seymour’s theorem for frame matroids. However,
 - <https://matroidunion.org/?p=2218> Recognition of frame, and of lift matroids, is intractable.
 - Heo, Cheolwon's thesis [Representations of even-cycle and even-cut matroids](https://uwspace.uwaterloo.ca/items/b86f4198-90ba-4d72-bb51-ca51fb162962)
 - Pivotto, Irene's thesis [Even Cycle and Even Cut Matroids](https://uwspace.uwaterloo.ca/items/29ba81f1-13ca-47e5-b504-e4d684d9d678)
-
+- chatgpt <https://chatgpt.com/share/69ace150-71b4-8006-a37c-5d8379448f56> Both frame and lift matroids are minor closed but not closed under duality. Bicircular matroids are frame matroids. Even cut matroids are binary lifts of cographic matroids. (adding a row to the matrix representation of a cographic matroid.)

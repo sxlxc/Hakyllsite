@@ -27,8 +27,16 @@ cleanIndexHtmls = return . fmap (replaceAll pattern replacement)
 
 --------------------------------------------------------------------------------
 
+config :: Configuration
+config =
+  defaultConfiguration
+    { ignoreFile = \path ->
+        ignoreFile defaultConfiguration path
+          || ".git" `elem` splitDirectories (normalise path)
+    }
+
 main :: IO ()
-main = hakyll $ do
+main = hakyllWith config $ do
   match "images/**" $ do
     route idRoute
     compile copyFileCompiler
