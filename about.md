@@ -5,8 +5,8 @@ title:  Yu Cong
     <ruby>宇<rt>yǔ</rt></ruby>
 ---
 
-I'm a second-year PhD student in the [Algorithms and Logic Group](https://tcsuestc.com/) at the University of Electronic Science and Technology of China (UESTC).
-
+I'm a second-year PhD student in the [Algorithms and Logic Group](https://tcsuestc.com/) @ University of Electronic Science and Technology of China (UESTC). My advisor is [Chao Xu](https://chaoxu.prof).
+<!-- 
 ```{=html}
 <div class="gallery">
 <img src="/images/404.png">
@@ -25,4 +25,4 @@ I'm a second-year PhD student in the [Algorithms and Logic Group](https://tcsues
 <img src="https://images.steamusercontent.com/ugc/2470865965971786459/673CE1F08C406E5F6F4AC9A3640F8E776975345D/">
 <img src="https://images.steamusercontent.com/ugc/1794100632706681/A94204C733E6E526858193ACF627A45A9D2A3A1E/">
 </div>
-```
+``` -->

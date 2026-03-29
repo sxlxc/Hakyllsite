@@ -3,10 +3,7 @@
     --color-tag1: gray;
     --color-tag2: darkolivegreen;
     --color-bg: white;
-    --color-link: #337ab7;
-    --color-linkhbg: #e6f0ff;
-    --color-linkh: #002266;
-    --color-bq: olivedrab;
+    --color-link: #0000EE;
     --color-notice: #fb4f4f;
 }
 
@@ -20,6 +17,7 @@
 html {
     scrollbar-gutter: stable;
     scroll-behavior: smooth;
+    font-size: 14pt;
 }
 
 body {
@@ -32,25 +30,19 @@ body {
     color: var(--color-text);
     background-color: var(--color-bg);
     text-rendering: optimizeLegibility;
-    text-align: justify;
     text-autospace: no-autospace;   /*using pangu.hs*/
-}
-body.lang-zh {
-    text-align: left;
 }
 
 body a {
-    color: var(--color-link);
     text-decoration: none;
 }
 
-.text-space a:hover {
-    background-color: var(--color-linkhbg);
-    color: var(--color-linkh);
-    text-decoration: none;
+body a:hover {
+    text-decoration: underline;
 }
 details {
-    background-color: var(--color-linkhbg);
+    padding-left: 1em;
+    border: 2px solid var(--color-text);
 }
 summary:hover {
     cursor: pointer;
@@ -75,65 +67,31 @@ summary:hover {
     font-variant-caps: small-caps;
 }
 
-p {
-    hyphens: auto;
-}
-
 a.url {
     word-break: break-all;
 }
 
+html body div.text-space main ul.post-list {
+    list-style-type: none;
+    padding-left: 1em;
+}
+
+/* top bar */
 header {
     font-weight: 400;
     font-family: "IosevkaC", sans-serif;
 }
-
-/* top bar*/
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.navright a {
-    margin: 0 0 0 1em;
-}
-
-/* Links inside the navbar */
-.navbar a {
-    text-decoration: none;
-    color: var(--color-text);
-}
-
-.navbar a:visited {
-    color: var(--color-text);
-}
-
-nav {
-    text-align: right;
-    border-bottom: solid 1px var(--color-text);
-}
-
 nav a {
-    font-size: 1.2rem;
-    /*margin-left: 0.5em;*/
     display: inline-block;
-    vertical-align: middle;
     text-decoration: none;
 }
 
 .uri {
     word-wrap: break-word;
-    /* Legacy support */
     overflow-wrap: break-word;
-    /* Modern property */
     word-break: break-all;
-    /* Break long words if necessary */
     white-space: normal;
-    /* Allow wrapping */
 }
-
-
 
 footer {
     color: var(--color-text);
@@ -141,15 +99,6 @@ footer {
     margin-top: 2em;
     text-align: right;
     padding-right: 1em;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    text-align: left;
 }
 
 .pagetitle {
@@ -165,8 +114,6 @@ h1 {
     font-size: 1.44rem;
     font-weight: bold;
     font-style: normal;
-    text-align: left;
-    line-height: 100%;
 }
 
 h2 {
@@ -191,14 +138,7 @@ article .header {
 }
 
 
-.info {
-    color: var(--color-tag2);
-    font-size: 1rem;
-    font-style: normal;
-    text-align: left;
-}
-
-.info a {
+.info,.info a {
     color: var(--color-tag2);
     font-size: 1rem;
     font-style: normal;
@@ -218,34 +158,47 @@ section.body {
     line-height: normal;
 }
 
-blockquote {
-    margin: 1rem 0;
-    padding: 0 0 0 1.5em;
-    border-left: 3px solid var(--color-bq);
+/* table. copied from https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/table */
+table {
+  border-collapse: collapse;
+  border: 2px solid rgb(140 140 140);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
 }
 
-blockquote p {
-    margin: 0;
+caption {
+  caption-side: bottom;
+  padding: 10px;
+  font-weight: bold;
 }
 
-ol {
-    padding-left: 2em;
-}
-ul {
-    list-style-type: square;
-    padding-left: 2em;
-}
-li {
-    margin-bottom: 0.15em;
+thead,
+tfoot {
+  background-color: rgb(228 240 245);
 }
 
-table,
 th,
 td {
-    border: 1px solid darkolivegreen;
-    border-collapse: collapse;
-    text-align: left;
+  border: 1px solid rgb(160 160 160);
+  padding: 8px 10px;
 }
+
+td:last-of-type {
+  text-align: center;
+}
+
+tbody > tr:nth-of-type(even) {
+  background-color: rgb(237 238 242);
+}
+
+tfoot th {
+  text-align: right;
+}
+
+tfoot td {
+  font-weight: bold;
+}
+
 
 figure {
     display: flex;
@@ -253,17 +206,6 @@ figure {
     padding: 5px;
     margin: auto;
     max-width: 80%;
-}
-
-
-figcaption {
-    /* font: italic smaller sans-serif; */
-    padding: 3px;
-    text-align: center;
-}
-
-.caption {
-    display: none
 }
 
 .centerimg img {

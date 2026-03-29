@@ -45,6 +45,19 @@
   bottom: 0px;
 }
 
+.Proof span.theorem-header span.name {
+  font-weight: normal;
+  font-style: italic;
+}
+
+.Proof span.theorem-header span.name:before {
+  content: ' ';
+}
+
+.Proof span.theorem-header span.name:after {
+  content: ' ';
+}
+
 table.postindex {
   width: 100%;
 }

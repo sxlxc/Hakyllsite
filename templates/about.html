@@ -11,27 +11,12 @@
     <link rel="stylesheet" href="/css/default.css" />
     <link rel="stylesheet" href="/css/pygentize.css" />
     <link rel="stylesheet" href="/css/chao-theorems.css">
-    <script>
-        // page title
-        document.addEventListener("DOMContentLoaded", function () {
-            const hostname = window.location.hostname;
-            document.title = document.title + " | " + hostname;
-        });
-    </script>
 </head>
 
 <body>
     <div class="toc"></div>
     <div class="text-space">
-        <header class="no-print">
-            <nav class="navbar">
-                <a href="/">Home</a>
-                <div class="navright">
-                    <a href="/draft">Drafts</a>
-                    <a href="/about">About</a>
-                </div>
-            </nav>
-        </header>
+        $partial("templates/navbar.html")$
 
         <main role="main">
             <h1 class="pagetitle">$title$</h1>

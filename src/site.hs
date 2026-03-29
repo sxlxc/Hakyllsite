@@ -135,24 +135,10 @@ main = hakyllWith config $ do
         >>= relativizeUrls
         >>= cleanIndexHtmls
 
-  create ["draft.html"] $ do
-    route cleanRoute
-    compile $ do
-      posts <- recentFirst =<< loadAll "posts/*"
-      let draftCtx =
-            listField "posts" postCtx (return posts)
-              `mappend` constField "title" "Drafts"
-              `mappend` defaultContext
-      makeItem ""
-        >>= loadAndApplyTemplate "templates/draft.html" draftCtx
-        >>= loadAndApplyTemplate "templates/index.html" draftCtx
-        >>= relativizeUrls
-        >>= cleanIndexHtmls
-
   match "index.html" $ do
     route idRoute
     compile $ do
-      posts <- fmap (take 25) . recentFirst =<< loadAll "posts/*"
+      posts <- fmap (take 20) . recentFirst =<< loadAll "posts/*"
       let indexCtx =
             listField "posts" postCtx (return posts)
               `mappend` defaultContext

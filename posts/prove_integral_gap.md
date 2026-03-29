@@ -24,6 +24,7 @@ Just do the counting.
 
 ::: Example
 Consider the following integer program on graph $G=(V,E)$,
+
 \begin{align*}
 \lambda=\min&   &  \sum_{e\in E} x_e&       &   & \\
 s.t.&           &  \sum_{e\in T} x_e&\ge 1  &   &\forall T\in \mathcal T \\

@@ -1,13 +1,10 @@
-<ul>
+<ul class="post-list">
     $for(posts)$
-        $if(draft)$
-        $else$
-            $if(hide)$
-            $else$
-        <li>
-            <a href="$url$">$title$</a> <span class="langtag">[$lang$]</span> - $date$
-        </li>
-            $endif$
-        $endif$
+    $if(hide)$
+    $else$
+    <li>
+        <a href="$url$">$title$</a> <span class="langtag">[$lang$]</span> - $date$
+    </li>
+    $endif$
     $endfor$
 </ul>
