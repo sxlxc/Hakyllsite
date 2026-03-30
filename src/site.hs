@@ -104,7 +104,8 @@ main = hakyllWith config $ do
     compile $ do
       tocCtx <- getTocCtx (postCtxWithTags tags)
       chaoDocCompiler
-        >>= loadAndApplyTemplate "templates/note.html" tocCtx
+        >>= loadAndApplyTemplate "templates/post.html" tocCtx
+        >>= loadAndApplyTemplate "templates/default.html" tocCtx
         >>= relativizeUrls
 
   create ["notes.html"] $ do
