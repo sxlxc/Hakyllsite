@@ -3,7 +3,6 @@
     --color-tag1: gray;
     --color-tag2: darkolivegreen;
     --color-bg: white;
-    --color-link: #0000EE;
     --color-notice: #fb4f4f;
 }
 
@@ -35,6 +34,9 @@ body {
 
 body a {
     text-decoration: none;
+}
+html body.lang-zh div.toc a:visited {
+    color: blue;
 }
 
 body a:hover {
@@ -102,6 +104,8 @@ footer {
 }
 
 .pagetitle {
+    font-family: "IosevkaC", sans-serif;
+    letter-spacing: -5%;
     font-size: 2rem;
     font-weight: normal;
     font-style: normal;
