@@ -42,6 +42,8 @@ main = hakyllWith config $ do
     compile copyFileCompiler
 
   match "math-macros.tex" $ compile getResourceBody
+  match "bib_style.csl" $ compile cslCompiler
+  match "reference.bib" $ compile biblioCompiler
 
   match "fonts/*.woff2" $ do
     route idRoute

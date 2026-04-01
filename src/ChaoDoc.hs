@@ -17,7 +17,6 @@ import SideNoteHTML (usingSideNotesHTML)
 import System.IO.Unsafe
 import Text.Pandoc
 -- import Text.Pandoc.Builder
-import Text.Pandoc.Citeproc
 import Text.Pandoc.Walk (query, walk, walkM)
 
 -- setMeta key val (Pandoc (Meta ms) bs) = Pandoc (Meta $ M.insert key val ms) bs
@@ -28,9 +27,9 @@ chaoDocRead =
   def
     { readerExtensions =
         enableExtension Ext_tex_math_double_backslash $
-        enableExtension Ext_tex_math_single_backslash $
-        enableExtension Ext_latex_macros              $
-        enableExtension Ext_raw_tex pandocExtensions
+          enableExtension Ext_tex_math_single_backslash $
+            enableExtension Ext_latex_macros $
+              enableExtension Ext_raw_tex pandocExtensions
     }
 
 chaoDocWrite :: WriterOptions
@@ -44,8 +43,39 @@ chaoDocWrite =
       writerTOCDepth = 2
     }
 
--- getInline :: Inline -> [Inline]
--- getInline x = [x]
+cslFile :: String
+cslFile = "bib_style.csl"
+
+bibFile :: String
+bibFile = "reference.bib"
+
+chaoDocPandocCompiler :: Compiler (Item Pandoc)
+chaoDocPandocCompiler = do
+  macros <- T.pack <$> loadBody "math-macros.tex"
+  csl <- load $ fromFilePath cslFile
+  bib <- load $ fromFilePath bibFile
+  body <- getResourceBody
+  let bodyWithMacros =
+        fmap (T.unpack . prependMacros macros . T.pack) body
+      prepare =
+        addMeta "link-citations" (MetaBool True)
+          . addMeta "reference-section-title" (MetaInlines [Str "References"])
+          . myFilter
+  readPandocWith chaoDocRead bodyWithMacros
+    >>= processPandocBiblio csl bib . fmap prepare
+
+chaoDocCompiler :: Compiler (Item String)
+chaoDocCompiler = chaoDocPandocCompiler <&> writePandocWith chaoDocWrite
+
+addMeta :: T.Text -> MetaValue -> Pandoc -> Pandoc
+addMeta name value (Pandoc meta a) =
+  let prevMap = unMeta meta
+      newMap = M.insert name value prevMap
+      newMeta = Meta newMap
+   in Pandoc newMeta a
+
+myFilter :: Pandoc -> Pandoc
+myFilter = usingSideNotesHTML chaoDocWrite . theoremFilter . panguFilter . displayMathFilter
 
 pandocToInline :: Pandoc -> [Inline]
 pandocToInline (Pandoc _ blocks) = go (reverse blocks)
@@ -180,63 +210,6 @@ makeTheorem (Div attr xs)
         then Str ""
         else Span (addClass nullAttr "name") (pandocToInline $ thmNamePandoc $ fromJust name)
 makeTheorem x = x
-
--- bib from https://github.com/chaoxu/chaoxu.github.io/tree/develop
-cslFile :: String
-cslFile = "bib_style.csl"
-
-bibFile :: String
-bibFile = "reference.bib"
-
-chaoDocPandocCompiler :: Compiler (Item Pandoc)
-chaoDocPandocCompiler = do
-  macros <- T.pack <$> loadBody "math-macros.tex"
-  body <- getResourceBody
-  let bodyWithMacros =
-        fmap (T.unpack . prependMacros macros . T.pack) body
-  myReadPandocBiblio chaoDocRead (T.pack cslFile) (T.pack bibFile) myFilter bodyWithMacros
-
-chaoDocCompiler :: Compiler (Item String)
-chaoDocCompiler = chaoDocPandocCompiler <&> writePandocWith chaoDocWrite
-
-addMeta :: T.Text -> MetaValue -> Pandoc -> Pandoc
-addMeta name value (Pandoc meta a) =
-  let prevMap = unMeta meta
-      newMap = M.insert name value prevMap
-      newMeta = Meta newMap
-   in Pandoc newMeta a
-
-myReadPandocBiblio ::
-  ReaderOptions ->
-  T.Text -> -- csl file name
-  T.Text ->
-  (Pandoc -> Pandoc) -> -- apply a filter before citeproc
-  Item String ->
-  Compiler (Item Pandoc)
-myReadPandocBiblio ropt csl biblio pdfilter item = do
-  -- Parse CSL file, if given
-  -- style <- unsafeCompiler $ CSL.readCSLFile Nothing . toFilePath . itemIdentifier $ csl
-
-  -- We need to know the citation keys, add then *before* actually parsing the
-  -- actual page. If we don't do this, pandoc won't even consider them
-  -- citations!
-  -- let Biblio refs = itemBody biblio
-  pandoc <- itemBody <$> readPandocWith ropt item
-  let pandoc' =
-        fromRight pandoc $
-          unsafePerformIO $
-            runIO $
-              processCitations $
-                addMeta "bibliography" (MetaList [MetaString biblio]) $
-                  addMeta "csl" (MetaString csl) $
-                    addMeta "link-citations" (MetaBool True) $
-                      addMeta "reference-section-title" (MetaInlines [Str "References"]) $
-                        pdfilter pandoc -- here's the change
-                        -- let a x = itemSetBody (pandoc' x)
-  return $ fmap (const pandoc') item
-
-myFilter :: Pandoc -> Pandoc
-myFilter = usingSideNotesHTML chaoDocWrite . theoremFilter . panguFilter . displayMathFilter
 
 -- pangu filter
 lastChar :: Inline -> Maybe Char
