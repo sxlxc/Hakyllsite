@@ -4,13 +4,8 @@
     --color-tag2: darkolivegreen;
     --color-bg: white;
     --color-notice: #fb4f4f;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --color-text: white;
-        --color-bg: black;
-    }
+    --color-link: #0645ad;
+    --color-link-visited: #551a8b;
 }
 
 html {
@@ -29,14 +24,19 @@ body {
     color: var(--color-text);
     background-color: var(--color-bg);
     text-rendering: optimizeLegibility;
-    text-autospace: no-autospace;   /*using pangu.hs*/
 }
 
 body a {
+    color: var(--color-link);
     text-decoration: none;
 }
-html body.lang-zh div.toc a:visited {
-    color: blue;
+
+body a:visited {
+    color: var(--color-link-visited);
+}
+
+body a[href^="#"]:visited {
+    color: var(--color-link);
 }
 
 body a:hover {
@@ -54,6 +54,7 @@ summary:hover {
 .htmlmathparagraph, mtext,math {
     font-family: Lete Sans Math;
 }
+.math-container,
 #math-container {
     display: block;
     overflow-x: auto;
@@ -317,16 +318,16 @@ code {
         margin-bottom: 0.5em;
         padding-left: 1em;
         line-height: 1.2;
-        list-style-type: decimal;
-        margin-left: 0
-    }
-
-    div#contents-big ul ul {
         list-style-type: none;
+        margin-left: 0
     }
 
     div#contents-big li+li {
         margin-top: 0.5em
+    }
+
+    div#contents-big .toc-section-number {
+        margin-right: 0.2em;
     }
 
     div#contents-big {

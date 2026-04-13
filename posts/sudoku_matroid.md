@@ -5,6 +5,7 @@ tags: matroid
 lang: en
 date: 2025-12-16
 showtoc: true
+draft: true
 ---
 
 In a 3×3 sudoku there are 9×9 cells and 3×9 constraints (9 rows, 9 columns and 9 blocks).
@@ -67,7 +68,6 @@ Let $T\subset S$ be a set of constraints and let $s\notin T$ be a constraint.
 Then $T$ spans $s$ in the sudoku if and only if $s\in \span(T\cup V_0)$ in the vector space $V$.[^2]
 :::
 
-::: Proof
 Note that $T$ spans $s$ means that for any sudoku grid $G$ such that $\phi_G(t)=\mathbf 1$ for all $t\in T$, we have $\phi_G(s)=\mathbf 1$.
 
 **[the if part]** Since $s\in \span(T\cup V_0)$, we can write $s$ as $\sum_i \alpha_i t_i+y$ where $t_i\in T$ and $y\in V_0$.
@@ -80,7 +80,7 @@ Again there is a $G^*$ that satisfies every constraint and we have $\sum_i \alph
 Now consider any grid $G$ that satisfies $T$.
 We have $\phi_G(s)=\sum_i \alpha_i \mathbf{1} + \sum_j \beta_j s_j = \mathbf{1}$.
 ~~One can see that the equation holds if and only if every $s_j$ is $\mathbf 1$, which contradicts the fact that $s\notin \span(T+V_0)$.~~ [^5]
-:::
+
 
 Now we show (@span) in [@spanmatroid] for sudoku span.
 
@@ -110,13 +110,13 @@ Is there a nice characterization of graphs that
 
 ## solvability
 
-Let $G$ be a graph in which every edge is in a maximum clique. 
+Let $G$ be a graph in which every edge is in a maximum clique.
 Let $H$ be the clique line graph of $G$, in which the vertex set is the set of maximum cliques and there are $k$-parallel edges if two cliques share $k$ vertices.
 
 Note that one can also think about the uniform hypergraph of maximum cliques and see that $H$ is the [line graph of an uniform hypergraph](https://en.wikipedia.org/wiki/Line_graph_of_a_hypergraph).
 
 There are some existing works on uniform hypergraph coloring.
-Czumaj and Sohler [@czumaj_testing_2001] showed an $\e$-tester for $\ell$-colorability of $k$-uniform hypergraphs with running time $\exp(\tilde O(k\ell/\e)^2)$. 
+Czumaj and Sohler [@czumaj_testing_2001] showed an $\e$-tester for $\ell$-colorability of $k$-uniform hypergraphs with running time $\exp(\tilde O(k\ell/\e)^2)$.
 Note that the definition of proper coloring on hypergraphs is no monochromatic hyperedge.
 
 Our sudoku problem is equivalent to the following questions:
@@ -179,11 +179,11 @@ If $G$ is the NEPS of $G_i$ for basis
 \[
 \begin{aligned}
   B=\{&(0,0,0,1),\\
-   &(0,0,1,0),\\ 
-   &(0,1,0,0),\\ 
-   &(1,0,0,0),\\ 
-   &(0,1,0,1),\\ 
-   &(1,1,0,0),\\ 
+   &(0,0,1,0),\\
+   &(0,1,0,0),\\
+   &(1,0,0,0),\\
+   &(0,1,0,1),\\
+   &(1,1,0,0),\\
    &(0,0,1,1)\}
 \end{aligned}
 \]
@@ -207,9 +207,9 @@ S   &=    \{(0,0,0,x),\forall x\in Z_n\}\\
     &\cup \{(0,0,x,0),\forall x\in Z_n\}\\
     &\cup \{(0,x,0,0),\forall x\in Z_n\}\\
     &\cup \{(x,0,0,0),\forall x\in Z_n\}\\
-    &\cup \{(0,x,0,y),\forall x,y\in Z_n\}\\ 
-    &\cup \{(x,y,0,0),\forall x,y\in Z_n\}\\ 
-    &\cup \{(0,0,x,y),\forall x,y\in Z_n\}\\ 
+    &\cup \{(0,x,0,y),\forall x,y\in Z_n\}\\
+    &\cup \{(x,y,0,0),\forall x,y\in Z_n\}\\
+    &\cup \{(0,0,x,y),\forall x,y\in Z_n\}\\
 \end{aligned}
 \]
 

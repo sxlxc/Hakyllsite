@@ -226,6 +226,7 @@ getTocCtx ctx = do
       pure $
         writerOpts
           { writerTableOfContents = True,
+            writerNumberSections = True,
             writerTOCDepth = 2,
             writerTemplate = tmpl,
             writerHTMLMathMethod = MathML
