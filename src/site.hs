@@ -5,6 +5,7 @@
 {-# LANGUAGE ViewPatterns #-}
 
 import ChaoDoc
+import Control.Monad (filterM)
 import qualified Data.Text as T
 import Hakyll
 import System.FilePath
@@ -97,9 +98,16 @@ main = hakyllWith config $ do
       tocCtx <- getTocCtx (postCtxWithTags tags)
       chaoDocCompiler
         >>= loadAndApplyTemplate "templates/post.html" tocCtx
+        >>= saveSnapshot "content"
         >>= loadAndApplyTemplate "templates/default.html" tocCtx
         >>= relativizeUrls
   --    >>= katexFilter
+
+  create ["rss.xml"] $ do
+    route idRoute
+    compile $ do
+      posts <- fmap (take 20) . recentFirst =<< loadPublishedPostSnapshots
+      renderRss feedConfiguration feedCtx posts
 
   match "notes/*" $ do
     route cleanRoute
@@ -185,6 +193,52 @@ postCtx =
 
 postCtxWithTags :: Tags -> Context String
 postCtxWithTags tags = tagsField "tags" tags `mappend` postCtx
+
+feedConfiguration :: FeedConfiguration
+feedConfiguration =
+  FeedConfiguration
+    { feedTitle = "Talldoor",
+      feedDescription = "Articles from Yu Cong's blog",
+      feedAuthorName = "Yu Cong",
+      feedAuthorEmail = "sxlxcsxlxc+blog@gmail.com",
+      feedRoot = "https://talldoor.uk"
+    }
+
+feedCtx :: Context String
+feedCtx = cleanUrlField "url" <> postCtx <> bodyField "description"
+
+cleanUrlField :: String -> Context a
+cleanUrlField key =
+  field key $
+    fmap (maybe "" (cleanIndexUrl . toUrl))
+      . getRoute
+      . itemIdentifier
+
+cleanIndexUrl :: String -> String
+cleanIndexUrl = replaceAll "/index.html" (const "/")
+
+loadPublishedPostSnapshots :: Compiler [Item String]
+loadPublishedPostSnapshots =
+  filterM isPublishedPost =<< loadAllSnapshots "posts/*" "content"
+
+isPublishedPost :: Item a -> Compiler Bool
+isPublishedPost item = do
+  hidden <- hasTruthyMetadataField "hide" item
+  draft <- hasTruthyMetadataField "draft" item
+  pure (not (hidden || draft))
+
+hasTruthyMetadataField :: String -> Item a -> Compiler Bool
+hasTruthyMetadataField key item =
+  maybe False metadataValueIsTruthy
+    <$> getMetadataField (itemIdentifier item) key
+
+metadataValueIsTruthy :: String -> Bool
+metadataValueIsTruthy =
+  (`notElem` ["", "false", "no", "0"])
+    . T.unpack
+    . T.toLower
+    . T.strip
+    . T.pack
 
 defaultCtxWithTags :: Tags -> Context String
 defaultCtxWithTags tags = listField "tags" tagsCtx getAllTags <> defaultContext
