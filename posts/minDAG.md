@@ -6,11 +6,7 @@ date: 2023-01-26
 
 ---
 
-<!-- >我还没有非常仔细的想这个问题，也还没去查。这个问题可能非常简单，可能已经有人研究过这个问题了 -->
-
-寒假听到一个问题，家族中有多少对父子多少对爷爷和孙子，问家族中人数最少有几人。
-
-把这个问题变成，考虑一个DAG，给出DAG中长度（边的数量）为 $l_i$ 的路径的数量 $a_i$ ，求出顶点数量最少的满足条件的DAG
+考虑一个DAG，给出DAG中长度（边的数量）为 $l_i$ 的路径的数量 $a_i$ ，求出顶点数量最少的满足条件的DAG
 
 
 
@@ -31,15 +27,6 @@ arborescence 情况下, 点数的上界是$\sum a_i(l_i+1)$.
 
 也许能够证明最优解中点数的上界是 $\max \{a_i(l_i+1)\}$ ?
 
----
-
-arborescence 可以看成 [intersection of two matroids](https://math.mit.edu/~goemans/18433S07/arborescence.pdf)
-
-然而我们关于长度为$L$的路径的数量的约束却并不是matroid. ground set 是一个 arborescence 森林中的边, 如果长度为$L$的路径数量小于等于$A$, 选择的边集就是一个independent set. 这种描述不能满足 exchange property.
-
-(本来还想通过说明即使只有一个路径数量约束也是 intersection of three matroids 来证明即使是arborescence这个问题也是NP-Hard...不过就算成立也不能这样说明.)
-
----
 
 ### 也许 greedy 可行
 把约束按照$L_i$从大到小排序, 对于一个长度是$L_i$的路径数量是$a_i$条这样的约束, 构造这样一个有向树:
@@ -76,23 +63,10 @@ $$
 
 不允许重边存在.
 
-arborescence 情况下的贪心不再成立了, 比如这样的图: ![L2A4V4](/images/minDAG/L2A4V4.jpg)
+arborescence 情况下的贪心不再成立了, 比如这样的图: 
+
+![](/images/minDAG/L2A4V4.jpg){width=25%}
 
 有向树的情况下是4个点是形成不了4条长度为2的路径的.
 
-
-### $n$ 个点的DAG形成的长度为 $L$ 的路径数量?
-
-就是一个把能连接的边全部连接上的DAG吧。
-
-路径数量就是组合数, $f(n,L)$ 表示 $n$ 个点的DAG形成的长度为 $L$ 的路径数量, 看起来可能要找递推关系用生成函数算了, 但是实际上 $f(n,L)$ 相当于
-在 $[n]$ 当中包含 $L$ 个元素的子集的个数, 给这个DAG拓扑排序, 所有可能的路径都是序列 $\{1,2,...,n\}$ 的所有子序列, 数量也就是包含 $L$ 个元素的子集个数. 
-[generatingfunctionology](https://www2.math.upenn.edu/~wilf/gfology2.pdf) 1.5 是用生成函数算组合数的例子.
-
-然后考虑一下连接了所有 $n(n-1)/2$ 条边的DAG如果要保证长度为L的路径数量最多(仍然是 $\binom{n}{L+1}$ ), 最多可以删除多少条边?
-
-对于 $n=4$ 的DAG和 $L=2$ , 我们最多可以删掉一个边 $(1,4)$, 就是上面的图; 对于 $L=3$ 就可以只保留 $(1,2), (2,3), (3,4)$ 了; $L=1$ 一条边都不能删除.
-
-可以删掉的边数只与 $L$ 有关, 是 $L(L-1)/2$ ($i$ 和 $j$ 不能相邻的条件是 $n-(j-i+1)\leq L-2$)
-
-目前还没有想到接下来该怎么办...
+*2026-09-23* chatgpt 6 pro 证明了这问题 strongly NP-hard <https://chatgpt.com/share/6ab39688-b594-83ea-97fb-feb6a4eda32f>
