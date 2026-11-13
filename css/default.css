@@ -104,13 +104,54 @@ footer {
 }
 
 .pagetitle {
-    font-family: "IosevkaC", sans-serif;
-    letter-spacing: -5%;
     font-size: 2rem;
     font-weight: normal;
     font-style: normal;
     text-align: left;
     line-height: 120%;
+}
+
+.paper-details {
+    opacity: 0.65;
+}
+
+li:has(.paper-era-divider) {
+    position: relative;
+}
+
+.paper-era-divider {
+    position: absolute;
+    top: -0.5rem;
+    left: 0;
+    right: 0;
+    height: 0;
+    border-top: 1px solid var(--color-tag1);
+    color: var(--color-tag1);
+    text-align: left;
+    font-size: 0.65rem;
+    line-height: 1;
+}
+
+.paper-era-divider > span {
+    position: absolute;
+    right: calc(100% + 0.75rem);
+    width: max-content;
+}
+
+.paper-era-above {
+    bottom: 0.15rem;
+}
+
+.paper-era-below {
+    top: 0.15rem;
+}
+
+@media (max-width: 768px) {
+    .paper-era-divider > span {
+        right: calc(100% + 0.25rem);
+        width: 2rem;
+        font-size: 0.55rem;
+    }
 }
 
 h1 {
