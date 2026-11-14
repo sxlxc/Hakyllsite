@@ -27,6 +27,10 @@ I'm a [third-year]{#phd-year} PhD student in the [Algorithms and Logic Group](ht
 
 Authors are listed alphabetically.
 
+- Sharp Bounds on the Number of Small Cuts  
+  [Yu Cong, Chao Xu.  
+  [arXiv:2609.10255](https://arxiv.org/abs/2609.10255)]{.paper-details}
+
 - Destroying Rigidity in the Plane  
   [Yu Cong, Chao Xu, Yajie Zhao.  
   [arXiv:2610.38396](https://arxiv.org/abs/2610.38396)]{.paper-details}
