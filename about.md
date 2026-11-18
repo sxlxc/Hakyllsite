@@ -27,6 +27,8 @@ I'm a [third-year]{#phd-year} PhD student in the [Algorithms and Logic Group](ht
 
 Authors are listed alphabetically.
 
+::: {.ai-assisted-papers}
+
 - Cogirth-Strength Ratios and Matroid Rank Reduction  
   [Yu Cong, Chao Xu, Yajie Zhao.  
   [arXiv:2611.19447](https://arxiv.org/abs/2611.19447)]{.paper-details}
@@ -45,9 +47,11 @@ Authors are listed alphabetically.
 
 - Integrality-Gap Bounds for Weighted Matchoids and Matroid Intersection  
   [Yu Cong, Yajie Zhao.  
-  *IJTCSFAW 2026*. [arXiv:2609.21477](https://arxiv.org/abs/2609.21477)]{.paper-details}
+  *IJTCSFAW 2026*. [arXiv:2609.21477](https://arxiv.org/abs/2609.21477)]{.paper-details} [AI assists with technical work]{.paper-ai-caption}
 
-- [[*with AI*]{.paper-era-above} [*without AI*]{.paper-era-below}]{.paper-era-divider}A Lagrangian Approach to Interdiction of Linear Minimization Problems  
+:::
+
+- A Lagrangian Approach to Interdiction of Linear Minimization Problems  
   [Yu Cong, Kangyi Tian.  
   *IJTCSFAW 2026*. [arXiv:2604.23334](https://arxiv.org/abs/2604.23334)]{.paper-details}
 
