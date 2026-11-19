@@ -33,11 +33,11 @@ Authors are listed alphabetically.
   [Yu Cong, Chao Xu, Yajie Zhao.  
   [arXiv:2611.19447](https://arxiv.org/abs/2611.19447)]{.paper-details}
 
-- Sharp Bounds on the Number of Small Cuts  
+- Sharp Bounds on the Number of Small Cuts `AI`{.paper-ai}\
   [Yu Cong, Chao Xu.  
   [arXiv:2609.10255](https://arxiv.org/abs/2609.10255)]{.paper-details}
 
-- Destroying Rigidity in the Plane  
+- Destroying Rigidity in the Plane `AI`{.paper-ai}\
   [Yu Cong, Chao Xu, Yajie Zhao.  
   [arXiv:2610.38396](https://arxiv.org/abs/2610.38396)]{.paper-details}
 
@@ -45,7 +45,7 @@ Authors are listed alphabetically.
   [Yu Cong, Chao Xu, Yajie Zhao.  
   [arXiv:2608.16298](https://arxiv.org/abs/2608.16298)]{.paper-details}
 
-- Integrality-Gap Bounds for Weighted Matchoids and Matroid Intersection  
+- Integrality-Gap Bounds for Weighted Matchoids and Matroid Intersection `AI`{.paper-ai}\
   [Yu Cong, Yajie Zhao.  
   *IJTCSFAW 2026*. [arXiv:2609.21477](https://arxiv.org/abs/2609.21477)]{.paper-details} [AI assists with technical work]{.paper-ai-caption}
 
@@ -58,24 +58,3 @@ Authors are listed alphabetically.
 - Large-Scale Trade-Off Curve Computation for Incentive Allocation with Cardinality and Matroid Constraints  
   [Yu Cong, Chao Xu, Yi Zhou.  
   *IJCAI 2025*. [arXiv:2609.20699](https://arxiv.org/abs/2609.20699)]{.paper-details}
-
-<!-- 
-```{=html}
-<div class="gallery">
-<img src="/images/404.png">
-<pre class="ascii-art">
-<a href="https://zh.wikipedia.org/zh-cn/%E8%94%A1%E5%BE%90%E5%9D%A4%E7%AF%AE%E7%90%83%E8%A7%86%E9%A2%91%E4%BA%8B%E4%BB%B6">
-      //v\\
-      ( 👀)
-       _O_
-  o==\  . /\\
- //  |\ ./] ||
-🏀   [ || ]  o
-     //  ||
-     \\   \\ 
-</a></pre>
-<img src="/images/giantmxbc.jpeg"/>
-<img src="https://images.steamusercontent.com/ugc/2470865965971786459/673CE1F08C406E5F6F4AC9A3640F8E776975345D/">
-<img src="https://images.steamusercontent.com/ugc/1794100632706681/A94204C733E6E526858193ACF627A45A9D2A3A1E/">
-</div>
-``` -->

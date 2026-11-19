@@ -144,6 +144,14 @@ footer {
     clear: both;
 }
 
+.paper-ai {
+    background-color: #e5e5e5;
+    color: #222;
+    font-size: 0.75em;
+    cursor: help;
+    font-weight: bold;
+}
+
 h1 {
     margin-top: 1em;
     font-size: 1.44rem;
