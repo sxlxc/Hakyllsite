@@ -78,6 +78,86 @@ html body div.text-space main ul.post-list {
     padding-left: 1em;
 }
 
+.post-language-filter {
+    display: inline-flex;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 0.85rem;
+}
+
+.post-language-filter label {
+    color: var(--color-link);
+    cursor: pointer;
+}
+
+.post-language-filter label + label {
+    margin-left: -1px;
+}
+
+.post-language-filter label span {
+    display: block;
+    padding: 0.1em 0.45em;
+    border: 1px dashed var(--color-tag1);
+    text-align: center;
+}
+
+.post-language-filter label:active span {
+    translate: 0 1px;
+}
+
+.post-language-filter input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    clip-path: inset(50%);
+}
+
+.post-language-filter input:checked + span {
+    position: relative;
+    z-index: 1;
+    border-style: solid;
+    color: var(--color-text);
+}
+
+.post-language-filter label:hover input:not(:checked) + span {
+    text-decoration: underline;
+}
+
+.post-language-filter input:focus-visible + span {
+    outline: 1px solid currentColor;
+    outline-offset: 1px;
+}
+
+/* Limit each selection to its 16 newest posts. */
+.post-language-filter:has(#post-language-all:checked) + .post-list > li:nth-child(n+17),
+.post-language-filter:has(#post-language-en:checked) + .post-list > li:is(
+    :not([data-lang="en"]),
+    :nth-child(n+17 of [data-lang="en"])
+),
+.post-language-filter:has(#post-language-zh:checked) + .post-list > li:is(
+    :not([data-lang="zh"]),
+    :nth-child(n+17 of [data-lang="zh"])
+) {
+    display: none;
+}
+
+.post-language-filter + .post-list {
+    margin-bottom: 0;
+}
+
+.post-list-more {
+    display: none;
+    margin-left: 1em;
+}
+
+.post-language-filter:has(#post-language-all:checked) + .post-list:has(> :nth-child(17)) + .post-list-more,
+.post-language-filter:has(#post-language-en:checked) + .post-list:has(> :nth-child(17 of [data-lang="en"])) + .post-list-more,
+.post-language-filter:has(#post-language-zh:checked) + .post-list:has(> :nth-child(17 of [data-lang="zh"])) + .post-list-more {
+    display: block;
+}
+
 /* top bar */
 header {
     font-weight: 400;

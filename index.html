@@ -1,5 +1,20 @@
 <h1 class="pagetitle">Posts</h1>
+<fieldset class="post-language-filter" aria-label="Post language">
+    <label>
+        <input type="radio" name="post-language" id="post-language-all" checked>
+        <span>All</span>
+    </label>
+    <label>
+        <input type="radio" name="post-language" id="post-language-en">
+        <span>English</span>
+    </label>
+    <label>
+        <input type="radio" name="post-language" id="post-language-zh">
+        <span lang="zh">中文</span>
+    </label>
+</fieldset>
 $partial("templates/post-list.html")$
+<div class="post-list-more">...</div>
 
 <p>
     Find more posts <a href="/archive">here</a> <br>
