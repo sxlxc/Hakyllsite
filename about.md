@@ -7,22 +7,6 @@ title:  Yu Cong
 
 I'm a [third-year]{#phd-year} PhD student in the [Algorithms and Logic Group](https://tcsuestc.com/) @ University of Electronic Science and Technology of China (UESTC). My advisor is [Chao Xu](https://chaoxu.prof).
 
-```{=html}
-<script>
-(() => {
-    const now = new Date();
-    // The academic year starts in September; enrollment was September 2024.
-    const year = now.getFullYear() - 2024 + (now.getMonth() >= 8 ? 1 : 0);
-    const words = ['first', 'second', 'third', 'fourth', 'fifth',
-                   'sixth', 'seventh', 'eighth', 'ninth', 'tenth'];
-    const suffixes = { one: 'st', two: 'nd', few: 'rd', other: 'th' };
-    const rule = new Intl.PluralRules('en', { type: 'ordinal' }).select(year);
-    const ordinal = words[year - 1] || (year + suffixes[rule]);
-    document.getElementById('phd-year').textContent = ordinal + '-year';
-})();
-</script>
-```
-
 ## paper {.unnumbered}
 
 Authors are listed alphabetically.
@@ -33,11 +17,11 @@ Authors are listed alphabetically.
   [Yu Cong, Chao Xu, Yajie Zhao.  
   [arXiv:2611.19447](https://arxiv.org/abs/2611.19447)]{.paper-details}
 
-- Sharp Bounds on the Number of Small Cuts `AI`{.paper-ai}\
+- Sharp Bounds on the Number of Small Cuts `AI`{.paper-ai title="An AI-generated solution is the main contribution of this paper."}\
   [Yu Cong, Chao Xu.  
   [arXiv:2609.10255](https://arxiv.org/abs/2609.10255)]{.paper-details}
 
-- Destroying Rigidity in the Plane `AI`{.paper-ai}\
+- Destroying Rigidity in the Plane `AI`{.paper-ai title="An AI-generated solution is the main contribution of this paper."}\
   [Yu Cong, Chao Xu, Yajie Zhao.  
   [arXiv:2610.38396](https://arxiv.org/abs/2610.38396)]{.paper-details}
 
@@ -45,7 +29,7 @@ Authors are listed alphabetically.
   [Yu Cong, Chao Xu, Yajie Zhao.  
   [arXiv:2608.16298](https://arxiv.org/abs/2608.16298)]{.paper-details}
 
-- Integrality-Gap Bounds for Weighted Matchoids and Matroid Intersection `AI`{.paper-ai}\
+- Integrality-Gap Bounds for Weighted Matchoids and Matroid Intersection `AI`{.paper-ai title="An AI-generated solution is the main contribution of this paper."}\
   [Yu Cong, Yajie Zhao.  
   *IJTCSFAW 2026*. [arXiv:2609.21477](https://arxiv.org/abs/2609.21477)]{.paper-details} [AI assists with technical work]{.paper-ai-caption}
 

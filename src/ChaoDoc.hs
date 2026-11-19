@@ -35,7 +35,7 @@ chaoDocRead =
 chaoDocWrite :: WriterOptions
 chaoDocWrite =
   def
-    { writerHTMLMathMethod = MathML,
+    { writerMathMethod = MathML,
       -- writerHtml5          = True,
       -- writerHighlightStyle = Just syntaxHighlightingStyle,
       writerNumberSections = True,

@@ -7,9 +7,11 @@
 import ChaoDoc
 import Control.Monad (filterM)
 import qualified Data.Text as T
+import Data.Time (getCurrentTime, hoursToTimeZone, localDay, toGregorian, utcToLocalTime)
 import Hakyll
 import System.FilePath
-import Text.Pandoc
+import Text.Pandoc hiding (getCurrentTime)
+import Text.Pandoc.Walk (walk)
 
 --------------------------------------------------------------------------------
 -- https://www.rohanjain.in/hakyll-clean-urls/
@@ -64,9 +66,12 @@ main = hakyllWith config $ do
 
   match "about.md" $ do
     route cleanRoute
-    compile $
-      chaoDocCompiler
-        >>= loadAndApplyTemplate "templates/about.html" defaultContext
+    compile $ do
+      now <- recompilingUnsafeCompiler getCurrentTime
+      let (year, month, _) = toGregorian . localDay $ utcToLocalTime (hoursToTimeZone 8) now
+          phdYear = year - 2024 + if month >= 9 then 1 else 0
+      about <- writePandocWith chaoDocWrite . fmap (setPhdYear phdYear) <$> chaoDocPandocCompiler
+      loadAndApplyTemplate "templates/about.html" defaultContext about
         >>= relativizeUrls
 
   -- build up tags
@@ -176,6 +181,32 @@ main = hakyllWith config $ do
 
 --------------------------------------------------------------------------------
 
+setPhdYear :: Integer -> Pandoc -> Pandoc
+setPhdYear year = walk updateSpan
+  where
+    updateSpan (Span attr@("phd-year", _, _) _) =
+      Span attr [Str (ordinal <> "-year")]
+    updateSpan inline = inline
+
+    ordinal = case lookup year (zip [1 ..] wordsByYear) of
+      Just word -> word
+      Nothing -> T.pack (show year) <> suffix
+
+    wordsByYear :: [T.Text]
+    wordsByYear =
+      [ "first", "second", "third", "fourth", "fifth",
+        "sixth", "seventh", "eighth", "ninth", "tenth"
+      ]
+
+    suffix :: T.Text
+    suffix
+      | year `mod` 100 `elem` [11, 12, 13] = "th"
+      | otherwise = case year `mod` 10 of
+          1 -> "st"
+          2 -> "nd"
+          3 -> "rd"
+          _ -> "th"
+
 isZhField :: Context String
 isZhField = boolFieldM "isZh" isZh
   where
@@ -283,7 +314,7 @@ getTocCtx ctx = do
             writerNumberSections = True,
             writerTOCDepth = 2,
             writerTemplate = tmpl,
-            writerHTMLMathMethod = MathML
+            writerMathMethod = MathML
           }
 
     asTxt :: (T.Text -> T.Text) -> String -> String
